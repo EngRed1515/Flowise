@@ -487,8 +487,15 @@ const Canvas = () => {
 
     useEffect(() => {
         function handlePaste(e) {
+            // Ignore paste events when the user is typing into an input field
+            const activeElement = document.activeElement
+            if (
+                activeElement &&
+                (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable)
+            ) {
+                return
+            }
             const pasteData = e.clipboardData.getData('text')
-            //TODO: prevent paste event when input focused, temporary fix: catch chatflow syntax
             if (pasteData.includes('{"nodes":[') && pasteData.includes('],"edges":[')) {
                 handleLoadFlow(pasteData)
             }
