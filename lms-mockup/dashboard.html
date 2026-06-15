@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Learning — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem active" href="dashboard.html"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="catalog.html"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="course.html"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="ai.html"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">📝</span> Assignments</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Calendar</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div class="nav-group">Community</div>
+    <a class="navitem" href="#"><span class="ic">💬</span> Forums</a>
+    <a class="navitem" href="#"><span class="ic">✉️</span> Messages</a>
+    <a class="navitem" href="#"><span class="ic">🏆</span> Leaderboard</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search courses, skills, people…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <button class="iconbtn">💬</button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div>
+          <p class="muted" style="margin:0">Welcome back,</p>
+          <h1 class="page-title">Ahmed Al-Mansoori 👋</h1>
+        </div>
+        <div class="row gap12">
+          <a class="btn light" href="catalog.html">＋ Browse courses</a>
+          <a class="btn" href="ai.html">🤖 Ask AI assistant</a>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">📘</div><div class="n">5</div><div class="l">Courses in progress</div><div class="delta up">▲ 2 this month</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">✅</div><div class="n">23</div><div class="l">Completed courses</div><div class="delta up">▲ on track</div></div>
+        <div class="card kpi"><div class="ic" style="background:var(--gold-soft);color:#7a5e16)">🏅</div><div class="n">11</div><div class="l">Certificates earned</div><div class="delta up">▲ 1 new</div></div>
+        <div class="card kpi"><div class="ic" style="background:#efe9fb;color:var(--violet)">⚡</div><div class="n">1,840</div><div class="l">Points · Rank #14</div><div class="delta up">▲ 120 pts</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr">
+        <!-- LEFT -->
+        <div class="grid" style="gap:18px">
+          <!-- Continue learning -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Continue learning</h3><a class="muted" style="font-size:13px;font-weight:600" href="course.html">View all →</a></div>
+            <div id="continue"></div>
+          </div>
+
+          <!-- Learning path -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Your learning path · Data Analyst Track</h3><span class="badge violet">AI-optimized</span></div>
+            <div class="row aic gap24 wrap">
+              <div class="ring" style="--p:62"><b>62%</b></div>
+              <div class="grow">
+                <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong>Foundations of Statistics</strong><div class="muted" style="font-size:13px">Completed · Certified</div></div></div>
+                <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong>Data Visualization Basics</strong><div class="muted" style="font-size:13px">Completed</div></div></div>
+                <div class="li"><span class="ic" style="background:#f7e7ec;color:var(--maroon-600)">▶</span><div class="grow"><strong>Regression Modelling</strong><div class="muted" style="font-size:13px">In progress · 40%</div></div><a class="btn sm" href="course.html">Resume</a></div>
+                <div class="li"><span class="ic" style="background:#eef0f6;color:var(--muted)">🔒</span><div class="grow"><strong>Advanced Survey Sampling</strong><div class="muted" style="font-size:13px">Locked · prerequisite required</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill gap (AI) -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Skill gap analysis</h3><span class="badge violet">🤖 AI</span></div>
+            <div class="grid g2">
+              <div><div class="row between" style="font-size:13px"><span>Statistical Analysis</span><strong>82%</strong></div><div class="bar mt8"><i style="width:82%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Data Visualization</span><strong>74%</strong></div><div class="bar mt8"><i style="width:74%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Machine Learning</span><strong>38%</strong></div><div class="bar mt8"><i style="width:38%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Survey Methodology</span><strong>55%</strong></div><div class="bar mt8"><i style="width:55%"></i></div></div>
+            </div>
+            <div class="card pad mt16" style="background:#faf2f4;border-style:dashed">💡 <strong>Recommendation:</strong> Close your <em>Machine Learning</em> gap with “Intro to ML for Analysts” (4 wks) — a strong match for your role.</div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="grid" style="gap:18px">
+          <!-- Deadlines -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Upcoming deadlines</h3>
+            <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">📝</span><div class="grow"><strong>Statistical Analysis II — Quiz</strong><div class="muted" style="font-size:13px">Due Tue · 16 Jun</div></div></div>
+            <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📄</span><div class="grow"><strong>Data Ethics — Assignment</strong><div class="muted" style="font-size:13px">Due Thu · 18 Jun</div></div></div>
+            <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">🎥</span><div class="grow"><strong>Live: Power BI workshop</strong><div class="muted" style="font-size:13px">Mon · 10:00 · MS Teams</div></div></div>
+          </div>
+
+          <!-- AI recommendations -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Recommended for you</h3><span class="badge violet">🤖</span></div>
+            <a class="li" href="course.html"><span class="ic t2"></span><div class="grow"><strong style="font-size:14px">Power BI for Analysts</strong><div class="muted" style="font-size:12px">98% match · 4 wks</div></div>＋</a>
+            <a class="li" href="course.html"><span class="ic t3"></span><div class="grow"><strong style="font-size:14px">Advanced Survey Sampling</strong><div class="muted" style="font-size:12px">91% match · 5 wks</div></div>＋</a>
+            <a class="li" href="course.html"><span class="ic t5"></span><div class="grow"><strong style="font-size:14px">Storytelling with Data</strong><div class="muted" style="font-size:12px">88% match · 3 wks</div></div>＋</a>
+          </div>
+
+          <!-- Badges -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Recent badges</h3>
+            <div class="row gap12 wrap">
+              <div class="center"><div style="font-size:30px">🥇</div><div class="muted" style="font-size:11px">Top Learner</div></div>
+              <div class="center"><div style="font-size:30px">📈</div><div class="muted" style="font-size:11px">Data Pro</div></div>
+              <div class="center"><div style="font-size:30px">🔥</div><div class="muted" style="font-size:11px">30-day streak</div></div>
+              <div class="center"><div style="font-size:30px">🎯</div><div class="muted" style="font-size:11px">Goal Setter</div></div>
+            </div>
+            <a class="btn light block sm mt16" href="#">Share on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- floating AI -->
+<a href="ai.html" style="position:fixed;right:22px;bottom:22px;z-index:50" class="btn gold" title="AI assistant">🤖 Ask AI</a>
+
+<script src="assets/app.js"></script>
+<script>
+const CONT=[
+  {t:"Regression Modelling", on:"Dr. Sara Al-Ali", p:40, cls:"t1", left:"6 lessons left"},
+  {t:"Data Ethics & Privacy Law", on:"Y. Ahmed", p:75, cls:"t4", left:"2 lessons left"},
+  {t:"Power BI for Data Analysts", on:"M. Khalifa", p:20, cls:"t2", left:"9 lessons left"},
+];
+document.getElementById('continue').innerHTML = CONT.map(c=>`
+  <div class="row aic gap16" style="padding:12px 0;border-bottom:1px solid var(--line)">
+    <div class="${c.cls}" style="width:64px;height:48px;border-radius:10px;flex:0 0 64px"></div>
+    <div class="grow">
+      <div class="row between"><strong>${c.t}</strong><span class="muted" style="font-size:13px">${c.p}%</span></div>
+      <div class="muted" style="font-size:13px;margin:2px 0 8px">${c.on} · ${c.left}</div>
+      <div class="bar"><i style="width:${c.p}%"></i></div>
+    </div>
+    <a class="btn sm" href="course.html">Resume</a>
+  </div>`).join('');
+</script>
+</body>
+</html>

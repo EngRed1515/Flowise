@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor Studio — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Instructor</small></span></a>
+    <a class="navitem active" href="instructor.html"><span class="ic">📊</span> Dashboard</a>
+    <a class="navitem" href="#"><span class="ic">📚</span> My courses</a>
+    <a class="navitem" href="#"><span class="ic">🛠️</span> Authoring studio</a>
+    <a class="navitem" href="#"><span class="ic">📝</span> Assessments</a>
+    <a class="navitem" href="#"><span class="ic">✍️</span> Grading</a>
+    <div class="nav-group">Engage</div>
+    <a class="navitem" href="#"><span class="ic">💬</span> Forums</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Sessions</a>
+    <a class="navitem" href="ai.html"><span class="ic">🤖</span> AI assistant</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search learners, courses, submissions…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">SA</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div><h1 class="page-title">Instructor studio</h1><p class="muted" style="margin:4px 0 0">Dr. Sara Al-Ali · 4 active courses</p></div>
+        <div class="row gap8"><button class="btn light">🤖 Generate quiz</button><button class="btn">＋ New course</button></div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">👨‍🎓</div><div class="n">1,240</div><div class="l">Enrolled learners</div><div class="delta up">▲ 84 this week</div></div>
+        <div class="card kpi"><div class="ic" style="background:#fdf3da;color:#9a6f04">✍️</div><div class="n">37</div><div class="l">Submissions to grade</div><div class="delta down">12 overdue</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">⭐</div><div class="n">4.8</div><div class="l">Avg. course rating</div><div class="delta up">▲ 0.2</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e8f0fe;color:var(--blue)">📈</div><div class="n">81%</div><div class="l">Avg. completion</div><div class="delta up">▲ 4%</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.5fr 1fr;margin-bottom:18px">
+        <!-- grading queue with AI -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Grading queue</h3><span class="badge violet">🤖 AI pre-graded</span></div>
+          <table>
+            <thead><tr><th>Learner</th><th>Assignment</th><th>AI score</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="row aic gap8"><span class="avatar">AM</span>A. Al-Mansoori</div></td><td>Regression essay</td><td><span class="badge green">88% ✓</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">KH</span>K. Hassan</div></td><td>Dataset analysis</td><td><span class="badge amber">64% ⚠</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">MQ</span>M. Al-Qahtani</div></td><td>Regression essay</td><td><span class="badge red">Plagiarism flag</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">NM</span>N. Mansour</div></td><td>Final project</td><td><span class="badge green">92% ✓</span></td><td><button class="btn sm">Review</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- engagement / drop-off -->
+        <div class="card pad">
+          <div class="row between aic mb16"><h3 style="margin:0">Engagement by module</h3><span class="badge">Regression Modelling</span></div>
+          <div class="chart" style="height:150px">
+            <div class="col"><i style="height:96%"></i><span>M1</span></div>
+            <div class="col"><i style="height:84%"></i><span>M2</span></div>
+            <div class="col"><i style="height:58%"></i><span>M3</span></div>
+            <div class="col"><i style="height:40%"></i><span>M4</span></div>
+          </div>
+          <div class="card pad mt16" style="background:#faf2f4;border-style:dashed;font-size:14px">📉 <strong>Drop-off detected</strong> at Module 3. <span class="muted">AI suggests adding a worked example before VIF.</span></div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <!-- authoring -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Authoring studio</h3><span class="badge gold">H5P-style</span></div>
+          <div class="grid g2">
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🎬</div><strong>Video lesson</strong><div class="muted" style="font-size:12px">+ captions, chapters</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🧩</div><strong>Interactive</strong><div class="muted" style="font-size:12px">drag-drop, hotspot</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">❓</div><strong>Quiz / bank</strong><div class="muted" style="font-size:12px">QTI import/export</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🧑‍🏫</div><strong>AI avatar</strong><div class="muted" style="font-size:12px">narrate the course</div></button>
+          </div>
+        </div>
+
+        <!-- AI assistant card -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">AI teaching assistant</h3><span class="badge violet">🤖</span></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📝</span><div class="grow"><strong style="font-size:14px">Auto-generate quiz</strong><div class="muted" style="font-size:12px">From your Module 3 slides</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📣</span><div class="grow"><strong style="font-size:14px">Draft announcement</strong><div class="muted" style="font-size:12px">Quiz 2 reminder</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">🔍</span><div class="grow"><strong style="font-size:14px">Content quality review</strong><div class="muted" style="font-size:12px">Clarity &amp; outdated examples</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">🚩</span><div class="grow"><strong style="font-size:14px">Learners needing help</strong><div class="muted" style="font-size:12px">14 flagged this week</div></div><button class="btn sm">View</button></div>
+        </div>
+      </div>
+
+      <!-- sessions -->
+      <div class="card pad">
+        <div class="row between aic mb12"><h3 style="margin:0">Upcoming sessions</h3><button class="btn light sm">＋ Schedule session</button></div>
+        <table>
+          <thead><tr><th>Session</th><th>Date &amp; time</th><th>Mode</th><th>Room / link</th><th>Registered</th></tr></thead>
+          <tbody>
+            <tr><td>Power BI live workshop</td><td>Mon 16 Jun · 10:00</td><td><span class="badge blue">Online</span></td><td>MS Teams</td><td>62 / 80</td></tr>
+            <tr><td>Regression Q&amp;A clinic</td><td>Wed 18 Jun · 13:00</td><td><span class="badge gold">Hybrid</span></td><td>Room A-204 + Zoom</td><td>40 / 50</td></tr>
+            <tr><td>Survey design lab</td><td>Thu 19 Jun · 09:00</td><td><span class="badge maroon">In-person</span></td><td>Lab 1</td><td>22 / 25</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

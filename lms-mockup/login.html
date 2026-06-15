@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="mock-note">🎨 <b>Visual mockup</b> — sign-in is illustrative only. Any button leads to the demo dashboard.</div>
+<div style="min-height:calc(100vh - 33px);display:grid;grid-template-columns:1.05fr .95fr">
+  <!-- brand panel -->
+  <div class="hero" style="display:flex;align-items:center">
+    <div class="container" style="max-width:520px">
+      <a class="brand" href="index.html" style="color:#fff"><span class="mark">N</span><span>NPC&nbsp;LMS <small style="color:#e6c3ce">Statistical &amp; Training Center</small></span></a>
+      <h1 style="font-size:38px;margin-top:34px">Welcome back to your learning hub</h1>
+      <p>Single sign-on for NPC staff and external entities, secured by Tawtheeq (QID) and Active Directory.</p>
+      <div class="card pad" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;max-width:380px">
+        <div class="row gap12 aic"><span style="font-size:22px">🔒</span><div><strong>Enterprise security</strong><div style="color:#f0cdd7;font-size:13px">WCAG 2.1 AA · GDPR &amp; Qatari Data Protection Law · full audit logs</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- form panel -->
+  <div style="display:flex;align-items:center;justify-content:center;padding:30px">
+    <div style="width:100%;max-width:380px">
+      <div class="row between aic mb16">
+        <h2 style="margin:0;font-size:24px">Sign in</h2>
+        <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      </div>
+
+      <a class="btn light block mb8" href="dashboard.html">🪪&nbsp; Continue with Tawtheeq (QID)</a>
+      <a class="btn light block mb16" href="dashboard.html">🏢&nbsp; Continue with Active Directory (SSO)</a>
+
+      <div class="row aic gap12 mb16"><div class="grow" style="height:1px;background:var(--line)"></div><span class="muted" style="font-size:12px">OR</span><div class="grow" style="height:1px;background:var(--line)"></div></div>
+
+      <label class="muted" style="font-size:13px;font-weight:600">Email or QID</label>
+      <div class="search" style="width:100%;background:#fff;margin:6px 0 14px"><input placeholder="name@npc.gov.qa"></div>
+      <label class="muted" style="font-size:13px;font-weight:600">Password</label>
+      <div class="search" style="width:100%;background:#fff;margin:6px 0 8px"><input type="password" placeholder="••••••••"></div>
+      <div class="row between aic mb16" style="font-size:13px">
+        <label class="row aic gap8 muted"><input type="checkbox"> Remember me</label>
+        <a href="#" style="color:var(--maroon-600);font-weight:600">Forgot password?</a>
+      </div>
+      <a class="btn block mb16" href="dashboard.html">Sign in</a>
+
+      <div class="card pad" style="background:var(--bg);border-style:dashed">
+        <div class="muted" style="font-size:13px;font-weight:600;margin-bottom:8px">Preview as a role:</div>
+        <div class="row gap8 wrap">
+          <a class="btn ghost sm" href="dashboard.html">Learner</a>
+          <a class="btn ghost sm" href="instructor.html">Instructor</a>
+          <a class="btn ghost sm" href="admin.html">Admin / Entity</a>
+        </div>
+      </div>
+      <p class="center muted" style="font-size:13px;margin-top:18px">New external entity? <a href="#" style="color:var(--maroon-600);font-weight:600">Request onboarding</a></p>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
