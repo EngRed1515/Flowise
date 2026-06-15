@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPC Qatar LMS — Visual Mockup</title>
+<style>
+/* ============================================================
+   NPC Qatar LMS — Mockup Design System
+   Statistical & Training Center
+   (Static prototype — no backend)
+   ============================================================ */
+
+:root {
+  /* Brand — Qatar maroon */
+  --maroon: #7a1430;
+  --maroon-600: #8a1538;
+  --maroon-700: #66102a;
+  --maroon-900: #3e0a1a;
+  --gold: #c8a04b;
+  --gold-soft: #f3e6c8;
+
+  --ink: #1d2333;
+  --muted: #6a7282;
+  --line: #e7e9ef;
+  --bg: #f5f6fa;
+  --card: #ffffff;
+
+  --green: #1f9d6b;
+  --amber: #e0a106;
+  --red: #d64545;
+  --blue: #2f6fed;
+  --violet: #6f4ad2;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(16,22,40,.04), 0 8px 24px rgba(16,22,40,.06);
+  --shadow-lg: 0 18px 50px rgba(16,22,40,.16);
+  --sidebar-w: 248px;
+
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- Utilities ---------- */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.row { display: flex; }
+.between { justify-content: space-between; }
+.aic { align-items: center; }
+.gap8 { gap: 8px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; } .gap24 { gap: 24px; }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; }
+.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}
+.mb0{margin-bottom:0}.mb8{margin-bottom:8px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}
+.hide { display: none !important; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid transparent; border-radius: 10px;
+  padding: 10px 16px; font-weight: 600; font-size: 14px;
+  background: var(--maroon-600); color: #fff; transition: .15s;
+}
+.btn:hover { background: var(--maroon-700); }
+.btn.ghost { background: transparent; color: var(--maroon-600); border-color: var(--line); }
+.btn.ghost:hover { background: #faf2f4; }
+.btn.light { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn.light:hover { border-color: #cfd3de; }
+.btn.gold { background: var(--gold); color: #2a2208; }
+.btn.gold:hover { filter: brightness(.96); }
+.btn.sm { padding: 7px 12px; font-size: 13px; }
+.btn.block { width: 100%; justify-content: center; }
+
+/* ---------- Badges / chips ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: #eef0f6; color: var(--muted);
+}
+.badge.green { background: #e6f6ef; color: var(--green); }
+.badge.amber { background: #fdf3da; color: #9a6f04; }
+.badge.red   { background: #fce8e8; color: var(--red); }
+.badge.blue  { background: #e8f0fe; color: var(--blue); }
+.badge.violet{ background: #efe9fb; color: var(--violet); }
+.badge.gold  { background: var(--gold-soft); color: #7a5e16; }
+.badge.maroon{ background: #f7e7ec; color: var(--maroon-600); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.card.pad { padding: 20px; }
+.grid { display: grid; gap: 18px; }
+.g2 { grid-template-columns: repeat(2,1fr); }
+.g3 { grid-template-columns: repeat(3,1fr); }
+.g4 { grid-template-columns: repeat(4,1fr); }
+
+/* ---------- Top public nav ---------- */
+.topnav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(255,255,255,.9); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topnav .inner { display: flex; align-items: center; gap: 24px; height: 68px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .2px; }
+.brand .mark {
+  width: 38px; height: 38px; border-radius: 10px; color: #fff; font-weight: 800;
+  display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--maroon-600), var(--maroon-900));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+}
+.brand small { display: block; font-weight: 500; font-size: 11px; color: var(--muted); letter-spacing: .3px; }
+.navlinks { display: flex; gap: 26px; margin-left: 8px; }
+.navlinks a { color: var(--muted); font-weight: 600; font-size: 14px; }
+.navlinks a:hover, .navlinks a.active { color: var(--maroon-600); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  background: radial-gradient(1200px 500px at 80% -20%, #a01a45 0, transparent 60%),
+              linear-gradient(135deg, var(--maroon-900), var(--maroon-600));
+}
+.hero .container { padding-top: 64px; padding-bottom: 72px; }
+.hero h1 { font-size: 46px; line-height: 1.08; margin: 14px 0 14px; max-width: 16ch; }
+.hero p { font-size: 18px; color: #f3dde4; max-width: 56ch; margin: 0 0 26px; }
+.hero .pill {
+  display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 600;
+  background: rgba(255,255,255,.12); padding: 6px 12px; border-radius: 999px; color: #fff;
+  border: 1px solid rgba(255,255,255,.18);
+}
+.hero-art {
+  position: absolute; right: -40px; bottom: -40px; width: 520px; opacity: .9;
+  pointer-events: none;
+}
+.stat-strip { display: flex; gap: 40px; margin-top: 38px; flex-wrap: wrap; }
+.stat-strip .n { font-size: 30px; font-weight: 800; }
+.stat-strip .l { color: #f0cdd7; font-size: 13px; }
+
+/* ---------- Section ---------- */
+.section { padding: 64px 0; }
+.section h2 { font-size: 30px; margin: 0 0 8px; }
+.eyebrow { color: var(--maroon-600); font-weight: 700; font-size: 13px; letter-spacing: .8px; text-transform: uppercase; }
+
+/* ---------- Course card ---------- */
+.course {
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform .15s, box-shadow .15s;
+}
+.course:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.course .thumb { height: 132px; position: relative; background-size: cover; background-position: center; }
+.course .thumb .tag { position: absolute; top: 10px; left: 10px; }
+.course .body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.course h4 { margin: 0; font-size: 16px; line-height: 1.3; }
+.course .meta { display: flex; gap: 14px; color: var(--muted); font-size: 13px; flex-wrap: wrap; }
+.course .foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--line); }
+.avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--gold-soft); color: #7a5e16; display: grid; place-items: center; font-weight: 700; font-size: 12px; }
+.stars { color: var(--gold); font-size: 13px; }
+
+/* feature thumbnails (gradient placeholders) */
+.t1{background:linear-gradient(135deg,#7a1430,#c8536f)} .t2{background:linear-gradient(135deg,#1f6feb,#63a4ff)}
+.t3{background:linear-gradient(135deg,#1f9d6b,#7be0b3)} .t4{background:linear-gradient(135deg,#6f4ad2,#a78bfa)}
+.t5{background:linear-gradient(135deg,#e0a106,#f6cf5b)} .t6{background:linear-gradient(135deg,#0d9488,#5eead4)}
+
+/* ---------- Feature blocks ---------- */
+.feature { display: flex; gap: 14px; }
+.feature .ic {
+  width: 44px; height: 44px; border-radius: 12px; flex: 0 0 44px; display: grid; place-items: center;
+  background: #f7e7ec; color: var(--maroon-600); font-size: 20px;
+}
+.feature h4 { margin: 2px 0 4px; font-size: 16px; }
+.feature p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* ============================================================
+   APP SHELL (dashboard pages)
+   ============================================================ */
+.app { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
+.sidebar {
+  background: linear-gradient(180deg, var(--maroon-900), var(--maroon-700));
+  color: #f5e7ec; padding: 18px 14px; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+}
+.sidebar .brand { color: #fff; margin: 6px 8px 22px; }
+.sidebar .brand small { color: #e6c3ce; }
+.nav-group { margin: 18px 8px 8px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #d59aab; }
+.navitem {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px;
+  color: #f0d8e0; font-weight: 600; font-size: 14px; margin-bottom: 2px;
+}
+.navitem:hover { background: rgba(255,255,255,.08); color: #fff; }
+.navitem.active { background: rgba(255,255,255,.14); color: #fff; box-shadow: inset 3px 0 0 var(--gold); }
+.navitem .ic { width: 20px; text-align: center; }
+
+.main { display: flex; flex-direction: column; min-width: 0; }
+.topbar {
+  height: 66px; background: #fff; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 16px; padding: 0 26px; position: sticky; top: 0; z-index: 20;
+}
+.search {
+  display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 10px; padding: 9px 14px; width: 360px; max-width: 40vw; color: var(--muted); font-size: 14px;
+}
+.search input { border: none; background: transparent; outline: none; width: 100%; font-size: 14px; color: var(--ink); }
+.iconbtn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: #fff; display: grid; place-items: center; position: relative; font-size: 16px; }
+.iconbtn .ping { position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--red); border: 2px solid #fff; }
+.content { padding: 26px; }
+.page-title { font-size: 24px; margin: 0; }
+
+/* KPI cards */
+.kpi { padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+.kpi .ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 18px; margin-bottom: 6px; }
+.kpi .n { font-size: 28px; font-weight: 800; }
+.kpi .l { color: var(--muted); font-size: 13px; }
+.kpi .delta { font-size: 12px; font-weight: 700; }
+.kpi .delta.up { color: var(--green); } .kpi .delta.down { color: var(--red); }
+
+/* progress */
+.bar { height: 8px; border-radius: 999px; background: #eef0f6; overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--maroon-600), var(--gold)); }
+.ring { --p: 60; width: 92px; height: 92px; border-radius: 50%;
+  background: conic-gradient(var(--maroon-600) calc(var(--p)*1%), #eef0f6 0);
+  display: grid; place-items: center; }
+.ring > b { width: 66px; height: 66px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 18px; }
+
+/* table */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+td { padding: 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafbfd; }
+
+/* simple bar chart */
+.chart { display: flex; align-items: flex-end; gap: 14px; height: 180px; padding-top: 10px; }
+.chart .col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+.chart .col i { width: 70%; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, var(--maroon-600), #c8536f); display: block; }
+.chart .col span { font-size: 12px; color: var(--muted); }
+
+/* list item */
+.li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.li:last-child { border-bottom: none; }
+.li .ic { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; flex: 0 0 38px; }
+
+/* chat */
+.chat { display: flex; flex-direction: column; height: 520px; }
+.chat .stream { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.bubble { max-width: 78%; padding: 12px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; }
+.bubble.ai { background: #f7e7ec; color: var(--ink); border-bottom-left-radius: 4px; }
+.bubble.me { background: var(--maroon-600); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.chat .compose { border-top: 1px solid var(--line); padding: 12px; display: flex; gap: 10px; }
+.chat .compose input { flex: 1; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; outline: none; font-size: 14px; }
+
+/* footer */
+.footer { background: var(--maroon-900); color: #e9cdd6; padding: 40px 0 30px; }
+.footer a { color: #f0d8e0; }
+.footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; }
+.footer h5 { color: #fff; margin: 0 0 12px; font-size: 14px; }
+.footer .small { font-size: 13px; line-height: 2; }
+
+/* lang toggle */
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 13px; font-weight: 600; }
+.lang button { padding: 6px 12px; border: none; background: #fff; color: var(--muted); }
+.lang button.active { background: var(--maroon-600); color: #fff; }
+
+/* banner note */
+.mock-note {
+  background: #1d2333; color: #cfd6e6; font-size: 12.5px; text-align: center; padding: 7px 12px;
+  letter-spacing: .2px;
+}
+.mock-note b { color: var(--gold); }
+
+/* responsive */
+@media (max-width: 980px){
+  .g4{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(2,1fr)}
+  .navlinks{display:none}
+  .hero h1{font-size:34px}
+  .footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 760px){
+  .app{grid-template-columns:1fr} .sidebar{display:none}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .stat-strip{gap:24px} .search{display:none}
+}
+
+/* single-file view switching */
+.view{display:none}
+.view.active{display:block}
+</style>
+</head>
+<body>
+<div class="view active" id="view-index">
+
+<div class="mock-note">🎨 <b>Visual mockup</b> — NPC Qatar Learning Management System · Statistical &amp; Training Center · not a live deployment</div>
+
+<!-- NAV -->
+<header class="topnav">
+  <div class="container inner">
+    <a class="brand" href="#" onclick="go('index');return false">
+      <span class="mark">N</span>
+      <span>NPC&nbsp;LMS <small>Statistical &amp; Training Center · Qatar</small></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#" onclick="go('index');return false" class="active">Home</a>
+      <a href="#" onclick="go('catalog');return false">Courses</a>
+      <a href="#" onclick="go('ai');return false">AI Learning</a>
+      <a href="#features">Features</a>
+      <a href="#entities">For Entities</a>
+    </nav>
+    <div class="grow"></div>
+    <div class="lang">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="ar">ع</button>
+    </div>
+    <a class="btn ghost sm" href="#" onclick="go('login');return false">Sign in</a>
+    <a class="btn sm" href="#" onclick="go('login');return false">Get started</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="pill">🇶🇦 National Planning Council · Qatar</span>
+    <h1>Modern learning for a smarter public sector</h1>
+    <p>A unified platform to create, deliver and track training for NPC employees and external government
+       entities — with AI-powered recommendations, certification and analytics.</p>
+    <div class="row gap12 wrap">
+      <a class="btn gold" href="#" onclick="go('login');return false">Explore the platform →</a>
+      <a class="btn ghost" href="#" onclick="go('catalog');return false" style="color:#fff;border-color:rgba(255,255,255,.4)">Browse courses</a>
+    </div>
+    <div class="stat-strip">
+      <div><div class="n">320+</div><div class="l">Courses &amp; learning paths</div></div>
+      <div><div class="n">12,400</div><div class="l">Active learners</div></div>
+      <div><div class="n">48</div><div class="l">Partner entities</div></div>
+      <div><div class="n">99.5%</div><div class="l">Platform uptime</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANNOUNCEMENT / PROMOTED (HLR.69) -->
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="card pad row between aic gap16 wrap" style="background:linear-gradient(120deg,#fff,#faf2f4)">
+      <div class="row aic gap16">
+        <span class="badge maroon">📣 Announcement</span>
+        <div>
+          <strong>New cohort open — “Official Statistics &amp; SDGs Reporting”</strong>
+          <div class="muted" style="font-size:14px">Registration closes 30 June · 6-week blended program · Certified</div>
+        </div>
+      </div>
+      <a class="btn sm" href="#" onclick="go('course');return false">Enroll now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COURSES -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="row between aic mb24 wrap gap12">
+      <div>
+        <div class="eyebrow">Course catalog</div>
+        <h2 class="mb0">Featured programs</h2>
+      </div>
+      <a class="btn light sm" href="#" onclick="go('catalog');return false">View all courses →</a>
+    </div>
+    <div class="grid g4" id="featured"></div>
+  </div>
+</section>
+
+<!-- FEATURES (mapped to requirements) -->
+<section class="section" id="features" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="container">
+    <div class="center mb24">
+      <div class="eyebrow">Built for the full training lifecycle</div>
+      <h2 class="mb0">Everything the Statistical &amp; Training Center needs</h2>
+    </div>
+    <div class="grid g3">
+      <div class="feature"><div class="ic">🎓</div><div><h4>Course authoring studio</h4><p>Browser-based authoring with interactive H5P-style content, SCORM/xAPI, quizzes and branching scenarios.</p></div></div>
+      <div class="feature"><div class="ic">🤖</div><div><h4>AI learning assistant</h4><p>Smart recommendations, auto-generated quizzes, instant grading and a conversational support agent.</p></div></div>
+      <div class="feature"><div class="ic">📊</div><div><h4>Analytics &amp; dashboards</h4><p>Learner, instructor, admin and entity dashboards with predictive at-risk insights and exports.</p></div></div>
+      <div class="feature"><div class="ic">🏅</div><div><h4>Certificates &amp; badges</h4><p>Dynamic certificates, Open Badges 3.0, LinkedIn sharing and verifiable credentials.</p></div></div>
+      <div class="feature"><div class="ic">🔗</div><div><h4>Integrations</h4><p>Tawtheeq (QID), Active Directory SSO, HRMS / Mawared, MS Teams, Zoom, REST APIs &amp; webhooks.</p></div></div>
+      <div class="feature"><div class="ic">🌐</div><div><h4>Bilingual &amp; accessible</h4><p>Full Arabic &amp; English UI (RTL), WCAG 2.1 AA, mobile apps and offline access.</p></div></div>
+      <div class="feature"><div class="ic">🧩</div><div><h4>Gamification</h4><p>Points, leaderboards, achievements and configurable rules to drive engagement.</p></div></div>
+      <div class="feature"><div class="ic">💰</div><div><h4>Finance &amp; cost</h4><p>Course budgets, role-based pricing, chargebacks, approval workflows and ERP sync.</p></div></div>
+      <div class="feature"><div class="ic">🛡️</div><div><h4>Security &amp; compliance</h4><p>Role-based access, audit logs and alignment with GDPR &amp; Qatari Data Protection Law.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES / FOR ENTITIES -->
+<section class="section" id="entities">
+  <div class="container">
+    <div class="center mb24">
+      <div class="eyebrow">One platform, five roles</div>
+      <h2 class="mb0">Tailored experiences for every user</h2>
+    </div>
+    <div class="grid g3">
+      <a class="card pad" href="#" onclick="go('dashboard');return false"><span class="badge maroon">Learner</span><h4 class="mt8 mb8">Learn &amp; grow</h4><p class="muted" style="margin:0">Enroll, attend sessions, submit assignments, earn certificates and chat with the AI tutor.</p></a>
+      <a class="card pad" href="#" onclick="go('instructor');return false"><span class="badge blue">Instructor</span><h4 class="mt8 mb8">Create &amp; assess</h4><p class="muted" style="margin:0">Design curricula, build quizzes, grade with AI assistance and engage learners in forums.</p></a>
+      <a class="card pad" href="#" onclick="go('admin');return false"><span class="badge gold">Business / Super Admin</span><h4 class="mt8 mb8">Manage &amp; monitor</h4><p class="muted" style="margin:0">Manage users, courses, workflows and view platform-wide operational dashboards.</p></a>
+      <a class="card pad" href="#" onclick="go('admin');return false"><span class="badge green">External Entity Admin</span><h4 class="mt8 mb8">Oversee employees</h4><p class="muted" style="margin:0">Track employee training status, request enrollments and receive non-attendance alerts.</p></a>
+      <a class="card pad" href="#" onclick="go('ai');return false"><span class="badge violet">AI Assistant</span><h4 class="mt8 mb8">Guide everyone</h4><p class="muted" style="margin:0">Adaptive paths, skill-gap analysis and a 24/7 conversational support agent.</p></a>
+      <a class="card pad" href="#" onclick="go('catalog');return false"><span class="badge amber">Visitor</span><h4 class="mt8 mb8">Discover</h4><p class="muted" style="margin:0">Browse the public catalog and global learning events before signing in.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="hero card" style="border:none;border-radius:20px">
+      <div class="container center" style="padding:54px 22px">
+        <h2 style="color:#fff;font-size:32px;margin:0 0 10px">Ready to see it in action?</h2>
+        <p style="color:#f3dde4;max-width:48ch;margin:0 auto 22px">Step into the learner, instructor or admin experience — no sign-in required for this preview.</p>
+        <div class="row gap12 center wrap" style="justify-content:center">
+          <a class="btn gold" href="#" onclick="go('dashboard');return false">Open learner dashboard</a>
+          <a class="btn ghost" href="#" onclick="go('admin');return false" style="color:#fff;border-color:rgba(255,255,255,.4)">Open admin console</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <div class="brand" style="color:#fff"><span class="mark">N</span><span>NPC&nbsp;LMS</span></div>
+        <p class="small" style="max-width:34ch;margin-top:12px">Learning Management System for the National Planning Council — Statistical &amp; Training Center, State of Qatar.</p>
+      </div>
+      <div><h5>Platform</h5><div class="small"><a href="#" onclick="go('catalog');return false">Courses</a><br><a href="#" onclick="go('ai');return false">AI Learning</a><br><a href="#" onclick="go('dashboard');return false">Dashboard</a><br><a href="#" onclick="go('login');return false">Sign in</a></div></div>
+      <div><h5>Roles</h5><div class="small"><a href="#" onclick="go('dashboard');return false">Learner</a><br><a href="#" onclick="go('instructor');return false">Instructor</a><br><a href="#" onclick="go('admin');return false">Admin</a><br><a href="#" onclick="go('admin');return false">Entities</a></div></div>
+      <div><h5>Support</h5><div class="small">Help center<br>Accessibility (WCAG 2.1 AA)<br>Privacy &amp; data protection<br>العربية / English</div></div>
+    </div>
+    <div class="small" style="margin-top:30px;opacity:.7">© 2026 National Planning Council, Qatar · Mockup preview only.</div>
+  </div>
+</footer>
+
+
+<script>
+const FEATURED = [
+  {t:"Official Statistics & SDG Reporting", cat:"Statistics", tag:"Certified", cls:"t1", h:"6 wks", lvl:"Intermediate", r:"4.9", a:"SA", on:"Dr. Sara Al-Ali"},
+  {t:"Power BI for Data Analysts", cat:"Data & BI", tag:"Online", cls:"t2", h:"4 wks", lvl:"Beginner", r:"4.7", a:"MK", on:"M. Khalifa"},
+  {t:"Advanced Survey Sampling", cat:"Methodology", tag:"Hybrid", cls:"t3", h:"5 wks", lvl:"Advanced", r:"4.8", a:"HN", on:"Huda Nasser"},
+  {t:"Data Ethics & Privacy Law", cat:"Governance", tag:"New", cls:"t4", h:"3 wks", lvl:"All levels", r:"5.0", a:"YA", on:"Y. Ahmed"},
+];
+document.getElementById('featured').innerHTML = FEATURED.map(c=>`
+  <a class="card course" href="#" onclick="go('course');return false">
+    <div class="thumb ${c.cls}"><span class="badge gold tag">${c.tag}</span></div>
+    <div class="body">
+      <span class="badge">${c.cat}</span>
+      <h4>${c.t}</h4>
+      <div class="meta"><span>⏱ ${c.h}</span><span>📶 ${c.lvl}</span><span class="stars">★ ${c.r}</span></div>
+      <div class="foot"><div class="row aic gap8"><span class="avatar">${c.a}</span><span class="muted" style="font-size:13px">${c.on}</span></div><span class="badge maroon">Enroll</span></div>
+    </div>
+  </a>`).join('');
+</script>
+
+</div>
+<div class="view " id="view-login">
+
+<div class="mock-note">🎨 <b>Visual mockup</b> — sign-in is illustrative only. Any button leads to the demo dashboard.</div>
+<div style="min-height:calc(100vh - 33px);display:grid;grid-template-columns:1.05fr .95fr">
+  <!-- brand panel -->
+  <div class="hero" style="display:flex;align-items:center">
+    <div class="container" style="max-width:520px">
+      <a class="brand" href="#" onclick="go('index');return false" style="color:#fff"><span class="mark">N</span><span>NPC&nbsp;LMS <small style="color:#e6c3ce">Statistical &amp; Training Center</small></span></a>
+      <h1 style="font-size:38px;margin-top:34px">Welcome back to your learning hub</h1>
+      <p>Single sign-on for NPC staff and external entities, secured by Tawtheeq (QID) and Active Directory.</p>
+      <div class="card pad" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;max-width:380px">
+        <div class="row gap12 aic"><span style="font-size:22px">🔒</span><div><strong>Enterprise security</strong><div style="color:#f0cdd7;font-size:13px">WCAG 2.1 AA · GDPR &amp; Qatari Data Protection Law · full audit logs</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- form panel -->
+  <div style="display:flex;align-items:center;justify-content:center;padding:30px">
+    <div style="width:100%;max-width:380px">
+      <div class="row between aic mb16">
+        <h2 style="margin:0;font-size:24px">Sign in</h2>
+        <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      </div>
+
+      <a class="btn light block mb8" href="#" onclick="go('dashboard');return false">🪪&nbsp; Continue with Tawtheeq (QID)</a>
+      <a class="btn light block mb16" href="#" onclick="go('dashboard');return false">🏢&nbsp; Continue with Active Directory (SSO)</a>
+
+      <div class="row aic gap12 mb16"><div class="grow" style="height:1px;background:var(--line)"></div><span class="muted" style="font-size:12px">OR</span><div class="grow" style="height:1px;background:var(--line)"></div></div>
+
+      <label class="muted" style="font-size:13px;font-weight:600">Email or QID</label>
+      <div class="search" style="width:100%;background:#fff;margin:6px 0 14px"><input placeholder="name@npc.gov.qa"></div>
+      <label class="muted" style="font-size:13px;font-weight:600">Password</label>
+      <div class="search" style="width:100%;background:#fff;margin:6px 0 8px"><input type="password" placeholder="••••••••"></div>
+      <div class="row between aic mb16" style="font-size:13px">
+        <label class="row aic gap8 muted"><input type="checkbox"> Remember me</label>
+        <a href="#" style="color:var(--maroon-600);font-weight:600">Forgot password?</a>
+      </div>
+      <a class="btn block mb16" href="#" onclick="go('dashboard');return false">Sign in</a>
+
+      <div class="card pad" style="background:var(--bg);border-style:dashed">
+        <div class="muted" style="font-size:13px;font-weight:600;margin-bottom:8px">Preview as a role:</div>
+        <div class="row gap8 wrap">
+          <a class="btn ghost sm" href="#" onclick="go('dashboard');return false">Learner</a>
+          <a class="btn ghost sm" href="#" onclick="go('instructor');return false">Instructor</a>
+          <a class="btn ghost sm" href="#" onclick="go('admin');return false">Admin / Entity</a>
+        </div>
+      </div>
+      <p class="center muted" style="font-size:13px;margin-top:18px">New external entity? <a href="#" style="color:var(--maroon-600);font-weight:600">Request onboarding</a></p>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div class="view " id="view-dashboard">
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem active" href="#" onclick="go('dashboard');return false"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="#" onclick="go('catalog');return false"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="#" onclick="go('course');return false"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="#" onclick="go('ai');return false"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">📝</span> Assignments</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Calendar</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div class="nav-group">Community</div>
+    <a class="navitem" href="#"><span class="ic">💬</span> Forums</a>
+    <a class="navitem" href="#"><span class="ic">✉️</span> Messages</a>
+    <a class="navitem" href="#"><span class="ic">🏆</span> Leaderboard</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search courses, skills, people…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <button class="iconbtn">💬</button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div>
+          <p class="muted" style="margin:0">Welcome back,</p>
+          <h1 class="page-title">Ahmed Al-Mansoori 👋</h1>
+        </div>
+        <div class="row gap12">
+          <a class="btn light" href="#" onclick="go('catalog');return false">＋ Browse courses</a>
+          <a class="btn" href="#" onclick="go('ai');return false">🤖 Ask AI assistant</a>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">📘</div><div class="n">5</div><div class="l">Courses in progress</div><div class="delta up">▲ 2 this month</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">✅</div><div class="n">23</div><div class="l">Completed courses</div><div class="delta up">▲ on track</div></div>
+        <div class="card kpi"><div class="ic" style="background:var(--gold-soft);color:#7a5e16)">🏅</div><div class="n">11</div><div class="l">Certificates earned</div><div class="delta up">▲ 1 new</div></div>
+        <div class="card kpi"><div class="ic" style="background:#efe9fb;color:var(--violet)">⚡</div><div class="n">1,840</div><div class="l">Points · Rank #14</div><div class="delta up">▲ 120 pts</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr">
+        <!-- LEFT -->
+        <div class="grid" style="gap:18px">
+          <!-- Continue learning -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Continue learning</h3><a class="muted" style="font-size:13px;font-weight:600" href="#" onclick="go('course');return false">View all →</a></div>
+            <div id="continue"></div>
+          </div>
+
+          <!-- Learning path -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Your learning path · Data Analyst Track</h3><span class="badge violet">AI-optimized</span></div>
+            <div class="row aic gap24 wrap">
+              <div class="ring" style="--p:62"><b>62%</b></div>
+              <div class="grow">
+                <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong>Foundations of Statistics</strong><div class="muted" style="font-size:13px">Completed · Certified</div></div></div>
+                <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong>Data Visualization Basics</strong><div class="muted" style="font-size:13px">Completed</div></div></div>
+                <div class="li"><span class="ic" style="background:#f7e7ec;color:var(--maroon-600)">▶</span><div class="grow"><strong>Regression Modelling</strong><div class="muted" style="font-size:13px">In progress · 40%</div></div><a class="btn sm" href="#" onclick="go('course');return false">Resume</a></div>
+                <div class="li"><span class="ic" style="background:#eef0f6;color:var(--muted)">🔒</span><div class="grow"><strong>Advanced Survey Sampling</strong><div class="muted" style="font-size:13px">Locked · prerequisite required</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill gap (AI) -->
+          <div class="card pad">
+            <div class="row between aic mb16"><h3 style="margin:0">Skill gap analysis</h3><span class="badge violet">🤖 AI</span></div>
+            <div class="grid g2">
+              <div><div class="row between" style="font-size:13px"><span>Statistical Analysis</span><strong>82%</strong></div><div class="bar mt8"><i style="width:82%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Data Visualization</span><strong>74%</strong></div><div class="bar mt8"><i style="width:74%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Machine Learning</span><strong>38%</strong></div><div class="bar mt8"><i style="width:38%"></i></div></div>
+              <div><div class="row between" style="font-size:13px"><span>Survey Methodology</span><strong>55%</strong></div><div class="bar mt8"><i style="width:55%"></i></div></div>
+            </div>
+            <div class="card pad mt16" style="background:#faf2f4;border-style:dashed">💡 <strong>Recommendation:</strong> Close your <em>Machine Learning</em> gap with “Intro to ML for Analysts” (4 wks) — a strong match for your role.</div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="grid" style="gap:18px">
+          <!-- Deadlines -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Upcoming deadlines</h3>
+            <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">📝</span><div class="grow"><strong>Statistical Analysis II — Quiz</strong><div class="muted" style="font-size:13px">Due Tue · 16 Jun</div></div></div>
+            <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📄</span><div class="grow"><strong>Data Ethics — Assignment</strong><div class="muted" style="font-size:13px">Due Thu · 18 Jun</div></div></div>
+            <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">🎥</span><div class="grow"><strong>Live: Power BI workshop</strong><div class="muted" style="font-size:13px">Mon · 10:00 · MS Teams</div></div></div>
+          </div>
+
+          <!-- AI recommendations -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Recommended for you</h3><span class="badge violet">🤖</span></div>
+            <a class="li" href="#" onclick="go('course');return false"><span class="ic t2"></span><div class="grow"><strong style="font-size:14px">Power BI for Analysts</strong><div class="muted" style="font-size:12px">98% match · 4 wks</div></div>＋</a>
+            <a class="li" href="#" onclick="go('course');return false"><span class="ic t3"></span><div class="grow"><strong style="font-size:14px">Advanced Survey Sampling</strong><div class="muted" style="font-size:12px">91% match · 5 wks</div></div>＋</a>
+            <a class="li" href="#" onclick="go('course');return false"><span class="ic t5"></span><div class="grow"><strong style="font-size:14px">Storytelling with Data</strong><div class="muted" style="font-size:12px">88% match · 3 wks</div></div>＋</a>
+          </div>
+
+          <!-- Badges -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Recent badges</h3>
+            <div class="row gap12 wrap">
+              <div class="center"><div style="font-size:30px">🥇</div><div class="muted" style="font-size:11px">Top Learner</div></div>
+              <div class="center"><div style="font-size:30px">📈</div><div class="muted" style="font-size:11px">Data Pro</div></div>
+              <div class="center"><div style="font-size:30px">🔥</div><div class="muted" style="font-size:11px">30-day streak</div></div>
+              <div class="center"><div style="font-size:30px">🎯</div><div class="muted" style="font-size:11px">Goal Setter</div></div>
+            </div>
+            <a class="btn light block sm mt16" href="#">Share on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- floating AI -->
+<a href="#" onclick="go('ai');return false" style="position:fixed;right:22px;bottom:22px;z-index:50" class="btn gold" title="AI assistant">🤖 Ask AI</a>
+
+
+<script>
+const CONT=[
+  {t:"Regression Modelling", on:"Dr. Sara Al-Ali", p:40, cls:"t1", left:"6 lessons left"},
+  {t:"Data Ethics & Privacy Law", on:"Y. Ahmed", p:75, cls:"t4", left:"2 lessons left"},
+  {t:"Power BI for Data Analysts", on:"M. Khalifa", p:20, cls:"t2", left:"9 lessons left"},
+];
+document.getElementById('continue').innerHTML = CONT.map(c=>`
+  <div class="row aic gap16" style="padding:12px 0;border-bottom:1px solid var(--line)">
+    <div class="${c.cls}" style="width:64px;height:48px;border-radius:10px;flex:0 0 64px"></div>
+    <div class="grow">
+      <div class="row between"><strong>${c.t}</strong><span class="muted" style="font-size:13px">${c.p}%</span></div>
+      <div class="muted" style="font-size:13px;margin:2px 0 8px">${c.on} · ${c.left}</div>
+      <div class="bar"><i style="width:${c.p}%"></i></div>
+    </div>
+    <a class="btn sm" href="#" onclick="go('course');return false">Resume</a>
+  </div>`).join('');
+</script>
+
+</div>
+<div class="view " id="view-catalog">
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem" href="#" onclick="go('dashboard');return false"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem active" href="#" onclick="go('catalog');return false"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="#" onclick="go('course');return false"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="#" onclick="go('ai');return false"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Calendar &amp; events</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Try “analytics”, “survey”, or a skill… (semantic search)"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb16">
+        <div><h1 class="page-title">Course catalog</h1><p class="muted" style="margin:4px 0 0">320 courses · internal &amp; aggregated external providers</p></div>
+        <span class="badge violet">🤖 AI semantic search enabled</span>
+      </div>
+
+      <!-- filters -->
+      <div class="card pad mb24">
+        <div class="row gap8 wrap aic">
+          <span class="muted" style="font-size:13px;font-weight:600;margin-right:4px">Filter:</span>
+          <button class="btn sm">All</button>
+          <button class="btn light sm">Statistics</button>
+          <button class="btn light sm">Data &amp; BI</button>
+          <button class="btn light sm">Governance</button>
+          <button class="btn light sm">Leadership</button>
+          <button class="btn light sm">Online</button>
+          <button class="btn light sm">Hybrid</button>
+          <button class="btn light sm">In-person</button>
+          <div class="grow"></div>
+          <button class="btn light sm">Sort: Recommended ▾</button>
+        </div>
+      </div>
+
+      <div class="grid g4" id="grid"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const C=[
+  {t:"Official Statistics & SDG Reporting",cat:"Statistics",tag:"Certified",cls:"t1",h:"6 wks",lvl:"Intermediate",r:"4.9",a:"SA",on:"Dr. Sara Al-Ali",ext:false},
+  {t:"Power BI for Data Analysts",cat:"Data & BI",tag:"Online",cls:"t2",h:"4 wks",lvl:"Beginner",r:"4.7",a:"MK",on:"M. Khalifa",ext:false},
+  {t:"Advanced Survey Sampling",cat:"Methodology",tag:"Hybrid",cls:"t3",h:"5 wks",lvl:"Advanced",r:"4.8",a:"HN",on:"Huda Nasser",ext:false},
+  {t:"Data Ethics & Privacy Law",cat:"Governance",tag:"New",cls:"t4",h:"3 wks",lvl:"All levels",r:"5.0",a:"YA",on:"Y. Ahmed",ext:false},
+  {t:"Python for Data Analysis",cat:"Data & BI",tag:"External",cls:"t6",h:"8 wks",lvl:"Beginner",r:"4.6",a:"CO",on:"Coursera (aggregated)",ext:true},
+  {t:"Public Sector Leadership",cat:"Leadership",tag:"In-person",cls:"t5",h:"2 days",lvl:"Manager",r:"4.8",a:"FT",on:"F. Tamimi",ext:false},
+  {t:"Storytelling with Data",cat:"Data & BI",tag:"Online",cls:"t2",h:"3 wks",lvl:"Intermediate",r:"4.9",a:"LR",on:"L. Rahman",ext:false},
+  {t:"Intro to Machine Learning",cat:"Data & BI",tag:"Online",cls:"t4",h:"4 wks",lvl:"Intermediate",r:"4.7",a:"AK",on:"A. Karim",ext:false},
+  {t:"Census Data Management",cat:"Statistics",tag:"Hybrid",cls:"t1",h:"5 wks",lvl:"Advanced",r:"4.8",a:"NM",on:"N. Mansour",ext:false},
+  {t:"Effective Report Writing",cat:"Skills",tag:"Online",cls:"t3",h:"2 wks",lvl:"All levels",r:"4.5",a:"RB",on:"R. Bilal",ext:false},
+  {t:"GIS & Geospatial Stats",cat:"Methodology",tag:"New",cls:"t6",h:"6 wks",lvl:"Advanced",r:"4.9",a:"SA",on:"S. Aziz",ext:false},
+  {t:"Agile Project Management",cat:"Leadership",tag:"External",cls:"t5",h:"5 wks",lvl:"Intermediate",r:"4.6",a:"ED",on:"edX (aggregated)",ext:true},
+];
+document.getElementById('grid').innerHTML = C.map(c=>`
+  <a class="card course" href="#" onclick="go('course');return false">
+    <div class="thumb ${c.cls}"><span class="badge ${c.ext?'blue':'gold'} tag">${c.tag}</span></div>
+    <div class="body">
+      <span class="badge">${c.cat}</span>
+      <h4>${c.t}</h4>
+      <div class="meta"><span>⏱ ${c.h}</span><span>📶 ${c.lvl}</span><span class="stars">★ ${c.r}</span></div>
+      <div class="foot"><div class="row aic gap8"><span class="avatar">${c.a}</span><span class="muted" style="font-size:12px">${c.on}</span></div><span class="badge maroon">Enroll</span></div>
+    </div>
+  </a>`).join('');
+</script>
+
+</div>
+<div class="view " id="view-course">
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem" href="#" onclick="go('dashboard');return false"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="#" onclick="go('catalog');return false"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem active" href="#" onclick="go('course');return false"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="#" onclick="go('ai');return false"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <a class="muted" href="#" onclick="go('catalog');return false" style="font-weight:600">← Catalog</a>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <!-- header -->
+      <div class="card" style="overflow:hidden;margin-bottom:18px">
+        <div class="t1" style="height:150px;position:relative">
+          <div style="position:absolute;left:22px;bottom:16px;color:#fff">
+            <span class="badge gold">Certified · Hybrid</span>
+            <h1 style="margin:8px 0 4px;font-size:28px">Regression Modelling</h1>
+            <div style="opacity:.9">Statistics track · Module 3 of the Data Analyst path</div>
+          </div>
+        </div>
+        <div class="pad row between aic wrap gap16">
+          <div class="row aic gap16 wrap">
+            <div class="row aic gap8"><span class="avatar">SA</span><div><strong style="font-size:14px">Dr. Sara Al-Ali</strong><div class="muted" style="font-size:12px">Lead Instructor</div></div></div>
+            <span class="badge"><span class="stars">★ 4.8</span> · 1,240 learners</span>
+            <span class="badge">⏱ 5 weeks</span>
+            <span class="badge">🎬 18 lessons</span>
+            <span class="badge green">SCORM · xAPI</span>
+          </div>
+          <div class="row gap8 aic">
+            <div class="muted" style="font-size:13px;text-align:right">Progress<br><strong style="color:var(--ink)">40%</strong></div>
+            <a class="btn" href="#player">▶ Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr">
+        <!-- left: player + content -->
+        <div class="grid" style="gap:18px">
+          <div class="card" id="player">
+            <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#2a0c16,#7a1430);display:grid;place-items:center;color:#fff;border-radius:14px 14px 0 0">
+              <div class="center"><div style="font-size:54px">▶</div><div style="opacity:.85;margin-top:8px">Lesson 7 · Multiple Linear Regression</div></div>
+            </div>
+            <div class="pad row between aic wrap gap12">
+              <div><strong>Lesson 7 · Multiple Linear Regression</strong><div class="muted" style="font-size:13px">12:30 · Video + interactive notebook</div></div>
+              <div class="row gap8"><button class="btn light sm">⬇ Download (offline)</button><button class="btn sm">Mark complete ✓</button></div>
+            </div>
+          </div>
+
+          <!-- AI summary -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">AI lesson summary</h3><span class="badge violet">🤖 Auto-generated</span></div>
+            <p class="muted" style="margin:0">This lesson extends simple regression to multiple predictors. Key ideas: interpreting coefficients while holding other variables constant, checking multicollinearity (VIF), and evaluating fit with adjusted R². The interactive notebook lets you fit a model on Qatar census sample data and read off significance.</p>
+          </div>
+
+          <!-- curriculum -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Course content</h3>
+            <div id="modules"></div>
+          </div>
+        </div>
+
+        <!-- right -->
+        <div class="grid" style="gap:18px">
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Your progress</h3>
+            <div class="row aic gap16"><div class="ring" style="--p:40"><b>40%</b></div><div class="muted" style="font-size:13px">7 of 18 lessons<br>1 of 3 quizzes passed<br>Est. 3h 20m left</div></div>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Assessments</h3>
+            <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong style="font-size:14px">Quiz 1 · Basics</strong><div class="muted" style="font-size:12px">Passed · 88%</div></div></div>
+            <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">📝</span><div class="grow"><strong style="font-size:14px">Quiz 2 · Multiple Regression</strong><div class="muted" style="font-size:12px">Due Tue · 2 attempts left</div></div><button class="btn sm">Start</button></div>
+            <div class="li"><span class="ic" style="background:#eef0f6;color:var(--muted)">🔒</span><div class="grow"><strong style="font-size:14px">Final assignment</strong><div class="muted" style="font-size:12px">Plagiarism check · proctored</div></div></div>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Resources</h3>
+            <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">📄</span><div class="grow"><strong style="font-size:14px">Lecture slides.pdf</strong></div>⬇</div>
+            <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📊</span><div class="grow"><strong style="font-size:14px">Dataset.csv</strong></div>⬇</div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📓</span><div class="grow"><strong style="font-size:14px">Notebook.ipynb</strong></div>⬇</div>
+          </div>
+          <div class="card pad" style="background:#faf2f4;border-style:dashed">
+            <div class="row aic gap8 mb8"><span class="badge violet">🤖 AI tutor</span></div>
+            <p class="muted" style="margin:0 0 12px;font-size:14px">Stuck on a concept? Ask the AI tutor for a hint or a simpler explanation.</p>
+            <a class="btn gold block sm" href="#" onclick="go('ai');return false">Ask about this lesson</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const M=[
+  {t:"Module 1 · Foundations", done:true, lessons:["Why regression?","Correlation vs causation","Simple linear regression"]},
+  {t:"Module 2 · Building models", done:true, lessons:["Least squares","Residuals & assumptions","Quiz 1 · Basics"]},
+  {t:"Module 3 · Multiple regression", active:true, lessons:["Adding predictors","Multicollinearity (VIF)","Multiple Linear Regression ▶","Quiz 2"]},
+  {t:"Module 4 · Advanced topics", lessons:["Interaction terms","Logistic regression","Final assignment"]},
+];
+document.getElementById('modules').innerHTML = M.map(m=>`
+  <div style="border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden">
+    <div class="row between aic" style="padding:12px 14px;background:${m.active?'#faf2f4':'#fafbfd'}">
+      <strong>${m.t}</strong>
+      <span class="badge ${m.done?'green':m.active?'maroon':''}">${m.done?'Completed':m.active?'In progress':'Upcoming'}</span>
+    </div>
+    <div style="padding:6px 14px 10px">${m.lessons.map(l=>`
+      <div class="li" style="padding:9px 0"><span style="width:18px">${l.includes('▶')?'▶️':m.done?'✅':'•'}</span><span class="grow" style="font-size:14px">${l.replace('▶','')}</span><span class="muted" style="font-size:12px">12:30</span></div>`).join('')}
+    </div>
+  </div>`).join('');
+</script>
+
+</div>
+<div class="view " id="view-instructor">
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Instructor</small></span></a>
+    <a class="navitem active" href="#" onclick="go('instructor');return false"><span class="ic">📊</span> Dashboard</a>
+    <a class="navitem" href="#"><span class="ic">📚</span> My courses</a>
+    <a class="navitem" href="#"><span class="ic">🛠️</span> Authoring studio</a>
+    <a class="navitem" href="#"><span class="ic">📝</span> Assessments</a>
+    <a class="navitem" href="#"><span class="ic">✍️</span> Grading</a>
+    <div class="nav-group">Engage</div>
+    <a class="navitem" href="#"><span class="ic">💬</span> Forums</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Sessions</a>
+    <a class="navitem" href="#" onclick="go('ai');return false"><span class="ic">🤖</span> AI assistant</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search learners, courses, submissions…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">SA</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div><h1 class="page-title">Instructor studio</h1><p class="muted" style="margin:4px 0 0">Dr. Sara Al-Ali · 4 active courses</p></div>
+        <div class="row gap8"><button class="btn light">🤖 Generate quiz</button><button class="btn">＋ New course</button></div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">👨‍🎓</div><div class="n">1,240</div><div class="l">Enrolled learners</div><div class="delta up">▲ 84 this week</div></div>
+        <div class="card kpi"><div class="ic" style="background:#fdf3da;color:#9a6f04">✍️</div><div class="n">37</div><div class="l">Submissions to grade</div><div class="delta down">12 overdue</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">⭐</div><div class="n">4.8</div><div class="l">Avg. course rating</div><div class="delta up">▲ 0.2</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e8f0fe;color:var(--blue)">📈</div><div class="n">81%</div><div class="l">Avg. completion</div><div class="delta up">▲ 4%</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.5fr 1fr;margin-bottom:18px">
+        <!-- grading queue with AI -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Grading queue</h3><span class="badge violet">🤖 AI pre-graded</span></div>
+          <table>
+            <thead><tr><th>Learner</th><th>Assignment</th><th>AI score</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="row aic gap8"><span class="avatar">AM</span>A. Al-Mansoori</div></td><td>Regression essay</td><td><span class="badge green">88% ✓</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">KH</span>K. Hassan</div></td><td>Dataset analysis</td><td><span class="badge amber">64% ⚠</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">MQ</span>M. Al-Qahtani</div></td><td>Regression essay</td><td><span class="badge red">Plagiarism flag</span></td><td><button class="btn sm">Review</button></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">NM</span>N. Mansour</div></td><td>Final project</td><td><span class="badge green">92% ✓</span></td><td><button class="btn sm">Review</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- engagement / drop-off -->
+        <div class="card pad">
+          <div class="row between aic mb16"><h3 style="margin:0">Engagement by module</h3><span class="badge">Regression Modelling</span></div>
+          <div class="chart" style="height:150px">
+            <div class="col"><i style="height:96%"></i><span>M1</span></div>
+            <div class="col"><i style="height:84%"></i><span>M2</span></div>
+            <div class="col"><i style="height:58%"></i><span>M3</span></div>
+            <div class="col"><i style="height:40%"></i><span>M4</span></div>
+          </div>
+          <div class="card pad mt16" style="background:#faf2f4;border-style:dashed;font-size:14px">📉 <strong>Drop-off detected</strong> at Module 3. <span class="muted">AI suggests adding a worked example before VIF.</span></div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;margin-bottom:18px">
+        <!-- authoring -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Authoring studio</h3><span class="badge gold">H5P-style</span></div>
+          <div class="grid g2">
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🎬</div><strong>Video lesson</strong><div class="muted" style="font-size:12px">+ captions, chapters</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🧩</div><strong>Interactive</strong><div class="muted" style="font-size:12px">drag-drop, hotspot</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">❓</div><strong>Quiz / bank</strong><div class="muted" style="font-size:12px">QTI import/export</div></button>
+            <button class="card pad light" style="border:1px solid var(--line);background:#fff;text-align:left"><div style="font-size:22px">🧑‍🏫</div><strong>AI avatar</strong><div class="muted" style="font-size:12px">narrate the course</div></button>
+          </div>
+        </div>
+
+        <!-- AI assistant card -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">AI teaching assistant</h3><span class="badge violet">🤖</span></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📝</span><div class="grow"><strong style="font-size:14px">Auto-generate quiz</strong><div class="muted" style="font-size:12px">From your Module 3 slides</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📣</span><div class="grow"><strong style="font-size:14px">Draft announcement</strong><div class="muted" style="font-size:12px">Quiz 2 reminder</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">🔍</span><div class="grow"><strong style="font-size:14px">Content quality review</strong><div class="muted" style="font-size:12px">Clarity &amp; outdated examples</div></div><button class="btn sm">Run</button></div>
+          <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">🚩</span><div class="grow"><strong style="font-size:14px">Learners needing help</strong><div class="muted" style="font-size:12px">14 flagged this week</div></div><button class="btn sm">View</button></div>
+        </div>
+      </div>
+
+      <!-- sessions -->
+      <div class="card pad">
+        <div class="row between aic mb12"><h3 style="margin:0">Upcoming sessions</h3><button class="btn light sm">＋ Schedule session</button></div>
+        <table>
+          <thead><tr><th>Session</th><th>Date &amp; time</th><th>Mode</th><th>Room / link</th><th>Registered</th></tr></thead>
+          <tbody>
+            <tr><td>Power BI live workshop</td><td>Mon 16 Jun · 10:00</td><td><span class="badge blue">Online</span></td><td>MS Teams</td><td>62 / 80</td></tr>
+            <tr><td>Regression Q&amp;A clinic</td><td>Wed 18 Jun · 13:00</td><td><span class="badge gold">Hybrid</span></td><td>Room A-204 + Zoom</td><td>40 / 50</td></tr>
+            <tr><td>Survey design lab</td><td>Thu 19 Jun · 09:00</td><td><span class="badge maroon">In-person</span></td><td>Lab 1</td><td>22 / 25</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div class="view " id="view-admin">
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Admin console</small></span></a>
+    <a class="navitem active" href="#" onclick="go('admin');return false"><span class="ic">📊</span> Overview</a>
+    <a class="navitem" href="#"><span class="ic">👥</span> Users &amp; roles</a>
+    <a class="navitem" href="#"><span class="ic">🏢</span> Entities</a>
+    <a class="navitem" href="#" onclick="go('catalog');return false"><span class="ic">📚</span> Courses</a>
+    <a class="navitem" href="#"><span class="ic">🧭</span> Workflows &amp; approvals</a>
+    <div class="nav-group">Insights</div>
+    <a class="navitem" href="#"><span class="ic">📈</span> Reports</a>
+    <a class="navitem" href="#"><span class="ic">💰</span> Finance</a>
+    <a class="navitem" href="#"><span class="ic">🪪</span> Audit logs</a>
+    <div class="nav-group">System</div>
+    <a class="navitem" href="#"><span class="ic">🎨</span> Branding</a>
+    <a class="navitem" href="#"><span class="ic">🔗</span> Integrations</a>
+    <a class="navitem" href="#"><span class="ic">🎫</span> Helpdesk</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search users, entities, courses…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">FA</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div><h1 class="page-title">Platform overview</h1><p class="muted" style="margin:4px 0 0">Fatima Al-Kuwari · Super Admin</p></div>
+        <div class="row gap8"><button class="btn light">⬇ Export report</button><button class="btn">＋ Create course</button></div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">👥</div><div class="n">12,418</div><div class="l">Active learners</div><div class="delta up">▲ 6.2% MoM</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e8f0fe;color:var(--blue)">📚</div><div class="n">324</div><div class="l">Published courses</div><div class="delta up">▲ 18 new</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">✅</div><div class="n">81%</div><div class="l">Avg. completion rate</div><div class="delta up">▲ 3.1%</div></div>
+        <div class="card kpi"><div class="ic" style="background:#fdf3da;color:#9a6f04">⏳</div><div class="n">7</div><div class="l">Pending approvals</div><div class="delta down">needs review</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr;margin-bottom:18px">
+        <!-- enrollment chart -->
+        <div class="card pad">
+          <div class="row between aic mb16"><h3 style="margin:0">Enrollments &amp; completions</h3><span class="badge">Last 7 months</span></div>
+          <div class="chart">
+            <div class="col"><i style="height:45%"></i><span>Dec</span></div>
+            <div class="col"><i style="height:58%"></i><span>Jan</span></div>
+            <div class="col"><i style="height:52%"></i><span>Feb</span></div>
+            <div class="col"><i style="height:70%"></i><span>Mar</span></div>
+            <div class="col"><i style="height:64%"></i><span>Apr</span></div>
+            <div class="col"><i style="height:82%"></i><span>May</span></div>
+            <div class="col"><i style="height:95%"></i><span>Jun</span></div>
+          </div>
+        </div>
+        <!-- at-risk (AI) -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">At-risk learners</h3><span class="badge violet">🤖 Predictive</span></div>
+          <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">⚠️</span><div class="grow"><strong style="font-size:14px">142 learners</strong><div class="muted" style="font-size:12px">High non-completion risk</div></div></div>
+          <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📉</span><div class="grow"><strong style="font-size:14px">8 courses</strong><div class="muted" style="font-size:12px">High drop-off after module 2</div></div></div>
+          <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">📨</span><div class="grow"><strong style="font-size:14px">Auto-nudges</strong><div class="muted" style="font-size:12px">96 reminders queued</div></div></div>
+          <button class="btn light block sm mt8">View intervention plan</button>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.4fr 1fr;margin-bottom:18px">
+        <!-- users table -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Recent users</h3><a class="muted" style="font-size:13px;font-weight:600" href="#">Manage all →</a></div>
+          <table>
+            <thead><tr><th>Name</th><th>Role</th><th>Entity / Dept</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="row aic gap8"><span class="avatar">AM</span>Ahmed Al-Mansoori</div></td><td><span class="badge maroon">Learner</span></td><td>Statistics Dept</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">SA</span>Dr. Sara Al-Ali</div></td><td><span class="badge blue">Instructor</span></td><td>Training Center</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">MQ</span>Mona Al-Qahtani</div></td><td><span class="badge gold">Entity Admin</span></td><td>Ministry of Finance</td><td><span class="badge amber"><span class="dot"></span>Pending</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">KH</span>Khalid Hassan</div></td><td><span class="badge maroon">Learner</span></td><td>Hamad Medical Corp</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">YA</span>Y. Ahmed</div></td><td><span class="badge blue">Instructor</span></td><td>Training Center</td><td><span class="badge">Inactive</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- approvals -->
+        <div class="card pad">
+          <h3 style="margin:0 0 12px">Approval queue</h3>
+          <div class="li"><span class="ic" style="background:#f7e7ec;color:var(--maroon-600)">📘</span><div class="grow"><strong style="font-size:14px">Publish: “GIS &amp; Geospatial Stats”</strong><div class="muted" style="font-size:12px">By N. Mansour · course publishing</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 8px 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+          <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">💰</span><div class="grow"><strong style="font-size:14px">Budget: Leadership cohort</strong><div class="muted" style="font-size:12px">QAR 84,000 · finance approval</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 8px 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+          <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">🏢</span><div class="grow"><strong style="font-size:14px">Onboard entity: MoF</strong><div class="muted" style="font-size:12px">Mona Al-Qahtani · admin access</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 0 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+        </div>
+      </div>
+
+      <!-- entities + finance -->
+      <div class="grid g2">
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">External entities</h3><span class="badge">48 active</span></div>
+          <table>
+            <thead><tr><th>Entity</th><th>Learners</th><th>Completion</th></tr></thead>
+            <tbody>
+              <tr><td>Ministry of Finance</td><td>820</td><td><div class="bar" style="width:120px"><i style="width:88%"></i></div></td></tr>
+              <tr><td>Hamad Medical Corp</td><td>1,540</td><td><div class="bar" style="width:120px"><i style="width:74%"></i></div></td></tr>
+              <tr><td>Qatar University</td><td>610</td><td><div class="bar" style="width:120px"><i style="width:91%"></i></div></td></tr>
+              <tr><td>Ministry of Education</td><td>1,120</td><td><div class="bar" style="width:120px"><i style="width:69%"></i></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Finance snapshot</h3><span class="badge gold">FY 2026</span></div>
+          <div class="grid g2 mb16">
+            <div><div class="muted" style="font-size:13px">Budget allocated</div><div style="font-size:24px;font-weight:800">QAR 4.2M</div></div>
+            <div><div class="muted" style="font-size:13px">Actual spend</div><div style="font-size:24px;font-weight:800">QAR 2.9M</div></div>
+          </div>
+          <div class="row between" style="font-size:13px"><span>Budget utilization</span><strong>69%</strong></div>
+          <div class="bar mt8 mb16"><i style="width:69%"></i></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">Venue &amp; logistics</span><strong>QAR 980K</strong></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">External providers</span><strong>QAR 1.1M</strong></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">Instructor fees</span><strong>QAR 820K</strong></div>
+          <button class="btn light block sm mt8">Export to ERP →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div class="view " id="view-ai">
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" onclick="go('index');return false"><span class="mark">N</span><span>NPC&nbsp;LMS <small>AI learning</small></span></a>
+    <a class="navitem" href="#" onclick="go('dashboard');return false"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="#" onclick="go('catalog');return false"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="#" onclick="go('course');return false"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem active" href="#" onclick="go('ai');return false"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">AI tools</div>
+    <a class="navitem" href="#"><span class="ic">🧭</span> Adaptive path</a>
+    <a class="navitem" href="#"><span class="ic">🧬</span> Learning DNA</a>
+    <a class="navitem" href="#"><span class="ic">🎯</span> Skill gaps</a>
+    <div style="margin-top:24px"><a class="navitem" href="#" onclick="go('login');return false"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="grow"><strong>AI Learning Assistant</strong> <span class="badge violet">Conversational support agent</span></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="grid" style="grid-template-columns:1.4fr 1fr">
+        <!-- CHAT -->
+        <div class="card chat">
+          <div class="row aic gap12" style="padding:14px 18px;border-bottom:1px solid var(--line)">
+            <span class="ic" style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#6f4ad2,#a78bfa);color:#fff;display:grid;place-items:center;font-size:18px">🤖</span>
+            <div><strong>NPC Learning Companion</strong><div class="muted" style="font-size:12px"><span class="dot" style="color:var(--green)"></span> Online · understands Arabic &amp; English</div></div>
+          </div>
+          <div class="stream">
+            <div class="bubble ai">👋 Hi Ahmed! I’m your learning companion. I can recommend courses, summarize lessons, track deadlines and answer questions in natural language. What would you like to do?</div>
+            <div class="bubble me">What are my deadlines this week?</div>
+            <div class="bubble ai">You have <b>2 deadlines</b> this week: “Statistical Analysis II” quiz (Tue) and the “Data Ethics” assignment (Thu). Want me to add reminders?</div>
+            <div class="bubble me">Recommend a course to close my ML skill gap</div>
+            <div class="bubble ai">Based on your role (Statistician) and recent activity, I recommend <b>“Intro to Machine Learning for Analysts”</b> (4 wks, 96% match). It builds directly on your regression progress. Shall I enroll you?</div>
+          </div>
+          <form class="compose" onsubmit="return sendChat(this)">
+            <input placeholder="Ask anything… e.g. “summarize module 3” or “أنشئ خطة تعلم”" autofocus>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+
+        <!-- SUGGESTIONS + AI features -->
+        <div class="grid" style="gap:18px">
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Try asking</h3>
+            <div class="grid" style="gap:8px">
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">💡 “Recommend courses for my role”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📅 “What’s due this week?”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📖 “Summarize module 3”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📊 “How is my progress?”</div>
+            </div>
+          </div>
+
+          <!-- learning DNA -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Your Learning DNA</h3><span class="badge violet">🧬</span></div>
+            <div class="row aic gap16">
+              <div class="ring" style="--p:72"><b>L4</b></div>
+              <div class="muted" style="font-size:13px">Style: <strong style="color:var(--ink)">Visual + hands-on</strong><br>Pace: <strong style="color:var(--ink)">Above average</strong><br>Strength: <strong style="color:var(--ink)">Statistics</strong><br>Focus area: <strong style="color:var(--ink)">Machine Learning</strong></div>
+            </div>
+          </div>
+
+          <!-- adaptive next steps -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Adaptive next steps</h3><span class="badge violet">🧭</span></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">1</span><div class="grow"><strong style="font-size:14px">Review: Multicollinearity</strong><div class="muted" style="font-size:12px">Quiz showed a gap here</div></div></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">2</span><div class="grow"><strong style="font-size:14px">Continue: Module 4</strong><div class="muted" style="font-size:12px">Logistic regression</div></div></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">3</span><div class="grow"><strong style="font-size:14px">Next path: ML for Analysts</strong><div class="muted" style="font-size:12px">Unlocks after certificate</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI capabilities -->
+      <h3 class="mt32 mb16">AI capabilities across the platform</h3>
+      <div class="grid g4">
+        <div class="card pad feature"><div class="ic">🎯</div><div><h4>Smart recommendations</h4><p>Role, skills &amp; peer-aware course suggestions and adaptive pathways.</p></div></div>
+        <div class="card pad feature"><div class="ic">📝</div><div><h4>Auto quiz generation</h4><p>Generate quizzes from course content &amp; uploaded documents.</p></div></div>
+        <div class="card pad feature"><div class="ic">✍️</div><div><h4>Auto grading &amp; feedback</h4><p>Instant, personalized grading for quizzes, assignments &amp; essays.</p></div></div>
+        <div class="card pad feature"><div class="ic">🔍</div><div><h4>Semantic search</h4><p>Natural-language search with auto-tagging of all materials.</p></div></div>
+        <div class="card pad feature"><div class="ic">🧑‍🏫</div><div><h4>AI avatar lectures</h4><p>Avatars deliver and simplify course content on behalf of instructors.</p></div></div>
+        <div class="card pad feature"><div class="ic">📖</div><div><h4>Storytelling reports</h4><p>End-of-course narrative of skills gained &amp; achievements.</p></div></div>
+        <div class="card pad feature"><div class="ic">🚀</div><div><h4>Guided onboarding</h4><p>AI-assisted first-time journey with goals &amp; preferences.</p></div></div>
+        <div class="card pad feature"><div class="ic">🔗</div><div><h4>Opportunity mapping</h4><p>Maps achievements to next certifications &amp; role alignment.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<script>
+/* NPC Qatar LMS — mockup interactions (no backend) */
+
+// --- Language toggle (EN / AR direction demo) ---
+function setLang(lang){
+  const html = document.documentElement;
+  if(lang === 'ar'){ html.setAttribute('dir','rtl'); html.setAttribute('lang','ar'); }
+  else { html.setAttribute('dir','ltr'); html.setAttribute('lang','en'); }
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  localStorage.setItem('lms_lang', lang);
+}
+document.addEventListener('click', e=>{
+  const b = e.target.closest('.lang button');
+  if(b) setLang(b.dataset.lang);
+});
+
+// --- Demo chatbot ---
+const BOT_REPLIES = [
+  "You have <b>2 deadlines</b> this week: “Statistical Analysis II” quiz (Tue) and the “Data Ethics” assignment (Thu).",
+  "Based on your role (Statistician) and recent activity, I recommend <b>“Advanced Survey Sampling”</b> and <b>“Power BI for Analysts.”</b>",
+  "Your current learning path is <b>62% complete</b>. Finish the “Regression Modelling” module to unlock your certificate.",
+  "I’ve found 3 courses on analytics tools. Want me to filter to ones approved for external entities?",
+  "Sure — I drafted a short summary of Module 3. It covers descriptive statistics, dispersion, and visual encoding."
+];
+function botReply(text){
+  const r = text.toLowerCase();
+  if(r.includes('deadline')||r.includes('due')) return BOT_REPLIES[0];
+  if(r.includes('recommend')||r.includes('suggest')||r.includes('course')) return BOT_REPLIES[1];
+  if(r.includes('progress')||r.includes('certificate')) return BOT_REPLIES[2];
+  if(r.includes('summary')||r.includes('summarize')||r.includes('explain')) return BOT_REPLIES[4];
+  return BOT_REPLIES[Math.floor(Math.random()*BOT_REPLIES.length)];
+}
+function sendChat(form){
+  const input = form.querySelector('input');
+  const stream = form.closest('.chat').querySelector('.stream');
+  const text = input.value.trim();
+  if(!text) return false;
+  const me = document.createElement('div');
+  me.className = 'bubble me'; me.textContent = text; stream.appendChild(me);
+  input.value = '';
+  stream.scrollTop = stream.scrollHeight;
+  setTimeout(()=>{
+    const ai = document.createElement('div');
+    ai.className = 'bubble ai'; ai.innerHTML = botReply(text); stream.appendChild(ai);
+    stream.scrollTop = stream.scrollHeight;
+  }, 450);
+  return false;
+}
+
+// restore language preference
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLang(localStorage.getItem('lms_lang') || 'en');
+});
+
+
+function go(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  var el=document.getElementById('view-'+name);
+  if(el){el.classList.add('active');}
+  window.scrollTo(0,0);
+  if(location.hash!=='#'+name){history.replaceState(null,'','#'+name);}
+}
+window.addEventListener('DOMContentLoaded',function(){
+  var h=(location.hash||'#index').slice(1);
+  if(document.getElementById('view-'+h)){go(h);}
+});
+
+</script>
+</body>
+</html>
