@@ -1,6 +1,6 @@
 # Data Quality Validation Report
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 10:46 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 20:45 UTC.
 
 Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Validation exceptions (VR-001..VR-018) are surfaced per record.
 
@@ -8,13 +8,13 @@ Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Val
 
 | Dimension | Score |
 |---|---|
-| Completeness | 0.935 |
-| Validity | 0.977 |
-| Consistency | 0.997 |
+| Completeness | 0.925 |
+| Validity | 0.986 |
+| Consistency | 0.999 |
 | Uniqueness | 1.0 |
-| Accuracy | 0.671 |
+| Accuracy | 0.632 |
 | Timeliness | 1.0 |
-| Overall Score | 0.93 |
+| Overall Score | 0.923 |
 
 ## Enterprise-level scores
 
@@ -52,9 +52,49 @@ Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Val
 | QA-ENT-20260000033 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000034 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000035 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000040 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000041 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000042 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000043 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000044 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000045 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000046 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000047 | 0.917 | 0.75 | 1.0 | 1.0 | 0.6 | 1.0 | **0.878** |
+| QA-ENT-20260000048 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000049 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000050 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000051 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000052 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000053 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000054 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000055 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000056 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000057 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000058 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000059 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000060 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000061 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000062 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000063 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000064 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000065 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000066 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000067 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000068 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000069 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000070 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000071 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000072 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000073 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000074 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000075 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000076 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000077 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000078 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000079 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000099 | 1.0 | 1.0 | 1.0 | 1.0 | 0.85 | 1.0 | **0.975** |
 
-## Validation exceptions (6)
+## Validation exceptions (7)
 
 | Enterprise | Rule | Severity | Message | Action |
 |---|---|---|---|---|
@@ -64,3 +104,4 @@ Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Val
 | QA-ENT-20260000026 | VR-011 | INFO | No employment and no turnover — possible dormant unit | Schedule review |
 | QA-ENT-20260000026 | VR-015 | INFO | No premises/employees/autonomy — apply Test 13 substance rule | Consolidate with parent |
 | QA-ENT-20260000030 | VR-002 | ERROR | ISIC class 2310 not in codelist | Reject record |
+| QA-ENT-20260000047 | VR-002 | ERROR | ISIC class 2410 not in codelist | Reject record |

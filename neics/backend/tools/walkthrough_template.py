@@ -231,19 +231,24 @@ function ownSVG(edgesAll,target,name){
  return '<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="max-height:340px"><defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#aab4c0"/></marker></defs>'+ln+bx+'</svg><div class="legend">■ <span style="color:#8a1538">entity</span> · ■ <span style="color:#7a3b97">government</span> · ■ <span style="color:#1a8a4f">resident private</span> · ■ <span style="color:#b9651b">non-resident</span></div>';}
 
 /* ============================== STATE & NAV ============================== */
-var state={view:"home",entId:DATA.enterprises[0].id,studioId:DATA.enterprises[1].id,ruleId:null,filter:"",sheet:0,flowStage:null,apiEp:0,
+var state={view:"home",entId:DATA.enterprises[0].id,studioId:DATA.enterprises[1].id,ruleId:null,filter:"",sheet:0,flowStage:null,apiEp:0,testCode:"T3",
+ sim:{legal_form_code:"JSC",isic_class:"6419",is_financial:true,is_nonprofit:false,residence:"RES",jurisdiction:"MAINLAND",
+   gov:60,foreign:0,ctrl:"MAJ-VOTE",sales:8000000000,costs:5000000000,employment:1200,turnover:8000000000,
+   has_premises:true,has_employees:true,has_autonomy:true},
  upload:{legal_name_en:"New Sample Enterprise",legal_form_code:"JSC",residence:"RES",isic_class:"6419",employment:1200,turnover_qar:8000000000,sales:8000000000,production_costs:5000000000,is_financial:true,is_nonprofit:false,has_premises:true,has_employees:true,has_autonomy:true,jurisdiction:"MAINLAND"},
  uploadEdges:[{owner_name:"State of Qatar",owner_is_government:true,owner_is_resident:true,ownership_pct:55,voting_pct:55,control_indicator:"MAJ-VOTE"},{owner_name:"Public float (QSE)",owner_is_government:false,owner_is_resident:true,ownership_pct:45,voting_pct:45,control_indicator:""}]};
-var NAV=[["home","Overview"],["howitworks","How It Works"],["ingest","Data Ingestion"],["studio","Classification Engine"],["registry","Registry"],["profile","Enterprise Profile"],["ownership","Ownership & Groups"],["rules","Rules Engine"],["api","API Integration"],["standards","Standards"],["quality","Quality & Validation"],["uat","UAT & Roadmap"]];
+var NAV=[["home","Overview"],["howitworks","How It Works"],["ingest","Data Ingestion"],["studio","Classification Engine"],["simulate","What-if Simulator"],["registry","Registry"],["profile","Enterprise Profile"],["ownership","Ownership & Groups"],["methodology","18-Test Explorer"],["rules","Rules Engine"],["api","API Integration"],["standards","Standards"],["quality","Quality & Validation"],["uat","UAT & Roadmap"]];
 var TITLES={};NAV.forEach(function(n){TITLES[n[0]]=n[1];});
 var HELP={
  home:"A working demonstration of NEICS. The classification engine in this page runs entirely in your browser — every result you see is computed live from the rules, not pre-baked.",
  howitworks:"How the platform operates end to end. Click any stage to see what happens there and which standards apply.",
  ingest:"Where data enters the system. Enter or edit an enterprise and its ownership, then run the live engine — exactly what happens when a record is uploaded via the API or a file.",
  studio:"Pick an enterprise and run the engine. The 18 tests evaluate the real rules live and build the classification result step by step.",
+ simulate:"Change the inputs and watch the classification change instantly. Move government or foreign ownership across the 50% control line, cross a size threshold, or flip the market test — and see exactly how the engine reacts.",
  registry:"The Central Statistical Business Register — every resident statistical unit.",
  profile:"A complete enterprise file: ownership network, the live classification, and the explainability trace.",
  ownership:"Effective ownership computed across the whole graph to the Ultimate Controlling Institutional Unit, plus enterprise-group structures.",
+ methodology:"The 18 sequenced tests, explained. Click any test to see its purpose, the standard it applies, and the exact rules that implement it.",
  rules:"The database-driven rules. Pick a rule, read its logic, and test it against your own facts — the same evaluator the engine uses.",
  api:"How systems integrate with NEICS. Choose an endpoint and send a request; the response is generated live by the in-browser engine.",
  standards:"The international and national standards every rule is anchored to.",
@@ -442,12 +447,76 @@ function vUat(){var c=DATA.uat,g=DATA.gap;
   '<div class="card"><div class="hd">Production readiness — Development → Staging → Pilot → Production</div><div class="bd">'+rag+'<div class="note" style="margin-top:12px"><b>Recommendation:</b> methodology and data-governance readiness are <span class="rag Green">Green</span>. Proceed to a controlled <b>pilot</b> on the largest 100 enterprises after security hardening and one administrative-source integration.</div></div></div>';
 }
 
-var VIEWS={home:vHome,howitworks:vHow,ingest:vIngest,studio:vStudio,registry:vRegistry,profile:vProfile,ownership:vOwnership,rules:vRules,api:vApi,standards:vStandards,quality:vQuality,uat:vUat};
+/* ---- What-if simulator: change inputs, classify live ---- */
+function simEdges(){var s=state.sim,ed=[];var rem=100;
+ if(s.gov>0){ed.push({owner_id:"Government",owner_name:"Government of Qatar",owned_id:"SIM",ownership_pct:s.gov,voting_pct:s.gov,control_indicator:(s.gov>50?"MAJ-VOTE":s.ctrl),owner_is_government:true,owner_is_resident:true,is_ultimate:"Y"});rem-=s.gov;}
+ if(s.foreign>0){ed.push({owner_id:"Foreign",owner_name:"Foreign investor",owned_id:"SIM",ownership_pct:s.foreign,voting_pct:s.foreign,control_indicator:(s.foreign>50?"MAJ-VOTE":""),owner_is_government:false,owner_is_resident:false,country:"GB",is_ultimate:"Y"});rem-=s.foreign;}
+ if(rem>0.5)ed.push({owner_id:"Private",owner_name:"Resident private investors",owned_id:"SIM",ownership_pct:Math.round(rem*10)/10,voting_pct:Math.round(rem*10)/10,control_indicator:(rem>50?"MAJ-VOTE":""),owner_is_government:false,owner_is_resident:true,is_ultimate:"Y"});
+ return ed;}
+function simRun(){
+ var s=state.sim;var el=document.getElementById("simresult");if(!el)return;
+ var inp={legal_name_en:"Simulated enterprise",legal_form_code:s.legal_form_code,residence:s.residence,isic_class:s.isic_class,
+  employment:s.employment,turnover_qar:s.turnover,sales:s.sales,production_costs:s.costs,is_financial:s.is_financial,
+  is_nonprofit:s.is_nonprofit,has_premises:s.has_premises,has_employees:s.has_employees,has_autonomy:s.has_autonomy,jurisdiction:s.jurisdiction};
+ var edges=simEdges();var f=buildFacts(inp,edges,"SIM");var oc=classify(f);var r=oc.result;
+ var cover=f.sales_cover_pct;
+ var derived='<div class="kv" style="grid-template-columns:1fr auto"><div class="k">Effective gov ownership / voting</div><div>'+f.government_ownership_pct+'% / '+f.government_voting_pct+'%</div>'+
+  '<div class="k">Effective foreign ownership</div><div>'+f.foreign_ownership_pct+'%</div>'+
+  '<div class="k">Government control?</div><div>'+(f.government_control?'<span class="bdg b-purple">Yes</span>':'No')+'</div>'+
+  '<div class="k">Sales cover of costs</div><div>'+(cover!=null?cover.toFixed(0)+'% '+(cover>50?'<span class="bdg b-green">market</span>':'<span class="bdg b-amber">non-market</span>'):'—')+'</div>'+
+  '<div class="k">Ultimate controlling unit</div><div>'+esc((f.uci||{}).uci_name||"—")+(f.uci_is_government?' <span class="bdg b-purple">Govt</span>':'')+'</div></div>';
+ var pass=[["Institutional sector",r.sector_code],["Public / private",r.public_private],["Effective control",r.control_flag],["Market status",r.market_status],["Size class",r.size_class],["FDI treatment",r.fdi_flag],["Special entity",r.special_entity_flag]].map(function(p){return '<div class="r"><span class="k">'+p[0]+'</span><span>'+(p[0]==="Public / private"?pp(p[1]):"<b>"+esc(p[1])+"</b>")+'</span></div>';}).join("");
+ var trace=oc.trace.filter(function(t){return t.matched;}).map(function(t){return '<tr><td>'+esc(t.test_code)+'</td><td class="mono">'+esc(t.rule_id)+'</td><td>'+Object.keys(t.output).map(function(k){return bdg(t.output[k],"b-green");}).join(" ")+'</td><td class="small">'+esc(t.standard_ref||"")+'</td></tr>';}).join("");
+ el.innerHTML='<div class="grid c2"><div><div class="card"><div class="hd">Derived facts</div><div class="bd">'+derived+'</div></div>'+
+  '<div class="card"><div class="hd">Ownership network</div><div class="bd"><div class="svgwrap">'+ownSVG(edges,"SIM","Simulated enterprise")+'</div></div></div></div>'+
+  '<div><div class="passport"><div class="top"><div class="nm">Simulated classification</div><div class="id">computed live · confidence '+oc.confidence+'</div></div>'+pass+'</div>'+
+  '<div class="card" style="margin-top:16px"><div class="hd">Rules applied</div><div class="bd">'+tbl(["Test","Rule","Output","Standard"],[]).replace("</table>",trace+"</table>")+'</div></div></div></div>';
+}
+function vSimulate(){
+ var s=state.sim;
+ var rng=function(id,label,min,max,step,val,suffix){return '<div class="field"><label>'+label+': <b>'+val+(suffix||"")+'</b></label><input type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'" oninput="state.sim.'+id+'=this.valueAsNumber;document.getElementById(\'simresult\')&&simRun();this.previousElementSibling.innerHTML=this.previousElementSibling.innerHTML.replace(/: <b>.*<\\/b>/,\': <b>\'+this.value+\''+(suffix||"")+'</b>\')" style="width:100%"/></div>';};
+ var sel=function(id,label,opts){return '<div class="field"><label>'+label+'</label><select onchange="state.sim.'+id+'=this.value;simRun()">'+opts.map(function(o){return '<option '+(String(s[id])===String(o)?"selected":"")+'>'+o+'</option>';}).join("")+'</select></div>';};
+ var chk=function(id,label){return '<label class="small" style="display:inline-flex;gap:6px;align-items:center;margin-right:14px"><input type="checkbox" '+(s[id]?"checked":"")+' onchange="state.sim.'+id+'=this.checked;simRun()"/> '+label+'</label>';};
+ var controls='<div class="card"><div class="hd">Inputs — drag to change, results update instantly</div><div class="bd">'+
+  '<div class="frow">'+sel("legal_form_code","Legal form",["JSC","LLC","SOE","GOV","FND","CA","SP","BR","QFC","FZ"])+sel("isic_class","ISIC class",["6419","6411","6630","6420","6512","6530","0610","3510","4100","4690","5610","8540","9499"])+'</div>'+
+  rng("gov","Government ownership",0,100,1,s.gov,"%")+
+  rng("foreign","Foreign ownership",0,100,1,s.foreign,"%")+
+  sel("ctrl","Minority control mechanism (if gov ≤50%)",["MAJ-VOTE","GOLDEN","BOARD","CONTRACT","REGULATORY","NONE"])+
+  rng("employment","Employment (FTE)",0,5000,10,s.employment,"")+
+  rng("turnover","Turnover (QAR m)",0,20000,50,Math.round(s.turnover/1e6),"m")+
+  rng("sales","Sales (QAR m)",0,20000,50,Math.round(s.sales/1e6),"m")+
+  rng("costs","Production costs (QAR m)",0,20000,50,Math.round(s.costs/1e6),"m")+
+  '<div class="field"><label>Flags</label>'+chk("is_financial","financial")+chk("is_nonprofit","non-profit")+chk("has_premises","premises")+chk("has_employees","employees")+'</div>'+
+  '<div class="note small">Tip: set government to 49% with a <b>GOLDEN</b> share to see a minority stake still produce a public corporation (substance over form); or push sales below costs to flip a unit to non-market.</div>'+
+  '</div></div>';
+ // turnover/sales/costs sliders are in millions; convert on input
+ controls=controls.replace('state.sim.turnover=this.valueAsNumber','state.sim.turnover=this.valueAsNumber*1e6')
+   .replace('state.sim.sales=this.valueAsNumber','state.sim.sales=this.valueAsNumber*1e6')
+   .replace('state.sim.costs=this.valueAsNumber','state.sim.costs=this.valueAsNumber*1e6');
+ return '<div class="grid c23"><div>'+controls+'</div><div id="simresult"></div></div>';
+}
+
+/* ---- 18-test methodology explorer ---- */
+function vMethodology(){
+ var sel=state.testCode;var t=DATA.tests.filter(function(x){return x.test_code===sel;})[0]||DATA.tests[0];
+ var list=DATA.tests.map(function(x){return '<tr class="row" onclick="state.testCode=\''+x.test_code+'\';render()" style="'+(x.test_code===sel?"background:var(--surface2)":"")+'"><td><b>'+esc(x.test_code)+'</b></td><td>'+esc(x.name)+'</td></tr>';}).join("");
+ var rules=DATA.rules.filter(function(r){return r.test_code===sel;}).sort(function(a,b){return a.priority-b.priority;});
+ var rrows=rules.length?rules.map(function(r){return '<tr><td class="mono">'+esc(r.rule_id)+'</td><td>'+esc(r.name)+'</td><td class="mono small">'+esc(r.logic?JSON.stringify(r.logic):"default")+'</td><td>'+Object.keys(r.output||{}).map(function(k){return bdg(r.output[k]&&r.output[k].const!=null?r.output[k].const:JSON.stringify(r.output[k]),"b-green");}).join(" ")+'</td></tr>';}).join(""):'<tr><td colspan=4 class="small">Governance / process test — applied operationally, not by a data rule.</td></tr>';
+ return '<div class="grid c23"><div class="card"><div class="hd">The 18 sequenced tests</div><div class="bd" style="max-height:560px;overflow:auto">'+tbl(["#","Test"],[]).replace("</table>",list+"</table>")+'</div></div>'+
+  '<div><div class="card"><div class="hd">'+esc(t.test_code)+' · '+esc(t.name)+'</div><div class="bd"><div class="kv" style="grid-template-columns:120px 1fr">'+
+  '<div class="k">Phase</div><div>'+esc(t.phase||"—")+'</div><div class="k">Output</div><div>'+esc(t.output_dimension||"—")+'</div>'+
+  '<div class="k">Execution order</div><div>step '+t.seq+'</div><div class="k">Standard</div><div>'+esc(t.standard_ref||"—")+'</div></div>'+
+  '<p style="margin-top:10px">'+esc(t.description||"")+'</p></div></div>'+
+  '<div class="card"><div class="hd">Rules implementing '+esc(t.test_code)+' ('+rules.length+')</div><div class="bd">'+tbl(["Rule","Name","Logic","Output"],[]).replace("</table>",rrows+"</table>")+'</div></div></div></div>';
+}
+
+var VIEWS={home:vHome,howitworks:vHow,ingest:vIngest,studio:vStudio,simulate:vSimulate,registry:vRegistry,profile:vProfile,ownership:vOwnership,methodology:vMethodology,rules:vRules,api:vApi,standards:vStandards,quality:vQuality,uat:vUat};
 function render(){
  try{
   document.getElementById("nav").innerHTML=NAV.map(function(n){return '<button class="'+(state.view===n[0]?"active":"")+'" onclick="go(\''+n[0]+'\')">'+esc(n[1])+'</button>';}).join("");
   var help=HELP[state.view]?'<div class="help">'+HELP[state.view]+'</div>':"";
   document.getElementById("content").innerHTML='<div class="h-page">'+esc(TITLES[state.view]||"")+'</div><div class="h-sub">National Enterprise Intelligence &amp; Classification System · State of Qatar · National Statistics Office</div>'+help+(VIEWS[state.view]||vHome)();
+  if(state.view==="simulate")simRun();
  }catch(err){
   document.getElementById("content").innerHTML='<div class="card"><div class="bd"><b>Display error.</b> <span class="small">'+esc(err&&err.message)+'</span><div style="margin-top:8px"><button class="btn sm" onclick="state.view=\'home\';render()">Back to overview</button></div></div></div>';
  }
