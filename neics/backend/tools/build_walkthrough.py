@@ -29,7 +29,7 @@ from app.engine.ownership import OwnershipEngine  # noqa: E402
 from app.engine.quality import score_enterprise  # noqa: E402
 from app.engine.service import run_classification  # noqa: E402
 from app.engine.validation import validate_enterprise  # noqa: E402
-from app.models.enterprise import Enterprise, EnterpriseGroup  # noqa: E402
+from app.models.enterprise import Enterprise, EnterpriseGroup, Establishment, LegalUnit  # noqa: E402
 from app.models.governance import AuditEntry, ReviewItem, User  # noqa: E402
 from app.models.reference import Codelist, InstitutionalSector, LegalForm  # noqa: E402
 from app.models.rules import ClassificationTest, MetadataVariable, Rule, Standard, StandardConcept  # noqa: E402
@@ -131,6 +131,15 @@ def build_data():
     for c in db.execute(select(Codelist).order_by(Codelist.domain, Codelist.sort_order)).scalars():
         codelists.setdefault(c.domain, []).append({"code": c.code, "meaning": c.meaning})
 
+    legal_units = [{"id": lu.legal_unit_id, "enterprise_id": lu.enterprise_id, "name": lu.legal_name_en,
+                    "lei": lu.lei, "legal_form": lu.legal_form_code, "cr_number": lu.cr_number,
+                    "authority": lu.registration_authority, "active": lu.is_active}
+                   for lu in db.execute(select(LegalUnit).order_by(LegalUnit.legal_unit_id)).scalars()]
+    establishments = [{"id": e.establishment_id, "enterprise_id": e.enterprise_id, "name": e.name,
+                       "isic": e.isic_class, "municipality": e.municipality, "zone": e.zone,
+                       "employment": e.employment, "lat": e.latitude, "lon": e.longitude}
+                      for e in db.execute(select(Establishment).order_by(Establishment.establishment_id)).scalars()]
+
     reviews = [{"id": r.id, "enterprise_id": r.enterprise_id, "kind": r.kind, "severity": r.severity,
                 "title": r.title, "detail": r.detail, "status": r.status}
                for r in db.execute(select(ReviewItem)).scalars()]
@@ -147,6 +156,7 @@ def build_data():
         "generated": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
         "enterprises": enterprises, "groups": groups, "rules": rules, "tests": tests,
         "standards": standards, "metadata": metadata, "codelists": codelists, "reviews": reviews,
+        "legal_units": legal_units, "establishments": establishments,
         "users": users, "roles": roles, "audit": audit_all, "uat": UAT_CASES,
         "gap": GAP_ANALYSIS, "readiness": READINESS,
     }
