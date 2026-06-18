@@ -1,9 +1,9 @@
 # Classification Validation Report
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 10:40 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 10:46 UTC.
 
 Every test enterprise is classified by the live 18-test pipeline. The table shows the result, confidence, and a check against the expected sector / public-private verdict.
-**Result: 28/28 enterprises match their expected sector + public-private verdict.**
+**Result: 33/33 enterprises match their expected sector + public-private verdict.**
 
 
 | Enterprise | Name | Sector | Public/Private | Control | Market | Size | FDI | Special | Conf | Expected | ✓ |
@@ -35,6 +35,11 @@ Every test enterprise is classified by the live 18-test pipeline. The table show
 | QA-ENT-20260000028 | Sample MNE Subsidiary WLL | S.11 | FCC | MAJ-VOTE | MARKET | LARGE | INWARD-FULL | NONE | 1.0 | S.11/FCC | ✅ |
 | QA-ENT-20260000029 | Sample Micro Retailer | S.11 | PRV-NFC | MAJ-VOTE | MARKET | MICRO | NONE | NONE | 1.0 | S.11/PRV-NFC | ✅ |
 | QA-ENT-20260000030 | Sample Large Private Industrial | S.11 | PRV-NFC | MAJ-VOTE | MARKET | LARGE | NONE | NONE | 1.0 | S.11/PRV-NFC | ✅ |
+| QA-ENT-20260000031 | Sample Central Bank of Qatar | S.121 | PUB-FC | MAJ-VOTE | MARKET | LARGE | NONE | NONE | 1.0 | S.121/PUB-FC | ✅ |
+| QA-ENT-20260000032 | Sample State Pension Fund | S.129 | PUB-FC | MAJ-VOTE | MARKET | LARGE | NONE | NONE | 1.0 | S.129/PUB-FC | ✅ |
+| QA-ENT-20260000033 | Sample Reinsurance QPSC | S.128 | PRV-FC | MAJ-VOTE | MARKET | LARGE | NONE | NONE | 1.0 | S.128/PRV-FC | ✅ |
+| QA-ENT-20260000034 | Sample Foreign Bank Branch (QFC) | S.122 | FCC | MAJ-VOTE | MARKET | LARGE | INWARD-FULL | NONE | 1.0 | S.122/FCC | ✅ |
+| QA-ENT-20260000035 | Sample Charitable Waqf Endowment | S.15 | NPISH | NONE | NON-MARKET | SMALL | NONE | NONE | 1.0 | S.15/NPISH | ✅ |
 | QA-ENT-20260000099 | Sample Trading Co (sample) | S.11 | PUB-NFC | BO-CHAIN | MARKET | MEDIUM | NONE | NONE | 1.0 | S.11/PUB-NFC | ✅ |
 
 ## Per-enterprise classification detail (input → ownership → rules → result)
@@ -441,6 +446,81 @@ Every test enterprise is classified by the live 18-test pipeline. The table show
     - T5 `R-T05-100` → {'sector_code': 'S.11'}  _(std: SNA 2025)_
     - T6 `R-T06-100` → {'public_private': 'PRV-NFC'}  _(std: SNA 2025)_
     - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
+    - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
+
+### QA-ENT-20260000031 — Sample Central Bank of Qatar
+- **Input:** legal_form=SOE, isic=6411, residence=RES, employment=900, turnover=8000000000.0, financial=True, nonprofit=False, jurisdiction=MAINLAND
+- **Ownership intelligence:** gov_own=100.0%, gov_voting=100.0%, foreign_own=0.0%, gov_control=True, UCI=State of Qatar (govt=True)
+- **Result:** sector **S.121**, public/private **PUB-FC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **NONE**, special **NONE**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '6411'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-030` → {'market_status': 'MARKET'}  _(std: SNA 2025 — 50% rule)_
+    - T8 `R-T08-001` → {'control_flag': 'MAJ-VOTE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-021` → {'sector_code': 'S.121'}  _(std: SNA 2025)_
+    - T6 `R-T06-010` → {'public_private': 'PUB-FC'}  _(std: GFS 2014)_
+    - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
+    - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
+
+### QA-ENT-20260000032 — Sample State Pension Fund
+- **Input:** legal_form=FND, isic=6530, residence=RES, employment=120, turnover=2000000000.0, financial=True, nonprofit=False, jurisdiction=MAINLAND
+- **Ownership intelligence:** gov_own=100.0%, gov_voting=100.0%, foreign_own=0.0%, gov_control=True, UCI=State of Qatar (govt=True)
+- **Result:** sector **S.129**, public/private **PUB-FC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **NONE**, special **NONE**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '6530'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-030` → {'market_status': 'MARKET'}  _(std: SNA 2025 — 50% rule)_
+    - T8 `R-T08-001` → {'control_flag': 'MAJ-VOTE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-026` → {'sector_code': 'S.129'}  _(std: SNA 2025)_
+    - T6 `R-T06-010` → {'public_private': 'PUB-FC'}  _(std: GFS 2014)_
+    - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
+    - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
+
+### QA-ENT-20260000033 — Sample Reinsurance QPSC
+- **Input:** legal_form=JSC, isic=6520, residence=RES, employment=210, turnover=1500000000.0, financial=True, nonprofit=False, jurisdiction=MAINLAND
+- **Ownership intelligence:** gov_own=0.0%, gov_voting=0.0%, foreign_own=0.0%, gov_control=False, UCI=Private investors (govt=False)
+- **Result:** sector **S.128**, public/private **PRV-FC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **NONE**, special **NONE**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '6520'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-030` → {'market_status': 'MARKET'}  _(std: SNA 2025 — 50% rule)_
+    - T8 `R-T08-001` → {'control_flag': 'MAJ-VOTE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-025` → {'sector_code': 'S.128'}  _(std: SNA 2025)_
+    - T6 `R-T06-050` → {'public_private': 'PRV-FC'}  _(std: SNA 2025)_
+    - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
+    - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
+
+### QA-ENT-20260000034 — Sample Foreign Bank Branch (QFC)
+- **Input:** legal_form=BR, isic=6419, residence=RES, employment=140, turnover=400000000.0, financial=True, nonprofit=False, jurisdiction=QFC
+- **Ownership intelligence:** gov_own=0.0%, gov_voting=0.0%, foreign_own=100.0%, gov_control=False, UCI=Foreign bank HQ (govt=False)
+- **Result:** sector **S.122**, public/private **FCC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **INWARD-FULL**, special **NONE**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '6419'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-030` → {'market_status': 'MARKET'}  _(std: SNA 2025 — 50% rule)_
+    - T8 `R-T08-001` → {'control_flag': 'MAJ-VOTE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-022` → {'sector_code': 'S.122'}  _(std: SNA 2025)_
+    - T6 `R-T06-040` → {'public_private': 'FCC'}  _(std: OECD BD4)_
+    - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-020` → {'fdi_flag': 'INWARD-FULL'}  _(std: OECD BD4)_
+    - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
+
+### QA-ENT-20260000035 — Sample Charitable Waqf Endowment
+- **Input:** legal_form=WQ, isic=9499, residence=RES, employment=40, turnover=1000000.0, financial=False, nonprofit=True, jurisdiction=MAINLAND
+- **Ownership intelligence:** gov_own=0.0%, gov_voting=0.0%, foreign_own=0.0%, gov_control=False, UCI=None (govt=False)
+- **Result:** sector **S.15**, public/private **NPISH**, control **NONE**, market **NON-MARKET**, size **SMALL**, FDI **NONE**, special **NONE**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '9499'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-020` → {'market_status': 'NON-MARKET'}  _(std: SNA 2025)_
+    - T8 `R-T08-001` → {'control_flag': 'NONE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-035` → {'sector_code': 'S.15'}  _(std: SNA 2025)_
+    - T6 `R-T06-035` → {'public_private': 'NPISH'}  _(std: SNA 2025)_
+    - T10 `R-T10-030` → {'size_class': 'SMALL'}  _(std: QNCS)_
     - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
     - T13 `R-T13-100` → {'special_entity_flag': 'NONE'}  _(std: SNA 2025)_
 

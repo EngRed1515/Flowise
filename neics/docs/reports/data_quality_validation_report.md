@@ -1,6 +1,6 @@
 # Data Quality Validation Report
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 10:40 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 10:46 UTC.
 
 Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Validation exceptions (VR-001..VR-018) are surfaced per record.
 
@@ -8,13 +8,13 @@ Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Val
 
 | Dimension | Score |
 |---|---|
-| Completeness | 0.938 |
-| Validity | 0.973 |
-| Consistency | 0.996 |
+| Completeness | 0.935 |
+| Validity | 0.977 |
+| Consistency | 0.997 |
 | Uniqueness | 1.0 |
-| Accuracy | 0.684 |
+| Accuracy | 0.671 |
 | Timeliness | 1.0 |
-| Overall Score | 0.932 |
+| Overall Score | 0.93 |
 
 ## Enterprise-level scores
 
@@ -47,6 +47,11 @@ Quality is scored across the six DAMA DMBOK dimensions for every enterprise. Val
 | QA-ENT-20260000028 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000029 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000030 | 0.917 | 0.75 | 1.0 | 1.0 | 0.6 | 1.0 | **0.878** |
+| QA-ENT-20260000031 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000032 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000033 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000034 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
+| QA-ENT-20260000035 | 0.917 | 1.0 | 1.0 | 1.0 | 0.6 | 1.0 | **0.919** |
 | QA-ENT-20260000099 | 1.0 | 1.0 | 1.0 | 1.0 | 0.85 | 1.0 | **0.975** |
 
 ## Validation exceptions (6)

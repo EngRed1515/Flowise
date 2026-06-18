@@ -83,6 +83,13 @@ textarea{width:100%;min-height:120px;font-family:ui-monospace,monospace;font-siz
 .rag-Red,.rag-Red-Amber{color:var(--bad);font-weight:700}.rag-Amber-Green{color:#7a8a1f;font-weight:700}
 .treebox{font-family:ui-monospace,monospace;font-size:13px;white-space:pre;line-height:1.6}
 .legend{font-size:11px;color:var(--muted);margin-top:8px}
+.help{background:#f3f7fb;border:1px solid #d8e6f2;border-left:4px solid var(--info);border-radius:7px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#33414f}
+.svgwrap{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px;overflow:auto}
+.gtree{font-size:13px}
+.gtree .gnode{display:inline-block;border:2px solid var(--line);border-radius:7px;padding:6px 12px;margin:4px;background:#fff}
+.gtree .lvl{padding-left:26px;border-left:2px dashed #d6dde4;margin-left:18px}
+.gnode.gov{border-color:#7d3c98}.gnode.foreign{border-color:#b9651b}.gnode.entity{border-color:var(--maroon)}.gnode.priv{border-color:#1f8a4c}
+.kpitarget{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px}
 .flag{font-weight:600}
 ul.tight{margin:6px 0;padding-left:20px} ul.tight li{margin:4px 0}
 .ok{color:var(--good)} .err{color:var(--bad)} .wr{color:var(--warn)}
@@ -124,7 +131,46 @@ const MODULES = [
  ["uat","UAT Test Center"],["gap","Gap Analysis & Roadmap"]
 ];
 
+const HELP={
+ dashboard:"National view of the register: classification, quality and review metrics. All figures recompute from the seeded test data.",
+ registry:"The Central Statistical Business Register. Search and filter resident statistical units; click any row to open its full profile.",
+ profile:"Everything known about one enterprise — master data, ownership, the classification result, the explainability trace, version history, quality and audit.",
+ ownership:"The Ownership & Control Intelligence Engine: effective government/foreign ownership computed across the whole graph, the Ultimate Controlling Institutional Unit, and a network diagram. Substance over legal form.",
+ groups:"Enterprise groups with their global ultimate parent, domestic group head and truncated (resident-only) perimeter, shown as a control tree.",
+ classification:"Live results of the 18-test methodology for every unit. Open any row's explanation to see exactly which rules fired.",
+ rules:"The database-driven Rules Repository — no logic is hard-coded. Inspect any rule's JSON condition and standard reference, and test it against your own facts.",
+ metadata:"GSIM/SDMX-aligned metadata: every variable fully specified with definition, type, allowed values, source and standard.",
+ standards:"The Standards Repository. Every classification rule traces to one or more of these international/national standards.",
+ quality:"Data quality scored across the six DAMA dimensions, at dataset and enterprise level.",
+ validation:"Findings from the VR-001..VR-018 business-rule library, with severity and recommended action.",
+ reviews:"Anomalies and exceptions routed for human adjudication. AI assists; the Technical Classification Committee decides.",
+ audit:"Immutable per-record change log supporting full reproducibility and lineage.",
+ api:"API-first design. These representative endpoints show request/response shapes; full OpenAPI docs live at /docs in the running system.",
+ users:"Role-Based Access Control: seven roles and the permission matrix that governs every action.",
+ uat:"Representative acceptance tests with expected outputs, plus the production-gate acceptance criteria. The full 168-case suite is in docs/uat.",
+ gap:"An honest assessment of what is implemented, partial, or future — and the readiness to move toward pilot and production."
+};
 function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function ownershipSVG(e){
+ const chain=e.ownership.chain||[]; if(!chain.length) return '<p class="small">No ownership recorded for this unit.</p>';
+ const nodes={}; nodes[e.id]={id:e.id,label:e.name,kind:'entity',depth:0};
+ const ownersOf={}; chain.forEach(c=>{(ownersOf[c.owned_id]=ownersOf[c.owned_id]||[]).push(c);});
+ let frontier=[e.id],depth=0,seen=new Set([e.id]);
+ while(frontier.length&&depth<5){let next=[];frontier.forEach(id=>{(ownersOf[id]||[]).forEach(c=>{
+   if(!nodes[c.owner_id])nodes[c.owner_id]={id:c.owner_id,label:c.owner_name||c.owner_id,kind:c.is_government?'gov':(c.is_resident?'priv':'foreign'),depth:depth+1};
+   if(!seen.has(c.owner_id)){seen.add(c.owner_id);next.push(c.owner_id);}});});frontier=next;depth++;}
+ const maxD=Math.max(...Object.values(nodes).map(n=>n.depth));
+ const layers={}; Object.values(nodes).forEach(n=>{(layers[n.depth]=layers[n.depth]||[]).push(n);});
+ const W=760,rowH=96,boxW=168,boxH=46,H=(maxD+1)*rowH+24,pos={};
+ for(let d=0;d<=maxD;d++){const arr=layers[d]||[],gap=W/(arr.length+1);arr.forEach((n,i)=>pos[n.id]={x:gap*(i+1),y:H-(d*rowH)-rowH/2});}
+ let lines="";chain.forEach(c=>{const a=pos[c.owner_id],b=pos[c.owned_id];if(!a||!b)return;
+   const lbl=c.ownership_pct+"%"+(c.control_indicator?(" · "+c.control_indicator):"");
+   lines+=`<line x1="${a.x}" y1="${a.y+boxH/2}" x2="${b.x}" y2="${b.y-boxH/2}" stroke="#9aa6b2" stroke-width="1.5" marker-end="url(#arr)"/><text x="${(a.x+b.x)/2+4}" y="${(a.y+b.y)/2}" font-size="10" fill="#55606b">${esc(lbl)}</text>`;});
+ let boxes="";const col={entity:'#8A1538',gov:'#7d3c98',foreign:'#b9651b',priv:'#1f8a4c'};
+ Object.values(nodes).forEach(n=>{const p=pos[n.id];boxes+=`<g><rect x="${p.x-boxW/2}" y="${p.y-boxH/2}" width="${boxW}" height="${boxH}" rx="6" fill="#fff" stroke="${col[n.kind]}" stroke-width="2"/><text x="${p.x}" y="${p.y-3}" font-size="10.5" text-anchor="middle" fill="#1f2733">${esc((n.label||'').slice(0,24))}</text><text x="${p.x}" y="${p.y+12}" font-size="8.5" text-anchor="middle" fill="${col[n.kind]}">${n.kind==='entity'?'THIS ENTITY':n.kind.toUpperCase()}</text></g>`;});
+ return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-height:400px"><defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9aa6b2"/></marker></defs>${lines}${boxes}</svg>
+   <div class="legend">▮ <span style="color:#8A1538">this entity</span> &nbsp; ▮ <span style="color:#7d3c98">government</span> &nbsp; ▮ <span style="color:#1f8a4c">resident private</span> &nbsp; ▮ <span style="color:#b9651b">non-resident</span> &nbsp;· arrows point from owner to owned (equity %, control indicator).</div>`;
+}
 function ent(id){return DATA.enterprises.find(e=>e.id===id);}
 function ppBadge(v){const m={"PUB-NFC":"b-pub","PUB-FC":"b-pub","GG":"b-gg","PRV-NFC":"b-priv","PRV-FC":"b-priv","FCC":"b-fcc","NPISH":"b-npish"};return `<span class="badge ${m[v]||''}">${esc(v)}</span>`;}
 function fmtMoney(v){if(v==null)return "—";if(v>=1e9)return "QAR "+(v/1e9).toFixed(1)+"bn";if(v>=1e6)return "QAR "+(v/1e6).toFixed(1)+"m";return "QAR "+v.toLocaleString();}
@@ -229,7 +275,7 @@ function ownershipPanel(e){
    <div class="k">Ultimate Controlling Unit</div><div>${o.uci?esc(o.uci.uci_name)+(o.uci.is_government?' <span class="badge b-gg">Govt</span>':''):"—"}</div></div>
    <p class="small">Effective ownership is computed across the full graph (direct + indirect, aggregating holdings across multiple vehicles) — substance over legal form.</p></div>
   <div class="panel"><h3>Direct ownership edges</h3><table><tr><th>Owner</th><th>Equity</th><th>Voting</th><th>Control</th><th>Origin</th></tr>${edges||'<tr><td colspan=5 class="small">No recorded owners</td></tr>'}</table></div></div>
-  <div class="panel"><h3>Ownership chain</h3><div class="treebox">${chainTree(e)}</div></div>`;
+  <div class="panel"><h3>Ownership network</h3><div class="svgwrap">${ownershipSVG(e)}</div></div>`;
 }
 function chainTree(e){
  let out=esc(e.name)+"  ["+esc(e.id)+"]\n";
@@ -273,13 +319,21 @@ function vOwnership(){
 
 function vGroups(){
  return `<h2 class="page">Enterprise Group Structure</h2><p class="page-sub">Global ultimate parent, domestic group head, truncated (resident-only) groups.</p>`+
- DATA.groups.map(g=>`<div class="panel"><h3>${esc(g.name)} <span class="small">(${esc(g.group_id)})</span></h3>
-  <div class="kv"><div class="k">Global ultimate parent</div><div>${esc(g.gup)} (${esc(g.gup_country)})</div>
-  <div class="k">Domestic group head</div><div class="mono">${esc(g.domestic_head)}</div>
-  <div class="k">Truncated (resident) group</div><div>${g.truncated==="Y"?"Yes":"No"}</div>
-  <div class="k">Controlling sector</div><div>${esc(g.controlling_sector)}</div>
-  <div class="k">Members (registered)</div><div>${g.members.map(m=>`<span class="chip click" onclick="go('profile',{entId:'${m}',tab:1})">${esc(m.slice(-8))}</span>`).join("")||"—"}</div></div>
-  <p class="small">${esc(g.notes)}</p></div>`).join("");
+ DATA.groups.map(g=>{
+  const head=ent(g.domestic_head);
+  const memberBoxes=g.members.map(m=>{const me=ent(m);const kind=me&&me.public_private&&me.public_private.startsWith("PUB")?"gov":(me&&me.public_private==="FCC"?"foreign":"priv");
+    return `<div class="lvl"><span class="gnode ${kind} click" onclick="go('profile',{entId:'${m}',tab:1})">${esc(me?me.name:m)} <span class="small">· ${esc(me?me.sector:'')} ${esc(me?me.public_private:'')}</span></span></div>`;}).join("");
+  return `<div class="panel"><h3>${esc(g.name)} <span class="small">(${esc(g.group_id)})</span></h3>
+   <div class="kv"><div class="k">Global ultimate parent</div><div>${esc(g.gup)} (${esc(g.gup_country)})</div>
+   <div class="k">Truncated (resident) group</div><div>${g.truncated==="Y"?"Yes — resident-only sub-perimeter":"No"}</div>
+   <div class="k">Controlling sector</div><div>${esc(g.controlling_sector)}</div>
+   <div class="k">Members in register</div><div>${g.members.length} of ${g.member_count}</div></div>
+   <div class="gtree" style="margin-top:12px">
+     <span class="gnode" style="border-color:#333">${esc(g.gup)} <span class="small">· global ultimate parent (${esc(g.gup_country)})</span></span>
+     <div class="lvl"><span class="gnode entity click" onclick="go('profile',{entId:'${g.domestic_head}',tab:0})">${esc(head?head.name:g.domestic_head)} <span class="small">· domestic group head</span></span>
+       ${memberBoxes}</div></div>
+   <p class="small" style="margin-top:8px">${esc(g.notes)}</p></div>`;
+ }).join("");
 }
 
 function vClassification(){
@@ -433,7 +487,8 @@ function render(){
  document.getElementById("nav").innerHTML=MODULES.map((m,i)=>`<button class="${state.view===m[0]?'active':''}" onclick="go('${m[0]}')"><span class="num">${i+1}</span>${m[1]}</button>`).join("");
  const rs=document.getElementById("rolesel");
  if(!rs.options.length){rs.innerHTML=Object.keys(DATA.roles).map(r=>`<option ${r==='Classifier'?'selected':''}>${r}</option>`).join("");}
- document.getElementById("content").innerHTML=(VIEWS[state.view]||vDashboard)();
+ const help=HELP[state.view]?`<div class="help">ℹ️ ${HELP[state.view]}</div>`:"";
+ document.getElementById("content").innerHTML=help+(VIEWS[state.view]||vDashboard)();
 }
 render();
 </script>

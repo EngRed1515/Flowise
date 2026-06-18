@@ -390,5 +390,61 @@
     "voting_pct": 100,
     "control_indicator": "MAJ-VOTE",
     "is_ultimate": "Y"
+  },
+  {
+    "edge_id": "V2001",
+    "owner_id": "STATE-QA",
+    "owner_name": "State of Qatar",
+    "owner_is_government": true,
+    "owner_is_resident": true,
+    "owner_country": "QA",
+    "owned_id": "QA-ENT-20260000031",
+    "owned_name": "QA-ENT-20260000031",
+    "ownership_pct": 100,
+    "voting_pct": 100,
+    "control_indicator": "MAJ-VOTE",
+    "is_ultimate": "Y"
+  },
+  {
+    "edge_id": "V2002",
+    "owner_id": "STATE-QA",
+    "owner_name": "State of Qatar",
+    "owner_is_government": true,
+    "owner_is_resident": true,
+    "owner_country": "QA",
+    "owned_id": "QA-ENT-20260000032",
+    "owned_name": "QA-ENT-20260000032",
+    "ownership_pct": 100,
+    "voting_pct": 100,
+    "control_indicator": "MAJ-VOTE",
+    "is_ultimate": "Y"
+  },
+  {
+    "edge_id": "V2003",
+    "owner_id": "PRIVATE-REINS",
+    "owner_name": "Private investors",
+    "owner_is_government": false,
+    "owner_is_resident": true,
+    "owner_country": "QA",
+    "owned_id": "QA-ENT-20260000033",
+    "owned_name": "QA-ENT-20260000033",
+    "ownership_pct": 100,
+    "voting_pct": 100,
+    "control_indicator": "MAJ-VOTE",
+    "is_ultimate": "Y"
+  },
+  {
+    "edge_id": "V2004",
+    "owner_id": "FOREIGN-BANK-HQ",
+    "owner_name": "Foreign bank HQ",
+    "owner_is_government": false,
+    "owner_is_resident": false,
+    "owner_country": "GB",
+    "owned_id": "QA-ENT-20260000034",
+    "owned_name": "QA-ENT-20260000034",
+    "ownership_pct": 100,
+    "voting_pct": 100,
+    "control_indicator": "MAJ-VOTE",
+    "is_ultimate": "Y"
   }
 ]

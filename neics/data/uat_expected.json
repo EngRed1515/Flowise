@@ -82,5 +82,25 @@
   "QA-ENT-20260000030": {
     "sector": "S.11",
     "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000031": {
+    "sector": "S.121",
+    "pub": "PUB-FC"
+  },
+  "QA-ENT-20260000032": {
+    "sector": "S.129",
+    "pub": "PUB-FC"
+  },
+  "QA-ENT-20260000033": {
+    "sector": "S.128",
+    "pub": "PRV-FC"
+  },
+  "QA-ENT-20260000034": {
+    "sector": "S.122",
+    "pub": "FCC"
+  },
+  "QA-ENT-20260000035": {
+    "sector": "S.15",
+    "pub": "NPISH"
   }
 }
