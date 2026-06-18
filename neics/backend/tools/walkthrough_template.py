@@ -90,6 +90,27 @@ textarea{width:100%;min-height:120px;font-family:ui-monospace,monospace;font-siz
 .gtree .lvl{padding-left:26px;border-left:2px dashed #d6dde4;margin-left:18px}
 .gnode.gov{border-color:#7d3c98}.gnode.foreign{border-color:#b9651b}.gnode.entity{border-color:var(--maroon)}.gnode.priv{border-color:#1f8a4c}
 .kpitarget{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px}
+.menubtn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:18px;cursor:pointer}
+@media(max-width:820px){
+  #app{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;max-height:60vh}
+  .sidebar.collapsed .nav,.sidebar.collapsed .brand .sub{display:none}
+  .nav{display:flex;flex-wrap:wrap;padding:6px}
+  .nav button{width:auto;border-left:0;border-bottom:3px solid transparent;padding:8px 11px;font-size:12px}
+  .nav button.active{border-left:0;border-bottom-color:var(--accent)}
+  .nav .num{display:none}
+  .menubtn{display:inline-block}
+  .topbar{padding:10px 14px;gap:10px}
+  .staging{font-size:11px;padding:3px 7px}
+  .content{padding:14px}
+  .cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+  .grid2{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;gap:2px 0}
+  .kv div.k{color:var(--muted);margin-top:6px;font-weight:600}
+  .barrow{grid-template-columns:110px 1fr 40px}
+  table{font-size:12px} th,td{padding:6px 7px}
+  h2.page{font-size:19px}
+}
 .flag{font-weight:600}
 ul.tight{margin:6px 0;padding-left:20px} ul.tight li{margin:4px 0}
 .ok{color:var(--good)} .err{color:var(--bad)} .wr{color:var(--warn)}
@@ -97,7 +118,7 @@ ul.tight{margin:6px 0;padding-left:20px} ul.tight li{margin:4px 0}
 </head>
 <body>
 <div id="app">
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div class="brand">
       <div class="crest">STATE OF QATAR · NSO</div>
       <h1>NEICS</h1>
@@ -107,6 +128,7 @@ ul.tight{margin:6px 0;padding-left:20px} ul.tight li{margin:4px 0}
   </div>
   <div class="main">
     <div class="topbar">
+      <button class="menubtn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">☰</button>
       <strong style="color:var(--maroon)">NEICS</strong>
       <span class="staging">● STAGING / UAT — Not for production</span>
       <span class="spacer"></span>
@@ -174,7 +196,8 @@ function ownershipSVG(e){
 function ent(id){return DATA.enterprises.find(e=>e.id===id);}
 function ppBadge(v){const m={"PUB-NFC":"b-pub","PUB-FC":"b-pub","GG":"b-gg","PRV-NFC":"b-priv","PRV-FC":"b-priv","FCC":"b-fcc","NPISH":"b-npish"};return `<span class="badge ${m[v]||''}">${esc(v)}</span>`;}
 function fmtMoney(v){if(v==null)return "—";if(v>=1e9)return "QAR "+(v/1e9).toFixed(1)+"bn";if(v>=1e6)return "QAR "+(v/1e6).toFixed(1)+"m";return "QAR "+v.toLocaleString();}
-function go(v,extra){state.view=v;if(extra)Object.assign(state,extra);window.scrollTo(0,0);render();}
+function go(v,extra){state.view=v;if(extra)Object.assign(state,extra);window.scrollTo(0,0);
+ if(window.innerWidth<=820)document.getElementById('sidebar').classList.add('collapsed');render();}
 
 // ---- DSL evaluator (mirrors backend app/engine/expression.py) for the rule tester
 function num(v){const n=parseFloat(v);return isNaN(n)?null:n;}
