@@ -1,0 +1,50 @@
+# NEICS — Staging / UAT stack. ISOLATED from production and live data providers.
+# Usage:  docker compose up --build    →  frontend http://localhost:8080 · API http://localhost:8000/docs
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: neics
+      POSTGRES_PASSWORD: neics_staging_pw
+      POSTGRES_DB: neics
+    volumes:
+      - neics_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U neics"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [neics]
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      NEICS_DATABASE_URL: postgresql+psycopg2://neics:neics_staging_pw@postgres:5432/neics
+      NEICS_JWT_SECRET: ${NEICS_JWT_SECRET:-change-me-staging-secret}
+      NEICS_AUTO_SEED: "true"
+      NEICS_CORS_ORIGINS: "*"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    networks: [neics]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    networks: [neics]
+
+volumes:
+  neics_pgdata:
+
+networks:
+  neics:
+    driver: bridge

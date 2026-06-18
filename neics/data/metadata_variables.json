@@ -1,0 +1,312 @@
+[
+  {
+    "entity": "sheet",
+    "field": "field",
+    "definition": "definition",
+    "data_type": "data_type",
+    "allowed_values": "allowed_values_format",
+    "mandatory": false,
+    "source": "source",
+    "example": "example"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "enterprise_id",
+    "definition": "Persistent statistical identifier for the enterprise",
+    "data_type": "Text(20)",
+    "allowed_values": "QA-ENT-YYYYNNNNNNN",
+    "mandatory": true,
+    "source": "NSO CSBR",
+    "example": "QA-ENT-20260000001"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "lei",
+    "definition": "Legal Entity Identifier (ISO 17442)",
+    "data_type": "Text(20)",
+    "allowed_values": "20-char alphanumeric",
+    "mandatory": false,
+    "source": "GLEIF",
+    "example": "549300...A29"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "legal_name_en",
+    "definition": "Registered legal name (English)",
+    "data_type": "Text(200)",
+    "allowed_values": "UTF-8",
+    "mandatory": true,
+    "source": "MoCI",
+    "example": "Sample Trading W.L.L."
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "legal_name_ar",
+    "definition": "Registered legal name (Arabic)",
+    "data_type": "Text(200)",
+    "allowed_values": "UTF-8 RTL",
+    "mandatory": false,
+    "source": "MoCI",
+    "example": "شركة العينة"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "legal_form_code",
+    "definition": "Qatar legal form",
+    "data_type": "Code",
+    "allowed_values": "Codelist 07",
+    "mandatory": true,
+    "source": "MoCI",
+    "example": "LLC"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "sector_code",
+    "definition": "Institutional sector",
+    "data_type": "Code",
+    "allowed_values": "Codelist 06",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "S.11"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "public_private",
+    "definition": "Public-sector boundary status",
+    "data_type": "Code",
+    "allowed_values": "Table 10",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "PUB-NFC"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "control_flag",
+    "definition": "Effective-control outcome",
+    "data_type": "Code",
+    "allowed_values": "Table 10",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "MAJ-VOTE"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "isic_class",
+    "definition": "ISIC Rev.4 class",
+    "data_type": "Code",
+    "allowed_values": "Codelist 08",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "0610"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "residence",
+    "definition": "SNA residence status",
+    "data_type": "Code",
+    "allowed_values": "RES/NRES/MULTI",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "RES"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "size_class",
+    "definition": "Enterprise size class",
+    "data_type": "Code",
+    "allowed_values": "MICRO/SMALL/MEDIUM/LARGE",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "LARGE"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "group_id",
+    "definition": "FK to enterprise group",
+    "data_type": "Text(20)",
+    "allowed_values": "QA-GRP-YYYYNNNNNNN",
+    "mandatory": false,
+    "source": "NSO",
+    "example": "QA-GRP-20260000001"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "birth_date",
+    "definition": "Date unit became a statistical unit",
+    "data_type": "Date",
+    "allowed_values": "ISO 8601",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "2026-01-15"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "death_date",
+    "definition": "Date unit ceased",
+    "data_type": "Date",
+    "allowed_values": "ISO 8601 / null",
+    "mandatory": false,
+    "source": "NSO",
+    "example": ""
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "last_demographic_event",
+    "definition": "Most recent demographic event",
+    "data_type": "Code",
+    "allowed_values": "Table 10",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "BIRTH"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "classification_version",
+    "definition": "Methodology version applied",
+    "data_type": "Text(10)",
+    "allowed_values": "semver",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "1.0.0"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "classification_date",
+    "definition": "Date classification committed",
+    "data_type": "Date",
+    "allowed_values": "ISO 8601",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "2026-02-01"
+  },
+  {
+    "entity": "01_Enterprise_Register",
+    "field": "quality_flag",
+    "definition": "QA status",
+    "data_type": "Code",
+    "allowed_values": "Table 10",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "COMMITTEE-RULED"
+  },
+  {
+    "entity": "02_Legal_Unit_Register",
+    "field": "legal_unit_id",
+    "definition": "Persistent identifier for the legal unit",
+    "data_type": "Text(20)",
+    "allowed_values": "QA-LU-YYYYNNNNNNN",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "QA-LU-20260000001"
+  },
+  {
+    "entity": "02_Legal_Unit_Register",
+    "field": "cr_number",
+    "definition": "Commercial registration number",
+    "data_type": "Text(20)",
+    "allowed_values": "MoCI / authority format",
+    "mandatory": true,
+    "source": "MoCI",
+    "example": "CR-12345"
+  },
+  {
+    "entity": "02_Legal_Unit_Register",
+    "field": "registration_authority",
+    "definition": "Authority that registered the unit",
+    "data_type": "Text(40)",
+    "allowed_values": "MoCI/QFC/QFZA/QSTP",
+    "mandatory": true,
+    "source": "various",
+    "example": "QFC Authority"
+  },
+  {
+    "entity": "03_Establishment_Register",
+    "field": "establishment_id",
+    "definition": "Persistent identifier for establishment",
+    "data_type": "Text(20)",
+    "allowed_values": "QA-EST-YYYYNNNNNNN",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "QA-EST-20260000001"
+  },
+  {
+    "entity": "03_Establishment_Register",
+    "field": "kau_id",
+    "definition": "Kind-of-Activity-Unit identifier",
+    "data_type": "Text(20)",
+    "allowed_values": "QA-KAU-YYYYNNNNNNN",
+    "mandatory": false,
+    "source": "NSO",
+    "example": "QA-KAU-20260000001"
+  },
+  {
+    "entity": "03_Establishment_Register",
+    "field": "latitude",
+    "definition": "Establishment latitude",
+    "data_type": "Decimal",
+    "allowed_values": "WGS84",
+    "mandatory": false,
+    "source": "NSO",
+    "example": "25.32"
+  },
+  {
+    "entity": "03_Establishment_Register",
+    "field": "longitude",
+    "definition": "Establishment longitude",
+    "data_type": "Decimal",
+    "allowed_values": "WGS84",
+    "mandatory": false,
+    "source": "NSO",
+    "example": "51.53"
+  },
+  {
+    "entity": "04_Enterprise_Group_Register",
+    "field": "global_ultimate_parent",
+    "definition": "Global ultimate controlling unit",
+    "data_type": "Text(200)",
+    "allowed_values": "free text / id",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "State of Qatar"
+  },
+  {
+    "entity": "04_Enterprise_Group_Register",
+    "field": "truncated_group_flag",
+    "definition": "Resident-only sub-perimeter exists",
+    "data_type": "Code",
+    "allowed_values": "Y/N",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "N"
+  },
+  {
+    "entity": "05_Ownership_Classification",
+    "field": "ownership_pct",
+    "definition": "Equity held by owner in owned unit",
+    "data_type": "Decimal",
+    "allowed_values": "0-100",
+    "mandatory": true,
+    "source": "NSO/QFMA",
+    "example": "51.0"
+  },
+  {
+    "entity": "05_Ownership_Classification",
+    "field": "voting_pct",
+    "definition": "Voting rights held",
+    "data_type": "Decimal",
+    "allowed_values": "0-100",
+    "mandatory": true,
+    "source": "NSO/QFMA",
+    "example": "51.0"
+  },
+  {
+    "entity": "05_Ownership_Classification",
+    "field": "is_ultimate",
+    "definition": "Edge is to ultimate controlling unit",
+    "data_type": "Code",
+    "allowed_values": "Y/N",
+    "mandatory": true,
+    "source": "NSO",
+    "example": "Y"
+  }
+]

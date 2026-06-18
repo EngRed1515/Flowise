@@ -1,0 +1,5 @@
+[
+  {"group_id": "QA-GRP-20260000001", "group_name": "Sample Energy Group", "group_name_ar": "مجموعة العينة للطاقة", "global_ultimate_parent": "State of Qatar", "gup_country": "QA", "domestic_group_head": "QA-ENT-20260000001", "truncated_group_flag": "N", "member_count": 42, "controlling_sector": "S.13", "notes": "Public group; SWF-linked"},
+  {"group_id": "QA-GRP-20260000002", "group_name": "Sample Banking Group", "group_name_ar": "مجموعة العينة المصرفية", "global_ultimate_parent": "State of Qatar", "gup_country": "QA", "domestic_group_head": "QA-ENT-20260000002", "truncated_group_flag": "N", "member_count": 8, "controlling_sector": "S.13", "notes": "Government-controlled bank group"},
+  {"group_id": "QA-GRP-20260000005", "group_name": "Sample Family Group", "group_name_ar": "مجموعة العينة العائلية", "global_ultimate_parent": "Founding Family (resident)", "gup_country": "QA", "domestic_group_head": "QA-ENT-20260000005", "truncated_group_flag": "N", "member_count": 15, "controlling_sector": "S.14", "notes": "Family-controlled private group"}
+]

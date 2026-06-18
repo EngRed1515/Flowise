@@ -1,0 +1,93 @@
+[
+  {
+    "enterprise_id": "QA-ENT-20260000001", "lei": "549300ENERGYQ0000150",
+    "legal_name_en": "Qatar National Energy Corp (sample)", "legal_name_ar": "شركة قطر الوطنية للطاقة",
+    "legal_form_code": "SOE", "residence": "RES", "isic_class": "0610",
+    "employment": 1800, "turnover_qar": 48000000000, "total_assets_qar": 120000000000,
+    "sales": 48000000000, "production_costs": 30000000000,
+    "is_nonprofit": false, "is_financial": false, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "MAINLAND", "group_id": "QA-GRP-20260000001",
+    "sector_code": "S.11", "public_private": "PUB-NFC", "control_flag": "MAJ-VOTE", "market_status": "MARKET",
+    "size_class": "LARGE", "fdi_flag": "NONE", "special_entity_flag": "NONE",
+    "birth_date": "1974-01-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-01", "quality_flag": "COMMITTEE-RULED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000002", "lei": "549300BANKQA00000237",
+    "legal_name_en": "Sample National Bank Q.P.S.C.", "legal_name_ar": "بنك العينة الوطني",
+    "legal_form_code": "JSC", "residence": "RES", "isic_class": "6419",
+    "employment": 5200, "turnover_qar": 22000000000, "total_assets_qar": 300000000000,
+    "sales": 22000000000, "production_costs": 12000000000,
+    "is_nonprofit": false, "is_financial": true, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "MAINLAND", "group_id": "QA-GRP-20260000002",
+    "sector_code": "S.122", "public_private": "PUB-FC", "control_flag": "MAJ-VOTE", "market_status": "MARKET",
+    "size_class": "LARGE", "fdi_flag": "NONE", "special_entity_flag": "NONE",
+    "birth_date": "1965-06-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-01", "quality_flag": "COMMITTEE-RULED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000003", "lei": "549300CHEMFZ00000351",
+    "legal_name_en": "Sample Free-Zone Chemicals W.L.L.", "legal_name_ar": "شركة العينة للكيماويات",
+    "legal_form_code": "FZ", "residence": "RES", "isic_class": "2011",
+    "employment": 240, "turnover_qar": 50000000, "total_assets_qar": 80000000,
+    "sales": 50000000, "production_costs": 35000000,
+    "is_nonprofit": false, "is_financial": false, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "QFZA", "group_id": null,
+    "sector_code": "S.11", "public_private": "FCC", "control_flag": "MAJ-VOTE", "market_status": "MARKET",
+    "size_class": "MEDIUM", "fdi_flag": "INWARD-FULL", "special_entity_flag": "NONE",
+    "birth_date": "2022-03-15", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-03", "quality_flag": "PEER-REVIEWED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000004", "lei": "549300QFCAMQ00000418",
+    "legal_name_en": "Sample QFC Asset Management LLC", "legal_name_ar": "شركة العينة لإدارة الأصول",
+    "legal_form_code": "QFC", "residence": "RES", "isic_class": "6630",
+    "employment": 30, "turnover_qar": 15000000, "total_assets_qar": 25000000,
+    "sales": 15000000, "production_costs": 9000000,
+    "is_nonprofit": false, "is_financial": true, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "QFC", "group_id": null,
+    "sector_code": "S.126", "public_private": "FCC", "control_flag": "MAJ-VOTE", "market_status": "MARKET",
+    "size_class": "SMALL", "fdi_flag": "INWARD-FULL", "special_entity_flag": "NONE",
+    "birth_date": "2021-09-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-03", "quality_flag": "PEER-REVIEWED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000005", "lei": "549300FAMHLD00000571",
+    "legal_name_en": "Sample Family Holding Group", "legal_name_ar": "مجموعة العينة العائلية القابضة",
+    "legal_form_code": "LLC", "residence": "RES", "isic_class": "6420",
+    "employment": 600, "turnover_qar": 500000000, "total_assets_qar": 900000000,
+    "sales": 500000000, "production_costs": 300000000,
+    "is_nonprofit": false, "is_financial": false, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "MAINLAND", "group_id": "QA-GRP-20260000005",
+    "sector_code": "S.11", "public_private": "PRV-NFC", "control_flag": "BO-CHAIN", "market_status": "MARKET",
+    "size_class": "LARGE", "fdi_flag": "NONE", "special_entity_flag": "HOLDING",
+    "birth_date": "1988-01-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-05", "quality_flag": "COMMITTEE-RULED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000006", "lei": "549300FOUND000000635",
+    "legal_name_en": "Sample Charitable Foundation", "legal_name_ar": "مؤسسة العينة الخيرية",
+    "legal_form_code": "FND", "residence": "RES", "isic_class": "8540",
+    "employment": 300, "turnover_qar": 0, "total_assets_qar": 200000000,
+    "sales": 5000000, "production_costs": 40000000,
+    "is_nonprofit": true, "is_financial": false, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "MAINLAND", "group_id": null,
+    "sector_code": "S.13", "public_private": "GG", "control_flag": "BOARD", "market_status": "NON-MARKET",
+    "size_class": "LARGE", "fdi_flag": "NONE", "special_entity_flag": "NONE",
+    "birth_date": "1995-01-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-06", "quality_flag": "COMMITTEE-RULED"
+  },
+  {
+    "enterprise_id": "QA-ENT-20260000099", "lei": "549300TRADCO00009909",
+    "legal_name_en": "Sample Trading Co (sample)", "legal_name_ar": "شركة العينة للتجارة",
+    "legal_form_code": "LLC", "residence": "RES", "isic_class": "4690",
+    "employment": 85, "turnover_qar": 40000000, "total_assets_qar": 60000000,
+    "sales": 40000000, "production_costs": 28000000,
+    "is_nonprofit": false, "is_financial": false, "has_premises": true, "has_employees": true, "has_autonomy": true,
+    "jurisdiction": "MAINLAND", "group_id": "QA-GRP-20260000001",
+    "sector_code": "S.11", "public_private": "PUB-NFC", "control_flag": "BO-CHAIN", "market_status": "MARKET",
+    "size_class": "MEDIUM", "fdi_flag": "NONE", "special_entity_flag": "NONE",
+    "birth_date": "2010-01-01", "last_demographic_event": "BIRTH",
+    "classification_version": "1.0.0", "classification_date": "2026-02-10", "quality_flag": "PEER-REVIEWED"
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "code": "Class",
+    "activity_en": "Activity",
+    "section_code": "Section",
+    "nace": "NACE",
+    "gcc_sic": "GCC-SIC",
+    "activity_ar": "Activity_ar"
+  },
+  {
+    "code": "0610",
+    "activity_en": "Extraction of crude petroleum",
+    "section_code": "B",
+    "nace": "06.10",
+    "gcc_sic": "0610",
+    "activity_ar": "استخراج النفط الخام"
+  },
+  {
+    "code": "0620",
+    "activity_en": "Extraction of natural gas",
+    "section_code": "B",
+    "nace": "06.20",
+    "gcc_sic": "0620",
+    "activity_ar": "استخراج الغاز الطبيعي"
+  },
+  {
+    "code": "2011",
+    "activity_en": "Manufacture of basic chemicals",
+    "section_code": "C",
+    "nace": "20.11",
+    "gcc_sic": "2011",
+    "activity_ar": "صناعة المواد الكيميائية الأساسية"
+  },
+  {
+    "code": "2013",
+    "activity_en": "Manufacture of plastics in primary forms",
+    "section_code": "C",
+    "nace": "20.16",
+    "gcc_sic": "2013",
+    "activity_ar": "صناعة اللدائن في أشكالها الأولية"
+  },
+  {
+    "code": "3510",
+    "activity_en": "Electric power generation, transmission, distribution",
+    "section_code": "D",
+    "nace": "35.1x",
+    "gcc_sic": "3510",
+    "activity_ar": "توليد ونقل وتوزيع الطاقة الكهربائية"
+  },
+  {
+    "code": "3600",
+    "activity_en": "Water collection, treatment and supply",
+    "section_code": "E",
+    "nace": "36.00",
+    "gcc_sic": "3600",
+    "activity_ar": "جمع ومعالجة وإمداد المياه"
+  },
+  {
+    "code": "4100",
+    "activity_en": "Construction of buildings",
+    "section_code": "F",
+    "nace": "41.x",
+    "gcc_sic": "4100",
+    "activity_ar": "تشييد المباني"
+  },
+  {
+    "code": "4690",
+    "activity_en": "Non-specialised wholesale trade",
+    "section_code": "G",
+    "nace": "46.9",
+    "gcc_sic": "4690",
+    "activity_ar": "تجارة الجملة غير المتخصصة"
+  },
+  {
+    "code": "4920",
+    "activity_en": "Other land passenger / freight transport",
+    "section_code": "H",
+    "nace": "49.x",
+    "gcc_sic": "4920",
+    "activity_ar": "نقل الركاب والبضائع البري الأخرى"
+  },
+  {
+    "code": "5110",
+    "activity_en": "Passenger air transport",
+    "section_code": "H",
+    "nace": "51.10",
+    "gcc_sic": "5110",
+    "activity_ar": "النقل الجوي للركاب"
+  },
+  {
+    "code": "5210",
+    "activity_en": "Warehousing and storage",
+    "section_code": "H",
+    "nace": "52.10",
+    "gcc_sic": "5210",
+    "activity_ar": "التخزين والتخزين المستودعي"
+  },
+  {
+    "code": "5224",
+    "activity_en": "Cargo handling",
+    "section_code": "H",
+    "nace": "52.24",
+    "gcc_sic": "5224",
+    "activity_ar": "مناولة البضائع"
+  },
+  {
+    "code": "5510",
+    "activity_en": "Short-term accommodation activities",
+    "section_code": "I",
+    "nace": "55.10",
+    "gcc_sic": "5510",
+    "activity_ar": "أنشطة الإقامة قصيرة الأجل"
+  },
+  {
+    "code": "5610",
+    "activity_en": "Restaurants and mobile food service",
+    "section_code": "I",
+    "nace": "56.10",
+    "gcc_sic": "5610",
+    "activity_ar": "المطاعم وخدمات الطعام المتنقلة"
+  },
+  {
+    "code": "6201",
+    "activity_en": "Computer programming activities",
+    "section_code": "J",
+    "nace": "62.01",
+    "gcc_sic": "6201",
+    "activity_ar": "أنشطة برمجة الحاسوب"
+  },
+  {
+    "code": "6411",
+    "activity_en": "Central banking",
+    "section_code": "K",
+    "nace": "64.11",
+    "gcc_sic": "6411",
+    "activity_ar": "الأعمال المصرفية المركزية"
+  },
+  {
+    "code": "6419",
+    "activity_en": "Other monetary intermediation (banks)",
+    "section_code": "K",
+    "nace": "64.19",
+    "gcc_sic": "6419",
+    "activity_ar": "الوساطة النقدية الأخرى (البنوك)"
+  },
+  {
+    "code": "6420",
+    "activity_en": "Activities of holding companies",
+    "section_code": "K",
+    "nace": "64.20",
+    "gcc_sic": "6420",
+    "activity_ar": "أنشطة الشركات القابضة"
+  },
+  {
+    "code": "6430",
+    "activity_en": "Trusts, funds and similar financial entities",
+    "section_code": "K",
+    "nace": "64.30",
+    "gcc_sic": "6430",
+    "activity_ar": "الصناديق الاستئمانية والصناديق والكيانات المالية المماثلة"
+  },
+  {
+    "code": "6511",
+    "activity_en": "Life insurance",
+    "section_code": "K",
+    "nace": "65.11",
+    "gcc_sic": "6511",
+    "activity_ar": "التأمين على الحياة"
+  },
+  {
+    "code": "6512",
+    "activity_en": "Non-life insurance",
+    "section_code": "K",
+    "nace": "65.12",
+    "gcc_sic": "6512",
+    "activity_ar": "التأمين على غير الحياة"
+  },
+  {
+    "code": "6520",
+    "activity_en": "Reinsurance",
+    "section_code": "K",
+    "nace": "65.20",
+    "gcc_sic": "6520",
+    "activity_ar": "إعادة التأمين"
+  },
+  {
+    "code": "6530",
+    "activity_en": "Pension funding",
+    "section_code": "K",
+    "nace": "65.30",
+    "gcc_sic": "6530",
+    "activity_ar": "تمويل المعاشات التقاعدية"
+  },
+  {
+    "code": "6630",
+    "activity_en": "Fund management activities",
+    "section_code": "K",
+    "nace": "66.30",
+    "gcc_sic": "6630",
+    "activity_ar": "أنشطة إدارة الصناديق"
+  },
+  {
+    "code": "6810",
+    "activity_en": "Real estate activities with own/leased property",
+    "section_code": "L",
+    "nace": "68.10",
+    "gcc_sic": "6810",
+    "activity_ar": "الأنشطة العقارية بعقارات مملوكة أو مؤجرة"
+  },
+  {
+    "code": "7010",
+    "activity_en": "Activities of head offices / management consultancy",
+    "section_code": "M",
+    "nace": "70.10",
+    "gcc_sic": "7010",
+    "activity_ar": "أنشطة المكاتب الرئيسية / الاستشارات الإدارية"
+  },
+  {
+    "code": "7210",
+    "activity_en": "R&D on natural sciences and engineering",
+    "section_code": "M",
+    "nace": "72.19",
+    "gcc_sic": "7210",
+    "activity_ar": "البحث والتطوير في العلوم الطبيعية والهندسة"
+  },
+  {
+    "code": "8412",
+    "activity_en": "Regulation of health, education, social services",
+    "section_code": "O",
+    "nace": "84.12",
+    "gcc_sic": "8412",
+    "activity_ar": "تنظيم خدمات الصحة والتعليم والخدمات الاجتماعية"
+  },
+  {
+    "code": "8510",
+    "activity_en": "Pre-primary and primary education",
+    "section_code": "P",
+    "nace": "85.10",
+    "gcc_sic": "8510",
+    "activity_ar": "التعليم ما قبل الابتدائي والابتدائي"
+  },
+  {
+    "code": "8540",
+    "activity_en": "Higher education",
+    "section_code": "P",
+    "nace": "85.4x",
+    "gcc_sic": "8540",
+    "activity_ar": "التعليم العالي"
+  },
+  {
+    "code": "8610",
+    "activity_en": "Hospital activities",
+    "section_code": "Q",
+    "nace": "86.10",
+    "gcc_sic": "8610",
+    "activity_ar": "أنشطة المستشفيات"
+  },
+  {
+    "code": "9101",
+    "activity_en": "Library, archive, museum activities",
+    "section_code": "R",
+    "nace": "91.0x",
+    "gcc_sic": "9101",
+    "activity_ar": "أنشطة المكتبات والمحفوظات والمتاحف"
+  },
+  {
+    "code": "9499",
+    "activity_en": "Activities of other membership organisations n.e.c.",
+    "section_code": "S",
+    "nace": "94.99",
+    "gcc_sic": "9499",
+    "activity_ar": "أنشطة منظمات العضوية الأخرى غير المصنفة"
+  },
+  {
+    "code": "1920",
+    "activity_en": "Manufacture of refined petroleum products",
+    "section_code": "C",
+    "nace": "19.2",
+    "gcc_sic": "1920",
+    "activity_ar": "صناعة المنتجات النفطية المكررة"
+  }
+]

@@ -1,0 +1,6 @@
+[
+  {"size_class": "MICRO",  "turnover_min": 0,         "turnover_max": 2000000,   "fte_min": 0,   "fte_max": 9},
+  {"size_class": "SMALL",  "turnover_min": 2000000,   "turnover_max": 20000000,  "fte_min": 10,  "fte_max": 49},
+  {"size_class": "MEDIUM", "turnover_min": 20000000,  "turnover_max": 150000000, "fte_min": 50,  "fte_max": 249},
+  {"size_class": "LARGE",  "turnover_min": 150000000, "turnover_max": null,      "fte_min": 250, "fte_max": null}
+]

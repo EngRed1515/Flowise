@@ -1,0 +1,6 @@
+[
+  {"establishment_id": "QA-EST-20260000001", "enterprise_id": "QA-ENT-20260000001", "kau_id": "QA-KAU-20260000001", "name": "Refinery — Mesaieed", "name_ar": "مصفاة — مسيعيد", "isic_class": "1920", "municipality": "Al Wakrah", "zone": "Mesaieed Industrial", "latitude": 24.99, "longitude": 51.55, "employment": 1800, "is_active": true},
+  {"establishment_id": "QA-EST-20260000002", "enterprise_id": "QA-ENT-20260000003", "kau_id": "QA-KAU-20260000002", "name": "Plant — Umm Alhoul", "name_ar": "مصنع — أم الحول", "isic_class": "2011", "municipality": "Al Wakrah", "zone": "Umm Alhoul FZ", "latitude": 25.02, "longitude": 51.60, "employment": 240, "is_active": true},
+  {"establishment_id": "QA-EST-20260000003", "enterprise_id": "QA-ENT-20260000002", "kau_id": "QA-KAU-20260000003", "name": "HQ Branch — West Bay", "name_ar": "فرع المقر الرئيسي — الخليج الغربي", "isic_class": "6419", "municipality": "Doha", "zone": "West Bay", "latitude": 25.32, "longitude": 51.53, "employment": 560, "is_active": true},
+  {"establishment_id": "QA-EST-20260000004", "enterprise_id": "QA-ENT-20260000099", "kau_id": "QA-KAU-20260000004", "name": "Wholesale Depot — Industrial Area", "name_ar": "مستودع الجملة — المنطقة الصناعية", "isic_class": "4690", "municipality": "Doha", "zone": "Street 38 Industrial Area", "latitude": 25.18, "longitude": 51.44, "employment": 85, "is_active": true}
+]

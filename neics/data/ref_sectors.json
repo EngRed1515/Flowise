@@ -1,0 +1,142 @@
+[
+  {
+    "code": "Code",
+    "name_en": "Sector / sub-sector",
+    "parent_code": "Parent",
+    "definition": "Definition",
+    "name_ar": "Sector_ar"
+  },
+  {
+    "code": "S.11",
+    "name_en": "Non-financial corporations",
+    "parent_code": null,
+    "definition": "Institutional units principally engaged in market production of goods and non-financial services.",
+    "name_ar": "الشركات غير المالية"
+  },
+  {
+    "code": "S.12",
+    "name_en": "Financial corporations",
+    "parent_code": null,
+    "definition": "Institutional units principally engaged in financial intermediation or auxiliary financial activities.",
+    "name_ar": "الشركات المالية"
+  },
+  {
+    "code": "S.121",
+    "name_en": "Central bank",
+    "parent_code": "S.12",
+    "definition": "Qatar Central Bank — national monetary authority.",
+    "name_ar": "البنك المركزي"
+  },
+  {
+    "code": "S.122",
+    "name_en": "Deposit-taking corporations except the central bank",
+    "parent_code": "S.12",
+    "definition": "Commercial and Islamic banks; other depository corporations.",
+    "name_ar": "شركات تلقي الودائع عدا البنك المركزي"
+  },
+  {
+    "code": "S.123",
+    "name_en": "Money market funds (MMF)",
+    "parent_code": "S.12",
+    "definition": "Collective investment schemes investing in money-market instruments.",
+    "name_ar": "صناديق أسواق النقد"
+  },
+  {
+    "code": "S.124",
+    "name_en": "Non-MMF investment funds",
+    "parent_code": "S.12",
+    "definition": "Collective investment schemes other than MMF.",
+    "name_ar": "صناديق الاستثمار عدا صناديق أسواق النقد"
+  },
+  {
+    "code": "S.125",
+    "name_en": "Other financial intermediaries",
+    "parent_code": "S.12",
+    "definition": "Financial intermediaries except ICPF, MMF, investment funds (e.g., finance companies, securitisation vehicles).",
+    "name_ar": "وسطاء ماليون آخرون"
+  },
+  {
+    "code": "S.126",
+    "name_en": "Financial auxiliaries",
+    "parent_code": "S.12",
+    "definition": "Units engaged in activities auxiliary to financial intermediation (e.g., fund managers, brokers, exchanges).",
+    "name_ar": "مساعدون ماليون"
+  },
+  {
+    "code": "S.127",
+    "name_en": "Captive financial institutions and money lenders",
+    "parent_code": "S.12",
+    "definition": "Holding companies, SPEs, trusts that do not engage in intermediation with third parties (relevant for SWF vehicles).",
+    "name_ar": "مؤسسات مالية أسيرة ومقرضو أموال"
+  },
+  {
+    "code": "S.128",
+    "name_en": "Insurance corporations",
+    "parent_code": "S.12",
+    "definition": "Units principally engaged in the pooling of risk through direct insurance or reinsurance.",
+    "name_ar": "شركات التأمين"
+  },
+  {
+    "code": "S.129",
+    "name_en": "Pension funds",
+    "parent_code": "S.12",
+    "definition": "Autonomous pension funds that are separate institutional units.",
+    "name_ar": "صناديق المعاشات التقاعدية"
+  },
+  {
+    "code": "S.13",
+    "name_en": "General government",
+    "parent_code": null,
+    "definition": "Units that produce non-market output and redistribute income and wealth; financed mainly by compulsory levies.",
+    "name_ar": "الحكومة العامة"
+  },
+  {
+    "code": "S.1311",
+    "name_en": "Central government",
+    "parent_code": "S.13",
+    "definition": "Ministries, agencies, extra-budgetary units at the national level.",
+    "name_ar": "الحكومة المركزية"
+  },
+  {
+    "code": "S.1312",
+    "name_en": "State / regional government",
+    "parent_code": "S.13",
+    "definition": "Intermediate level of government (limited applicability in Qatar).",
+    "name_ar": "الحكومة الإقليمية / حكومة الولاية"
+  },
+  {
+    "code": "S.1313",
+    "name_en": "Local government",
+    "parent_code": "S.13",
+    "definition": "Municipalities and local authorities.",
+    "name_ar": "الحكومة المحلية"
+  },
+  {
+    "code": "S.1314",
+    "name_en": "Social security funds",
+    "parent_code": "S.13",
+    "definition": "Units operating compulsory social-insurance schemes (e.g., GRSIA).",
+    "name_ar": "صناديق الضمان الاجتماعي"
+  },
+  {
+    "code": "S.14",
+    "name_en": "Households",
+    "parent_code": null,
+    "definition": "Natural persons and unincorporated household enterprises.",
+    "name_ar": "الأسر المعيشية"
+  },
+  {
+    "code": "S.15",
+    "name_en": "Non-profit institutions serving households (NPISH)",
+    "parent_code": null,
+    "definition": "Non-market, non-profit units serving households; not controlled by government.",
+    "name_ar": "المؤسسات غير الهادفة للربح التي تخدم الأسر المعيشية"
+  },
+  {
+    "code": "S.2",
+    "name_en": "Rest of the World",
+    "parent_code": null,
+    "definition": "Non-resident institutional units that engage in transactions with resident units.",
+    "name_ar": "بقية العالم"
+  }
+]

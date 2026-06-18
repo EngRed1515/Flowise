@@ -1,0 +1,38 @@
+[
+  {
+    "group_id": "QA-GRP-20260000010",
+    "group_name": "Sample Petrochemicals Group",
+    "group_name_ar": null,
+    "global_ultimate_parent": "State of Qatar",
+    "gup_country": "QA",
+    "domestic_group_head": "QA-ENT-20260000023",
+    "truncated_group_flag": "N",
+    "member_count": 5,
+    "controlling_sector": "S.13",
+    "notes": "State petrochemicals JV group"
+  },
+  {
+    "group_id": "QA-GRP-20260000011",
+    "group_name": "Sample Sovereign Property Group",
+    "group_name_ar": null,
+    "global_ultimate_parent": "Qatar Investment Authority",
+    "gup_country": "QA",
+    "domestic_group_head": "QA-ENT-20260000025",
+    "truncated_group_flag": "Y",
+    "member_count": 7,
+    "controlling_sector": "S.13",
+    "notes": "SWF cascade; truncated resident group"
+  },
+  {
+    "group_id": "QA-GRP-20260000012",
+    "group_name": "Sample Global Tech MNE Group",
+    "group_name_ar": null,
+    "global_ultimate_parent": "Global Technology Parent (US)",
+    "gup_country": "US",
+    "domestic_group_head": "QA-ENT-20260000028",
+    "truncated_group_flag": "Y",
+    "member_count": 3,
+    "controlling_sector": "S.11",
+    "notes": "Foreign MNE group; resident subsidiary"
+  }
+]

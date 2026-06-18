@@ -1,0 +1,92 @@
+[
+  {
+    "code": "Code",
+    "name_en": "Legal form",
+    "notes": "Notes",
+    "name_ar": "Legal_form_ar"
+  },
+  {
+    "code": "LLC",
+    "name_en": "Limited Liability Company (W.L.L.)",
+    "notes": "Most common form; default for private commercial entities.",
+    "name_ar": "شركة ذات مسؤولية محدودة"
+  },
+  {
+    "code": "JSC",
+    "name_en": "Qatari Shareholding Company (Q.S.C. / Q.P.S.C.)",
+    "notes": "Public or private joint-stock; QSE-listed entities are Q.P.S.C.",
+    "name_ar": "شركة مساهمة قطرية"
+  },
+  {
+    "code": "SP",
+    "name_en": "Sole Proprietorship",
+    "notes": "Single natural person; unincorporated — maps to S.14 unless quasi-corporation.",
+    "name_ar": "مؤسسة فردية"
+  },
+  {
+    "code": "PT",
+    "name_en": "Partnership",
+    "notes": "General / limited partnership.",
+    "name_ar": "شركة تضامن / شراكة"
+  },
+  {
+    "code": "BR",
+    "name_en": "Branch of foreign company",
+    "notes": "Resident branch; BPM6 branch treatment applies.",
+    "name_ar": "فرع شركة أجنبية"
+  },
+  {
+    "code": "REP",
+    "name_en": "Representative office",
+    "notes": "May not be an institutional unit if no authority to contract.",
+    "name_ar": "مكتب تمثيلي"
+  },
+  {
+    "code": "QFC",
+    "name_en": "QFC-licensed entity",
+    "notes": "Licensed under Qatar Financial Centre regime.",
+    "name_ar": "كيان مرخّص من مركز قطر للمال"
+  },
+  {
+    "code": "FZ",
+    "name_en": "Free-zone entity",
+    "notes": "Licensed under QFZA (Ras Bufontas / Umm Alhoul) or QSTP.",
+    "name_ar": "كيان منطقة حرة"
+  },
+  {
+    "code": "CA",
+    "name_en": "Charitable association",
+    "notes": "NPISH candidate; test for government control.",
+    "name_ar": "جمعية خيرية"
+  },
+  {
+    "code": "WQ",
+    "name_en": "Waqf (religious endowment)",
+    "notes": "Sui generis; sector determination per substance.",
+    "name_ar": "وقف"
+  },
+  {
+    "code": "FND",
+    "name_en": "Foundation",
+    "notes": "Royal/charitable/family foundation; S.13 / S.15 / S.127 per substance.",
+    "name_ar": "مؤسسة"
+  },
+  {
+    "code": "COOP",
+    "name_en": "Cooperative",
+    "notes": "Member-owned; sector per activity and control.",
+    "name_ar": "جمعية تعاونية"
+  },
+  {
+    "code": "GOV",
+    "name_en": "Government body",
+    "notes": "Ministry, authority, council — S.13.",
+    "name_ar": "جهة حكومية"
+  },
+  {
+    "code": "SOE",
+    "name_en": "State-owned enterprise",
+    "notes": "Corporation controlled by government — S.11 / S.12 public.",
+    "name_ar": "شركة مملوكة للدولة"
+  }
+]

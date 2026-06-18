@@ -1,0 +1,86 @@
+{
+  "QA-ENT-20260000010": {
+    "sector": "S.13",
+    "pub": "GG"
+  },
+  "QA-ENT-20260000011": {
+    "sector": "S.13",
+    "pub": "GG"
+  },
+  "QA-ENT-20260000012": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000013": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000014": {
+    "sector": "S.11",
+    "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000015": {
+    "sector": "S.122",
+    "pub": "PUB-FC"
+  },
+  "QA-ENT-20260000016": {
+    "sector": "S.128",
+    "pub": "PRV-FC"
+  },
+  "QA-ENT-20260000017": {
+    "sector": "S.127",
+    "pub": "PRV-FC"
+  },
+  "QA-ENT-20260000018": {
+    "sector": "S.15",
+    "pub": "NPISH"
+  },
+  "QA-ENT-20260000019": {
+    "sector": "S.14",
+    "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000020": {
+    "sector": "S.11",
+    "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000021": {
+    "sector": "S.126",
+    "pub": "FCC"
+  },
+  "QA-ENT-20260000022": {
+    "sector": "S.11",
+    "pub": "FCC"
+  },
+  "QA-ENT-20260000023": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000024": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000025": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000026": {
+    "sector": "S.11",
+    "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000027": {
+    "sector": "S.11",
+    "pub": "PUB-NFC"
+  },
+  "QA-ENT-20260000028": {
+    "sector": "S.11",
+    "pub": "FCC"
+  },
+  "QA-ENT-20260000029": {
+    "sector": "S.11",
+    "pub": "PRV-NFC"
+  },
+  "QA-ENT-20260000030": {
+    "sector": "S.11",
+    "pub": "PRV-NFC"
+  }
+}

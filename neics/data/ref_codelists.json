@@ -1,0 +1,254 @@
+[
+  {
+    "domain": "residence",
+    "code": "RES",
+    "meaning": "Resident in Qatar (centre of predominant economic interest)",
+    "sort_order": 1
+  },
+  {
+    "domain": "residence",
+    "code": "NRES",
+    "meaning": "Non-resident (Rest of the World, S.2)",
+    "sort_order": 2
+  },
+  {
+    "domain": "residence",
+    "code": "MULTI",
+    "meaning": "Multi-territory enterprise — apportioned",
+    "sort_order": 3
+  },
+  {
+    "domain": "public_private",
+    "code": "PUB-NFC",
+    "meaning": "Public non-financial corporation",
+    "sort_order": 1
+  },
+  {
+    "domain": "public_private",
+    "code": "PUB-FC",
+    "meaning": "Public financial corporation",
+    "sort_order": 2
+  },
+  {
+    "domain": "public_private",
+    "code": "GG",
+    "meaning": "General government",
+    "sort_order": 3
+  },
+  {
+    "domain": "public_private",
+    "code": "PRV-NFC",
+    "meaning": "Private non-financial corporation",
+    "sort_order": 4
+  },
+  {
+    "domain": "public_private",
+    "code": "PRV-FC",
+    "meaning": "Private financial corporation",
+    "sort_order": 5
+  },
+  {
+    "domain": "public_private",
+    "code": "FCC",
+    "meaning": "Foreign-controlled corporation",
+    "sort_order": 6
+  },
+  {
+    "domain": "public_private",
+    "code": "NPISH",
+    "meaning": "Non-profit institution serving households",
+    "sort_order": 7
+  },
+  {
+    "domain": "control_indicator",
+    "code": "MAJ-VOTE",
+    "meaning": "Majority voting rights",
+    "sort_order": 1
+  },
+  {
+    "domain": "control_indicator",
+    "code": "BOARD",
+    "meaning": "Board appointment rights",
+    "sort_order": 2
+  },
+  {
+    "domain": "control_indicator",
+    "code": "GOLDEN",
+    "meaning": "Golden share / veto rights",
+    "sort_order": 3
+  },
+  {
+    "domain": "control_indicator",
+    "code": "CONTRACT",
+    "meaning": "Contractual control",
+    "sort_order": 4
+  },
+  {
+    "domain": "control_indicator",
+    "code": "FINANCING",
+    "meaning": "Financing dependency",
+    "sort_order": 5
+  },
+  {
+    "domain": "control_indicator",
+    "code": "DOMINANT",
+    "meaning": "Dominant customer/supplier",
+    "sort_order": 6
+  },
+  {
+    "domain": "control_indicator",
+    "code": "REGULATORY",
+    "meaning": "Regulatory control",
+    "sort_order": 7
+  },
+  {
+    "domain": "control_indicator",
+    "code": "BO-CHAIN",
+    "meaning": "Beneficial-ownership chain",
+    "sort_order": 8
+  },
+  {
+    "domain": "control_indicator",
+    "code": "KEY-PERS",
+    "meaning": "Key-personnel appointment",
+    "sort_order": 9
+  },
+  {
+    "domain": "control_indicator",
+    "code": "NONE",
+    "meaning": "No control established",
+    "sort_order": 10
+  },
+  {
+    "domain": "demographic_event",
+    "code": "BIRTH",
+    "meaning": "Unit comes into existence",
+    "sort_order": 1
+  },
+  {
+    "domain": "demographic_event",
+    "code": "DEATH",
+    "meaning": "Unit ceases to exist",
+    "sort_order": 2
+  },
+  {
+    "domain": "demographic_event",
+    "code": "MERGER_IN",
+    "meaning": "Absorbs another unit",
+    "sort_order": 3
+  },
+  {
+    "domain": "demographic_event",
+    "code": "MERGER_OUT",
+    "meaning": "Absorbed into another unit",
+    "sort_order": 4
+  },
+  {
+    "domain": "demographic_event",
+    "code": "SPLIT",
+    "meaning": "Divides into multiple units",
+    "sort_order": 5
+  },
+  {
+    "domain": "demographic_event",
+    "code": "RESTRUCTURE",
+    "meaning": "Restructure within group",
+    "sort_order": 6
+  },
+  {
+    "domain": "demographic_event",
+    "code": "LEGAL_FORM_CHANGE",
+    "meaning": "Change of legal form",
+    "sort_order": 7
+  },
+  {
+    "domain": "demographic_event",
+    "code": "TAKEOVER",
+    "meaning": "Change of control",
+    "sort_order": 8
+  },
+  {
+    "domain": "demographic_event",
+    "code": "REACTIVATION",
+    "meaning": "Dormant unit reactivated",
+    "sort_order": 9
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "INWARD-FULL",
+    "meaning": "Inward FDI, full control",
+    "sort_order": 1
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "INWARD-ASSOC",
+    "meaning": "Inward FDI, associate (10-50%)",
+    "sort_order": 2
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "OUTWARD",
+    "meaning": "Outward FDI (Qatari investor abroad)",
+    "sort_order": 3
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "ROUND-TRIP",
+    "meaning": "Apparent inward, ultimately Qatari-controlled",
+    "sort_order": 4
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "FELLOW",
+    "meaning": "Fellow enterprise",
+    "sort_order": 5
+  },
+  {
+    "domain": "fdi_flag",
+    "code": "NONE",
+    "meaning": "No FDI relationship",
+    "sort_order": 6
+  },
+  {
+    "domain": "size_class",
+    "code": "MICRO",
+    "meaning": "Micro enterprise",
+    "sort_order": 1
+  },
+  {
+    "domain": "size_class",
+    "code": "SMALL",
+    "meaning": "Small enterprise",
+    "sort_order": 2
+  },
+  {
+    "domain": "size_class",
+    "code": "MEDIUM",
+    "meaning": "Medium enterprise",
+    "sort_order": 3
+  },
+  {
+    "domain": "size_class",
+    "code": "LARGE",
+    "meaning": "Large enterprise",
+    "sort_order": 4
+  },
+  {
+    "domain": "quality_flag",
+    "code": "DRAFT",
+    "meaning": "Draft — analyst stage",
+    "sort_order": 1
+  },
+  {
+    "domain": "quality_flag",
+    "code": "PEER-REVIEWED",
+    "meaning": "Reviewed by second analyst",
+    "sort_order": 2
+  },
+  {
+    "domain": "quality_flag",
+    "code": "COMMITTEE-RULED",
+    "meaning": "Ruled by Technical Classification Committee",
+    "sort_order": 3
+  }
+]

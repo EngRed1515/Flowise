@@ -1,0 +1,530 @@
+[
+  {
+    "code": "01",
+    "section_code": "A",
+    "title_en": "Crop and animal production, hunting and related service activities",
+    "title_ar": "إنتاج المحاصيل والإنتاج الحيواني والصيد والأنشطة الخدمية ذات الصلة"
+  },
+  {
+    "code": "02",
+    "section_code": "A",
+    "title_en": "Forestry and logging",
+    "title_ar": "الحراجة وقطع الأشجار"
+  },
+  {
+    "code": "03",
+    "section_code": "A",
+    "title_en": "Fishing and aquaculture",
+    "title_ar": "صيد الأسماك وتربية المائيات"
+  },
+  {
+    "code": "05",
+    "section_code": "B",
+    "title_en": "Mining of coal and lignite",
+    "title_ar": "تعدين الفحم والليجنيت"
+  },
+  {
+    "code": "06",
+    "section_code": "B",
+    "title_en": "Extraction of crude petroleum and natural gas",
+    "title_ar": "استخراج النفط الخام والغاز الطبيعي"
+  },
+  {
+    "code": "07",
+    "section_code": "B",
+    "title_en": "Mining of metal ores",
+    "title_ar": "تعدين ركازات الفلزات"
+  },
+  {
+    "code": "08",
+    "section_code": "B",
+    "title_en": "Other mining and quarrying",
+    "title_ar": "أنشطة التعدين واستغلال المحاجر الأخرى"
+  },
+  {
+    "code": "09",
+    "section_code": "B",
+    "title_en": "Mining support service activities",
+    "title_ar": "أنشطة خدمات دعم التعدين"
+  },
+  {
+    "code": "10",
+    "section_code": "C",
+    "title_en": "Manufacture of food products",
+    "title_ar": "صنع المنتجات الغذائية"
+  },
+  {
+    "code": "11",
+    "section_code": "C",
+    "title_en": "Manufacture of beverages",
+    "title_ar": "صنع المشروبات"
+  },
+  {
+    "code": "12",
+    "section_code": "C",
+    "title_en": "Manufacture of tobacco products",
+    "title_ar": "صنع منتجات التبغ"
+  },
+  {
+    "code": "13",
+    "section_code": "C",
+    "title_en": "Manufacture of textiles",
+    "title_ar": "صنع المنسوجات"
+  },
+  {
+    "code": "14",
+    "section_code": "C",
+    "title_en": "Manufacture of wearing apparel",
+    "title_ar": "صنع الملبوسات"
+  },
+  {
+    "code": "15",
+    "section_code": "C",
+    "title_en": "Manufacture of leather and related products",
+    "title_ar": "صنع المنتجات الجلدية والمنتجات ذات الصلة"
+  },
+  {
+    "code": "16",
+    "section_code": "C",
+    "title_en": "Manufacture of wood and of products of wood and cork, except furniture",
+    "title_ar": "صنع الخشب ومنتجات الخشب والفلين، عدا الأثاث"
+  },
+  {
+    "code": "17",
+    "section_code": "C",
+    "title_en": "Manufacture of paper and paper products",
+    "title_ar": "صنع الورق ومنتجات الورق"
+  },
+  {
+    "code": "18",
+    "section_code": "C",
+    "title_en": "Printing and reproduction of recorded media",
+    "title_ar": "الطباعة واستنساخ وسائط الإعلام المسجلة"
+  },
+  {
+    "code": "19",
+    "section_code": "C",
+    "title_en": "Manufacture of coke and refined petroleum products",
+    "title_ar": "صنع فحم الكوك والمنتجات النفطية المكررة"
+  },
+  {
+    "code": "20",
+    "section_code": "C",
+    "title_en": "Manufacture of chemicals and chemical products",
+    "title_ar": "صنع المواد الكيميائية والمنتجات الكيميائية"
+  },
+  {
+    "code": "21",
+    "section_code": "C",
+    "title_en": "Manufacture of basic pharmaceutical products and pharmaceutical preparations",
+    "title_ar": "صنع المنتجات الصيدلانية الأساسية والمستحضرات الصيدلانية"
+  },
+  {
+    "code": "22",
+    "section_code": "C",
+    "title_en": "Manufacture of rubber and plastics products",
+    "title_ar": "صنع منتجات المطاط واللدائن"
+  },
+  {
+    "code": "23",
+    "section_code": "C",
+    "title_en": "Manufacture of other non-metallic mineral products",
+    "title_ar": "صنع منتجات المعادن اللافلزية الأخرى"
+  },
+  {
+    "code": "24",
+    "section_code": "C",
+    "title_en": "Manufacture of basic metals",
+    "title_ar": "صنع الفلزات القاعدية"
+  },
+  {
+    "code": "25",
+    "section_code": "C",
+    "title_en": "Manufacture of fabricated metal products, except machinery and equipment",
+    "title_ar": "صنع منتجات المعادن المشكلة، عدا الآلات والمعدات"
+  },
+  {
+    "code": "26",
+    "section_code": "C",
+    "title_en": "Manufacture of computer, electronic and optical products",
+    "title_ar": "صنع الحواسيب والمنتجات الإلكترونية والبصرية"
+  },
+  {
+    "code": "27",
+    "section_code": "C",
+    "title_en": "Manufacture of electrical equipment",
+    "title_ar": "صنع المعدات الكهربائية"
+  },
+  {
+    "code": "28",
+    "section_code": "C",
+    "title_en": "Manufacture of machinery and equipment n.e.c.",
+    "title_ar": "صنع الآلات والمعدات غير المصنفة في موضع آخر"
+  },
+  {
+    "code": "29",
+    "section_code": "C",
+    "title_en": "Manufacture of motor vehicles, trailers and semi-trailers",
+    "title_ar": "صنع المركبات ذات المحركات والمقطورات ونصف المقطورات"
+  },
+  {
+    "code": "30",
+    "section_code": "C",
+    "title_en": "Manufacture of other transport equipment",
+    "title_ar": "صنع معدات النقل الأخرى"
+  },
+  {
+    "code": "31",
+    "section_code": "C",
+    "title_en": "Manufacture of furniture",
+    "title_ar": "صنع الأثاث"
+  },
+  {
+    "code": "32",
+    "section_code": "C",
+    "title_en": "Other manufacturing",
+    "title_ar": "الصناعات التحويلية الأخرى"
+  },
+  {
+    "code": "33",
+    "section_code": "C",
+    "title_en": "Repair and installation of machinery and equipment",
+    "title_ar": "إصلاح وتركيب الآلات والمعدات"
+  },
+  {
+    "code": "35",
+    "section_code": "D",
+    "title_en": "Electricity, gas, steam and air conditioning supply",
+    "title_ar": "إمدادات الكهرباء والغاز والبخار وتكييف الهواء"
+  },
+  {
+    "code": "36",
+    "section_code": "E",
+    "title_en": "Water collection, treatment and supply",
+    "title_ar": "تجميع المياه ومعالجتها وتوزيعها"
+  },
+  {
+    "code": "37",
+    "section_code": "E",
+    "title_en": "Sewerage",
+    "title_ar": "الصرف الصحي"
+  },
+  {
+    "code": "38",
+    "section_code": "E",
+    "title_en": "Waste collection, treatment and disposal activities; materials recovery",
+    "title_ar": "أنشطة جمع النفايات ومعالجتها والتخلص منها؛ استعادة المواد"
+  },
+  {
+    "code": "39",
+    "section_code": "E",
+    "title_en": "Remediation activities and other waste management services",
+    "title_ar": "أنشطة المعالجة وخدمات إدارة النفايات الأخرى"
+  },
+  {
+    "code": "41",
+    "section_code": "F",
+    "title_en": "Construction of buildings",
+    "title_ar": "تشييد المباني"
+  },
+  {
+    "code": "42",
+    "section_code": "F",
+    "title_en": "Civil engineering",
+    "title_ar": "الهندسة المدنية"
+  },
+  {
+    "code": "43",
+    "section_code": "F",
+    "title_en": "Specialized construction activities",
+    "title_ar": "أنشطة التشييد المتخصصة"
+  },
+  {
+    "code": "45",
+    "section_code": "G",
+    "title_en": "Wholesale and retail trade and repair of motor vehicles and motorcycles",
+    "title_ar": "تجارة الجملة والتجزئة وإصلاح المركبات ذات المحركات والدراجات النارية"
+  },
+  {
+    "code": "46",
+    "section_code": "G",
+    "title_en": "Wholesale trade, except of motor vehicles and motorcycles",
+    "title_ar": "تجارة الجملة، عدا المركبات ذات المحركات والدراجات النارية"
+  },
+  {
+    "code": "47",
+    "section_code": "G",
+    "title_en": "Retail trade, except of motor vehicles and motorcycles",
+    "title_ar": "تجارة التجزئة، عدا المركبات ذات المحركات والدراجات النارية"
+  },
+  {
+    "code": "49",
+    "section_code": "H",
+    "title_en": "Land transport and transport via pipelines",
+    "title_ar": "النقل البري والنقل عبر خطوط الأنابيب"
+  },
+  {
+    "code": "50",
+    "section_code": "H",
+    "title_en": "Water transport",
+    "title_ar": "النقل المائي"
+  },
+  {
+    "code": "51",
+    "section_code": "H",
+    "title_en": "Air transport",
+    "title_ar": "النقل الجوي"
+  },
+  {
+    "code": "52",
+    "section_code": "H",
+    "title_en": "Warehousing and support activities for transportation",
+    "title_ar": "التخزين والأنشطة الداعمة للنقل"
+  },
+  {
+    "code": "53",
+    "section_code": "H",
+    "title_en": "Postal and courier activities",
+    "title_ar": "أنشطة البريد ونقل الطرود"
+  },
+  {
+    "code": "55",
+    "section_code": "I",
+    "title_en": "Accommodation",
+    "title_ar": "الإقامة"
+  },
+  {
+    "code": "56",
+    "section_code": "I",
+    "title_en": "Food and beverage service activities",
+    "title_ar": "أنشطة خدمات الطعام والمشروبات"
+  },
+  {
+    "code": "58",
+    "section_code": "J",
+    "title_en": "Publishing activities",
+    "title_ar": "أنشطة النشر"
+  },
+  {
+    "code": "59",
+    "section_code": "J",
+    "title_en": "Motion picture, video and television programme production, sound recording and music publishing activities",
+    "title_ar": "أنشطة إنتاج الأفلام والفيديو والبرامج التلفزيونية والتسجيل الصوتي ونشر الموسيقى"
+  },
+  {
+    "code": "60",
+    "section_code": "J",
+    "title_en": "Programming and broadcasting activities",
+    "title_ar": "أنشطة البرمجة والبث"
+  },
+  {
+    "code": "61",
+    "section_code": "J",
+    "title_en": "Telecommunications",
+    "title_ar": "الاتصالات السلكية واللاسلكية"
+  },
+  {
+    "code": "62",
+    "section_code": "J",
+    "title_en": "Computer programming, consultancy and related activities",
+    "title_ar": "أنشطة برمجة الحاسوب والاستشارات والأنشطة ذات الصلة"
+  },
+  {
+    "code": "63",
+    "section_code": "J",
+    "title_en": "Information service activities",
+    "title_ar": "أنشطة خدمات المعلومات"
+  },
+  {
+    "code": "64",
+    "section_code": "K",
+    "title_en": "Financial service activities, except insurance and pension funding",
+    "title_ar": "أنشطة الخدمات المالية، عدا تمويل التأمين والمعاشات التقاعدية"
+  },
+  {
+    "code": "65",
+    "section_code": "K",
+    "title_en": "Insurance, reinsurance and pension funding, except compulsory social security",
+    "title_ar": "التأمين وإعادة التأمين وتمويل المعاشات التقاعدية، عدا الضمان الاجتماعي الإلزامي"
+  },
+  {
+    "code": "66",
+    "section_code": "K",
+    "title_en": "Activities auxiliary to financial service and insurance activities",
+    "title_ar": "الأنشطة المساعدة للخدمات المالية وأنشطة التأمين"
+  },
+  {
+    "code": "68",
+    "section_code": "L",
+    "title_en": "Real estate activities",
+    "title_ar": "الأنشطة العقارية"
+  },
+  {
+    "code": "69",
+    "section_code": "M",
+    "title_en": "Legal and accounting activities",
+    "title_ar": "الأنشطة القانونية والمحاسبية"
+  },
+  {
+    "code": "70",
+    "section_code": "M",
+    "title_en": "Activities of head offices; management consultancy activities",
+    "title_ar": "أنشطة المكاتب الرئيسية؛ أنشطة الاستشارات الإدارية"
+  },
+  {
+    "code": "71",
+    "section_code": "M",
+    "title_en": "Architectural and engineering activities; technical testing and analysis",
+    "title_ar": "الأنشطة المعمارية والهندسية؛ الاختبار والتحليل التقني"
+  },
+  {
+    "code": "72",
+    "section_code": "M",
+    "title_en": "Scientific research and development",
+    "title_ar": "البحث والتطوير في المجال العلمي"
+  },
+  {
+    "code": "73",
+    "section_code": "M",
+    "title_en": "Advertising and market research",
+    "title_ar": "الإعلان وبحوث السوق"
+  },
+  {
+    "code": "74",
+    "section_code": "M",
+    "title_en": "Other professional, scientific and technical activities",
+    "title_ar": "الأنشطة المهنية والعلمية والتقنية الأخرى"
+  },
+  {
+    "code": "75",
+    "section_code": "M",
+    "title_en": "Veterinary activities",
+    "title_ar": "الأنشطة البيطرية"
+  },
+  {
+    "code": "77",
+    "section_code": "N",
+    "title_en": "Rental and leasing activities",
+    "title_ar": "أنشطة التأجير والاستئجار"
+  },
+  {
+    "code": "78",
+    "section_code": "N",
+    "title_en": "Employment activities",
+    "title_ar": "أنشطة التوظيف"
+  },
+  {
+    "code": "79",
+    "section_code": "N",
+    "title_en": "Travel agency, tour operator, reservation service and related activities",
+    "title_ar": "أنشطة وكالات السفر ومنظمي الجولات وخدمات الحجز والأنشطة ذات الصلة"
+  },
+  {
+    "code": "80",
+    "section_code": "N",
+    "title_en": "Security and investigation activities",
+    "title_ar": "أنشطة الأمن والتحقيقات"
+  },
+  {
+    "code": "81",
+    "section_code": "N",
+    "title_en": "Services to buildings and landscape activities",
+    "title_ar": "خدمات المباني وأنشطة تنسيق المواقع"
+  },
+  {
+    "code": "82",
+    "section_code": "N",
+    "title_en": "Office administrative, office support and other business support activities",
+    "title_ar": "الأنشطة الإدارية المكتبية وخدمات الدعم المكتبي وأنشطة دعم الأعمال الأخرى"
+  },
+  {
+    "code": "84",
+    "section_code": "O",
+    "title_en": "Public administration and defence; compulsory social security",
+    "title_ar": "الإدارة العامة والدفاع؛ الضمان الاجتماعي الإلزامي"
+  },
+  {
+    "code": "85",
+    "section_code": "P",
+    "title_en": "Education",
+    "title_ar": "التعليم"
+  },
+  {
+    "code": "86",
+    "section_code": "Q",
+    "title_en": "Human health activities",
+    "title_ar": "أنشطة صحة الإنسان"
+  },
+  {
+    "code": "87",
+    "section_code": "Q",
+    "title_en": "Residential care activities",
+    "title_ar": "أنشطة الرعاية الإيوائية"
+  },
+  {
+    "code": "88",
+    "section_code": "Q",
+    "title_en": "Social work activities without accommodation",
+    "title_ar": "أنشطة العمل الاجتماعي بدون إقامة"
+  },
+  {
+    "code": "90",
+    "section_code": "R",
+    "title_en": "Creative, arts and entertainment activities",
+    "title_ar": "الأنشطة الإبداعية والفنية والترفيهية"
+  },
+  {
+    "code": "91",
+    "section_code": "R",
+    "title_en": "Libraries, archives, museums and other cultural activities",
+    "title_ar": "المكتبات والمحفوظات والمتاحف والأنشطة الثقافية الأخرى"
+  },
+  {
+    "code": "92",
+    "section_code": "R",
+    "title_en": "Gambling and betting activities",
+    "title_ar": "أنشطة المقامرة والمراهنة"
+  },
+  {
+    "code": "93",
+    "section_code": "R",
+    "title_en": "Sports activities and amusement and recreation activities",
+    "title_ar": "الأنشطة الرياضية وأنشطة التسلية والاستجمام"
+  },
+  {
+    "code": "94",
+    "section_code": "S",
+    "title_en": "Activities of membership organizations",
+    "title_ar": "أنشطة المنظمات ذات العضوية"
+  },
+  {
+    "code": "95",
+    "section_code": "S",
+    "title_en": "Repair of computers and personal and household goods",
+    "title_ar": "إصلاح الحواسيب والسلع الشخصية والمنزلية"
+  },
+  {
+    "code": "96",
+    "section_code": "S",
+    "title_en": "Other personal service activities",
+    "title_ar": "أنشطة الخدمات الشخصية الأخرى"
+  },
+  {
+    "code": "97",
+    "section_code": "T",
+    "title_en": "Activities of households as employers of domestic personnel",
+    "title_ar": "أنشطة الأسر المعيشية كأرباب عمل للأفراد العاملين في المنازل"
+  },
+  {
+    "code": "98",
+    "section_code": "T",
+    "title_en": "Undifferentiated goods- and services-producing activities of private households for own use",
+    "title_ar": "أنشطة الأسر المعيشية الخاصة في إنتاج سلع وخدمات غير مميزة للاستعمال الخاص"
+  },
+  {
+    "code": "99",
+    "section_code": "U",
+    "title_en": "Activities of extraterritorial organizations and bodies",
+    "title_ar": "أنشطة المنظمات والهيئات غير الإقليمية"
+  }
+]

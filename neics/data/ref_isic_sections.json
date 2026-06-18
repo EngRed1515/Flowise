@@ -1,0 +1,107 @@
+[
+  {
+    "code": "A",
+    "title_en": "Agriculture, forestry and fishing",
+    "title_ar": "الزراعة والحراجة وصيد الأسماك"
+  },
+  {
+    "code": "B",
+    "title_en": "Mining and quarrying",
+    "title_ar": "التعدين واستغلال المحاجر"
+  },
+  {
+    "code": "C",
+    "title_en": "Manufacturing",
+    "title_ar": "الصناعة التحويلية"
+  },
+  {
+    "code": "D",
+    "title_en": "Electricity, gas, steam and air conditioning supply",
+    "title_ar": "إمدادات الكهرباء والغاز والبخار وتكييف الهواء"
+  },
+  {
+    "code": "E",
+    "title_en": "Water supply; sewerage, waste management and remediation activities",
+    "title_ar": "إمدادات المياه؛ أنشطة الصرف الصحي وإدارة النفايات ومعالجتها"
+  },
+  {
+    "code": "F",
+    "title_en": "Construction",
+    "title_ar": "التشييد"
+  },
+  {
+    "code": "G",
+    "title_en": "Wholesale and retail trade; repair of motor vehicles and motorcycles",
+    "title_ar": "تجارة الجملة والتجزئة؛ إصلاح المركبات ذات المحركات والدراجات النارية"
+  },
+  {
+    "code": "H",
+    "title_en": "Transportation and storage",
+    "title_ar": "النقل والتخزين"
+  },
+  {
+    "code": "I",
+    "title_en": "Accommodation and food service activities",
+    "title_ar": "أنشطة الإقامة وخدمات الطعام"
+  },
+  {
+    "code": "J",
+    "title_en": "Information and communication",
+    "title_ar": "المعلومات والاتصالات"
+  },
+  {
+    "code": "K",
+    "title_en": "Financial and insurance activities",
+    "title_ar": "الأنشطة المالية وأنشطة التأمين"
+  },
+  {
+    "code": "L",
+    "title_en": "Real estate activities",
+    "title_ar": "الأنشطة العقارية"
+  },
+  {
+    "code": "M",
+    "title_en": "Professional, scientific and technical activities",
+    "title_ar": "الأنشطة المهنية والعلمية والتقنية"
+  },
+  {
+    "code": "N",
+    "title_en": "Administrative and support service activities",
+    "title_ar": "أنشطة الخدمات الإدارية وخدمات الدعم"
+  },
+  {
+    "code": "O",
+    "title_en": "Public administration and defence; compulsory social security",
+    "title_ar": "الإدارة العامة والدفاع؛ الضمان الاجتماعي الإلزامي"
+  },
+  {
+    "code": "P",
+    "title_en": "Education",
+    "title_ar": "التعليم"
+  },
+  {
+    "code": "Q",
+    "title_en": "Human health and social work activities",
+    "title_ar": "أنشطة صحة الإنسان والعمل الاجتماعي"
+  },
+  {
+    "code": "R",
+    "title_en": "Arts, entertainment and recreation",
+    "title_ar": "الفنون والترفيه والاستجمام"
+  },
+  {
+    "code": "S",
+    "title_en": "Other service activities",
+    "title_ar": "أنشطة الخدمات الأخرى"
+  },
+  {
+    "code": "T",
+    "title_en": "Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",
+    "title_ar": "أنشطة الأسر المعيشية كأرباب عمل؛ أنشطة الأسر المعيشية في إنتاج سلع وخدمات غير مميزة للاستعمال الخاص"
+  },
+  {
+    "code": "U",
+    "title_en": "Activities of extraterritorial organizations and bodies",
+    "title_ar": "أنشطة المنظمات والهيئات غير الإقليمية"
+  }
+]
