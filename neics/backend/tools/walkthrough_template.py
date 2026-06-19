@@ -128,10 +128,50 @@ pre.code{background:#0f1c30;color:#d6e2ee;padding:12px;border-radius:8px;overflo
 .bar{height:9px;background:#eceef2;border-radius:6px;overflow:hidden}.bar>span{display:block;height:100%}
 .barrow{display:grid;grid-template-columns:180px 1fr 44px;gap:11px;align-items:center;margin:8px 0;font-size:12.5px}
 @media(max-width:620px){.barrow{grid-template-columns:120px 1fr 36px}}
+.barrow .lbl{cursor:pointer} .barrow .lbl:hover{color:var(--maroon);text-decoration:underline}
+/* header search */
+.hsearch{position:relative}
+.hsearch input{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:7px;padding:7px 10px;width:230px;font-size:12.5px}
+.hsearch input::placeholder{color:#c7cedb}
+.hsearch .res{position:absolute;top:38px;left:0;right:0;background:#fff;border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.2);max-height:300px;overflow:auto;z-index:90}
+.hsearch .res div{padding:8px 11px;font-size:12.5px;color:var(--ink);cursor:pointer;border-bottom:1px solid var(--rule)}
+.hsearch .res div:hover{background:var(--paper)}
+.tourbtn{background:var(--gold);color:var(--navy);border:0;border-radius:7px;padding:7px 12px;font-weight:700;font-size:12.5px}
+/* sliders */
+.slider{width:100%}
+input[type=range]{accent-color:var(--maroon)}
+.simrow{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;margin:9px 0;font-size:13px}
+@media(max-width:620px){.simrow{grid-template-columns:110px 1fr 56px}}
+.simrow .v{font-weight:700;color:var(--navy);text-align:right}
+.flip{background:#eef5f2;border:1px solid #cfe3db;border-radius:8px;padding:10px 13px;margin-top:10px;font-size:13px}
+/* compare */
+.cmpgrid{display:grid;gap:0;border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+.cmpgrid>div{padding:9px 12px;border-bottom:1px solid var(--rule);font-size:13px}
+/* modal / tour */
+.modal{position:fixed;inset:0;background:rgba(15,28,48,.55);z-index:200;display:flex;align-items:center;justify-content:center;padding:18px}
+.modal .box{background:#fff;border-radius:12px;max-width:560px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.modal .top{background:var(--navy);color:#fff;padding:14px 18px;font-family:Georgia,serif;font-weight:700;display:flex;align-items:center;gap:10px}
+.modal .top .step{margin-left:auto;font-family:Arial;font-size:12px;color:#c7cedb;font-weight:400}
+.modal .bd{padding:18px}
+.modal .ft{padding:12px 18px;border-top:1px solid var(--rule);display:flex;gap:10px;justify-content:flex-end}
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 40px 1fr;gap:10px;align-items:center}
+@media(max-width:620px){.ba{grid-template-columns:1fr}}
+.ba .col{border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+.ba .col .h{padding:8px 12px;font-weight:700;color:#fff;font-size:12.5px}
+.ba .col.before .h{background:#7a8597}.ba .col.after .h{background:var(--green)}
+.ba .col .r{display:flex;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--rule);font-size:12.5px}
+.ba .col .r:last-child{border-bottom:0}.ba .arrow{text-align:center;color:var(--maroon);font-size:22px}
+.chgd{background:#fff7e6}
+@media print{
+ .header,.banner,.side,.foot,#tour,.demo,.tourbtn,.hsearch{display:none!important}
+ .main{padding:0;max-width:none} .card{break-inside:avoid;box-shadow:none}
+ body{background:#fff}
+}
 @media(max-width:880px){
  .side{position:fixed;left:0;top:90px;bottom:0;z-index:40;transform:translateX(-100%);transition:.2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
  .side.open{transform:translateX(0)} .menubtn{display:inline-block} .main{padding:16px}
- .demos{grid-template-columns:1fr 1fr} .header .ttl small{display:none}
+ .demos{grid-template-columns:1fr 1fr} .header .ttl small{display:none} .hsearch input{width:130px}
 }
 </style>
 </head>
@@ -141,7 +181,9 @@ pre.code{background:#0f1c30;color:#d6e2ee;padding:12px;border-radius:8px;overflo
  <div class="crest">Q</div>
  <div class="ttl">Qatar Enterprise Classification Platform<small>State of Qatar · National Planning Council · National Statistics Center</small></div>
  <span class="sp"></span>
- <span class="bdg b-gold" style="background:rgba(201,169,97,.2);color:#f4e6c6;border-color:rgba(201,169,97,.5)">UAT PROTOTYPE</span>
+ <div class="hsearch"><input id="gsearch" placeholder="Search any enterprise…" oninput="gsearch(this.value)" onfocus="gsearch(this.value)" autocomplete="off"/><div id="gsres"></div></div>
+ <button class="tourbtn" onclick="tourStart()">★ Guided tour</button>
+ <span class="bdg b-gold" style="background:rgba(201,169,97,.2);color:#f4e6c6;border-color:rgba(201,169,97,.5)">UAT</span>
 </div>
 <div class="banner">DEMONSTRATION PROTOTYPE — UAT ENVIRONMENT — not for public deployment.</div>
 <div class="layout">
@@ -149,6 +191,7 @@ pre.code{background:#0f1c30;color:#d6e2ee;padding:12px;border-radius:8px;overflo
  <main class="main" id="content"></main>
 </div>
 <div class="foot" id="foot"></div>
+<div id="tour"></div>
 <script>
 "use strict";
 var DATA = /*__DATA__*/;
@@ -257,15 +300,21 @@ function ownCat(f){if(f.government_control)return "Government-controlled"+(f.gov
 
 /* ===================== STATE / NAV ===================== */
 var DEF=ent(DATA.demo&&DATA.demo[0]?DATA.demo[0][0]:DATA.enterprises[0].id)||DATA.enterprises[0];
-var state={view:"engine",entId:DATA.enterprises[0].id,isicQ:"",regQ:"",eng:engFrom(DEF),sectorPick:null,ruleStd:null};
+var state={view:"engine",entId:DATA.enterprises[0].id,isicQ:"",regQ:"",eng:engFrom(DEF),sectorPick:null,ruleStd:null,
+ animate:false,lastRun:null,
+ sim:{base:"QA-ENT-20260000002",gov:51,foreign:0,ctrl:"MAJ-VOTE",sales:22000,costs:12000,employment:5200,isFin:true},
+ cmp:["QA-ENT-20260000012","QA-ENT-20260000002","QA-ENT-20260000022"],
+ lcId:"QA-ENT-20260000013",lcEvent:"IPO_MINORITY",
+ tourStep:-1};
 function engFrom(e){var lab=DATA.labels&&DATA.labels[e.id];return {inp:Object.assign({legal_name_en:e.name},e.inp),edges:edgesOf(e),name:e.name,trade:lab?lab.trade_name:e.name,label_note:lab?lab.note:null,license:lab?lab.license_label:null,_id:e.id,_ran:false};}
 var NAV=[
  ["Classify",[["engine","Classification Engine"],["register","Enterprise Register"],["dashboard","Intelligence Dashboard"]]],
+ ["Advanced interaction",[["simulate","What-if Simulator"],["lifecycle","Reclassification & Events"],["compare","Compare Entities"]]],
  ["Reference",[["isic","ISIC / Activity Master"],["sector","Institutional Sector"],["ownership","Ownership & Control"],["legal","Legal Form & Registration"]]],
  ["Data & Standards",[["integration","Data Integration"],["sources","Source Tiers & Conflicts"],["standards","Standards Catalogue"],["methodology","Methodology"]]],
  ["Governance",[["governance","Governance"],["about","About"]]]
 ];
-var TITLES={engine:"Enterprise Classification Engine",register:"Enterprise Register",dashboard:"Enterprise Intelligence Dashboard",isic:"ISIC / Activity Master",sector:"Institutional Sector Classification",ownership:"Ownership & Control Module",legal:"Legal Form & Registration Module",integration:"Data Integration",sources:"Source Tiers & Conflict Resolution",standards:"Standards Catalogue",methodology:"Methodology",governance:"Governance",about:"About"};
+var TITLES={engine:"Enterprise Classification Engine",register:"Enterprise Register",dashboard:"Enterprise Intelligence Dashboard",simulate:"What-if Simulator",lifecycle:"Reclassification & Lifecycle Events",compare:"Compare Entities",isic:"ISIC / Activity Master",sector:"Institutional Sector Classification",ownership:"Ownership & Control Module",legal:"Legal Form & Registration Module",integration:"Data Integration",sources:"Source Tiers & Conflict Resolution",standards:"Standards Catalogue",methodology:"Methodology",governance:"Governance",about:"About"};
 function go(v,x){state.view=v;if(x)for(var k in x)state[k]=x[k];window.scrollTo(0,0);if(window.innerWidth<=880)document.getElementById('side').classList.remove('open');render();}
 
 /* ===================== VIEW: ENGINE ===================== */
@@ -300,7 +349,9 @@ function vEngine(){
   '<div style="font-weight:700;color:var(--navy);margin:8px 0 6px;font-family:Georgia,serif">Ownership &amp; control</div>'+
   tbl(["Owner","Equity %","Gov?","Resident?","Control",""],[]).replace("</table>",edrows+"</table>")+
   '<button class="btn sm soft" style="margin-top:9px" onclick="state.eng.edges.push({owner_id:\'New owner\',owner_name:\'New owner\',owned_id:\'ENG\',ownership_pct:0,voting_pct:0,control_indicator:\'\',owner_is_government:false,owner_is_resident:true,is_ultimate:\'Y\'});render()">+ Add owner</button>'+
-  '<div style="margin-top:16px"><button class="btn" style="font-size:15px;padding:12px 24px" onclick="runEngine()">▶ Run classification</button> <span class="small">— result appears below and the page scrolls to it</span></div>'+
+  '<div style="margin-top:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="btn" style="font-size:15px;padding:12px 24px" onclick="runEngine()">▶ Run classification</button>'+
+  '<label class="small" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" '+(state.animate?"checked":"")+' onchange="state.animate=this.checked"/> Animate the 18 tests</label>'+
+  '<span class="small">— result appears below and the page scrolls to it</span></div>'+
   '</div></div>'+
   '<div class="card"><div class="hd">3 · Assembled classification profile</div><div class="bd" id="engresult">'+labelBox+'<div class="note">Choose a case above or press <b>Run classification</b> — the full profile, confidence, source traceability, validation flags, rule trace and audit log appear here.</div></div></div>';
 }
@@ -312,10 +363,11 @@ function runEngine(){
  var edges=e.edges.map(function(x){return Object.assign({},x,{owned_id:"ENG",owner_id:x.owner_id||x.owner_name,is_ultimate:"Y"});});
  var f=buildFacts(inp,edges,"ENG");var oc=classify(f);var r=oc.result;
  var v=validateInput(inp);
+ state.lastRun={name:inp.legal_name_en,inputs:inp,ownership:edges,result:r,confidence:oc.confidence,classified_at:new Date().toISOString(),methodology_version:"1.0.0"};
  var src={isic_class:"GTA activity / NSO profiling",legal_form_code:"MoCI Commercial Register",residence:"NSO (BPM6 centre of interest)",sector_code:"NSO — SNA 2025",public_private:"NSO — GFS 2014",control_flag:"NSO profiling / QFMA ownership",size_class:"GTA turnover + MoL employment",fdi_flag:"NSO — OECD BD4",special_entity_flag:"NSO substance test"};
  var rows=[["Entity type",esc(entityType(r,inp)),"NSO (Test 1–2)"],
   ["Economic activity (ISIC Rev.4)",esc(r.isic_class)+" — "+esc((DATA.isic_list.filter(function(x){return x.code===r.isic_class;})[0]||{}).activity||""),src.isic_class],
-  ["Institutional sector",pp ? '<b>'+esc(r.sector_code)+'</b> — '+esc((DATA.sectors.filter(function(s){return s.code===r.sector_code;})[0]||{}).name||""):"",src.sector_code],
+  ["Institutional sector",'<b>'+esc(r.sector_code)+'</b> — '+esc((DATA.sectors.filter(function(s){return s.code===r.sector_code;})[0]||{}).name||""),src.sector_code],
   ["Public / private",pp(r.public_private)+" "+esc(ppName(r.public_private)),src.public_private],
   ["Ownership / control",esc(ownCat(f)),src.control_flag],
   ["Effective control mechanism",bdg(r.control_flag),src.control_flag],
@@ -325,7 +377,7 @@ function runEngine(){
   ["Residency",bdg(r.residence,"b-navy"),src.residence],
   ["FDI relevance",r.fdi_flag==="NONE"?"—":bdg(r.fdi_flag,"b-gold"),src.fdi_flag],
   ["Special entity",r.special_entity_flag==="NONE"?"—":bdg(r.special_entity_flag,"b-maroon"),src.special_entity_flag],
-  ["Register status",bdg(e._ranKnown?"Registered — committee-ruled":"Classified — draft (pending peer review)","b-gray"),"CSBR"]];
+  ["Register status",bdg("Classified — draft (pending peer review)","b-gray"),"CSBR"]];
  var profile='<div class="profile"><div class="top"><div class="nm">'+esc(inp.legal_name_en)+'</div><div class="id">'+(e.license?"License label: "+esc(e.license)+" · ":"")+'classified live · confidence '+oc.confidence+'</div></div>'+
   rows.map(function(p){return '<div class="r"><span class="k">'+p[0]+'</span><span style="text-align:right">'+p[1]+'</span></div>';}).join("")+'</div>';
  var warns=[];
@@ -333,19 +385,26 @@ function runEngine(){
  if(f.government_ownership_pct>=20&&["PRV-NFC","PRV-FC","FCC"].indexOf(r.public_private)>=0)warns.push('<div class="warn">Effective government ownership '+f.government_ownership_pct+'% but classified '+r.public_private+' — flagged for review (hidden government ownership).</div>');
  v.forEach(function(x){warns.push('<div class="warn">'+sevb(x[0])+' <b>'+esc(x[1])+'</b> '+esc(x[2])+'</div>');});
  var sources=tbl(["Dimension","Result","Authoritative source"],rows.map(function(p){return [p[0],p[1],p[2]];}));
- var trace=oc.trace.filter(function(t){return t.matched;}).map(function(t){return '<tr><td>'+esc(t.test_code)+'</td><td class="mono">'+esc(t.rule_id)+'</td><td>'+Object.keys(t.output).map(function(k){return bdg(t.output[k],"b-green");}).join(" ")+'</td><td class="small">'+esc(t.standard_ref||"")+'</td></tr>';}).join("");
- var summary='<div class="summary"><b>Final classification:</b> '+esc(inp.legal_name_en)+' is a <b>'+esc(entityType(r,inp))+'</b>, institutional sector <b>'+esc(r.sector_code)+'</b> ('+esc(ppName(r.public_private))+'), '+esc(r.market_status.toLowerCase())+' producer, '+esc(ownCat(f).toLowerCase())+', size <b>'+esc(r.size_class)+'</b>, '+esc(r.residence==="RES"?"resident":r.residence)+(r.fdi_flag!=="NONE"?", FDI: "+esc(r.fdi_flag):"")+'. Confidence '+oc.confidence+'.</div>';
+ var traceRows=oc.trace.filter(function(t){return t.matched;}).map(function(t){return '<tr><td>'+esc(t.test_code)+'</td><td class="mono">'+esc(t.rule_id)+'</td><td>'+Object.keys(t.output).map(function(k){return bdg(t.output[k],"b-green");}).join(" ")+'</td><td class="small">'+esc(t.standard_ref||"")+'</td></tr>';}).join("");
+ var summary='<div class="summary"><b>Final classification:</b> '+esc(inp.legal_name_en)+' is a <b>'+esc(entityType(r,inp))+'</b>, institutional sector <b>'+esc(r.sector_code)+'</b> ('+esc(ppName(r.public_private))+'), '+esc((r.market_status||"").toLowerCase())+' producer, '+esc(ownCat(f).toLowerCase())+', size <b>'+esc(r.size_class)+'</b>, '+esc(r.residence==="RES"?"resident":r.residence)+(r.fdi_flag!=="NONE"?", FDI: "+esc(r.fdi_flag):"")+'. Confidence '+oc.confidence+'.</div>';
  var nowiso=new Date().toISOString().slice(0,16).replace("T"," ");
  var audit=tbl(["When","Action","Detail","By"],[[nowiso,"CAPTURE","Inputs received via classification portal","portal"],[nowiso,"VALIDATE",(v.length?v.length+" finding(s)":"all checks passed"),"engine"],[nowiso,"CLASSIFY","18-test pipeline · confidence "+oc.confidence,"engine"],[nowiso,"PENDING","Awaiting peer review (Layer 2)","workflow"]]);
- el.innerHTML=profile+summary+
+ var exportbar='<div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:10px"><button class="btn soft sm" onclick="printProfile()">🖨 Print / Save PDF</button><button class="btn soft sm" onclick="exportJSON()">⬇ Download JSON</button></div>';
+ var traceCard=state.animate
+  ? '<div class="card"><div class="hd">How the answer was reached — live 18-test pipeline</div><div class="bd"><div class="timeline" id="engtl"></div></div></div>'
+  : '<div class="card"><div class="hd">How the answer was reached — rules applied</div><div class="bd">'+tbl(["Test","Rule","Output","Standard"],[]).replace("</table>",traceRows+"</table>")+'</div></div>';
+ el.innerHTML=exportbar+profile+summary+
   (warns.length?'<div class="card" style="margin-top:14px"><div class="hd">Validation flags &amp; warnings</div><div class="bd">'+warns.join("")+'</div></div>':'<div class="card" style="margin-top:14px"><div class="bd small" style="color:var(--green)">No validation flags — record passes all checks.</div></div>')+
   '<div class="card"><div class="hd">Ownership network</div><div class="bd"><div class="svgwrap">'+ownSVG(edges,"ENG",inp.legal_name_en)+'</div></div></div>'+
   '<div class="card"><div class="hd">Source traceability</div><div class="bd">'+sources+'</div></div>'+
-  '<div class="card"><div class="hd">How the answer was reached — rules applied</div><div class="bd">'+tbl(["Test","Rule","Output","Standard"],[]).replace("</table>",trace+"</table>")+'</div></div>'+
+  traceCard+
   '<div class="card"><div class="hd">Audit log</div><div class="bd">'+audit+'</div></div>';
+  if(state.animate){var tl=document.getElementById("engtl");var i=0;(function tick(){if(!tl||i>=oc.trace.length)return;var s=oc.trace[i];var d=document.createElement("div");d.className="tstep"+(s.matched?" fire":"");var out=s.matched?Object.keys(s.output).map(function(k){return bdg(s.output[k],"b-green");}).join(" "):'<span class="small">governance / process step</span>';d.innerHTML='<div class="bt">'+esc(s.test_code)+'</div><div class="nm">'+esc(s.test_name)+'</div><div style="margin-top:3px">'+out+'</div>'+(s.matched?'<div class="small" style="margin-top:2px">'+esc(s.rule_id)+' · '+esc(s.standard_ref||"")+'</div>':'');tl.appendChild(d);d.scrollIntoView({block:"nearest"});i++;setTimeout(tick,160);})();}
   if(el&&el.scrollIntoView)el.scrollIntoView({behavior:"smooth",block:"start"});
  }catch(err){if(el)el.innerHTML='<div class="warn"><b>Could not classify.</b> '+esc(err&&err.message)+'</div>';}
 }
+function printProfile(){try{window.print();}catch(e){}}
+function exportJSON(){try{if(!state.lastRun)return;var blob="data:application/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(state.lastRun,null,2));var a=document.createElement("a");a.href=blob;a.download=(state.lastRun.name||"classification").replace(/[^a-z0-9]+/gi,"_")+"_classification.json";document.body.appendChild(a);a.click();a.remove();}catch(e){}}
 
 /* ===================== VIEW: REGISTER ===================== */
 function vRegister(){
@@ -494,10 +553,11 @@ function vDashboard(){
  var E=DATA.enterprises;var conf=E.reduce(function(s,e){return s+(e.confidence||1);},0)/E.length;
  var withLei=E.filter(function(e){return e.lei;}).length;
  var k=function(n,l){return '<div class="kpi"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>';};
- return '<div class="grid auto" style="margin-bottom:18px">'+k(E.length,"Classified enterprises")+k(conf.toFixed(2),"Avg classification confidence")+k(Math.round(withLei/E.length*100)+"%","LEI coverage")+k("100%","Register completeness (demo)")+'</div>'+
-  '<div class="grid c2"><div class="card"><div class="hd">By institutional sector</div><div class="bd">'+bars(countBy(E,"sector"))+'</div></div>'+
-  '<div class="card"><div class="hd">By public / private</div><div class="bd">'+bars(countBy(E,"public_private"))+'</div></div></div>'+
-  '<div class="grid c2"><div class="card"><div class="hd">By enterprise size</div><div class="bd">'+bars(countBy(E,"size"))+'</div></div>'+
+ return '<div class="lead">Live distribution of the classified register. <b>Click any bar label to drill into the Enterprise Register</b> filtered to that group.</div>'+
+  '<div class="grid auto" style="margin-bottom:18px">'+k(E.length,"Classified enterprises")+k(conf.toFixed(2),"Avg classification confidence")+k(Math.round(withLei/E.length*100)+"%","LEI coverage")+k("100%","Register completeness (demo)")+'</div>'+
+  '<div class="grid c2"><div class="card"><div class="hd">By institutional sector</div><div class="bd">'+drillBars(countBy(E,"sector"),"regSec")+'</div></div>'+
+  '<div class="card"><div class="hd">By public / private</div><div class="bd">'+drillBars(countBy(E,"public_private"),"regPP")+'</div></div></div>'+
+  '<div class="grid c2"><div class="card"><div class="hd">By enterprise size</div><div class="bd">'+drillBars(countBy(E,"size"),"regSize")+'</div></div>'+
   '<div class="card"><div class="hd">By legal form</div><div class="bd">'+bars(countBy(E,"legal_form"))+'</div></div></div>'+
   '<div class="grid c2"><div class="card"><div class="hd">By control mechanism</div><div class="bd">'+bars(countBy(E,"control"))+'</div></div>'+
   '<div class="card"><div class="hd">By residency</div><div class="bd">'+bars(countBy(E,"residence"))+'</div></div></div>';
@@ -511,13 +571,119 @@ function vAbout(){
   '<div class="card" style="border-color:var(--maroon)"><div class="hd">Disclaimer</div><div class="bd"><b>DEMONSTRATION PROTOTYPE — UAT ENVIRONMENT — not for public deployment.</b> Entity-level records would be confidential under the Statistics Law; this prototype contains only stylised sample data.</div></div>';
 }
 
-var VIEWS={engine:vEngine,register:vRegister2,dashboard:vDashboard,isic:vIsic,sector:vSector,ownership:vOwnership,legal:vLegal,integration:vIntegration,sources:vSources,standards:vStandards,methodology:vMethodology,governance:vGovernance,about:vAbout};
+/* ===================== ADVANCED INTERACTION ===================== */
+function classifyAdhoc(inp,edges){var ed=edges.map(function(x){return Object.assign({},x,{owned_id:"ADHOC",owner_id:x.owner_id||x.owner_name,is_ultimate:"Y"});});return classify(buildFacts(inp,ed,"ADHOC"));}
+function drillBars(map,stateKey){var e=Object.keys(map).map(function(k){return [k,map[k]];}).sort(function(a,b){return b[1]-a[1];});var mx=Math.max.apply(null,e.map(function(x){return x[1];}).concat([1]));
+ return e.map(function(p,i){return '<div class="barrow"><div class="lbl" onclick="go(\'register\',{'+stateKey+':\''+p[0]+'\'})">'+esc(p[0])+'</div><div class="bar"><span style="width:'+(p[1]/mx*100)+'%;background:'+PAL[i%PAL.length]+'"></span></div><div style="text-align:right;font-weight:700">'+p[1]+'</div></div>';}).join("");}
+
+/* ---- global header search ---- */
+function gsearch(q){var box=document.getElementById("gsres");if(!box)return;q=(q||"").toLowerCase().trim();if(!q){box.innerHTML="";box.style.display="none";return;}
+ var hits=DATA.enterprises.filter(function(e){return (e.name+e.id+e.sector+e.public_private).toLowerCase().indexOf(q)>=0;}).slice(0,8);
+ box.style.display=hits.length?"block":"none";
+ box.innerHTML=hits.map(function(e){return '<div onclick="gsel(\''+e.id+'\')"><b>'+esc(e.name)+'</b> <span class="small">· '+esc(e.sector)+' · '+esc(e.public_private)+'</span></div>';}).join("");}
+function gsel(id){var box=document.getElementById("gsres");if(box){box.innerHTML="";box.style.display="none";}var inp=document.getElementById("gsearch");if(inp)inp.value="";loadDemo(id);}
+
+/* ---- guided tour ---- */
+var TOUR=[
+ ["engine","Welcome","This is the Qatar Enterprise Classification Platform — a UAT prototype. The engine classifies an entity by its actual activity, ownership, control, legal form, residency and operations — never by its name or licence label. Press Next to begin."],
+ ["engine","Classify a case","On the Engine screen, choose any of the 74 enterprises from the dropdown, or click a demonstration card. The 18-test engine runs live in your browser and assembles the full classification profile."],
+ ["simulate","What-if simulator","Drag the ownership and market sliders and watch the classification change in real time — see an entity flip across the 50% control line or the market/non-market boundary."],
+ ["lifecycle","Lifecycle events","Apply a corporate event — an IPO, a foreign acquisition, an activity change — and see the before/after reclassification with a full event and audit log."],
+ ["compare","Compare entities","Place several entities side by side to see how the same methodology resolves different ownership and activity structures."],
+ ["dashboard","Intelligence dashboard","Distributions by sector, ownership, size and more. Click any bar to drill into the register."],
+ ["methodology","The methodology","The 18 sequenced tests, the standards behind them, and a live worked example. Every result is fully traceable."],
+ ["about","You're ready","Explore freely — everything is clickable. This is a demonstration prototype on stylised sample data; not for public deployment."]
+];
+function tourStart(){state.tourStep=0;tourShow();}
+function tourShow(){var t=document.getElementById("tour");if(!t)return;if(state.tourStep<0||state.tourStep>=TOUR.length){t.innerHTML="";return;}
+ var s=TOUR[state.tourStep];if(state.view!==s[0]){state.view=s[0];render();}
+ t.innerHTML='<div class="modal"><div class="box"><div class="top">★ Guided tour<span class="step">Step '+(state.tourStep+1)+' of '+TOUR.length+'</span></div>'+
+  '<div class="bd"><div style="font-family:Georgia,serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px">'+esc(s[1])+'</div><div>'+esc(s[2])+'</div></div>'+
+  '<div class="ft"><button class="btn soft sm" onclick="tourEnd()">Skip</button>'+(state.tourStep>0?'<button class="btn ghost sm" onclick="tourNav(-1)">Back</button>':'')+'<button class="btn sm" onclick="tourNav(1)">'+(state.tourStep===TOUR.length-1?"Finish":"Next")+'</button></div></div></div>';}
+function tourNav(d){state.tourStep+=d;if(state.tourStep>=TOUR.length){tourEnd();return;}tourShow();}
+function tourEnd(){state.tourStep=-1;var t=document.getElementById("tour");if(t)t.innerHTML="";}
+
+/* ---- What-if simulator ---- */
+function simEdges(){var s=state.sim,ed=[];var rem=100;
+ if(s.gov>0){ed.push({owner_id:"Government",owner_name:"Government of Qatar",owned_id:"SIM",ownership_pct:s.gov,voting_pct:s.gov,control_indicator:(s.gov>50?"MAJ-VOTE":s.ctrl),owner_is_government:true,owner_is_resident:true,is_ultimate:"Y"});rem-=s.gov;}
+ if(s.foreign>0){ed.push({owner_id:"Foreign",owner_name:"Foreign investor",owned_id:"SIM",ownership_pct:s.foreign,voting_pct:s.foreign,control_indicator:(s.foreign>50?"MAJ-VOTE":""),owner_is_government:false,owner_is_resident:false,is_ultimate:"Y"});rem-=s.foreign;}
+ if(rem>0.5)ed.push({owner_id:"Private",owner_name:"Resident private investors",owned_id:"SIM",ownership_pct:Math.round(rem*10)/10,voting_pct:Math.round(rem*10)/10,control_indicator:(rem>50?"MAJ-VOTE":""),owner_is_government:false,owner_is_resident:true,is_ultimate:"Y"});
+ return ed;}
+function simRun(){var s=state.sim,base=ent(s.base)||DATA.enterprises[0];var box=document.getElementById("simout");if(!box)return;
+ var inp={legal_name_en:"Simulated entity",legal_form_code:base.inp.legal_form_code,residence:"RES",isic_class:base.inp.isic_class,
+  employment:s.employment,turnover_qar:s.sales*1000,sales:s.sales*1000,production_costs:s.costs*1000,is_financial:s.isFin,is_nonprofit:false,
+  has_premises:true,has_employees:true,has_autonomy:true,jurisdiction:base.inp.jurisdiction};
+ var edges=simEdges();var f=buildFacts(inp,edges,"SIM");var oc=classify(f);var r=oc.result;var cover=f.sales_cover_pct;
+ var pass=[["Institutional sector","<b>"+esc(r.sector_code)+"</b>"],["Public / private",pp(r.public_private)],["Control",bdg(r.control_flag)],["Market",r.market_status==="MARKET"?bdg("MARKET","b-green"):bdg("NON-MARKET","b-amber")],["Size",bdg(r.size_class,"b-navy")],["FDI",r.fdi_flag==="NONE"?"—":bdg(r.fdi_flag,"b-gold")]].map(function(p){return '<div class="r"><span class="k">'+p[0]+'</span><span>'+p[1]+'</span></div>';}).join("");
+ var flips=[];
+ flips.push("Effective government voting <b>"+f.government_voting_pct+"%</b> "+(f.government_voting_pct>50?"→ above the 50% control line (public)":"→ below 50%"));
+ if(cover!=null)flips.push("Sales cover <b>"+cover.toFixed(0)+"%</b> of costs "+(cover>50?"→ market producer":"→ non-market producer"));
+ if(f.foreign_ownership_pct>=10)flips.push("Foreign ownership <b>"+f.foreign_ownership_pct+"%</b> → FDI: "+r.fdi_flag);
+ box.innerHTML='<div class="profile"><div class="top"><div class="nm">Live result · confidence '+oc.confidence+'</div><div class="id">based on '+esc(base.name)+' activity ('+esc(base.inp.isic_class)+')</div></div>'+pass+'</div>'+
+  '<div class="flip">'+flips.map(function(x){return '<div>• '+x+'</div>';}).join("")+'</div>'+
+  '<div class="svgwrap" style="margin-top:12px">'+ownSVG(edges,"SIM","Simulated entity")+'</div>';}
+function vSimulate(){var s=state.sim;
+ var bsel='<select onchange="state.sim.base=this.value;simRun()" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px;max-width:360px">'+DATA.enterprises.map(function(e){return '<option value="'+e.id+'" '+(s.base===e.id?"selected":"")+'>'+esc(e.name)+'</option>';}).join("")+'</select>';
+ var rng=function(id,label,min,max,step,val,suf){return '<div class="simrow"><div>'+label+'</div><input class="slider" type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'" oninput="state.sim.'+id+'=this.valueAsNumber;document.getElementById(\'sv_'+id+'\').textContent=this.value+\''+(suf||"")+'\';simRun()"/><div class="v" id="sv_'+id+'">'+val+(suf||"")+'</div></div>';};
+ var csel='<div class="simrow"><div>Minority control (if gov ≤50%)</div><select onchange="state.sim.ctrl=this.value;simRun()" style="padding:7px;border:1px solid var(--rule);border-radius:6px">'+["MAJ-VOTE","GOLDEN","BOARD","CONTRACT","REGULATORY","NONE"].map(function(o){return '<option '+(s.ctrl===o?"selected":"")+'>'+o+'</option>';}).join("")+'</select><div></div></div>';
+ var fin='<div class="simrow"><div>Financial intermediary?</div><label class="small"><input type="checkbox" '+(s.isFin?"checked":"")+' onchange="state.sim.isFin=this.checked;simRun()"/> treat as financial corporation</label><div></div></div>';
+ return '<div class="principle"><b>Move the sliders and watch the classification change instantly.</b> This shows exactly how ownership, control and the market test drive the outcome — for example, take government voting across 50%, or push sales below costs.</div>'+
+  '<div class="grid c2"><div class="card"><div class="hd">Inputs</div><div class="bd"><div class="field"><label>Base activity / legal form from</label>'+bsel+'</div>'+
+  rng("gov","Government ownership",0,100,1,s.gov,"%")+rng("foreign","Foreign ownership",0,100,1,s.foreign,"%")+csel+
+  rng("sales","Sales (QAR m)",0,40000,100,s.sales,"m")+rng("costs","Production costs (QAR m)",0,40000,100,s.costs,"m")+rng("employment","Employment (FTE)",0,8000,10,s.employment,"")+fin+
+  '</div></div><div class="card"><div class="hd">Live classification</div><div class="bd" id="simout"></div></div></div>';
+}
+
+/* ---- Reclassification & lifecycle events ---- */
+var EVENTS={
+ IPO_MINORITY:["IPO — government sells down to 40%","Government floats a majority of shares, retaining a 40% minority with no special control rights.",function(inp,edges){var e=[{owner_id:"Government",owner_name:"Government of Qatar",owned_id:"LC",ownership_pct:40,voting_pct:40,control_indicator:"",owner_is_government:true,owner_is_resident:true,is_ultimate:"Y"},{owner_id:"Float",owner_name:"Public float (QSE)",owned_id:"LC",ownership_pct:60,voting_pct:60,control_indicator:"",owner_is_government:false,owner_is_resident:true,is_ultimate:"Y"}];return [inp,e];}],
+ IPO_GOLDEN:["IPO — sell down to 40% but retain a golden share","Government floats to 40% but keeps a golden share with veto over strategic decisions.",function(inp,edges){var e=[{owner_id:"Government",owner_name:"Government of Qatar",owned_id:"LC",ownership_pct:40,voting_pct:40,control_indicator:"GOLDEN",owner_is_government:true,owner_is_resident:true,is_ultimate:"Y"},{owner_id:"Float",owner_name:"Public float (QSE)",owned_id:"LC",ownership_pct:60,voting_pct:60,control_indicator:"",owner_is_government:false,owner_is_resident:true,is_ultimate:"Y"}];return [inp,e];}],
+ FOREIGN_ACQ:["Foreign acquisition — 70% taken by a foreign investor","A foreign multinational acquires a controlling 70% stake.",function(inp,edges){var e=[{owner_id:"ForeignAcq",owner_name:"Foreign acquirer",owned_id:"LC",ownership_pct:70,voting_pct:70,control_indicator:"MAJ-VOTE",owner_is_government:false,owner_is_resident:false,is_ultimate:"Y"},{owner_id:"Residual",owner_name:"Residual holders",owned_id:"LC",ownership_pct:30,voting_pct:30,control_indicator:"",owner_is_government:false,owner_is_resident:true,is_ultimate:"Y"}];return [inp,e];}],
+ NATIONALISATION:["Nationalisation — State takes 100%","The State acquires the entity in full.",function(inp,edges){var e=[{owner_id:"Government",owner_name:"Government of Qatar",owned_id:"LC",ownership_pct:100,voting_pct:100,control_indicator:"MAJ-VOTE",owner_is_government:true,owner_is_resident:true,is_ultimate:"Y"}];return [inp,e];}],
+ ACTIVITY_CHANGE:["Activity change — pivots to banking","The principal activity by value added shifts to monetary intermediation (a bank).",function(inp,edges){var i=Object.assign({},inp);i.isic_class="6419";i.is_financial=true;return [i,edges];}],
+ MARKET_LOSS:["Subsidy shift — sales fall below cost recovery","Tariffs become subsidised; sales now cover less than 50% of costs.",function(inp,edges){var i=Object.assign({},inp);i.sales=Math.round((i.production_costs||100)*0.3);return [i,edges];}],
+ DORMANCY:["Dormancy — operations cease","No employment, no turnover, no transactions.",function(inp,edges){var i=Object.assign({},inp);i.employment=0;i.turnover_qar=0;i.sales=0;i.has_employees=false;i.has_premises=false;return [i,edges];}]
+};
+function vLifecycle(){
+ var e=ent(state.lcId)||DATA.enterprises[0];
+ var esel='<select onchange="state.lcId=this.value;render()" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px;max-width:360px">'+DATA.enterprises.map(function(x){return '<option value="'+x.id+'" '+(state.lcId===x.id?"selected":"")+'>'+esc(x.name)+'</option>';}).join("")+'</select>';
+ var evsel='<select onchange="state.lcEvent=this.value;render()" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px;max-width:360px">'+Object.keys(EVENTS).map(function(k){return '<option value="'+k+'" '+(state.lcEvent===k?"selected":"")+'>'+esc(EVENTS[k][0])+'</option>';}).join("")+'</select>';
+ var ev=EVENTS[state.lcEvent];
+ var before=classifyEnterprise(e).result;
+ var mod=ev[2](Object.assign({legal_name_en:e.name},e.inp),edgesOf(e).map(function(x){return Object.assign({},x,{owned_id:"LC"});}));
+ var after=classifyAdhoc(mod[0],mod[1]).result;
+ var dims=[["Institutional sector","sector_code"],["Public / private","public_private"],["Control","control_flag"],["Market","market_status"],["Size","size_class"],["FDI","fdi_flag"],["Special entity","special_entity_flag"]];
+ var col=function(cls,title,r){return '<div class="col '+cls+'"><div class="h">'+title+'</div>'+dims.map(function(d){var chg=before[d[1]]!==after[d[1]];return '<div class="r'+(chg?" chgd":"")+'"><span class="k muted">'+d[0]+'</span><span>'+(d[1]==="public_private"?pp(r[d[1]]):"<b>"+esc(r[d[1]])+"</b>")+'</span></div>';}).join("")+'</div>';};
+ var changed=dims.filter(function(d){return before[d[1]]!==after[d[1]];});
+ var now=new Date().toISOString().slice(0,16).replace("T"," ");
+ var log=tbl(["When","Event","Action","Detail"],[[now,esc(ev[0]),"DEMOGRAPHIC EVENT",esc(ev[1])],[now,"—","RECLASSIFY","18-test pipeline re-run on the new facts"],[now,"—","VERSION","new classification version written; prior retained (valid_from/valid_to)"],[now,"—","AUDIT",changed.length+" dimension(s) changed; logged with rationale"]]);
+ return '<div class="principle"><b>Classification is event-driven.</b> Every corporate event — births, deaths, mergers, splits, IPOs, takeovers, activity changes — is recorded and triggers a reclassification. The prior classification is never overwritten; a new version is written so history is reproducible.</div>'+
+  '<div class="card"><div class="hd">Choose an entity and apply an event</div><div class="bd"><div class="frow"><div class="field"><label>Entity</label>'+esel+'</div><div class="field"><label>Lifecycle event (trigger)</label>'+evsel+'</div></div><div class="small">'+esc(ev[1])+'</div></div></div>'+
+  '<div class="card"><div class="hd">Before → after reclassification'+(changed.length?(' — '+changed.length+' dimension(s) change'):' — no change')+'</div><div class="bd"><div class="ba"><div>'+col("before","BEFORE — current classification",before)+'</div><div class="arrow">→</div><div>'+col("after","AFTER — "+esc(ev[0]),after)+'</div></div></div></div>'+
+  '<div class="card"><div class="hd">Event &amp; audit log</div><div class="bd">'+log+'</div></div>';
+}
+
+/* ---- Compare entities ---- */
+function vCompare(){
+ var picks=state.cmp.slice(0,4);
+ var opts=function(sel){return DATA.enterprises.map(function(e){return '<option value="'+e.id+'" '+(sel===e.id?"selected":"")+'>'+esc(e.name)+'</option>';}).join("");};
+ var sels=picks.map(function(id,i){return '<select onchange="state.cmp['+i+']=this.value;render()" style="width:100%;padding:7px;border:1px solid var(--rule);border-radius:6px">'+opts(id)+'</select>';});
+ var dims=[["Legal form","legal_form"],["Institutional sector","sector"],["Public / private","public_private"],["Control","control"],["Market","market"],["Size","size"],["Residency","residence"],["FDI","fdi"],["Special","special"],["Confidence","confidence"]];
+ var rows=dims.map(function(d){return '<div style="display:grid;grid-template-columns:160px repeat('+picks.length+',1fr);gap:0"><div style="padding:9px 12px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12.5px;background:#f0f1f4">'+d[0]+'</div>'+picks.map(function(id){var e=ent(id);var v=e[d[1]];return '<div style="padding:9px 12px;border-bottom:1px solid var(--rule);border-left:1px solid var(--rule);font-size:12.5px">'+(d[1]==="public_private"?pp(v):esc(v))+'</div>';}).join("")+'</div>';}).join("");
+ var head='<div style="display:grid;grid-template-columns:160px repeat('+picks.length+',1fr);gap:0"><div style="padding:9px 12px;background:var(--navy);color:#fff"></div>'+picks.map(function(id){var e=ent(id);return '<div style="padding:9px 12px;background:var(--navy);color:#fff;border-left:1px solid #2a3a52;font-size:12.5px;font-weight:700">'+esc(e.name)+'</div>';}).join("")+'</div>';
+ return '<div class="lead">Place entities side by side to see how the same 18-test methodology resolves different ownership, activity and control structures into different classifications.</div>'+
+  '<div class="card"><div class="hd">Select entities to compare</div><div class="bd"><div class="grid" style="grid-template-columns:repeat('+picks.length+',1fr)">'+sels.join("")+'</div></div></div>'+
+  '<div class="card"><div class="bd"><div class="cmpgrid" style="border:0">'+head+rows+'</div><p class="small" style="margin-top:10px">Tip: change any selector to swap an entity. Open the engine for a full profile and explainability of any one of them.</p></div></div>';
+}
+
+var VIEWS={engine:vEngine,register:vRegister2,dashboard:vDashboard,simulate:vSimulate,lifecycle:vLifecycle,compare:vCompare,isic:vIsic,sector:vSector,ownership:vOwnership,legal:vLegal,integration:vIntegration,sources:vSources,standards:vStandards,methodology:vMethodology,governance:vGovernance,about:vAbout};
 function render(){
  try{
   document.getElementById("nav").innerHTML=NAV.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(m){var idx=Object.keys(TITLES).indexOf(m[0])+1;return '<a class="'+(state.view===m[0]?"active":"")+'" onclick="go(\''+m[0]+'\')"><span class="ix">'+idx+'</span>'+m[1]+'</a>';}).join("");}).join("");
   var c=document.getElementById("content");
   c.innerHTML='<div class="pt">'+esc(TITLES[state.view])+'</div><div class="ps">Qatar Enterprise Classification Platform · classify by economic reality — activity, ownership, control, residency — not by label.</div>'+(VIEWS[state.view]||vEngine)();
   if(state.view==="engine"&&state.eng&&state.eng._auto){state.eng._auto=false;runEngine();}
+  if(state.view==="simulate")simRun();
   document.getElementById("foot").innerHTML='Qatar Enterprise Classification Platform · UAT clickable prototype · data &amp; methodology extracted from the National Framework, Implementation Workbook, Executive Story and Independent Review · generated '+esc(DATA.generated)+'. <b>Not for public deployment.</b>';
  }catch(err){
   document.getElementById("content").innerHTML='<div class="card"><div class="bd"><b>Display notice.</b> <span class="small">'+esc(err&&err.message)+'</span> <button class="btn sm" onclick="state.view=\'engine\';render()">Back to engine</button></div></div>';
