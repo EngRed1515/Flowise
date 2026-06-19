@@ -182,6 +182,7 @@ input[type=range]{accent-color:var(--maroon)}
  <div class="ttl">Qatar Enterprise Classification Platform<small>State of Qatar · National Planning Council · National Statistics Center</small></div>
  <span class="sp"></span>
  <div class="hsearch"><input id="gsearch" placeholder="Search any enterprise…" oninput="gsearch(this.value)" onfocus="gsearch(this.value)" autocomplete="off"/><div id="gsres"></div></div>
+ <select id="rolesel" title="Acting as (role-based access)" onchange="state.role=this.value;render()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:7px;padding:6px 8px;font-size:12px"></select>
  <button class="tourbtn" onclick="tourStart()">★ Guided tour</button>
  <span class="bdg b-gold" style="background:rgba(201,169,97,.2);color:#f4e6c6;border-color:rgba(201,169,97,.5)">UAT</span>
 </div>
@@ -301,20 +302,24 @@ function ownCat(f){if(f.government_control)return "Government-controlled"+(f.gov
 /* ===================== STATE / NAV ===================== */
 var DEF=ent(DATA.demo&&DATA.demo[0]?DATA.demo[0][0]:DATA.enterprises[0].id)||DATA.enterprises[0];
 var state={view:"engine",entId:DATA.enterprises[0].id,isicQ:"",regQ:"",eng:engFrom(DEF),sectorPick:null,ruleStd:null,
- animate:false,lastRun:null,
+ animate:false,lastRun:null,role:"Classifier",queue:[],
  sim:{base:"QA-ENT-20260000002",gov:51,foreign:0,ctrl:"MAJ-VOTE",sales:22000,costs:12000,employment:5200,isFin:true},
  cmp:["QA-ENT-20260000012","QA-ENT-20260000002","QA-ENT-20260000022"],
  lcId:"QA-ENT-20260000013",lcEvent:"IPO_MINORITY",
+ batch:["QA-ENT-20260000002","QA-ENT-20260000012","QA-ENT-20260000022","QA-ENT-20260000024","QA-ENT-20260000080"],
+ ruleId:null,ruleFacts:"{}",groupId:(DATA.groups[0]||{}).group_id,scen:-1,scenStep:0,
  tourStep:-1};
+function can(perm){var p=DATA.roles[state.role]||[];return p.indexOf("*")>=0||p.indexOf(perm)>=0;}
 function engFrom(e){var lab=DATA.labels&&DATA.labels[e.id];return {inp:Object.assign({legal_name_en:e.name},e.inp),edges:edgesOf(e),name:e.name,trade:lab?lab.trade_name:e.name,label_note:lab?lab.note:null,license:lab?lab.license_label:null,_id:e.id,_ran:false};}
 var NAV=[
- ["Classify",[["engine","Classification Engine"],["register","Enterprise Register"],["dashboard","Intelligence Dashboard"]]],
- ["Advanced interaction",[["simulate","What-if Simulator"],["lifecycle","Reclassification & Events"],["compare","Compare Entities"]]],
+ ["Classify",[["engine","Classification Engine"],["batch","Bulk Classification"],["register","Enterprise Register"],["dashboard","Intelligence Dashboard"]]],
+ ["Advanced interaction",[["simulate","What-if Simulator"],["lifecycle","Reclassification & Events"],["compare","Compare Entities"],["scenarios","Scenario Player"]]],
+ ["Analytics",[["groups","Enterprise Group Explorer"],["quality","Data Quality & Anomalies"]]],
  ["Reference",[["isic","ISIC / Activity Master"],["sector","Institutional Sector"],["ownership","Ownership & Control"],["legal","Legal Form & Registration"]]],
- ["Data & Standards",[["integration","Data Integration"],["sources","Source Tiers & Conflicts"],["standards","Standards Catalogue"],["methodology","Methodology"]]],
- ["Governance",[["governance","Governance"],["about","About"]]]
+ ["Methodology & standards",[["methodology","Methodology"],["rules","Rules Explorer"],["standards","Standards Catalogue"],["integration","Data Integration"],["sources","Source Tiers & Conflicts"]]],
+ ["Governance & workflow",[["review","Review & Approval"],["governance","Governance"],["users","Roles & Permissions"],["about","About"]]]
 ];
-var TITLES={engine:"Enterprise Classification Engine",register:"Enterprise Register",dashboard:"Enterprise Intelligence Dashboard",simulate:"What-if Simulator",lifecycle:"Reclassification & Lifecycle Events",compare:"Compare Entities",isic:"ISIC / Activity Master",sector:"Institutional Sector Classification",ownership:"Ownership & Control Module",legal:"Legal Form & Registration Module",integration:"Data Integration",sources:"Source Tiers & Conflict Resolution",standards:"Standards Catalogue",methodology:"Methodology",governance:"Governance",about:"About"};
+var TITLES={engine:"Enterprise Classification Engine",batch:"Bulk Classification",register:"Enterprise Register",dashboard:"Enterprise Intelligence Dashboard",simulate:"What-if Simulator",lifecycle:"Reclassification & Lifecycle Events",compare:"Compare Entities",scenarios:"Scenario Player",groups:"Enterprise Group Explorer",quality:"Data Quality & Anomalies",isic:"ISIC / Activity Master",sector:"Institutional Sector Classification",ownership:"Ownership & Control Module",legal:"Legal Form & Registration Module",methodology:"Methodology",rules:"Rules Explorer",standards:"Standards Catalogue",integration:"Data Integration",sources:"Source Tiers & Conflict Resolution",review:"Review & Approval Workflow",governance:"Governance",users:"Roles & Permissions",about:"About"};
 function go(v,x){state.view=v;if(x)for(var k in x)state[k]=x[k];window.scrollTo(0,0);if(window.innerWidth<=880)document.getElementById('side').classList.remove('open');render();}
 
 /* ===================== VIEW: ENGINE ===================== */
@@ -389,7 +394,7 @@ function runEngine(){
  var summary='<div class="summary"><b>Final classification:</b> '+esc(inp.legal_name_en)+' is a <b>'+esc(entityType(r,inp))+'</b>, institutional sector <b>'+esc(r.sector_code)+'</b> ('+esc(ppName(r.public_private))+'), '+esc((r.market_status||"").toLowerCase())+' producer, '+esc(ownCat(f).toLowerCase())+', size <b>'+esc(r.size_class)+'</b>, '+esc(r.residence==="RES"?"resident":r.residence)+(r.fdi_flag!=="NONE"?", FDI: "+esc(r.fdi_flag):"")+'. Confidence '+oc.confidence+'.</div>';
  var nowiso=new Date().toISOString().slice(0,16).replace("T"," ");
  var audit=tbl(["When","Action","Detail","By"],[[nowiso,"CAPTURE","Inputs received via classification portal","portal"],[nowiso,"VALIDATE",(v.length?v.length+" finding(s)":"all checks passed"),"engine"],[nowiso,"CLASSIFY","18-test pipeline · confidence "+oc.confidence,"engine"],[nowiso,"PENDING","Awaiting peer review (Layer 2)","workflow"]]);
- var exportbar='<div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:10px"><button class="btn soft sm" onclick="printProfile()">🖨 Print / Save PDF</button><button class="btn soft sm" onclick="exportJSON()">⬇ Download JSON</button></div>';
+ var exportbar='<div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:10px"><button class="btn sm" onclick="submitReview()">✔ Submit for peer review</button><button class="btn soft sm" onclick="printProfile()">🖨 Print / Save PDF</button><button class="btn soft sm" onclick="exportJSON()">⬇ Download JSON</button></div>';
  var traceCard=state.animate
   ? '<div class="card"><div class="hd">How the answer was reached — live 18-test pipeline</div><div class="bd"><div class="timeline" id="engtl"></div></div></div>'
   : '<div class="card"><div class="hd">How the answer was reached — rules applied</div><div class="bd">'+tbl(["Test","Rule","Output","Standard"],[]).replace("</table>",traceRows+"</table>")+'</div></div>';
@@ -594,14 +599,17 @@ var TOUR=[
  ["methodology","The methodology","The 18 sequenced tests, the standards behind them, and a live worked example. Every result is fully traceable."],
  ["about","You're ready","Explore freely — everything is clickable. This is a demonstration prototype on stylised sample data; not for public deployment."]
 ];
-function tourStart(){state.tourStep=0;tourShow();}
-function tourShow(){var t=document.getElementById("tour");if(!t)return;if(state.tourStep<0||state.tourStep>=TOUR.length){t.innerHTML="";return;}
- var s=TOUR[state.tourStep];if(state.view!==s[0]){state.view=s[0];render();}
- t.innerHTML='<div class="modal"><div class="box"><div class="top">★ Guided tour<span class="step">Step '+(state.tourStep+1)+' of '+TOUR.length+'</span></div>'+
-  '<div class="bd"><div style="font-family:Georgia,serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px">'+esc(s[1])+'</div><div>'+esc(s[2])+'</div></div>'+
-  '<div class="ft"><button class="btn soft sm" onclick="tourEnd()">Skip</button>'+(state.tourStep>0?'<button class="btn ghost sm" onclick="tourNav(-1)">Back</button>':'')+'<button class="btn sm" onclick="tourNav(1)">'+(state.tourStep===TOUR.length-1?"Finish":"Next")+'</button></div></div></div>';}
-function tourNav(d){state.tourStep+=d;if(state.tourStep>=TOUR.length){tourEnd();return;}tourShow();}
-function tourEnd(){state.tourStep=-1;var t=document.getElementById("tour");if(t)t.innerHTML="";}
+var FLOW=null,FLOWI=0,FLOWNAME="Guided tour";
+function flowRun(name,steps){FLOWNAME=name;FLOW=steps;FLOWI=0;flowShow();}
+function flowShow(){var t=document.getElementById("tour");if(!t)return;if(!FLOW||FLOWI<0||FLOWI>=FLOW.length){t.innerHTML="";FLOW=null;return;}
+ var s=FLOW[FLOWI];try{if(s.action)s.action();}catch(e){}
+ if(s.view){state.view=s.view;render();}
+ t.innerHTML='<div class="modal"><div class="box"><div class="top">★ '+esc(FLOWNAME)+'<span class="step">Step '+(FLOWI+1)+' of '+FLOW.length+'</span></div>'+
+  '<div class="bd"><div style="font-family:Georgia,serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:6px">'+esc(s.title)+'</div><div>'+esc(s.body)+'</div></div>'+
+  '<div class="ft"><button class="btn soft sm" onclick="flowEnd()">Close</button>'+(FLOWI>0?'<button class="btn ghost sm" onclick="flowNav(-1)">Back</button>':'')+'<button class="btn sm" onclick="flowNav(1)">'+(FLOWI===FLOW.length-1?"Finish":"Next")+'</button></div></div></div>';}
+function flowNav(d){FLOWI+=d;if(FLOWI>=FLOW.length){flowEnd();return;}flowShow();}
+function flowEnd(){FLOW=null;FLOWI=-1;var t=document.getElementById("tour");if(t)t.innerHTML="";}
+function tourStart(){flowRun("Guided tour",TOUR.map(function(s){return {view:s[0],title:s[1],body:s[2]};}));}
 
 /* ---- What-if simulator ---- */
 function simEdges(){var s=state.sim,ed=[];var rem=100;
@@ -676,7 +684,126 @@ function vCompare(){
   '<div class="card"><div class="bd"><div class="cmpgrid" style="border:0">'+head+rows+'</div><p class="small" style="margin-top:10px">Tip: change any selector to swap an entity. Open the engine for a full profile and explainability of any one of them.</p></div></div>';
 }
 
-var VIEWS={engine:vEngine,register:vRegister2,dashboard:vDashboard,simulate:vSimulate,lifecycle:vLifecycle,compare:vCompare,isic:vIsic,sector:vSector,ownership:vOwnership,legal:vLegal,integration:vIntegration,sources:vSources,standards:vStandards,methodology:vMethodology,governance:vGovernance,about:vAbout};
+/* ===================== SCENARIO PLAYER ===================== */
+var SCENARIOS=[
+ {name:"Substance over form",icon:"⚖",sub:"Classify by reality, not the label",steps:[
+  {action:function(){loadDemo("QA-ENT-20260000080");},title:"The licence says 'trading'…",body:"This entity is licensed as 'Foodstuff & General Trading', but its assessed principal activity by value added is a holding company (ISIC 6420). Watch the engine classify it by reality — and flag the contradiction."},
+  {action:function(){loadDemo("QA-ENT-20260000024");},title:"A minority stake with full control",body:"A PPP where government holds only 49% — but a golden share gives it a veto. The engine returns a public corporation: substance beats arithmetic."}]},
+ {name:"Hidden state ownership",icon:"🔎",sub:"Aggregation across vehicles",steps:[
+  {action:function(){loadDemo("QA-ENT-20260000099");},title:"No single majority shareholder…",body:"45% + 15% held across two separate state vehicles aggregate to 60%. The ownership engine detects effective government control and returns a public corporation — easily missed without the group view."}]},
+ {name:"Sovereign-wealth cascade",icon:"🏛",sub:"Round-tripping through a non-resident vehicle",steps:[
+  {action:function(){loadDemo("QA-ENT-20260000025");},title:"Control flows down the chain",body:"Owned 70% via a non-resident sovereign-wealth vehicle that is ultimately the State. The resident operating company is a public corporation, flagged as round-trip FDI."}]},
+ {name:"Lifecycle reclassification",icon:"🔄",sub:"Events trigger re-classification",steps:[
+  {view:"lifecycle",action:function(){state.lcId="QA-ENT-20260000012";state.lcEvent="IPO_MINORITY";},title:"An IPO changes the boundary",body:"Government sells a state energy corporation down to a 40% minority. Before → after: public corporation → private corporation."},
+  {view:"lifecycle",action:function(){state.lcEvent="FOREIGN_ACQ";},title:"A foreign acquisition",body:"Now a foreign investor takes 70%. The entity becomes a foreign-controlled corporation (FCC), inward FDI."},
+  {view:"lifecycle",action:function(){state.lcEvent="MARKET_LOSS";},title:"Loss of cost recovery",body:"If tariffs become subsidised and sales fall below 50% of costs, the same entity fails the market test and moves into general government (S.13)."}]},
+ {name:"The financial sector",icon:"🏦",sub:"S.121–S.129 sub-sectoring",steps:[
+  {action:function(){loadDemo("QA-ENT-20260000031");},title:"Central bank",body:"The monetary authority is sub-sector S.121."},
+  {action:function(){loadDemo("QA-ENT-20260000002");},title:"A government-controlled bank",body:"51% state → public financial corporation, deposit-taking sub-sector S.122."},
+  {action:function(){loadDemo("QA-ENT-20260000032");},title:"A pension fund",body:"An autonomous pension fund is sub-sector S.129."}]}
+];
+function scenarioPlay(i){flowRun(SCENARIOS[i].name,SCENARIOS[i].steps);}
+function vScenarios(){
+ return '<div class="lead">Guided, auto-playing demonstrations for leadership. Each scenario steps the platform through real cases and narrates what the engine does and why. Click <b>Play</b>.</div>'+
+  '<div class="demos">'+SCENARIOS.map(function(s,i){return '<div class="demo" onclick="scenarioPlay('+i+')"><div class="dt">'+s.icon+' '+esc(s.name)+'</div><div class="dd">'+esc(s.sub)+'</div><div class="run">▶ Play scenario ('+s.steps.length+' steps)</div></div>';}).join("")+'</div>'+
+  '<div class="card" style="margin-top:6px"><div class="hd">Or take the full guided tour</div><div class="bd"><button class="btn" onclick="tourStart()">★ Start the guided tour</button> <span class="small">— a complete walkthrough of every module.</span></div></div>';
+}
+
+/* ===================== BULK CLASSIFICATION ===================== */
+function exportCSV(name,headers,rows){try{var csv=[headers.join(",")].concat(rows.map(function(r){return r.map(function(c){return '"'+String(c==null?"":c).replace(/"/g,'""')+'"';}).join(",");})).join("\n");var a=document.createElement("a");a.href="data:text/csv;charset=utf-8,"+encodeURIComponent(csv);a.download=name;document.body.appendChild(a);a.click();a.remove();}catch(e){}}
+function batchAdd(id){if(id&&state.batch.indexOf(id)<0)state.batch.push(id);render();}
+function batchDemo(){state.batch=(DATA.demo||[]).map(function(d){return d[0];});render();}
+function vBatch(){
+ var opts='<select onchange="batchAdd(this.value);this.value=\'\'" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px;max-width:340px"><option value="">+ Add an enterprise…</option>'+DATA.enterprises.map(function(e){return '<option value="'+e.id+'">'+esc(e.name)+'</option>';}).join("")+'</select>';
+ var chips=state.batch.map(function(id,i){var e=ent(id);return '<span class="bdg b-navy" style="margin:3px">'+esc(e?e.name:id)+' <a onclick="state.batch.splice('+i+',1);render()" style="color:var(--maroon)">✕</a></span>';}).join("");
+ var results=state.batch.map(function(id){var e=ent(id);var oc=classifyEnterprise(e);var r=oc.result;return {e:e,r:r,c:oc.confidence};});
+ var rows=results.map(function(x){return '<tr class="row" onclick="loadDemo(\''+x.e.id+'\')"><td><b>'+esc(x.e.name)+'</b></td><td>'+esc(x.r.sector_code)+'</td><td>'+pp(x.r.public_private)+'</td><td>'+bdg(x.r.control_flag)+'</td><td>'+esc(x.r.size_class)+'</td><td>'+(x.r.fdi_flag==="NONE"?"—":esc(x.r.fdi_flag))+'</td><td><span style="color:'+qcol(x.c)+';font-weight:700">'+x.c+'</span></td></tr>';}).join("");
+ return '<div class="lead">Classify many entities at once — the ingestion / throughput use. Add entities, classify the whole batch live, and export the results. (In production this is the bulk API / file upload.)</div>'+
+  '<div class="card"><div class="hd">Batch ('+state.batch.length+' entities)</div><div class="bd">'+opts+' <button class="btn sm soft" onclick="batchDemo()">Load the 20 demo cases</button> <button class="btn sm soft" onclick="state.batch=[];render()">Clear</button>'+
+  '<div style="margin-top:10px">'+chips+'</div></div></div>'+
+  '<div class="card"><div class="hd">Results <span class="small" style="font-weight:400">— click a row to open it in the engine</span> <span style="flex:1"></span><button class="btn sm" onclick="exportCSV(\'batch_classification.csv\',[\'enterprise\',\'sector\',\'public_private\',\'control\',\'size\',\'fdi\',\'confidence\'],'+JSON.stringify(results.map(function(x){return [x.e.name,x.r.sector_code,x.r.public_private,x.r.control_flag,x.r.size_class,x.r.fdi_flag,x.c];}))+')">⬇ Download CSV</button></div><div class="bd"><div class="tw"><table class="t"><tr><th>Enterprise</th><th>Sector</th><th>Public/Private</th><th>Control</th><th>Size</th><th>FDI</th><th>Confidence</th></tr>'+rows+'</table></div></div></div>';
+}
+
+/* ===================== ENTERPRISE GROUP EXPLORER ===================== */
+function vGroups(){
+ var gsel='<select onchange="state.groupId=this.value;render()" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px;max-width:360px">'+DATA.groups.map(function(g){return '<option value="'+g.group_id+'" '+(state.groupId===g.group_id?"selected":"")+'>'+esc(g.name)+'</option>';}).join("")+'</select>';
+ var g=DATA.groups.filter(function(x){return x.group_id===state.groupId;})[0]||DATA.groups[0];
+ var head=ent(g.domestic_head);
+ var members=(g.members||[]).map(function(m){var me=ent(m);var kind=me&&me.public_private&&me.public_private.indexOf("PUB")===0?"gov":(me&&me.public_private==="FCC"?"foreign":"priv");return '<div class="lvl"><span class="gnode '+kind+'" style="cursor:pointer" onclick="loadDemo(\''+m+'\')">'+esc(me?me.name:m)+' <span class="small">· '+esc(me?me.sector:"")+' · '+esc(me?me.public_private:"")+' ▸ classify</span></span></div>';}).join("");
+ var cards='<div class="grid auto" style="margin-bottom:16px"><div class="kpi"><div class="n">'+(g.member_count||g.members.length)+'</div><div class="l">Members</div></div><div class="kpi"><div class="n">'+esc(g.controlling_sector||"—")+'</div><div class="l">Controlling sector</div></div><div class="kpi"><div class="n">'+esc(g.gup_country||"—")+'</div><div class="l">Ultimate parent country</div></div><div class="kpi"><div class="n">'+(g.truncated==="Y"?"Yes":"No")+'</div><div class="l">Truncated (resident) group</div></div></div>';
+ return '<div class="lead">Enterprise groups bind legal units under common control. The platform tracks the global ultimate parent, the domestic group head, and the resident-only (truncated) perimeter used for national accounts. Click any member to classify it.</div>'+
+  '<div class="card"><div class="hd">Select a group</div><div class="bd">'+gsel+'</div></div>'+cards+
+  '<div class="card"><div class="hd">'+esc(g.name)+'</div><div class="bd"><span class="gnode" style="border-color:#444">'+esc(g.gup)+' <span class="small">· global ultimate parent ('+esc(g.gup_country)+')</span></span>'+
+  '<div class="lvl"><span class="gnode entity" style="cursor:pointer" onclick="loadDemo(\''+g.domestic_head+'\')">'+esc(head?head.name:g.domestic_head)+' <span class="small">· domestic group head ▸ classify</span></span>'+members+'</div>'+
+  '<p class="small" style="margin-top:8px">'+esc(g.notes||"")+'</p></div></div>';
+}
+
+/* ===================== DATA QUALITY & ANOMALIES ===================== */
+function anomaliesOf(e){var a=[];var o=e.ownership||{};
+ if((o.government_pct||0)>=20&&["PRV-NFC","PRV-FC","FCC"].indexOf(e.public_private)>=0)a.push(["WARN","Possible hidden government ownership","gov "+o.government_pct+"% but "+e.public_private]);
+ if(/^(64|65|66)/.test(e.isic||"")&&(e.sector||"").indexOf("S.12")!==0)a.push(["WARN","ISIC/sector mismatch","financial activity "+e.isic+" but sector "+e.sector]);
+ if((o.foreign_pct||0)>=10&&(e.fdi==="NONE"||!e.fdi))a.push(["INFO","Missing FDI flag","foreign "+o.foreign_pct+"% but no FDI relationship"]);
+ if(e.special==="CONSOLIDATE-PARENT")a.push(["INFO","Empty-shell entity","substance test — consolidate with parent"]);
+ return a;}
+function vQuality(){
+ var E=DATA.enterprises,dims=["completeness","validity","consistency","uniqueness","accuracy","timeliness","overall_score"];
+ var agg={};dims.forEach(function(d){agg[d]=E.reduce(function(s,e){return s+((e.quality||{})[d]||0);},0)/E.length;});
+ var conf={};E.forEach(function(e){var c=(e.confidence||1).toFixed(1);conf[c]=(conf[c]||0)+1;});
+ var exc=[];E.forEach(function(e){(e.exceptions||[]).forEach(function(x){exc.push([e,x]);});});
+ var anom=[];E.forEach(function(e){anomaliesOf(e).forEach(function(x){anom.push([e,x]);});});
+ return '<div class="lead">Data quality scored across the six DAMA dimensions, plus rule-based anomaly detection that routes cases to manual review. Click any row to open it in the engine.</div>'+
+  '<div class="grid auto" style="margin-bottom:16px">'+dims.map(function(d){return '<div class="kpi"><div class="n" style="color:'+qcol(agg[d])+'">'+agg[d].toFixed(2)+'</div><div class="l">'+d.replace("_"," ")+'</div></div>';}).join("")+'</div>'+
+  '<div class="grid c2"><div class="card"><div class="hd">Classification confidence distribution</div><div class="bd">'+bars(conf)+'</div></div>'+
+  '<div class="card"><div class="hd">Anomalies flagged for review ('+anom.length+')</div><div class="bd"><div class="tw"><table class="t"><tr><th>Enterprise</th><th>Severity</th><th>Anomaly</th></tr>'+(anom.length?anom.map(function(p){return '<tr class="row" onclick="loadDemo(\''+p[0].id+'\')"><td>'+esc(p[0].name)+'</td><td>'+sevb(p[1][0])+'</td><td>'+esc(p[1][1])+'<div class="small">'+esc(p[1][2])+'</div></td></tr>';}).join(""):'<tr><td colspan=3 style="color:var(--green)">No anomalies.</td></tr>')+'</table></div></div></div></div>'+
+  '<div class="card"><div class="hd">Validation exceptions ('+exc.length+')</div><div class="bd"><div class="tw"><table class="t"><tr><th>Enterprise</th><th>Rule</th><th>Severity</th><th>Message</th></tr>'+(exc.length?exc.map(function(p){return '<tr class="row" onclick="loadDemo(\''+p[0].id+'\')"><td>'+esc(p[0].name)+'</td><td class="mono">'+esc(p[1].rule_id)+'</td><td>'+sevb(p[1].severity)+'</td><td>'+esc(p[1].message)+'</td></tr>';}).join(""):'<tr><td colspan=4 style="color:var(--green)">No open exceptions.</td></tr>')+'</table></div></div></div>';
+}
+
+/* ===================== RULES EXPLORER ===================== */
+function vRules(){
+ var rs=DATA.ruleStd;
+ var list=DATA.rules.filter(function(r){return !rs||(r.standard_ref||"").indexOf(rs)>=0;});
+ var cur=state.ruleId?DATA.rules.filter(function(r){return r.rule_id===state.ruleId;})[0]:list[0];
+ var stds=[];DATA.rules.forEach(function(r){(r.standard_ref||"").split("/").forEach(function(s){s=s.trim().split(" ")[0];if(s&&stds.indexOf(s)<0)stds.push(s);});});
+ var filt=['<button class="btn sm '+(!rs?"":"soft")+'" onclick="DATA.ruleStd=null;render()">All</button>'].concat(stds.map(function(s){return '<button class="btn sm '+(rs===s?"":"soft")+'" onclick="DATA.ruleStd=\''+s+'\';render()">'+esc(s)+'</button>';})).join(" ");
+ var rows=list.map(function(r){return '<tr class="row" onclick="state.ruleId=\''+r.rule_id+'\';render()" style="'+(cur&&cur.rule_id===r.rule_id?"background:#f0f1f4":"")+'"><td class="mono">'+esc(r.rule_id)+'</td><td>'+esc(r.name)+'</td><td>'+bdg(r.test_code)+'</td></tr>';}).join("");
+ var detail=cur?'<div class="kv" style="grid-template-columns:120px 1fr"><div class="k">Rule</div><div class="mono">'+esc(cur.rule_id)+'</div><div class="k">Test</div><div>'+esc(cur.test_code)+'</div><div class="k">Standard</div><div>'+esc(cur.standard_ref)+'</div><div class="k">Rationale</div><div>'+esc(cur.rationale)+'</div></div><div class="small" style="margin:10px 0 4px">Condition logic</div><pre class="code">'+esc(JSON.stringify(cur.logic,null,1))+'</pre><div class="small">Output: <span class="mono">'+esc(JSON.stringify(cur.output))+'</span></div>'+
+  '<div class="small" style="margin:10px 0 4px">Test this rule against your own facts</div><textarea id="rtf" style="width:100%;min-height:90px;border:1px solid var(--rule);border-radius:7px;padding:8px" class="mono">'+esc(JSON.stringify(suggestFacts(cur),null,1))+'</textarea><div style="margin-top:8px"><button class="btn sm" onclick="ruleTest(\''+cur.rule_id+'\')">▶ Evaluate</button> <span id="rtres"></span></div>':'';
+ return '<div class="lead">Every rule is database-driven and traces to a standard — nothing is hard-coded. Filter by standard, inspect the JSON logic, and test any rule live (the same evaluator the engine uses).</div>'+
+  '<div class="card"><div class="bd"><div style="display:flex;gap:6px;flex-wrap:wrap">'+filt+'</div></div></div>'+
+  '<div class="grid c2"><div class="card"><div class="hd">Rules ('+list.length+')</div><div class="bd" style="max-height:520px;overflow:auto"><div class="tw"><table class="t"><tr><th>ID</th><th>Name</th><th>Test</th></tr>'+rows+'</table></div></div></div>'+
+  '<div class="card"><div class="hd">'+(cur?esc(cur.rule_id)+" — "+esc(cur.name):"Select a rule")+'</div><div class="bd">'+detail+'</div></div></div>';
+}
+function suggestFacts(r){var f={};(function w(c){if(!c)return;if(c.all)c.all.forEach(w);else if(c.any)c.any.forEach(w);else if(c.not)w(c.not);else if(c.op){if(c.op==="eq"||c.op==="in")f[c.field]=Array.isArray(c.value)?c.value[0]:c.value;else if(["gt","gte","lt","lte"].indexOf(c.op)>=0)f[c.field]=c.value;else if(c.op==="truthy")f[c.field]=true;else if(c.op==="exists")f[c.field]="…";}})(r.logic);return f;}
+function ruleTest(id){var r=DATA.rules.filter(function(x){return x.rule_id===id;})[0];var f;try{f=JSON.parse(document.getElementById("rtf").value);}catch(e){document.getElementById("rtres").innerHTML='<span style="color:#bf372a">Invalid JSON</span>';return;}var m=evalCond(r.logic,f);document.getElementById("rtres").innerHTML=m?'<span style="color:var(--green)">✔ MATCH → '+esc(JSON.stringify(r.output))+'</span>':'<span style="color:#bf372a">✘ no match</span>';}
+
+/* ===================== REVIEW & APPROVAL WORKFLOW ===================== */
+function submitReview(){if(!state.lastRun)return;if(!can("classify:run")){alert("Role '"+state.role+"' cannot submit for review.");return;}
+ var r=state.lastRun;state.queue.unshift({name:r.name,sector:r.result.sector_code,pp:r.result.public_private,conf:r.confidence,by:state.role,when:new Date().toISOString().slice(0,16).replace("T"," "),status:"PENDING"});
+ state.view="review";render();}
+function reviewAct(i,act){var q=state.queue[i];if(!q)return;if(!can("review:write")&&!can("override:write")){alert("Role '"+state.role+"' cannot "+act+". Switch to Reviewer or Administrator.");return;}q.status=act==="approve"?"APPROVED (committee-ruled)":"OVERRIDDEN";q.actedBy=state.role;render();}
+function vReview(){
+ var q=state.queue;
+ var canAct=can("review:write")||can("override:write");
+ var rows=q.length?q.map(function(x,i){return '<tr><td><b>'+esc(x.name)+'</b></td><td>'+esc(x.sector)+'</td><td>'+pp(x.pp)+'</td><td>'+x.conf+'</td><td class="small">'+esc(x.by)+' · '+esc(x.when)+'</td><td>'+bdg(x.status,x.status.indexOf("APPROVED")>=0?"b-green":(x.status==="OVERRIDDEN"?"b-amber":"b-gray"))+'</td><td>'+(x.status==="PENDING"?('<button class="btn sm" '+(canAct?"":"disabled style=opacity:.5")+' onclick="reviewAct('+i+',\'approve\')">Approve</button> <button class="btn sm soft" '+(canAct?"":"disabled style=opacity:.5")+' onclick="reviewAct('+i+',\'override\')">Override</button>'):'<span class="small">'+esc(x.actedBy||"")+'</span>')+'</td></tr>';}).join(""):'<tr><td colspan=7 class="small">No submissions yet. Classify an entity in the engine and press “Submit for review”.</td></tr>';
+ var anomItems=(DATA.reviews||[]).map(function(r){return '<tr class="row" onclick="loadDemo(\''+r.enterprise_id+'\')"><td class="mono small">'+esc(r.enterprise_id)+'</td><td>'+esc(r.kind)+'</td><td>'+sevb(r.severity)+'</td><td>'+esc(r.title)+'</td><td>'+esc(r.status)+'</td></tr>';}).join("");
+ return '<div class="principle"><b>Three-layer quality assurance.</b> Analyst self-check → independent peer review → Technical Classification Committee ruling. You are acting as <b>'+esc(state.role)+'</b>'+(canAct?' — you can approve / override.':' — switch role (top-right) to Reviewer or Administrator to approve.')+'</div>'+
+  '<div class="card"><div class="hd">Pending submissions ('+q.filter(function(x){return x.status==="PENDING";}).length+')</div><div class="bd"><div class="tw"><table class="t"><tr><th>Enterprise</th><th>Sector</th><th>Public/Private</th><th>Conf.</th><th>Submitted by</th><th>Status</th><th>Action</th></tr>'+rows+'</table></div></div></div>'+
+  '<div class="card"><div class="hd">Anomaly review queue</div><div class="bd"><div class="tw"><table class="t"><tr><th>Enterprise</th><th>Kind</th><th>Severity</th><th>Title</th><th>Status</th></tr>'+(anomItems||'<tr><td colspan=5 class="small">No items.</td></tr>')+'</table></div></div></div>'+
+  '<div class="card"><div class="hd">Reclassification triggers</div><div class="bd"><div class="small">A workflow item is generated automatically on: IPO; M&amp;A / restructuring; new regulator / licence; material activity change; sovereign-vehicle reorganisation; JV formation/exit; major contract/concession; and a mandatory three-year deep review. Try the <a onclick="go(\'lifecycle\')">Reclassification &amp; Events</a> module.</div></div></div>';
+}
+
+/* ===================== ROLES & PERMISSIONS ===================== */
+function vUsers(){
+ var perms=[];Object.keys(DATA.roles).forEach(function(r){DATA.roles[r].forEach(function(p){if(p!=="*"&&perms.indexOf(p)<0)perms.push(p);});});perms.sort();
+ var roleNames=Object.keys(DATA.roles);
+ var head='<tr><th>Permission</th>'+roleNames.map(function(r){return '<th>'+esc(r.replace(" ","<br>"))+'</th>';}).join("")+'</tr>';
+ var body=perms.map(function(p){return '<tr><td class="mono">'+esc(p)+'</td>'+roleNames.map(function(r){var ok=DATA.roles[r].indexOf("*")>=0||DATA.roles[r].indexOf(p)>=0;return '<td style="text-align:center">'+(ok?'<span style="color:var(--green)">✔</span>':'·')+'</td>';}).join("")+'</tr>';}).join("");
+ var cards=DATA.users?'<div class="card"><div class="hd">Demo users</div><div class="bd"><div class="tw"><table class="t"><tr><th>Username</th><th>Name</th><th>Role</th></tr>'+DATA.users.map(function(u){return '<tr><td class="mono">'+esc(u.username)+'</td><td>'+esc(u.full_name)+'</td><td>'+bdg(u.role,"b-navy")+'</td></tr>';}).join("")+'</table></div></div></div>':'';
+ return '<div class="lead">Role-based access control. You are acting as <b>'+esc(state.role)+'</b> (change it top-right). Actions across the platform — submit, approve, override — are gated by role.</div>'+cards+
+  '<div class="card"><div class="hd">Permission matrix (role × permission)</div><div class="bd"><div class="tw"><table class="t">'+head+body+'</table></div><div class="small" style="margin-top:8px">Administrator holds the wildcard (*) permission across all actions.</div></div></div>';
+}
+
+var VIEWS={engine:vEngine,batch:vBatch,register:vRegister2,dashboard:vDashboard,simulate:vSimulate,lifecycle:vLifecycle,compare:vCompare,scenarios:vScenarios,groups:vGroups,quality:vQuality,isic:vIsic,sector:vSector,ownership:vOwnership,legal:vLegal,methodology:vMethodology,rules:vRules,standards:vStandards,integration:vIntegration,sources:vSources,review:vReview,governance:vGovernance,users:vUsers,about:vAbout};
 function render(){
  try{
   document.getElementById("nav").innerHTML=NAV.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(m){var idx=Object.keys(TITLES).indexOf(m[0])+1;return '<a class="'+(state.view===m[0]?"active":"")+'" onclick="go(\''+m[0]+'\')"><span class="ix">'+idx+'</span>'+m[1]+'</a>';}).join("");}).join("");
@@ -689,6 +816,7 @@ function render(){
   document.getElementById("content").innerHTML='<div class="card"><div class="bd"><b>Display notice.</b> <span class="small">'+esc(err&&err.message)+'</span> <button class="btn sm" onclick="state.view=\'engine\';render()">Back to engine</button></div></div>';
  }
 }
+(function initRoles(){var s=document.getElementById("rolesel");if(!s)return;s.innerHTML=Object.keys(DATA.roles).map(function(r){return '<option '+(state.role===r?"selected":"")+'>'+r+'</option>';}).join("");})();
 render();
 </script>
 </body>
