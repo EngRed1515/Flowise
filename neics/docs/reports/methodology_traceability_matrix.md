@@ -1,6 +1,6 @@
 # Methodology Traceability Matrix
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 20:45 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-19 07:39 UTC.
 
 Framework requirement → System component → Rule → Output. Every classification rule is traceable to one or more international/national standards.
 

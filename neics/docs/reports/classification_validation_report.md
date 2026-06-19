@@ -1,9 +1,9 @@
 # Classification Validation Report
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 20:45 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-19 07:39 UTC.
 
 Every test enterprise is classified by the live 18-test pipeline. The table shows the result, confidence, and a check against the expected sector / public-private verdict.
-**Result: 73/73 enterprises match their expected sector + public-private verdict.**
+**Result: 74/74 enterprises match their expected sector + public-private verdict.**
 
 
 | Enterprise | Name | Sector | Public/Private | Control | Market | Size | FDI | Special | Conf | Expected | ✓ |
@@ -80,6 +80,7 @@ Every test enterprise is classified by the live 18-test pipeline. The table show
 | QA-ENT-20260000077 | Sample Micro Bakery | S.11 | PRV-NFC | MAJ-VOTE | MARKET | MICRO | NONE | NONE | 1.0 | S.11/PRV-NFC | ✅ |
 | QA-ENT-20260000078 | Sample Large Trading Conglomerate | S.11 | PRV-NFC | MAJ-VOTE | MARKET | LARGE | NONE | NONE | 1.0 | S.11/PRV-NFC | ✅ |
 | QA-ENT-20260000079 | Sample Holding Company (private) | S.11 | PRV-NFC | MAJ-VOTE | MARKET | LARGE | NONE | HOLDING | 1.0 | S.11/PRV-NFC | ✅ |
+| QA-ENT-20260000080 | Sample Foodstuff & General Trading | S.11 | PRV-NFC | MAJ-VOTE | MARKET | LARGE | NONE | HOLDING | 1.0 | S.11/PRV-NFC | ✅ |
 | QA-ENT-20260000099 | Sample Trading Co (sample) | S.11 | PUB-NFC | BO-CHAIN | MARKET | MEDIUM | NONE | NONE | 1.0 | S.11/PUB-NFC | ✅ |
 
 ## Per-enterprise classification detail (input → ownership → rules → result)
@@ -1152,6 +1153,21 @@ Every test enterprise is classified by the live 18-test pipeline. The table show
 ### QA-ENT-20260000079 — Sample Holding Company (private)
 - **Input:** legal_form=LLC, isic=6420, residence=RES, employment=15, turnover=200000000.0, financial=False, nonprofit=False, jurisdiction=MAINLAND
 - **Ownership intelligence:** gov_own=0.0%, gov_voting=0.0%, foreign_own=0.0%, gov_control=False, UCI=Ultimate Family Unit (govt=False)
+- **Result:** sector **S.11**, public/private **PRV-NFC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **NONE**, special **HOLDING**; confidence **1.0**
+- **Rules applied:**
+    - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_
+    - T4 `R-T04-001` → {'isic_class': '6420'}  _(std: ISIC Rev.4)_
+    - T7 `R-T07-030` → {'market_status': 'MARKET'}  _(std: SNA 2025 — 50% rule)_
+    - T8 `R-T08-001` → {'control_flag': 'MAJ-VOTE'}  _(std: SNA 2025 / OECD BD4)_
+    - T5 `R-T05-100` → {'sector_code': 'S.11'}  _(std: SNA 2025)_
+    - T6 `R-T06-100` → {'public_private': 'PRV-NFC'}  _(std: SNA 2025)_
+    - T10 `R-T10-010` → {'size_class': 'LARGE'}  _(std: QNCS / EU 2003/361/EC)_
+    - T12 `R-T12-100` → {'fdi_flag': 'NONE'}  _(std: OECD BD4)_
+    - T13 `R-T13-020` → {'special_entity_flag': 'HOLDING'}  _(std: ISIC Rev.4 / SNA 2025)_
+
+### QA-ENT-20260000080 — Sample Foodstuff & General Trading W.L.L.
+- **Input:** legal_form=LLC, isic=6420, residence=RES, employment=12, turnover=300000000.0, financial=False, nonprofit=False, jurisdiction=MAINLAND
+- **Ownership intelligence:** gov_own=0.0%, gov_voting=0.0%, foreign_own=0.0%, gov_control=False, UCI=Founding family (govt=False)
 - **Result:** sector **S.11**, public/private **PRV-NFC**, control **MAJ-VOTE**, market **MARKET**, size **LARGE**, FDI **NONE**, special **HOLDING**; confidence **1.0**
 - **Rules applied:**
     - T3 `R-T03-001` → {'residence': 'RES'}  _(std: SNA 2025 / BPM6 Ch.4)_

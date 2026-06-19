@@ -158,6 +158,13 @@ def build_data():
     audit_all = [a for e in enterprises for a in
                  [{**x, "record_id": e["id"]} for x in e["audit"]]]
     isic_codes = {c.code: 1 for c in db.execute(select(IsicClass)).scalars()}
+    isic_list = [{"code": c.code, "activity": c.activity_en, "section": c.section_code,
+                  "nace": c.nace, "gcc": c.gcc_sic}
+                 for c in db.execute(select(IsicClass).order_by(IsicClass.code)).scalars()]
+    legal_forms = [{"code": lf.code, "name": lf.name_en, "notes": lf.notes}
+                   for lf in db.execute(select(LegalForm)).scalars()]
+    sectors_full = [{"code": s.code, "name": s.name_en, "parent": s.parent_code, "definition": s.definition}
+                    for s in db.execute(select(InstitutionalSector)).scalars()]
 
     db.close()
     return {
@@ -165,6 +172,9 @@ def build_data():
         "enterprises": enterprises, "groups": groups, "rules": rules, "tests": tests,
         "standards": standards, "metadata": metadata, "codelists": codelists, "reviews": reviews,
         "legal_units": legal_units, "establishments": establishments, "isic_codes": isic_codes,
+        "isic_list": isic_list, "legal_forms": legal_forms, "sectors": sectors_full,
+        "integration": INTEGRATION_SOURCES, "tiers": SOURCE_TIERS, "governance": GOVERNANCE,
+        "labels": LABELS, "demo": DEMO_CASES, "size_thresholds": SIZE_THRESHOLDS,
         "users": users, "roles": roles, "audit": audit_all, "uat": UAT_CASES,
         "gap": GAP_ANALYSIS, "readiness": READINESS,
     }
@@ -245,6 +255,104 @@ READINESS = [
     ["Operational", "Amber", "Deployment guide + Docker stack ready. Runbooks, monitoring, DR to be established."],
 ]
 
+# Source-system feeds — from the CSBR reference architecture (framework Slide 64) and the
+# Review's authority list (Part 4). Transport modes are indicative integration mechanisms.
+INTEGRATION_SOURCES = [
+    ["MoCI — Commercial Register", "Tier 1", "Legal-unit identity, legal name, legal form, ownership at incorporation, CR number", "Register sync / secure DB read-replica"],
+    ["General Tax Authority (GTA)", "Tier 2", "Activity, turnover, employment, financial-activity status on active entities", "Secure API / SFTP drop"],
+    ["Qatar Central Bank (QCB)", "Tier 2", "Financial-corporation prudential filings; S.121–S.129 boundary", "Secure API (co-authority)"],
+    ["Qatar Financial Centre (QFC) Authority", "Tier 1", "QFC-licensed entities; foreign-parent branches; jurisdiction flag", "Register sync"],
+    ["Qatar Free Zones Authority (QFZA)", "Tier 1", "Free-zone entities (Ras Bufontas, Umm Alhoul); FDI flag; jurisdiction flag", "Register sync / SFTP"],
+    ["Qatar Science & Technology Park (QSTP)", "Tier 1", "QSTP-licensed entities; R&D (ISIC 72); IP-holding substance", "Register sync"],
+    ["Qatar Stock Exchange (QSE)", "Tier 4", "Listed-company disclosures; free-float and ownership changes", "Disclosure feed / API"],
+    ["Ministry of Labour (MoL)", "Tier 2", "Employer and employment counts; establishment workforce", "Secure API"],
+    ["Investment-promotion entities (IPA)", "Tier 3", "FDI projects; ultimate investing country corroboration", "Administrative records"],
+    ["Ministry of Justice (MoJ)", "Tier 3", "Civil-society organisations, waqf, foundations (NPISH determination)", "Administrative records"],
+    ["Customs Authority", "Tier 2", "Trade flows; free-zone movements; trader vs producer", "Secure API / SFTP"],
+    ["Municipalities", "Tier 2", "Establishment-level licensing; geocoding for local units", "Register sync"],
+    ["NSO surveys & large-case profiling", "Tier 3", "Control structure, ultimate parent, group consolidation, beneficial ownership", "Survey platform / manual portal entry"],
+    ["Manual / portal entry", "Tier 3", "Analyst-entered profiling evidence; committee rulings", "NSO classification portal"],
+]
+
+# Data-source hierarchy (framework Test 14) — but resolved by attribute, not by tier (Review).
+SOURCE_TIERS = [
+    ["Tier 1 — Primary registry", "MoCI Commercial Register; QFC Authority; QFZA; QSTP; QSE listings",
+     "Highest authority for legal-entity identity, name, legal form, ownership at incorporation."],
+    ["Tier 2 — Tax & financial / operational", "General Tax Authority; Qatar Central Bank; Customs; Ministry of Labour; municipalities",
+     "Highest authority for activity, turnover, employment and financial-activity status on active entities."],
+    ["Tier 3 — Direct statistical", "NSO economic surveys; large-case profiling; beneficial-ownership filings; MoJ records",
+     "Highest authority for control structure, ultimate parent and group consolidation."],
+    ["Tier 4 — Public information", "Audited annual reports; QSE continuous disclosures; ministerial decisions",
+     "Corroborating evidence; decisive only where other sources are silent."],
+]
+CONFLICT_PRINCIPLES = [
+    "Documented evidence wins over inferred status.",
+    "More recent attestation wins, all else equal.",
+    "Substance wins over legal form in control determinations.",
+    "Resolution is by data attribute, not by source tier (Review recommendation).",
+    "The statistical override is exercised by the Technical Classification Committee — never silently in the database; every override is minuted and reviewable.",
+]
+
+# Governance — framework Slide 63/68 + the Review's five-body architecture (Part 9).
+GOVERNANCE = {
+    "bodies": [
+        ["Statistical Authority Council", "NPC Secretary-General", "Strategic oversight; methodology endorsement; budget; appeal of last resort."],
+        ["Technical Classification Committee", "NSO Director-General", "Operational classification authority; rulings on individual entities; quarterly review of edge cases."],
+        ["Financial Corporations Sub-committee", "QCB Deputy Governor / NSO (joint)", "Authoritative for S.121–S.129; bilateral co-authority; reports to TCC."],
+        ["Public Sector Boundary Sub-committee", "MoF Director / NSO (joint)", "Authoritative for S.13 / public-corporation boundary; PPP determinations."],
+        ["Data Ethics & AI Governance Committee", "Independent academic (SAC-appointed)", "Model risk; bias monitoring; AI deployment authorisation; privacy-by-design; confidentiality appeals."],
+    ],
+    "raci": [
+        ["Own the methodology", "NSO", "NPC", "Methodologist", "All agencies"],
+        ["Provide source data", "MoCI/GTA/QCB/QFC/QFZA/MoL", "NSO", "Data Steward", "TCC"],
+        ["Classify an entity", "Classifier", "TCC", "Reviewer", "Auditor"],
+        ["Review & approve", "Reviewer / TCC", "NSO DG", "Methodologist", "Analyst"],
+        ["Resolve source conflict", "TCC", "NSO DG", "Sub-committees", "Source agency"],
+        ["Audit & assurance", "Auditor", "SAC", "Data Steward", "All"],
+    ],
+    "workflow": ["Capture / ingest", "Validate (VR-001..018)", "Classify (18 tests)", "Analyst self-check (Layer 1)",
+                 "Peer review (Layer 2)", "Committee ruling on edge cases (Layer 3)", "Commit to register",
+                 "Audit log + version", "Periodic / trigger-based reclassification"],
+    "cadence": "Quarterly plenary; emergency sessions on triggers (IPO, M&A, new licence, restructuring, sovereign-vehicle reorganisation). Mandatory three-year deep review per entity.",
+    "kpis": ["Classification error rate ≤ 2% (24 months)", "Median time-to-classify ≤ 10 working days",
+             "Median time-to-reclassify on trigger ≤ 30 working days", "Override rate ≤ 5%",
+             "Source-conflict resolution ≤ 15 working days", "LEI coverage of financial-sector entities 100% (18 months)",
+             "Demographic-event recording lag ≤ 60 days (births) / ≤ 90 days (deaths)"],
+}
+
+SIZE_THRESHOLDS = [
+    ["MICRO", "1 – 9", "Up to QAR 3 million", "Up to QAR 2 million"],
+    ["SMALL", "10 – 49", "QAR 3 – 30 million", "QAR 2 – 20 million"],
+    ["MEDIUM", "50 – 249", "QAR 30 – 200 million", "QAR 20 – 150 million"],
+    ["LARGE", "250 +", "Above QAR 200 million", "Above QAR 150 million"],
+]
+
+# Label-vs-activity annotations (substance over form). Keyed by enterprise_id.
+LABELS = {
+    "QA-ENT-20260000080": {
+        "trade_name": "Sample Foodstuff & General Trading W.L.L.",
+        "license_label": "Foodstuff import & general trading (retail/wholesale)",
+        "assessed_activity": "Activities of holding companies (ISIC 6420) — income is dividends and capital appreciation of subsidiaries",
+        "note": "The commercial/license label says 'foodstuff & general trading', but the assessed principal activity by value added is a holding company. Classification follows the ASSESSED activity, not the label.",
+    },
+}
+
+# 12 demonstration cases for the engine (auto-fill + run). IDs from the seeded universe.
+DEMO_CASES = [
+    ["QA-ENT-20260000012", "State-owned energy corporation", "100% government, market producer"],
+    ["QA-ENT-20260000025", "Sovereign-wealth cascade developer", "70% via non-resident SWF vehicle (round-trip)"],
+    ["QA-ENT-20260000024", "PPP infrastructure SPV", "49% government + golden share (minority control)"],
+    ["QA-ENT-20260000099", "Trading co — hidden state majority", "45% + 15% across two state vehicles"],
+    ["QA-ENT-20260000002", "Mixed-ownership bank", "51% state — public financial corporation"],
+    ["QA-ENT-20260000016", "Private insurance company", "private financial corporation"],
+    ["QA-ENT-20260000021", "QFC entity, foreign parent", "100% foreign, resident in Qatar"],
+    ["QA-ENT-20260000022", "Free-zone foreign manufacturer", "100% foreign, QFZA jurisdiction"],
+    ["QA-ENT-20260000014", "Family conglomerate (state 15%)", "family-controlled — private"],
+    ["QA-ENT-20260000018", "NPISH sports club", "non-profit, non-market"],
+    ["QA-ENT-20260000026", "Empty-shell holding", "no premises/employees — consolidate with parent"],
+    ["QA-ENT-20260000080", "Label contradicts activity", "licensed 'trading', assessed as holding company"],
+]
+
 
 
 # ===================================================================== output
@@ -257,13 +365,14 @@ def main():
     data = build_data()
     payload = json.dumps(data, ensure_ascii=False, default=str)
     html = HTML_TEMPLATE.replace("/*__DATA__*/", payload)
-    for out in (os.path.join(ROOT, "NEICS_Walkthrough.html"),
-                os.path.join(ROOT, "docs", "NEICS_Walkthrough.html")):
+    for out in (os.path.join(ROOT, "Qatar_Enterprise_Classification_Platform.html"),
+                os.path.join(ROOT, "NEICS_Walkthrough.html"),
+                os.path.join(ROOT, "docs", "Qatar_Enterprise_Classification_Platform.html")):
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", out, f"({len(html)} bytes)")
     print(f"enterprises={len(data['enterprises'])} rules={len(data['rules'])} "
-          f"standards={len(data['standards'])}")
+          f"standards={len(data['standards'])} demo_cases={len(data['demo'])}")
 
 
 if __name__ == "__main__":

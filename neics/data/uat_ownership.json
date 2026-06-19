@@ -866,5 +866,19 @@
   "voting_pct": 100,
   "control_indicator": "MAJ-VOTE",
   "is_ultimate": "Y"
+ },
+ {
+  "edge_id": "W9001",
+  "owner_id": "FAMILY-FOOD",
+  "owner_name": "Founding family",
+  "owner_is_government": false,
+  "owner_is_resident": true,
+  "owner_country": "QA",
+  "owned_id": "QA-ENT-20260000080",
+  "owned_name": "QA-ENT-20260000080",
+  "ownership_pct": 100,
+  "voting_pct": 100,
+  "control_indicator": "MAJ-VOTE",
+  "is_ultimate": "Y"
  }
 ]

@@ -1,6 +1,6 @@
 # Explainability Validation Report
 
-> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-18 20:45 UTC.
+> **NEICS — Staging / UAT environment.** This report is generated automatically by `tools/generate_reports.py` directly from the live classification engine and seeded test database. Generated: 2026-06-19 07:39 UTC.
 
 For each sampled enterprise the full classification explanation is shown: the rules applied (with standard references and rationale), the data fields used, the confidence, and reviewer/override status. This demonstrates complete, defensible explainability.
 
