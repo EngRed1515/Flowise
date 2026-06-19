@@ -337,19 +337,27 @@ LABELS = {
     },
 }
 
-# 12 demonstration cases for the engine (auto-fill + run). IDs from the seeded universe.
+# 12+ demonstration cases for the engine (auto-fill + run). IDs from the seeded universe.
 DEMO_CASES = [
     ["QA-ENT-20260000012", "State-owned energy corporation", "100% government, market producer"],
     ["QA-ENT-20260000025", "Sovereign-wealth cascade developer", "70% via non-resident SWF vehicle (round-trip)"],
     ["QA-ENT-20260000024", "PPP infrastructure SPV", "49% government + golden share (minority control)"],
     ["QA-ENT-20260000099", "Trading co — hidden state majority", "45% + 15% across two state vehicles"],
     ["QA-ENT-20260000002", "Mixed-ownership bank", "51% state — public financial corporation"],
-    ["QA-ENT-20260000016", "Private insurance company", "private financial corporation"],
+    ["QA-ENT-20260000031", "Central bank", "S.121 — monetary authority"],
+    ["QA-ENT-20260000032", "State pension fund", "S.129 — autonomous pension fund"],
+    ["QA-ENT-20260000016", "Private insurance company", "S.128 — private financial corporation"],
     ["QA-ENT-20260000021", "QFC entity, foreign parent", "100% foreign, resident in Qatar"],
     ["QA-ENT-20260000022", "Free-zone foreign manufacturer", "100% foreign, QFZA jurisdiction"],
+    ["QA-ENT-20260000069", "MNE oilfield-services subsidiary", "80% foreign — inward FDI"],
     ["QA-ENT-20260000014", "Family conglomerate (state 15%)", "family-controlled — private"],
+    ["QA-ENT-20260000027", "Dispersed ownership + state board", "0% equity, board control → public"],
+    ["QA-ENT-20260000048", "Government ministry", "S.13 — general government, non-market"],
     ["QA-ENT-20260000018", "NPISH sports club", "non-profit, non-market"],
+    ["QA-ENT-20260000035", "Charitable waqf endowment", "S.15 — NPISH"],
     ["QA-ENT-20260000026", "Empty-shell holding", "no premises/employees — consolidate with parent"],
+    ["QA-ENT-20260000077", "Micro bakery (SME)", "private micro enterprise"],
+    ["QA-ENT-20260000078", "Large trading conglomerate", "private, large"],
     ["QA-ENT-20260000080", "Label contradicts activity", "licensed 'trading', assessed as holding company"],
 ]
 

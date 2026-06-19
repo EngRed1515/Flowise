@@ -272,6 +272,7 @@ function go(v,x){state.view=v;if(x)for(var k in x)state[k]=x[k];window.scrollTo(
 function vEngine(){
  var demos=(DATA.demo||[]).map(function(d){return '<div class="demo" onclick="loadDemo(\''+d[0]+'\')"><div class="dt">'+esc(d[1])+'</div><div class="dd">'+esc(d[2])+'</div><div class="run">▶ Auto-fill &amp; classify</div></div>';}).join("");
  var e=state.eng,inp=e.inp;
+ var chooser=DATA.enterprises.map(function(x){return '<option value="'+x.id+'" '+(e._id===x.id?"selected":"")+'>'+esc(x.name)+'  ['+esc(x.sector)+' · '+esc(x.public_private)+']</option>';}).join("");
  var lf=DATA.legal_forms.map(function(x){return x.code;});
  var isicOpts=DATA.isic_list.map(function(x){return '<option value="'+x.code+'" '+(inp.isic_class===x.code?"selected":"")+'>'+x.code+' — '+esc(x.activity)+'</option>';}).join("");
  var fsel=function(id,label,opts,sel){return '<div class="field"><label>'+label+'</label><select onchange="state.eng.inp.'+id+'=this.value">'+opts.map(function(o){return '<option '+(String(sel)===String(o)?"selected":"")+'>'+o+'</option>';}).join("")+'</select></div>';};
@@ -284,8 +285,11 @@ function vEngine(){
   '<td><select onchange="state.eng.edges['+i+'].control_indicator=this.value" style="border:1px solid var(--rule);border-radius:6px;padding:5px">'+["","MAJ-VOTE","GOLDEN","BOARD","CONTRACT","REGULATORY","BO-CHAIN"].map(function(o){return '<option '+(x.control_indicator===o?"selected":"")+'>'+o+'</option>';}).join("")+'</select></td>'+
   '<td><button class="btn sm soft" onclick="state.eng.edges.splice('+i+',1);render()">✕</button></td></tr>';}).join("");
  var labelBox=e.label_note?'<div class="warn"><b>Label vs activity:</b> '+esc(e.label_note)+'</div>':'';
- return '<div class="card"><div class="hd">One-click demonstration cases</div><div class="bd"><p class="small" style="margin-top:0">Click a case to auto-fill every input, run the engine live, and jump to the assembled classification profile.</p><div class="demos">'+demos+'</div></div></div>'+
-  '<div class="grid c12"><div class="card"><div class="hd">Enterprise inputs</div><div class="bd">'+
+ return '<div class="principle"><b>Classify by reality, not by label.</b> Choose a case below (or edit the inputs), then press <b>Run classification</b> — the engine assembles the full profile from the entity\'s activity, ownership, control, legal form, residency and operations.</div>'+
+  '<div class="card"><div class="hd">1 · Choose a case &nbsp;<span class="small" style="font-weight:400">— scroll, pick, and it classifies</span></div><div class="bd">'+
+  '<div class="field"><label>Pick any registered enterprise (74) — loads &amp; classifies instantly</label><select onchange="loadDemo(this.value)" style="max-width:520px">'+chooser+'</select></div>'+
+  '<div class="small" style="margin:6px 0 8px;font-weight:700;color:var(--navy)">…or pick a featured demonstration case:</div><div class="demos">'+demos+'</div></div></div>'+
+  '<div class="card"><div class="hd">2 · Enterprise inputs <span class="small" style="font-weight:400">— edit anything, then run</span></div><div class="bd">'+
   fin("legal_name_en","Legal name (as registered)",inp.legal_name_en)+
   (e.license?'<div class="field"><label>License / trade label (what it is called)</label><input value="'+esc(e.license)+'" disabled style="background:#f6f7f9"/></div>':'')+
   '<div class="frow">'+fsel("legal_form_code","Legal form",lf,inp.legal_form_code)+'<div class="field"><label>Economic activity (ISIC Rev.4 — by value added)</label><select onchange="state.eng.inp.isic_class=this.value">'+isicOpts+'</select></div></div>'+
@@ -296,11 +300,14 @@ function vEngine(){
   '<div style="font-weight:700;color:var(--navy);margin:8px 0 6px;font-family:Georgia,serif">Ownership &amp; control</div>'+
   tbl(["Owner","Equity %","Gov?","Resident?","Control",""],[]).replace("</table>",edrows+"</table>")+
   '<button class="btn sm soft" style="margin-top:9px" onclick="state.eng.edges.push({owner_id:\'New owner\',owner_name:\'New owner\',owned_id:\'ENG\',ownership_pct:0,voting_pct:0,control_indicator:\'\',owner_is_government:false,owner_is_resident:true,is_ultimate:\'Y\'});render()">+ Add owner</button>'+
-  '<div style="margin-top:14px"><button class="btn" onclick="runEngine()">▶ Run classification</button></div>'+
-  '</div></div><div id="engresult">'+labelBox+'<div class="note">Press <b>Run classification</b> (or pick a demo case) to assemble the full classification profile here.</div></div></div>';
+  '<div style="margin-top:16px"><button class="btn" style="font-size:15px;padding:12px 24px" onclick="runEngine()">▶ Run classification</button> <span class="small">— result appears below and the page scrolls to it</span></div>'+
+  '</div></div>'+
+  '<div class="card"><div class="hd">3 · Assembled classification profile</div><div class="bd" id="engresult">'+labelBox+'<div class="note">Choose a case above or press <b>Run classification</b> — the full profile, confidence, source traceability, validation flags, rule trace and audit log appear here.</div></div></div>';
 }
-function loadDemo(id){var e=ent(id);if(!e)return;state.eng=engFrom(e);state.view="engine";render();setTimeout(function(){runEngine();var el=document.getElementById("engresult");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});},30);}
+function loadDemo(id){var e=ent(id);if(!e)return;state.eng=engFrom(e);state.view="engine";render();setTimeout(function(){runEngine();},30);}
 function runEngine(){
+ var el=document.getElementById("engresult");
+ try{
  var e=state.eng,inp=Object.assign({},e.inp);
  var edges=e.edges.map(function(x){return Object.assign({},x,{owned_id:"ENG",owner_id:x.owner_id||x.owner_name,is_ultimate:"Y"});});
  var f=buildFacts(inp,edges,"ENG");var oc=classify(f);var r=oc.result;
@@ -330,13 +337,14 @@ function runEngine(){
  var summary='<div class="summary"><b>Final classification:</b> '+esc(inp.legal_name_en)+' is a <b>'+esc(entityType(r,inp))+'</b>, institutional sector <b>'+esc(r.sector_code)+'</b> ('+esc(ppName(r.public_private))+'), '+esc(r.market_status.toLowerCase())+' producer, '+esc(ownCat(f).toLowerCase())+', size <b>'+esc(r.size_class)+'</b>, '+esc(r.residence==="RES"?"resident":r.residence)+(r.fdi_flag!=="NONE"?", FDI: "+esc(r.fdi_flag):"")+'. Confidence '+oc.confidence+'.</div>';
  var nowiso=new Date().toISOString().slice(0,16).replace("T"," ");
  var audit=tbl(["When","Action","Detail","By"],[[nowiso,"CAPTURE","Inputs received via classification portal","portal"],[nowiso,"VALIDATE",(v.length?v.length+" finding(s)":"all checks passed"),"engine"],[nowiso,"CLASSIFY","18-test pipeline · confidence "+oc.confidence,"engine"],[nowiso,"PENDING","Awaiting peer review (Layer 2)","workflow"]]);
- var el=document.getElementById("engresult");
  el.innerHTML=profile+summary+
   (warns.length?'<div class="card" style="margin-top:14px"><div class="hd">Validation flags &amp; warnings</div><div class="bd">'+warns.join("")+'</div></div>':'<div class="card" style="margin-top:14px"><div class="bd small" style="color:var(--green)">No validation flags — record passes all checks.</div></div>')+
   '<div class="card"><div class="hd">Ownership network</div><div class="bd"><div class="svgwrap">'+ownSVG(edges,"ENG",inp.legal_name_en)+'</div></div></div>'+
   '<div class="card"><div class="hd">Source traceability</div><div class="bd">'+sources+'</div></div>'+
   '<div class="card"><div class="hd">How the answer was reached — rules applied</div><div class="bd">'+tbl(["Test","Rule","Output","Standard"],[]).replace("</table>",trace+"</table>")+'</div></div>'+
   '<div class="card"><div class="hd">Audit log</div><div class="bd">'+audit+'</div></div>';
+  if(el&&el.scrollIntoView)el.scrollIntoView({behavior:"smooth",block:"start"});
+ }catch(err){if(el)el.innerHTML='<div class="warn"><b>Could not classify.</b> '+esc(err&&err.message)+'</div>';}
 }
 
 /* ===================== VIEW: REGISTER ===================== */
@@ -350,19 +358,37 @@ function vRegister(){
 /* register rows clickable: rebuild with onclick */
 function vRegister2(){
  var q=(state.regQ||"").toLowerCase();
- var list=DATA.enterprises.filter(function(e){return !q||(e.name+e.id+e.sector+e.public_private+e.legal_form).toLowerCase().indexOf(q)>=0;});
+ var pps=["all"].concat(Object.keys(PP));
+ var secs=["all"].concat(Object.keys(countBy(DATA.enterprises,"sector")).sort());
+ var sizes=["all","MICRO","SMALL","MEDIUM","LARGE"];
+ var list=DATA.enterprises.filter(function(e){
+  if(q&&(e.name+e.id+e.sector+e.public_private+e.legal_form).toLowerCase().indexOf(q)<0)return false;
+  if(state.regPP&&state.regPP!=="all"&&e.public_private!==state.regPP)return false;
+  if(state.regSec&&state.regSec!=="all"&&e.sector!==state.regSec)return false;
+  if(state.regSize&&state.regSize!=="all"&&e.size!==state.regSize)return false;
+  return true;});
  var body=list.map(function(e){return '<tr class="row" onclick="loadDemo(\''+e.id+'\')"><td><b>'+esc(e.name)+'</b><div class="small mono">'+esc(e.id)+'</div></td><td>'+esc(e.legal_form)+'</td><td>'+esc(e.sector)+'</td><td>'+pp(e.public_private)+'</td><td>'+esc(e.size)+'</td><td>'+bdg(e.control)+'</td><td><span style="color:'+qcol(e.confidence||1)+';font-weight:700">'+(e.confidence||1)+'</span></td></tr>';}).join("");
- return '<div class="card"><div class="bd"><input placeholder="Search name, ID, sector, legal form…" value="'+esc(state.regQ)+'" oninput="state.regQ=this.value;render()" style="width:100%;max-width:400px;padding:9px 12px;border:1px solid var(--rule);border-radius:7px;margin-bottom:14px"/>'+
-  '<p class="small" style="margin:0 0 10px">'+list.length+' classified records. Click any row to open it in the engine and re-run the live classification.</p>'+
+ var chips=pps.map(function(p){return '<button class="btn sm '+((state.regPP||"all")===p?"":"soft")+'" onclick="state.regPP=\''+p+'\';render()">'+(p==="all"?"All":esc(p))+'</button>';}).join(" ");
+ var ssel=function(id,opts,cur){return '<select onchange="state.'+id+'=this.value;render()" style="padding:8px 10px;border:1px solid var(--rule);border-radius:7px">'+opts.map(function(o){return '<option '+((cur||"all")===o?"selected":"")+'>'+o+'</option>';}).join("")+'</select>';};
+ return '<div class="lead">The Central Statistical Business Register. Search and filter, then click any row to open it in the engine and re-run the live classification.</div>'+
+  '<div class="card"><div class="bd">'+
+  '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
+  '<input placeholder="Search name, ID, sector, legal form…" value="'+esc(state.regQ)+'" oninput="state.regQ=this.value;render()" style="flex:1;min-width:220px;padding:9px 12px;border:1px solid var(--rule);border-radius:7px"/>'+
+  '<label class="small">Sector '+ssel("regSec",secs,state.regSec)+'</label>'+
+  '<label class="small">Size '+ssel("regSize",sizes,state.regSize)+'</label></div>'+
+  '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">'+chips+'</div>'+
+  '<p class="small" style="margin:0 0 10px">'+list.length+' of '+DATA.enterprises.length+' records.</p>'+
   '<div class="tw"><table class="t"><tr><th>Enterprise</th><th>Legal form</th><th>Sector</th><th>Public/Private</th><th>Size</th><th>Control</th><th>Confidence</th></tr>'+body+'</table></div></div></div>';
 }
 
 /* ===================== VIEW: ISIC MASTER ===================== */
 function vIsic(){
  var q=(state.isicQ||"").toLowerCase();
- var list=DATA.isic_list.filter(function(x){return !q||(x.code+x.activity+x.section).toLowerCase().indexOf(q)>=0;});
+ var secs=["all"].concat(Object.keys(countBy(DATA.isic_list,"section")).sort());
+ var list=DATA.isic_list.filter(function(x){return (!q||(x.code+x.activity+x.section).toLowerCase().indexOf(q)>=0)&&(!state.isicSec||state.isicSec==="all"||x.section===state.isicSec);});
+ var ssel='<select onchange="state.isicSec=this.value;render()" style="padding:9px 10px;border:1px solid var(--rule);border-radius:7px">'+secs.map(function(o){return '<option '+((state.isicSec||"all")===o?"selected":"")+'>'+o+'</option>';}).join("")+'</select>';
  return '<div class="lead">ISIC Rev.4 is the activity classification. The principal activity is the one generating the largest <b>value added</b> — not revenue, not the license label. Cross-walks to NACE and the GCC-SIC are shown.</div>'+
-  '<div class="card"><div class="bd"><input placeholder="Search ISIC code or activity…" value="'+esc(state.isicQ)+'" oninput="state.isicQ=this.value;render()" style="width:100%;max-width:400px;padding:9px 12px;border:1px solid var(--rule);border-radius:7px;margin-bottom:14px"/>'+
+  '<div class="card"><div class="bd"><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px"><input placeholder="Search ISIC code or activity…" value="'+esc(state.isicQ)+'" oninput="state.isicQ=this.value;render()" style="flex:1;min-width:220px;padding:9px 12px;border:1px solid var(--rule);border-radius:7px"/><label class="small">Section '+ssel+'</label></div>'+
   tbl(["ISIC class","Activity","Section","NACE","GCC-SIC"],list.map(function(x){return ['<span class="mono">'+esc(x.code)+'</span>',esc(x.activity),esc(x.section),esc(x.nace||""),esc(x.gcc||"")];}))+
   '<p class="small" style="margin-top:10px">'+list.length+' classes shown (catalogue covers the 21 ISIC sections and the classes most relevant to Qatar). A national activity classification beyond ISIC + the GCC-SIC cross-walk is not provided in the source files.</p></div></div>';
 }
