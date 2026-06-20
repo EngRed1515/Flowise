@@ -106,8 +106,9 @@ CANONICAL_PROJECT_TYPES = [
 ]
 
 _PROJECT_TYPE_PATTERNS = [
-    (r"hospital|clinic|health|medical", "hospital"),
+    # hotel/hospitality first so "Hospitality" isn't caught by "hospital".
     (r"hotel|resort|hospitality", "hotel"),
+    (r"hospital|clinic|healthcare|health care|\bmedical\b", "hospital"),
     (r"school|university|college|educat|campus", "school"),
     (r"residential tower|apartment|high[- ]?rise|tower", "residential tower"),
     (r"villa|compound|housing|community", "compound"),

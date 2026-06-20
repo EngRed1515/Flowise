@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCC Door Intel — Dashboard Preview</title><style>:root { --bg:#f4f6f8; --card:#fff; --ink:#1c2530; --muted:#6b7785; --line:#e2e7ec;
+  --a:#1a8f3c; --b:#c98a00; --c:#9aa3ad; --accent:#0b5fff; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background:var(--bg); color:var(--ink); }
+a { color:var(--accent); text-decoration:none; }
+.topbar { display:flex; justify-content:space-between; align-items:center;
+  background:#0e1b2c; color:#fff; padding:10px 20px; }
+.brand { font-weight:700; letter-spacing:.3px; }
+.internal { background:#b3261e; font-size:11px; padding:2px 6px; border-radius:4px; margin-left:8px; }
+.topbar nav a { color:#cfe0ff; margin-left:18px; font-size:14px; }
+main { padding:20px; max-width:1400px; margin:0 auto; }
+
+.kpis { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:12px 18px; min-width:120px; display:flex; flex-direction:column; }
+.kpi .num { font-size:24px; font-weight:700; }
+.kpi .lbl { font-size:12px; color:var(--muted); }
+.num.tierA { color:var(--a); } .num.tierB { color:var(--b); }
+
+.filters { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.filters select, .filters input, .bigform input, .bigform select, .bigform textarea,
+.detail-side input, .detail-side select, .detail-side textarea {
+  padding:7px 9px; border:1px solid var(--line); border-radius:7px; font-size:14px; }
+button { background:var(--accent); color:#fff; border:0; padding:8px 16px;
+  border-radius:7px; font-size:14px; cursor:pointer; }
+
+.board { display:flex; gap:12px; overflow-x:auto; align-items:flex-start; }
+.col { background:#eef1f4; border-radius:10px; padding:8px; min-width:230px; flex:1; }
+.col h3 { margin:6px 4px 10px; font-size:13px; text-transform:uppercase; color:var(--muted); }
+.col .count { background:#dfe5ea; border-radius:10px; padding:0 7px; font-size:12px; }
+.card { display:block; background:var(--card); border:1px solid var(--line);
+  border-left:4px solid var(--c); border-radius:8px; padding:10px; margin-bottom:8px; color:var(--ink); }
+.card.tier-A { border-left-color:var(--a); } .card.tier-B { border-left-color:var(--b); }
+.card-top { display:flex; justify-content:space-between; align-items:center; }
+.card-name { font-weight:600; margin:4px 0; font-size:14px; }
+.card-meta { font-size:12px; color:var(--muted); }
+.score { font-weight:700; }
+.tier-badge { font-size:11px; font-weight:700; color:#fff; background:var(--c);
+  padding:1px 7px; border-radius:10px; }
+.tier-badge.tier-A { background:var(--a); } .tier-badge.tier-B { background:var(--b); }
+
+.back { display:inline-block; margin-bottom:10px; }
+.detail { display:grid; grid-template-columns:2fr 1fr; gap:20px; }
+.detail-main, .detail-side { background:var(--card); border:1px solid var(--line);
+  border-radius:10px; padding:18px; }
+.sub { color:var(--muted); margin-top:-6px; }
+table.kv { width:100%; border-collapse:collapse; margin-bottom:10px; }
+table.kv th, table.kv td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line);
+  font-size:14px; vertical-align:top; }
+table.kv th { color:var(--muted); font-weight:600; width:40%; }
+table.kv.small th, table.kv.small td { font-size:13px; }
+.sources { padding-left:18px; font-size:14px; }
+.disq { color:#b3261e; font-weight:600; }
+.detail-side label { display:block; margin:10px 0 4px; font-size:13px; color:var(--muted); }
+.detail-side input, .detail-side select, .detail-side textarea { width:100%; }
+.bigform { max-width:640px; background:var(--card); border:1px solid var(--line);
+  border-radius:10px; padding:18px; }
+.bigform label { display:block; margin:10px 0; font-size:13px; color:var(--muted); }
+.bigform input, .bigform select, .bigform textarea { width:100%; }
+.bigform .row { display:flex; gap:12px; } .bigform .row label { flex:1; }
+.note { color:var(--muted); max-width:640px; font-size:14px; }
+
+.banner{background:#fff7e6;border:1px solid #f0d9a8;color:#7a5b12;padding:10px 14px;
+  border-radius:8px;margin:14px 0;font-size:14px;}
+hr.sep{border:0;border-top:2px dashed var(--line);margin:30px 0;}</style></head>
+<body>
+<header class="topbar"><div class="brand">SBK · GCC Door Intelligence <span class="internal">INTERNAL · PREVIEW</span></div>
+<nav><a>Pipeline</a><a>Map</a><a>+ Add lead</a><a>Import file</a><a>API</a></nav></header>
+<main>
+  <div class="banner"><b>Static preview</b> — real seeded data baked into one file. This is what the
+  live dashboard looks like. To click, filter and edit, run the app locally (see the UAT walkthrough).</div>
+
+  <h2 style="margin:6px 0">Pipeline board</h2>
+  <section class="kpis">
+    <div class="kpi"><span class="num">11</span><span class="lbl">Projects</span></div>
+    <div class="kpi"><span class="num tierA">8</span><span class="lbl">Tier A</span></div>
+    <div class="kpi"><span class="num tierB">1</span><span class="lbl">Tier B</span></div>
+    <div class="kpi"><span class="num">11,535,000,000</span><span class="lbl">Pipeline value</span></div>
+    <div class="kpi"><span class="num">5/4</span><span class="lbl">Pre / post tender</span></div>
+  </section>
+  <div class="board"><div class="col"><h3>new <span class="count">11</span></h3>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">88.5</span></div>
+        <div class="card-name">Lusail Marina Twin Towers</div>
+        <div class="card-meta">Qatar · residential tower</div>
+        <div class="card-meta">pre-tender · doors~3840 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">85.0</span></div>
+        <div class="card-name">Riyadh Boulevard Mixed-Use Development</div>
+        <div class="card-meta">Saudi Arabia · mixed-use</div>
+        <div class="card-meta">design · doors~8400 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">84.0</span></div>
+        <div class="card-name">Construction of Jeddah Public School Complex</div>
+        <div class="card-meta">Saudi Arabia · school</div>
+        <div class="card-meta">tender · doors~640 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">83.2</span></div>
+        <div class="card-name">Aldar Beachfront Hotel</div>
+        <div class="card-meta">United Arab Emirates · hotel</div>
+        <div class="card-meta">tender · doors~1900 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">82.5</span></div>
+        <div class="card-name">Manama Bay Boutique Hotel</div>
+        <div class="card-meta">Bahrain · hotel</div>
+        <div class="card-meta">tender · doors~840 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">80.0</span></div>
+        <div class="card-name">Dammam Specialist Hospital Expansion</div>
+        <div class="card-meta">Saudi Arabia · hospital</div>
+        <div class="card-meta">awarded · doors~2200 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">79.0</span></div>
+        <div class="card-name">NEOM The Line Residential Module B</div>
+        <div class="card-meta">Saudi Arabia · residential tower</div>
+        <div class="card-meta">concept · doors~18000 · 🔥</div>
+      </div>
+      <div class="card tier-A">
+        <div class="card-top"><span class="tier-badge tier-A">A</span><span class="score">75.0</span></div>
+        <div class="card-name">King Salman Medical City Hospital</div>
+        <div class="card-meta">Saudi Arabia · hospital</div>
+        <div class="card-meta">design · doors~4800 · 🔥</div>
+      </div>
+      <div class="card tier-B">
+        <div class="card-top"><span class="tier-badge tier-B">B</span><span class="score">67.5</span></div>
+        <div class="card-name">Sabah Al-Salem University Campus</div>
+        <div class="card-meta">Kuwait · school</div>
+        <div class="card-meta">concept · doors~3200 · 🔥</div>
+      </div>
+      <div class="card tier-C">
+        <div class="card-top"><span class="tier-badge tier-C">C</span><span class="score">0.0</span></div>
+        <div class="card-name">Sohar Affordable Housing Compound</div>
+        <div class="card-meta">Oman · compound</div>
+        <div class="card-meta">cancelled · doors~2700</div>
+      </div>
+      <div class="card tier-C">
+        <div class="card-top"><span class="tier-badge tier-C">C</span><span class="score">0.0</span></div>
+        <div class="card-name">Salalah Logistics Warehouse</div>
+        <div class="card-meta">Oman · industrial</div>
+        <div class="card-meta">on-hold · doors~800</div>
+      </div></div><div class="col"><h3>watching <span class="count">0</span></h3></div><div class="col"><h3>pursuing <span class="count">0</span></h3></div><div class="col"><h3>quoted <span class="count">0</span></h3></div><div class="col"><h3>won <span class="count">0</span></h3></div><div class="col"><h3>lost <span class="count">0</span></h3></div><div class="col"><h3>archived <span class="count">0</span></h3></div></div>
+
+  <hr class="sep">
+  <h2 style="margin:6px 0">Project detail — example (the merged, cross-source project)</h2>
+  
+    <div class="detail">
+      <div class="detail-main">
+        <h1>Lusail Marina Twin Towers <span class="tier-badge tier-A">Tier A · 88.5</span></h1>
+        <p class="sub">Qatar · Lusail · residential tower · pre-tender</p>
+        <h3>Project</h3>
+        <table class="kv">
+          <tr><th>Value estimate</th><td>QAR 1,530,000,000</td></tr>
+          <tr><th>Units / Floor area</th><td>640 units · 180000.0 sqm</td></tr>
+          <tr><th>Estimated door demand</th><td>3840</td></tr>
+          <tr><th>Fire-rating relevant</th><td>✓ yes</td></tr>
+          <tr><th>Reachable before procurement</th><td>✓ yes</td></tr>
+        </table>
+        <h3>Stakeholders</h3>
+        <table class="kv"><tr><th>Role</th><th>Organisation</th><th>Contact</th></tr><tr><td>developer</td><td>Qatari Diar</td><td>Ahmed Al-Thani a.althani@qataridiar.qa +974 4000 1000</td></tr><tr><td>architect</td><td>Gensler</td><td>  </td></tr><tr><td>consultant</td><td>Hill International</td><td>  </td></tr><tr><td>developer</td><td>Qatari Diar Real Estate</td><td>Mona Faraj m.faraj@protenders-demo.com +974 5000 2000</td></tr><tr><td>fitout_contractor</td><td>Depa Interiors</td><td>  </td></tr></table>
+        <h3>Source references</h3><ul class="sources"><li><b>meed</b> · meed:MEED-1001</li><li><b>protenders</b> · protenders:PT-5501</li></ul>
+      </div>
+      <aside class="detail-side">
+        <h3>Why this score?</h3>
+        <table class="kv small"><tr><th>Factor</th><th>norm</th><th>pts</th></tr><tr><td>funding_status</td><td>0.7</td><td>21.0 / 30.0</td></tr><tr><td>spec_influence</td><td>0.9</td><td>22.5 / 25.0</td></tr><tr><td>door_relevance</td><td>1.0</td><td>20.0 / 20.0</td></tr><tr><td>fire_rating</td><td>1.0</td><td>10.0 / 10.0</td></tr><tr><td>reachability</td><td>1.0</td><td>10.0 / 10.0</td></tr><tr><td>country</td><td>1.0</td><td>5.0 / 5.0</td></tr></table>
+      </aside>
+    </div>
+</main></body></html>
