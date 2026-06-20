@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>GCC Door Intel — Interactive Demo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root { --bg:#f4f6f8; --card:#fff; --ink:#1c2530; --muted:#6b7785; --line:#e2e7ec;
+  --a:#1a8f3c; --b:#c98a00; --c:#9aa3ad; --accent:#0b5fff; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background:var(--bg); color:var(--ink); }
+a { color:var(--accent); text-decoration:none; }
+.topbar { display:flex; justify-content:space-between; align-items:center;
+  background:#0e1b2c; color:#fff; padding:10px 20px; }
+.brand { font-weight:700; letter-spacing:.3px; }
+.internal { background:#b3261e; font-size:11px; padding:2px 6px; border-radius:4px; margin-left:8px; }
+.topbar nav a { color:#cfe0ff; margin-left:18px; font-size:14px; }
+main { padding:20px; max-width:1400px; margin:0 auto; }
+
+.kpis { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:10px;
+  padding:12px 18px; min-width:120px; display:flex; flex-direction:column; }
+.kpi .num { font-size:24px; font-weight:700; }
+.kpi .lbl { font-size:12px; color:var(--muted); }
+.num.tierA { color:var(--a); } .num.tierB { color:var(--b); }
+
+.filters { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.filters select, .filters input, .bigform input, .bigform select, .bigform textarea,
+.detail-side input, .detail-side select, .detail-side textarea {
+  padding:7px 9px; border:1px solid var(--line); border-radius:7px; font-size:14px; }
+button { background:var(--accent); color:#fff; border:0; padding:8px 16px;
+  border-radius:7px; font-size:14px; cursor:pointer; }
+
+.board { display:flex; gap:12px; overflow-x:auto; align-items:flex-start; }
+.col { background:#eef1f4; border-radius:10px; padding:8px; min-width:230px; flex:1; }
+.col h3 { margin:6px 4px 10px; font-size:13px; text-transform:uppercase; color:var(--muted); }
+.col .count { background:#dfe5ea; border-radius:10px; padding:0 7px; font-size:12px; }
+.card { display:block; background:var(--card); border:1px solid var(--line);
+  border-left:4px solid var(--c); border-radius:8px; padding:10px; margin-bottom:8px; color:var(--ink); }
+.card.tier-A { border-left-color:var(--a); } .card.tier-B { border-left-color:var(--b); }
+.card-top { display:flex; justify-content:space-between; align-items:center; }
+.card-name { font-weight:600; margin:4px 0; font-size:14px; }
+.card-meta { font-size:12px; color:var(--muted); }
+.score { font-weight:700; }
+.tier-badge { font-size:11px; font-weight:700; color:#fff; background:var(--c);
+  padding:1px 7px; border-radius:10px; }
+.tier-badge.tier-A { background:var(--a); } .tier-badge.tier-B { background:var(--b); }
+
+.back { display:inline-block; margin-bottom:10px; }
+.detail { display:grid; grid-template-columns:2fr 1fr; gap:20px; }
+.detail-main, .detail-side { background:var(--card); border:1px solid var(--line);
+  border-radius:10px; padding:18px; }
+.sub { color:var(--muted); margin-top:-6px; }
+table.kv { width:100%; border-collapse:collapse; margin-bottom:10px; }
+table.kv th, table.kv td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line);
+  font-size:14px; vertical-align:top; }
+table.kv th { color:var(--muted); font-weight:600; width:40%; }
+table.kv.small th, table.kv.small td { font-size:13px; }
+.sources { padding-left:18px; font-size:14px; }
+.disq { color:#b3261e; font-weight:600; }
+.detail-side label { display:block; margin:10px 0 4px; font-size:13px; color:var(--muted); }
+.detail-side input, .detail-side select, .detail-side textarea { width:100%; }
+.bigform { max-width:640px; background:var(--card); border:1px solid var(--line);
+  border-radius:10px; padding:18px; }
+.bigform label { display:block; margin:10px 0; font-size:13px; color:var(--muted); }
+.bigform input, .bigform select, .bigform textarea { width:100%; }
+.bigform .row { display:flex; gap:12px; } .bigform .row label { flex:1; }
+.note { color:var(--muted); max-width:640px; font-size:14px; }
+
+.banner{background:#fff7e6;border:1px solid #f0d9a8;color:#7a5b12;padding:10px 14px;
+  border-radius:8px;margin:14px 0;font-size:13px;}
+.topbar nav a{cursor:pointer;}
+.topbar nav a.active{color:#fff;font-weight:700;}
+.view{display:none;} .view.on{display:block;}
+#map{height:70vh;border-radius:8px;}
+.back{cursor:pointer;}
+.disabled{opacity:.45;}
+@media(max-width:640px){.detail{grid-template-columns:1fr;} .board{flex-direction:column;}
+  .col{min-width:0;} main{padding:14px;}}
+</style></head>
+<body>
+<header class="topbar">
+  <div class="brand">SBK · GCC Door Intelligence <span class="internal">INTERNAL · DEMO</span></div>
+  <nav>
+    <a id="nav-board" onclick="show('board')">Pipeline</a>
+    <a id="nav-map" onclick="show('map')">Map</a>
+    <a class="disabled" title="Available in the live app">+ Add lead</a>
+    <a class="disabled" title="Available in the live app">Import file</a>
+  </nav>
+</header>
+<main>
+  <div class="banner"><b>Interactive demo</b> — real seeded data, fully clickable on phone or desktop.
+  Tap a project card to see its score breakdown. (Add/Edit/Import work in the live app.)</div>
+
+  <!-- BOARD -->
+  <section id="view-board" class="view on">
+    <section class="kpis" id="kpis"></section>
+    <form class="filters" onsubmit="return false">
+      <select id="f-country"><option value="">All countries</option></select>
+      <select id="f-tier"><option value="">All tiers</option><option>A</option><option>B</option><option>C</option></select>
+      <select id="f-type"><option value="">All types</option></select>
+      <input id="f-score" type="number" placeholder="Min score">
+      <button type="button" onclick="renderBoard()">Filter</button>
+      <button type="button" onclick="clearFilters()">Reset</button>
+    </form>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- PROJECT DETAIL -->
+  <section id="view-project" class="view">
+    <a class="back" onclick="show('board')">← Pipeline</a>
+    <div id="project-detail"></div>
+  </section>
+
+  <!-- MAP -->
+  <section id="view-map" class="view">
+    <h2>Active projects</h2>
+    <div id="map"></div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const CTX = {"projects":[{"project_id":"b34a83e34adb","project_name":"Lusail Marina Twin Towers","country":"Qatar","city":"Lusail","project_type":"residential tower","status":"pre-tender","pipeline_status":"new","score":88.5,"tier":"A","estimated_door_demand":3840,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":1530000000.0,"value_currency":"QAR","unit_count":640,"floor_area":180000.0,"latitude":25.4306,"longitude":51.4912,"stakeholders":[{"role":"developer","organisation":"Qatari Diar","contact_name":"Ahmed Al-Thani","email":"a.althani@qataridiar.qa","phone":"+974 4000 1000"},{"role":"architect","organisation":"Gensler","contact_name":null,"email":null,"phone":null},{"role":"consultant","organisation":"Hill International","contact_name":null,"email":null,"phone":null},{"role":"developer","organisation":"Qatari Diar Real Estate","contact_name":"Mona Faraj","email":"m.faraj@protenders-demo.com","phone":"+974 5000 2000"},{"role":"fitout_contractor","organisation":"Depa Interiors","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"meed","id":"meed:MEED-1001"},{"source":"protenders","id":"protenders:PT-5501"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.7,"weight":30.0,"points":21.0},"spec_influence":{"normalized":0.9,"weight":25.0,"points":22.5},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"90977a2e9a91","project_name":"Riyadh Boulevard Mixed-Use Development","country":"Saudi Arabia","city":"Riyadh","project_type":"mixed-use","status":"design","pipeline_status":"new","score":85.0,"tier":"A","estimated_door_demand":8400,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":2800000000.0,"value_currency":"SAR","unit_count":1200,"floor_area":420000.0,"latitude":24.7136,"longitude":46.6753,"stakeholders":[{"role":"developer","organisation":"Diriyah Company","contact_name":"Faisal Otaibi","email":"f.otaibi@diriyah-demo.com","phone":"+966 11 200 3000"},{"role":"architect","organisation":"Zaha Hadid Architects","contact_name":null,"email":null,"phone":null},{"role":"consultant","organisation":"KEO","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"protenders","id":"protenders:PT-5502"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.5,"weight":30.0,"points":15.0},"spec_influence":{"normalized":1.0,"weight":25.0,"points":25.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"5b5abdd62b0a","project_name":"Construction of Jeddah Public School Complex","country":"Saudi Arabia","city":"Jeddah","project_type":"school","status":"tender","pipeline_status":"new","score":84.0,"tier":"A","estimated_door_demand":640,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":80000000.0,"value_currency":"SAR","unit_count":null,"floor_area":32000.0,"latitude":21.4858,"longitude":39.1925,"stakeholders":[{"role":"developer","organisation":"Ministry of Education","contact_name":"Procurement Office","email":"tenders@moe-demo.gov.sa","phone":"+966 12 600 1000"},{"role":"consultant","organisation":"Saudi Consult","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"etimad","id":"etimad:ET-2026-0001"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.8,"weight":30.0,"points":24.0},"spec_influence":{"normalized":0.6,"weight":25.0,"points":15.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"44866d05a7f9","project_name":"Aldar Beachfront Hotel","country":"United Arab Emirates","city":"Abu Dhabi","project_type":"hotel","status":"tender","pipeline_status":"new","score":83.2,"tier":"A","estimated_door_demand":1900,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":210000000.0,"value_currency":"USD","unit_count":310,"floor_area":95000.0,"latitude":24.4539,"longitude":54.3773,"stakeholders":[{"role":"developer","organisation":"Aldar Properties","contact_name":"Sara Khalifa","email":"s.khalifa@aldar.ae","phone":"+971 2 810 5555"},{"role":"architect","organisation":"Foster + Partners","contact_name":null,"email":null,"phone":null},{"role":"consultant","organisation":"AECOM","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"meed","id":"meed:MEED-1003"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.8,"weight":30.0,"points":24.0},"spec_influence":{"normalized":0.6,"weight":25.0,"points":15.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":0.85,"weight":5.0,"points":4.25}}}},{"project_id":"6edcf812c141","project_name":"Manama Bay Boutique Hotel","country":"Bahrain","city":"Manama","project_type":"hotel","status":"tender","pipeline_status":"new","score":82.5,"tier":"A","estimated_door_demand":840,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":90000000.0,"value_currency":"BHD","unit_count":140,"floor_area":28000.0,"latitude":26.2285,"longitude":50.586,"stakeholders":[{"role":"developer","organisation":"Edamah","contact_name":"Layla Ahmed","email":"layla@edamah-demo.com","phone":"+973 1700 4000"},{"role":"architect","organisation":"SOM","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"protenders","id":"protenders:PT-5503"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.8,"weight":30.0,"points":24.0},"spec_influence":{"normalized":0.6,"weight":25.0,"points":15.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":0.7,"weight":5.0,"points":3.5}}}},{"project_id":"79835ff44d65","project_name":"Dammam Specialist Hospital Expansion","country":"Saudi Arabia","city":"Dammam","project_type":"hospital","status":"awarded","pipeline_status":"new","score":80.0,"tier":"A","estimated_door_demand":2200,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":300000000.0,"value_currency":"SAR","unit_count":null,"floor_area":110000.0,"latitude":26.4207,"longitude":50.0888,"stakeholders":[{"role":"developer","organisation":"Ministry of Health","contact_name":"Contracts Dept","email":"contracts@moh-demo.gov.sa","phone":"+966 13 800 3000"},{"role":"consultant","organisation":"Dar Al-Handasah","contact_name":null,"email":null,"phone":null},{"role":"main_contractor","organisation":"Saudi Binladin Group","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"etimad","id":"etimad:ET-2026-0003"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":1.0,"weight":30.0,"points":30.0},"spec_influence":{"normalized":0.2,"weight":25.0,"points":5.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"2c37f805b53a","project_name":"NEOM The Line Residential Module B","country":"Saudi Arabia","city":"Tabuk","project_type":"residential tower","status":"concept","pipeline_status":"new","score":79.0,"tier":"A","estimated_door_demand":18000,"fire_rating_relevant":true,"reachable_before_procurement":true,"value_estimate":5400000000.0,"value_currency":"SAR","unit_count":3000,"floor_area":650000.0,"latitude":23.8859,"longitude":45.0792,"stakeholders":[{"role":"developer","organisation":"NEOM Company","contact_name":"NEOM Procurement","email":"procure@neom-demo.gov.sa","phone":"+966 14 700 2000"},{"role":"consultant","organisation":"Mott MacDonald","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"etimad","id":"etimad:ET-2026-0002"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.3,"weight":30.0,"points":9.0},"spec_influence":{"normalized":1.0,"weight":25.0,"points":25.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":1.0,"weight":10.0,"points":10.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"ad6567d80a83","project_name":"King Salman Medical City Hospital","country":"Saudi Arabia","city":"Riyadh","project_type":"hospital","status":"design","pipeline_status":"new","score":75.0,"tier":"A","estimated_door_demand":4800,"fire_rating_relevant":true,"reachable_before_procurement":false,"value_estimate":650000000.0,"value_currency":"USD","unit_count":null,"floor_area":240000.0,"latitude":24.7136,"longitude":46.6753,"stakeholders":[{"role":"developer","organisation":"Ministry of Health","contact_name":null,"email":null,"phone":null},{"role":"architect","organisation":"HKS Architects","contact_name":null,"email":null,"phone":null},{"role":"consultant","organisation":"Dar Al-Handasah","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"meed","id":"meed:MEED-1002"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.5,"weight":30.0,"points":15.0},"spec_influence":{"normalized":1.0,"weight":25.0,"points":25.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":0.0,"weight":10.0,"points":0.0},"country":{"normalized":1.0,"weight":5.0,"points":5.0}}}},{"project_id":"a04cd1299b1a","project_name":"Sabah Al-Salem University Campus","country":"Kuwait","city":"Kuwait City","project_type":"school","status":"concept","pipeline_status":"new","score":67.5,"tier":"B","estimated_door_demand":3200,"fire_rating_relevant":true,"reachable_before_procurement":false,"value_estimate":300000000.0,"value_currency":"USD","unit_count":null,"floor_area":160000.0,"latitude":29.3759,"longitude":47.9774,"stakeholders":[{"role":"developer","organisation":"Kuwait University","contact_name":null,"email":null,"phone":null},{"role":"architect","organisation":"Perkins&Will","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"meed","id":"meed:MEED-1005"}],"breakdown":{"disqualified":false,"factors":{"funding_status":{"normalized":0.3,"weight":30.0,"points":9.0},"spec_influence":{"normalized":1.0,"weight":25.0,"points":25.0},"door_relevance":{"normalized":1.0,"weight":20.0,"points":20.0},"fire_rating":{"normalized":1.0,"weight":10.0,"points":10.0},"reachability":{"normalized":0.0,"weight":10.0,"points":0.0},"country":{"normalized":0.7,"weight":5.0,"points":3.5}}}},{"project_id":"e2877d853aaa","project_name":"Sohar Affordable Housing Compound","country":"Oman","city":"Sohar","project_type":"compound","status":"cancelled","pipeline_status":"new","score":0.0,"tier":"C","estimated_door_demand":2700,"fire_rating_relevant":false,"reachable_before_procurement":false,"value_estimate":120000000.0,"value_currency":"OMR","unit_count":450,"floor_area":75000.0,"latitude":21.4735,"longitude":55.9754,"stakeholders":[{"role":"developer","organisation":"Ministry of Housing","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"protenders","id":"protenders:PT-5504"}],"breakdown":{"disqualified":true,"reason":"status 'cancelled' is auto-disqualifying","factors":{}}},{"project_id":"bf2ffe91a60b","project_name":"Salalah Logistics Warehouse","country":"Oman","city":"Salalah","project_type":"industrial","status":"on-hold","pipeline_status":"new","score":0.0,"tier":"C","estimated_door_demand":800,"fire_rating_relevant":false,"reachable_before_procurement":false,"value_estimate":55000000.0,"value_currency":"USD","unit_count":null,"floor_area":40000.0,"latitude":21.4735,"longitude":55.9754,"stakeholders":[{"role":"developer","organisation":"Asyad Group","contact_name":null,"email":null,"phone":null}],"sources":[{"source":"meed","id":"meed:MEED-1004"}],"breakdown":{"disqualified":true,"reason":"status 'on-hold' is auto-disqualifying","factors":{}}}],"kpis":{"pipeline_value":11535000000.0},"pipeline_statuses":["new","watching","pursuing","quoted","won","lost","archived"]};
+const PROJECTS = CTX.projects;
+const STATUSES = CTX.pipeline_statuses;
+const esc = s => (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let map=null;
+
+function show(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
+  document.getElementById('view-'+v).classList.add('on');
+  document.getElementById('nav-board').classList.toggle('active',v==='board');
+  document.getElementById('nav-map').classList.toggle('active',v==='map');
+  window.scrollTo(0,0);
+  if(v==='map') initMap();
+}
+
+function initFilters(){
+  const countries=[...new Set(PROJECTS.map(p=>p.country).filter(Boolean))].sort();
+  const types=[...new Set(PROJECTS.map(p=>p.project_type).filter(Boolean))].sort();
+  document.getElementById('f-country').insertAdjacentHTML('beforeend',
+    countries.map(c=>`<option>${esc(c)}</option>`).join(''));
+  document.getElementById('f-type').insertAdjacentHTML('beforeend',
+    types.map(t=>`<option>${esc(t)}</option>`).join(''));
+}
+function clearFilters(){
+  ['f-country','f-tier','f-type'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-score').value=''; renderBoard();
+}
+function filtered(){
+  const c=document.getElementById('f-country').value;
+  const t=document.getElementById('f-tier').value;
+  const ty=document.getElementById('f-type').value;
+  const ms=parseFloat(document.getElementById('f-score').value);
+  return PROJECTS.filter(p=>(!c||p.country===c)&&(!t||p.tier===t)&&(!ty||p.project_type===ty)
+    &&(isNaN(ms)||(p.score||0)>=ms));
+}
+
+function renderKpis(){
+  const a=PROJECTS.filter(p=>p.tier==='A').length, b=PROJECTS.filter(p=>p.tier==='B').length;
+  const pre=PROJECTS.filter(p=>['concept','design','pre-tender'].includes(p.status)).length;
+  const post=PROJECTS.filter(p=>['tender','awarded','under-construction'].includes(p.status)).length;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><span class="num">${PROJECTS.length}</span><span class="lbl">Projects</span></div>
+    <div class="kpi"><span class="num tierA">${a}</span><span class="lbl">Tier A</span></div>
+    <div class="kpi"><span class="num tierB">${b}</span><span class="lbl">Tier B</span></div>
+    <div class="kpi"><span class="num">${CTX.kpis.pipeline_value.toLocaleString()}</span><span class="lbl">Pipeline value</span></div>
+    <div class="kpi"><span class="num">${pre}/${post}</span><span class="lbl">Pre / post tender</span></div>`;
+}
+
+function renderBoard(){
+  const rows=filtered();
+  const cols=STATUSES.map(st=>{
+    const items=rows.filter(p=>p.pipeline_status===st);
+    const cards=items.map(p=>`
+      <a class="card tier-${p.tier}" onclick="openProject('${p.project_id}')">
+        <div class="card-top"><span class="tier-badge tier-${p.tier}">${p.tier}</span><span class="score">${p.score}</span></div>
+        <div class="card-name">${esc(p.project_name)}</div>
+        <div class="card-meta">${esc(p.country)||'?'} · ${esc(p.project_type)}</div>
+        <div class="card-meta">${esc(p.status)} · doors~${p.estimated_door_demand||'?'}${p.fire_rating_relevant?' · 🔥':''}</div>
+      </a>`).join('');
+    return `<div class="col"><h3>${st} <span class="count">${items.length}</span></h3>${cards}</div>`;
+  }).join('');
+  document.getElementById('board').innerHTML=cols;
+}
+
+function openProject(id){
+  const p=PROJECTS.find(x=>x.project_id===id); if(!p) return;
+  const val=p.value_estimate?`${esc(p.value_currency)} ${p.value_estimate.toLocaleString()}`:'—';
+  const sh=p.stakeholders.length?p.stakeholders.map(s=>`<tr><td>${esc(s.role)}</td>
+    <td>${esc(s.organisation)||'—'}</td><td>${esc(s.contact_name)} ${esc(s.email)} ${esc(s.phone)}</td></tr>`).join('')
+    :'<tr><td colspan=3>No stakeholders recorded.</td></tr>';
+  const srcs=p.sources.map(s=>`<li><b>${esc(s.source)}</b> · ${esc(s.id)}</li>`).join('');
+  let bd;
+  if(p.breakdown && p.breakdown.disqualified){
+    bd=`<p class="disq">Auto-disqualified — ${esc(p.breakdown.reason)}</p>`;
+  }else{
+    const f=(p.breakdown&&p.breakdown.factors)||{};
+    bd=`<table class="kv small"><tr><th>Factor</th><th>norm</th><th>pts</th></tr>`+
+      Object.keys(f).map(k=>`<tr><td>${k}</td><td>${f[k].normalized}</td><td>${f[k].points} / ${f[k].weight}</td></tr>`).join('')+`</table>`;
+  }
+  document.getElementById('project-detail').innerHTML=`
+   <div class="detail">
+    <div class="detail-main">
+     <h1>${esc(p.project_name)} <span class="tier-badge tier-${p.tier}">Tier ${p.tier} · ${p.score}</span></h1>
+     <p class="sub">${esc(p.country)} · ${esc(p.city)} · ${esc(p.project_type)} · ${esc(p.status)}</p>
+     <h3>Project</h3>
+     <table class="kv">
+      <tr><th>Value estimate</th><td>${val}</td></tr>
+      <tr><th>Units / Floor area</th><td>${p.unit_count||'—'} units · ${p.floor_area||'—'} sqm</td></tr>
+      <tr><th>Estimated door demand</th><td>${p.estimated_door_demand||'—'}</td></tr>
+      <tr><th>Fire-rating relevant</th><td>${p.fire_rating_relevant?'✓ yes':'no'}</td></tr>
+      <tr><th>Reachable before procurement</th><td>${p.reachable_before_procurement?'✓ yes':'no'}</td></tr>
+     </table>
+     <h3>Stakeholders</h3><table class="kv"><tr><th>Role</th><th>Organisation</th><th>Contact</th></tr>${sh}</table>
+     <h3>Source references</h3><ul class="sources">${srcs}</ul>
+    </div>
+    <aside class="detail-side"><h3>Why this score?</h3>${bd}</aside>
+   </div>`;
+  show('project');
+}
+
+function initMap(){
+  if(map) { setTimeout(()=>map.invalidateSize(),100); return; }
+  map=L.map('map').setView([25,50],5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
+  const colors={A:'#1a8f3c',B:'#c98a00',C:'#999'};
+  PROJECTS.filter(p=>p.latitude).forEach(p=>{
+    L.circleMarker([p.latitude,p.longitude],{radius:8,color:colors[p.tier]||'#666',fillOpacity:.7})
+     .addTo(map).on('click',()=>openProject(p.project_id))
+     .bindPopup(`<b>${esc(p.project_name)}</b><br>${esc(p.country)} · ${esc(p.project_type)}<br>Tier ${p.tier} · ${p.score}`);
+  });
+  setTimeout(()=>map.invalidateSize(),200);
+}
+
+initFilters(); renderKpis(); renderBoard();
+</script>
+</body></html>
