@@ -4,6 +4,11 @@ import { utilValidateKey } from '../../src/utils/validateKey'
 import { compareKeys, getAPIKeys } from '../../src/utils/apiKey'
 
 jest.mock('../../src/utils/apiKey')
+// addChatflowsCount reaches out to the running Express app / database, which is
+// not available in a unit test. Stub it to pass the keys straight through.
+jest.mock('../../src/utils/addChatflowsCount', () => ({
+    addChatflowsCount: jest.fn((keys) => Promise.resolve(keys))
+}))
 
 describe('utilValidateKey', () => {
     let req: Partial<Request>

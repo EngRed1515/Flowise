@@ -41,12 +41,15 @@ pnpm --filter flowise test
 
 - The build is incremental via turbo; if you hit stale-cache issues use
   `pnpm build-force`.
-- Tests live in `packages/server` (jest). The existing test imports the server
-  bootstrap, which pulls in the `flowise-components` workspace package, so build
-  it first: `pnpm --filter flowise-components build` (or run a full `pnpm build`).
-- Known limitation: server tests do not yet fully run because `langchain` (a
-  transitive, pure-ESM dependency) is `require`d in a CommonJS jest context.
-  Running the suite requires jest ESM/`transformIgnorePatterns` configuration
-  that is not yet in place.
+- Tests live in `packages/server` (jest), configured by
+  `packages/server/jest.config.js`. The server's import graph pulls in several
+  pure-ESM packages (langchain, axios, the whole `flowise-components` package)
+  that CommonJS jest cannot load; these are stubbed via `moduleNameMapper` and a
+  manual mock in `packages/server/__mocks__/`. If a new test fails to load with
+  "Cannot use import statement outside a module" or "Unexpected token 'export'",
+  add the offending ESM package to the `moduleNameMapper` stubs in
+  `jest.config.js`.
+- Decorator metadata for TypeORM entities is provided by the root
+  `babel.config.js`; `reflect-metadata` is loaded via jest `setupFiles`.
 - Do not edit files under `dist/`, `build/`, or `node_modules/` — they are
   generated.
