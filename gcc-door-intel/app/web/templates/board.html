@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Pipeline · GCC Door Intel{% endblock %}
+{% block content %}
+<section class="kpis">
+  <div class="kpi"><span class="num">{{ kpis.total }}</span><span class="lbl">Projects</span></div>
+  <div class="kpi"><span class="num tierA">{{ kpis.by_tier.get('A', 0) }}</span><span class="lbl">Tier A</span></div>
+  <div class="kpi"><span class="num tierB">{{ kpis.by_tier.get('B', 0) }}</span><span class="lbl">Tier B</span></div>
+  <div class="kpi"><span class="num">{{ '{:,.0f}'.format(kpis.pipeline_value) }}</span><span class="lbl">Pipeline value</span></div>
+  <div class="kpi"><span class="num">{{ kpis.win_rate if kpis.win_rate is not none else '—' }}{% if kpis.win_rate is not none %}%{% endif %}</span><span class="lbl">Win rate</span></div>
+  <div class="kpi"><span class="num">{{ kpis.pre_tender }}/{{ kpis.post_tender }}</span><span class="lbl">Pre / post tender</span></div>
+</section>
+
+<form class="filters" method="get">
+  <select name="country"><option value="">All countries</option>
+    {% for c in countries %}<option value="{{ c }}" {{ 'selected' if filters.country==c }}>{{ c }}</option>{% endfor %}
+  </select>
+  <select name="tier"><option value="">All tiers</option>
+    {% for t in ['A','B','C'] %}<option value="{{ t }}" {{ 'selected' if filters.tier==t }}>Tier {{ t }}</option>{% endfor %}
+  </select>
+  <select name="project_type"><option value="">All types</option>
+    {% for t in project_types %}<option value="{{ t }}" {{ 'selected' if filters.project_type==t }}>{{ t }}</option>{% endfor %}
+  </select>
+  <input type="number" name="min_score" placeholder="Min score" value="{{ filters.min_score or '' }}">
+  <button type="submit">Filter</button>
+</form>
+
+<div class="board">
+  {% for status in statuses %}
+  <div class="col">
+    <h3>{{ status }} <span class="count">{{ columns[status]|length }}</span></h3>
+    {% for p in columns[status] %}
+    <a class="card tier-{{ p.tier }}" href="/project/{{ p.project_id }}">
+      <div class="card-top"><span class="tier-badge tier-{{ p.tier }}">{{ p.tier }}</span><span class="score">{{ p.score }}</span></div>
+      <div class="card-name">{{ p.project_name }}</div>
+      <div class="card-meta">{{ p.country or '?' }} · {{ p.project_type }}</div>
+      <div class="card-meta">{{ p.status }} · doors~{{ p.estimated_door_demand or '?' }}{% if p.fire_rating_relevant %} · 🔥{% endif %}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

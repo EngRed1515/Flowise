@@ -1,0 +1,25 @@
+# Column-mapping profile for a ProTenders / Ventures ONSITE export (CSV/Excel).
+# Data enters ONLY via official export files the user provides — never scraped.
+source: protenders
+id_columns: [Reference, Project Reference, ID]
+mapping:
+  project_name: Project Title
+  country: Country
+  city: City
+  district: Location
+  project_type: Project Type
+  status: Stage
+  stage_date: Last Update
+  expected_procurement_date: Expected Award Date
+  value_estimate: Estimated Value
+  value_currency: Value Currency
+  floor_area: Built-up Area
+  unit_count: Units
+  developer: Owner / Developer
+  architect: Design Consultant
+  consultant: Supervision Consultant
+  main_contractor: Main Contractor
+  fitout_contractor: Interior Contractor
+  contact_name: Contact Person
+  contact_email: Email
+  contact_phone: Phone

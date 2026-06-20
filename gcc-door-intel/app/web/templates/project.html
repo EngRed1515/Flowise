@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ p.project_name }} · GCC Door Intel{% endblock %}
+{% block content %}
+<a href="/" class="back">← Pipeline</a>
+<div class="detail">
+  <div class="detail-main">
+    <h1>{{ p.project_name }} <span class="tier-badge tier-{{ p.tier }}">Tier {{ p.tier }} · {{ p.score }}</span></h1>
+    <p class="sub">{{ p.country or '?' }}{% if p.city %} · {{ p.city }}{% endif %} · {{ p.project_type }} · {{ p.status }}</p>
+
+    <h3>Project</h3>
+    <table class="kv">
+      <tr><th>Value estimate</th><td>{% if p.value_estimate %}{{ p.value_currency }} {{ '{:,.0f}'.format(p.value_estimate) }}{% else %}—{% endif %}</td></tr>
+      <tr><th>Units / Floor area</th><td>{{ p.unit_count or '—' }} units · {{ p.floor_area or '—' }} sqm</td></tr>
+      <tr><th>Estimated door demand</th><td>{{ p.estimated_door_demand or '—' }}</td></tr>
+      <tr><th>Fire-rating relevant</th><td>{{ '✓ yes' if p.fire_rating_relevant else 'no' }}</td></tr>
+      <tr><th>Reachable before procurement</th><td>{{ '✓ yes' if p.reachable_before_procurement else 'no' }}</td></tr>
+      <tr><th>Stage / procurement date</th><td>{{ p.stage_date or '—' }} / {{ p.expected_procurement_date or '—' }}</td></tr>
+    </table>
+
+    <h3>Stakeholders</h3>
+    <table class="kv">
+      <tr><th>Role</th><th>Organisation</th><th>Contact</th></tr>
+      {% for s in p.stakeholders %}
+      <tr><td>{{ s.role }}</td><td>{{ s.organisation or '—' }}</td>
+        <td>{{ s.contact_name or '' }} {{ s.email or '' }} {{ s.phone or '' }}</td></tr>
+      {% else %}<tr><td colspan="3">No stakeholders recorded.</td></tr>{% endfor %}
+    </table>
+
+    <h3>Source references</h3>
+    <ul class="sources">
+      {% for sr in p.source_refs %}<li><b>{{ sr.source }}</b> · {{ sr.source_record_id }}</li>{% else %}<li>{{ p.source }}</li>{% endfor %}
+    </ul>
+  </div>
+
+  <aside class="detail-side">
+    <h3>Why this score?</h3>
+    {% if breakdown.disqualified %}
+      <p class="disq">Auto-disqualified — {{ breakdown.reason }}</p>
+    {% else %}
+    <table class="kv small">
+      <tr><th>Factor</th><th>norm</th><th>pts</th></tr>
+      {% for name, f in breakdown.factors.items() %}
+      <tr><td>{{ name }}</td><td>{{ f.normalized }}</td><td>{{ f.points }} / {{ f.weight }}</td></tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+    <h3>Manage</h3>
+    <form method="post" action="/project/{{ p.project_id }}/edit">
+      <label>Pipeline status
+        <select name="pipeline_status">
+          {% for st in pipeline_statuses %}<option value="{{ st }}" {{ 'selected' if p.pipeline_status==st }}>{{ st }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Project status (re-scores)
+        <select name="status">
+          {% for st in statuses %}<option value="{{ st }}" {{ 'selected' if p.status==st }}>{{ st }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Assigned to <input name="assigned_to" value="{{ p.assigned_to or '' }}"></label>
+      <label>Notes <textarea name="notes" rows="4">{{ p.notes or '' }}</textarea></label>
+      <button type="submit">Save</button>
+    </form>
+  </aside>
+</div>
+{% endblock %}

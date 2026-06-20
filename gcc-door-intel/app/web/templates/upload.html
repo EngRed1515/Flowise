@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Import file · GCC Door Intel{% endblock %}
+{% block content %}
+<a href="/" class="back">← Pipeline</a>
+<h2>Import an export file</h2>
+<p class="note">Upload an official CSV/Excel export. Data is staged (raw copy kept),
+normalized, de-duplicated across sources, enriched and scored automatically.
+We never scrape paid platforms — only their official export files.</p>
+<form method="post" action="/upload" enctype="multipart/form-data" class="bigform">
+  <label>Source mapping profile
+    <select name="profile">{% for p in profiles %}<option value="{{ p }}">{{ p }}</option>{% endfor %}</select>
+  </label>
+  <label>File (.csv / .xlsx) <input type="file" name="file" accept=".csv,.xlsx,.xls" required></label>
+  <button type="submit">Ingest</button>
+</form>
+{% endblock %}

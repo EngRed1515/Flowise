@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Add lead · GCC Door Intel{% endblock %}
+{% block content %}
+<a href="/" class="back">← Pipeline</a>
+<h2>Add a lead (word-of-mouth / network)</h2>
+<form method="post" action="/add" class="bigform">
+  <label>Project name* <input name="project_name" required></label>
+  <div class="row">
+    <label>Country <input name="country" placeholder="Saudi Arabia"></label>
+    <label>City <input name="city"></label>
+  </div>
+  <div class="row">
+    <label>Project type
+      <select name="project_type">{% for t in project_types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}</select>
+    </label>
+    <label>Status
+      <select name="status">{% for s in statuses %}<option value="{{ s }}" {{ 'selected' if s=='design' }}>{{ s }}</option>{% endfor %}</select>
+    </label>
+  </div>
+  <div class="row">
+    <label>Unit count <input name="unit_count" type="number"></label>
+    <label>Floor area (sqm) <input name="floor_area" type="number"></label>
+  </div>
+  <label>Developer <input name="developer"></label>
+  <div class="row">
+    <label>Contact name <input name="contact_name"></label>
+    <label>Contact email <input name="contact_email" type="email"></label>
+    <label>Contact phone <input name="contact_phone"></label>
+  </div>
+  <button type="submit">Create &amp; score</button>
+</form>
+{% endblock %}

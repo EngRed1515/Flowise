@@ -1,0 +1,27 @@
+# Column-mapping profile for a MEED Projects export (CSV/Excel).
+# NOTE: data only ever enters via official EXPORT FILES the user provides.
+# We never scrape or crawl MEED. Adjust the left-hand headers to match the
+# exact columns in your export.
+source: meed
+id_columns: [Project ID, MEED Project ID, Project Code]
+mapping:
+  project_name: Project Name
+  country: Country
+  city: City
+  district: Area
+  project_type: Sector
+  status: Project Status
+  stage_date: Status Date
+  expected_procurement_date: Tender Date
+  value_estimate: Project Value (USD)
+  value_currency: Currency
+  floor_area: GFA (sqm)
+  unit_count: No. of Units
+  developer: Client / Owner
+  architect: Architect
+  consultant: Consultant
+  main_contractor: Main Contractor
+  fitout_contractor: Fit-out Contractor
+  contact_name: Key Contact
+  contact_email: Contact Email
+  contact_phone: Contact Phone

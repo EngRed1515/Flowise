@@ -1,0 +1,19 @@
+# Secrets — never commit
+.env
+
+# Local database / data artifacts
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# OS / editor
+.DS_Store

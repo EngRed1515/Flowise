@@ -1,0 +1,28 @@
+# Column-mapping profile for Saudi Etimad public tender data (export/open-data).
+# Etimad is a PUBLIC government procurement portal. A live portal monitor
+# (robots.txt / rate-limit aware) is a later phase; in Phase 1 we ingest
+# exported/downloaded files through this profile.
+source: etimad
+id_columns: [Tender Number, tenderNumber, Reference Number]
+mapping:
+  project_name: Tender Name
+  country: Country            # constant "Saudi Arabia" for Etimad (defaulted on import)
+  city: City
+  district: Branch
+  project_type: Activity
+  status: Tender Status
+  stage_date: Publish Date
+  expected_procurement_date: Offers Opening Date
+  value_estimate: Tender Value
+  value_currency: Currency
+  floor_area: Area
+  unit_count: Units
+  developer: Government Entity
+  consultant: Consultant
+  main_contractor: Awarded Supplier
+  contact_name: Contact Name
+  contact_email: Contact Email
+  contact_phone: Contact Phone
+defaults:
+  country: Saudi Arabia
+  value_currency: SAR

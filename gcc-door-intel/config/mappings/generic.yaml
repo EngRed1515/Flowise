@@ -1,0 +1,29 @@
+# Generic column-mapping profile.
+# Maps SOURCE column headers (left) to unified schema fields (right).
+# Use this as a template for any new exported file. Unmapped source columns
+# are still preserved in the raw record for traceability.
+source: generic
+# How to build a stable per-source record id, in priority order. The first
+# present, non-empty source column is used; falls back to a hash of the row.
+id_columns: [id, project_id, ref]
+mapping:
+  project_name: name
+  country: country
+  city: city
+  district: district
+  project_type: type
+  status: status
+  stage_date: stage_date
+  expected_procurement_date: procurement_date
+  value_estimate: value
+  value_currency: currency
+  floor_area: floor_area
+  unit_count: units
+  developer: developer
+  architect: architect
+  consultant: consultant
+  main_contractor: main_contractor
+  fitout_contractor: fitout_contractor
+  contact_name: contact_name
+  contact_email: contact_email
+  contact_phone: contact_phone

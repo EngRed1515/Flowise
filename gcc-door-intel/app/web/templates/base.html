@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}GCC Door Intel{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">SBK · GCC Door Intelligence <span class="internal">INTERNAL</span></div>
+    <nav>
+      <a href="/">Pipeline</a>
+      <a href="/map">Map</a>
+      <a href="/add">+ Add lead</a>
+      <a href="/upload">Import file</a>
+      <a href="/api/docs">API</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

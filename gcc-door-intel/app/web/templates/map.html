@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Map · GCC Door Intel{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>#map { height: 75vh; border-radius: 8px; }</style>
+{% endblock %}
+{% block content %}
+<h2>Active projects</h2>
+<div id="map"></div>
+<script>
+  const points = {{ points | safe }};
+  const map = L.map('map').setView([25.0, 50.0], 5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { attribution: '© OpenStreetMap', maxZoom: 18 }).addTo(map);
+  const colors = { A: '#1a8f3c', B: '#c98a00', C: '#999' };
+  points.forEach(p => {
+    L.circleMarker([p.lat, p.lon], {
+      radius: 8, color: colors[p.tier] || '#666', fillOpacity: 0.7
+    }).addTo(map).bindPopup(
+      `<b><a href="/project/${p.id}">${p.name}</a></b><br>${p.country} · ${p.type}<br>Tier ${p.tier} · score ${p.score}`
+    );
+  });
+</script>
+{% endblock %}

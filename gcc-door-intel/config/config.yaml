@@ -1,0 +1,109 @@
+# ============================================================================
+# GCC Door Project Intelligence — central configuration
+# Every weight, threshold and heuristic lives here. No magic numbers in code.
+# Edit this file to tune the system; restart the app / re-run the pipeline.
+# ============================================================================
+
+regions:
+  # GCC is always covered. Iraq is optional/toggleable.
+  include_iraq: false
+
+# Per-country weighting (0.0 - 1.0). Used by the scorecard's "country" factor.
+# Saudi Arabia & Qatar weighted highest initially.
+country_weights:
+  "Saudi Arabia": 1.00
+  "Qatar": 1.00
+  "United Arab Emirates": 0.85
+  "Bahrain": 0.70
+  "Oman": 0.70
+  "Kuwait": 0.70
+  "Iraq": 0.50
+
+# ----------------------------------------------------------------------------
+# SCORING — every project scored 0-100 from weighted factors below.
+# The six weights should sum to 100 (validated at load time, with a warning).
+# ----------------------------------------------------------------------------
+scoring:
+  weights:
+    funding_status: 30   # is the project funded / how far along
+    spec_influence: 25   # can we still influence the door spec
+    door_relevance: 20   # how many doors / how relevant a project type
+    fire_rating: 10      # fire-rated need = highest-margin bonus
+    reachability: 10     # do we have a named, contactable stakeholder
+    country: 5           # country weighting (see country_weights)
+
+  tiers:
+    A: 70   # score >= 70  -> Tier A (pursue now)
+    B: 45   # score >= 45  -> Tier B (watch); below -> Tier C (auto-archive)
+
+  # Project is auto-disqualified (score 0, tier C) if its status is one of these.
+  disqualifying_statuses:
+    - on-hold
+    - cancelled
+
+# Funding/status factor — normalized 0..1 per controlled status.
+status_scores:
+  concept: 0.30
+  design: 0.50
+  pre-tender: 0.70
+  tender: 0.80
+  awarded: 1.00
+  under-construction: 1.00
+  on-hold: 0.00
+  cancelled: 0.00
+
+# Spec-influence factor — earlier = more influence over the door spec.
+spec_influence_scores:
+  concept: 1.00
+  design: 1.00
+  pre-tender: 0.90
+  tender: 0.60
+  awarded: 0.20
+  under-construction: 0.10
+  on-hold: 0.00
+  cancelled: 0.00
+
+# ----------------------------------------------------------------------------
+# ENRICHMENT — derive estimated_door_demand and fire_rating_relevant.
+# ----------------------------------------------------------------------------
+enrichment:
+  # estimated_door_demand = max(per-unit estimate, per-sqm estimate).
+  doors_per_unit: 6          # average doors per residential/hotel unit
+  doors_per_sqm: 0.02        # fallback when only floor area is known
+  # Floor for "door_relevance": demand at/above this is meaningful.
+  door_demand_floor: 100
+  # demand >= door_demand_floor * this multiple => full relevance score (1.0)
+  door_demand_full_relevance_multiple: 5
+  # Project types that typically require fire-rated doors (sets the flag).
+  fire_rated_project_types:
+    - hospital
+    - hotel
+    - residential tower
+    - school
+    - mixed-use
+    - commercial
+
+# ----------------------------------------------------------------------------
+# DEDUPE — fuzzy match across sources, then merge into one record.
+# ----------------------------------------------------------------------------
+dedupe:
+  name_similarity_threshold: 82   # 0-100 (rapidfuzz token_sort_ratio)
+  developer_similarity_threshold: 75
+  require_same_country: true
+
+# ----------------------------------------------------------------------------
+# ALERTS — pluggable channels. Enable/disable here; secrets come from .env.
+# ----------------------------------------------------------------------------
+alerts:
+  # Channels: console, email, webhook. Add any subset.
+  channels:
+    - console
+  # Alert when a NEW project lands in this tier or above:
+  alert_on_new_tier: A
+  # Alert when an existing project's status change OPENS a spec window
+  # (moves toward design/pre-tender). Always on for tracked projects.
+  alert_on_window_open: true
+  digest:
+    # 'daily' or 'weekly' — used by scripts/run_ingest.py --digest
+    frequency: daily
+    include_tiers: [A, B]
