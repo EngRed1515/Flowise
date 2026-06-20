@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCC Door Intel — UAT Walkthrough</title>
+<style>
+  :root{--bg:#f4f6f8;--card:#fff;--ink:#1c2530;--muted:#6b7785;--line:#e2e7ec;
+    --a:#1a8f3c;--b:#c98a00;--c:#9aa3ad;--accent:#0b5fff;--ink2:#0e1b2c;--warn:#b3261e;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;}
+  header{background:var(--ink2);color:#fff;padding:26px 28px;}
+  header h1{margin:0 0 4px;font-size:22px;}
+  header .sub{color:#aebfd6;font-size:14px;}
+  .internal{background:var(--warn);font-size:11px;padding:2px 7px;border-radius:4px;
+    margin-left:8px;vertical-align:middle;letter-spacing:.4px;}
+  main{max-width:900px;margin:0 auto;padding:24px 20px 80px;}
+  .progress{position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5;border-bottom:1px solid var(--line);}
+  .bar{height:10px;background:#dfe5ea;border-radius:6px;overflow:hidden;}
+  .bar>span{display:block;height:100%;width:0;background:var(--a);transition:width .25s;}
+  .progress .lbl{font-size:13px;color:var(--muted);margin-bottom:6px;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;margin:18px 0;}
+  h2{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:8px;}
+  h2 .n{background:var(--accent);color:#fff;width:26px;height:26px;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none;}
+  h3{font-size:15px;margin:18px 0 6px;}
+  p{margin:8px 0;}
+  code{background:#eef1f4;padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  pre{background:#0e1b2c;color:#e7eefc;padding:14px 16px;border-radius:9px;overflow-x:auto;
+    font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  pre .c{color:#7fd1a0;}
+  .note{background:#eef4ff;border-left:4px solid var(--accent);padding:10px 14px;
+    border-radius:0 8px 8px 0;font-size:14px;margin:12px 0;}
+  .warn{background:#fdeceb;border-left:4px solid var(--warn);padding:10px 14px;
+    border-radius:0 8px 8px 0;font-size:14px;margin:12px 0;}
+  .ok{background:#ecf7f0;border-left:4px solid var(--a);padding:10px 14px;
+    border-radius:0 8px 8px 0;font-size:14px;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--muted);font-weight:600;}
+  .badge{font-size:11px;font-weight:700;color:#fff;padding:1px 8px;border-radius:10px;}
+  .tA{background:var(--a);} .tB{background:var(--b);} .tC{background:var(--c);}
+  .check{display:flex;align-items:flex-start;gap:10px;margin:10px 0;padding:10px 12px;
+    border:1px solid var(--line);border-radius:9px;background:#fafbfc;}
+  .check input{margin-top:3px;width:17px;height:17px;flex:none;}
+  .check .body{font-size:14px;}
+  .check .exp{color:var(--muted);font-size:13px;display:block;margin-top:3px;}
+  .check.done{background:#ecf7f0;border-color:#bfe6cd;}
+  a{color:var(--accent);}
+  .pill{display:inline-block;background:#eef1f4;border:1px solid var(--line);border-radius:20px;
+    padding:2px 10px;font-size:12px;color:var(--muted);margin:2px 4px 2px 0;}
+  footer{color:var(--muted);font-size:13px;text-align:center;padding:20px;}
+  .reset{background:none;border:1px solid var(--line);color:var(--muted);border-radius:7px;
+    padding:5px 12px;font-size:12px;cursor:pointer;}
+</style>
+</head>
+<body>
+<header>
+  <h1>GCC Door Project Intelligence — UAT Walkthrough <span class="internal">INTERNAL · UAT</span></h1>
+  <div class="sub">SBK door-qualification system · User Acceptance Testing guide · runs locally, not public</div>
+</header>
+
+<main>
+  <div class="progress">
+    <div class="lbl">Test progress: <b id="pct">0%</b> &nbsp;(<span id="cnt">0</span> of <span id="tot">0</span> checks)
+      &nbsp;<button class="reset" onclick="resetAll()">Reset checklist</button></div>
+    <div class="bar"><span id="fill"></span></div>
+  </div>
+
+  <section>
+    <h2><span class="n">i</span> What this is &amp; the golden rule for UAT</h2>
+    <p>This is your <b>User Acceptance Test</b> environment: a private, local-only copy you drive by
+      hand to confirm every feature behaves. Nothing here is exposed to the internet.</p>
+    <div class="warn"><b>Keep it private.</b> Start the server with the default address only
+      (<code>127.0.0.1</code> / localhost). Do <u>not</u> add <code>--host 0.0.0.0</code> or put it
+      behind a public tunnel during UAT — that would make it reachable from outside.</div>
+    <div class="note">UAT uses <b>bundled sample data only</b> — no MEED/ProTenders credentials,
+      no live portals, no real emails. Alerts default to the <b>console</b> channel, so they print
+      to the terminal instead of going anywhere.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span> One-time setup</h2>
+    <p>Open a terminal in the project folder and create an isolated Python environment.</p>
+<pre><span class="c"># from the repo root</span>
+cd gcc-door-intel
+python -m venv .venv
+source .venv/bin/activate        <span class="c"># Windows: .venv\Scripts\activate</span>
+pip install -r requirements.txt</pre>
+    <div class="check"><input type="checkbox" data-t><span class="body">Dependencies installed with no errors.
+      <span class="exp">Expected: pip finishes; last line is a success/“Successfully installed …”.</span></span></div>
+    <p class="note">You do <b>not</b> need a <code>.env</code> file for UAT. It's only for real
+      email/webhook alerts later. Console alerts work with zero config.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Load the sample data (seed)</h2>
+    <p>This runs the <b>entire pipeline</b> once — import → stage → normalize → de-duplicate → enrich → score → alert.</p>
+<pre>python -m scripts.seed</pre>
+    <h3>What to look for in the output</h3>
+    <div class="check"><input type="checkbox" data-t><span class="body">Bottom line says <code>11 unique projects in the database</code>.
+      <span class="exp">12 sample rows are ingested but one is a cross-source duplicate, so you get 11.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body"><b>Lusail Marina Twin Towers</b> shows sources <code>[meed,protenders]</code>.
+      <span class="exp">Proves de-duplication: the same project from two platforms merged into one record.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">The two <span class="badge tC">C</span> rows
+      (<i>Sohar … Compound</i> = cancelled, <i>Salalah … Warehouse</i> = on-hold) have score <code>0.0</code>.
+      <span class="exp">Proves auto-disqualification of dead projects.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">A console <code>[ALERT]</code> block printed listing new Tier-A projects.
+      <span class="exp">Proves the alert layer fires on ingestion (console channel).</span></span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Start the dashboard</h2>
+<pre>uvicorn app.main:app --reload --port 8000</pre>
+    <p>Then open <a href="http://localhost:8000">http://localhost:8000</a> in your browser.</p>
+    <div class="check"><input type="checkbox" data-t><span class="body">The Pipeline board loads with project cards in columns.
+      <span class="exp">Expected: a dark top bar reading “SBK · GCC Door Intelligence INTERNAL”.</span></span></div>
+    <div class="warn">To stop the server later: press <code>Ctrl + C</code> in the terminal.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span> Test: Pipeline board &amp; KPIs <span style="font-size:13px;color:var(--muted)">(/)</span></h2>
+    <div class="check"><input type="checkbox" data-t><span class="body">KPI strip shows <b>Projects = 11</b> and a <b>Tier A</b> count.
+      <span class="exp">Also shows pipeline value, win rate (— until you mark wins), pre/post-tender split.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">Cards are colour-coded by tier (green=A, amber=B, grey=C) and show score + estimated doors.
+      <span class="exp">Fire-rated projects show a 🔥 mark.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">Use the filters: pick <b>Country = Saudi Arabia</b>, click <b>Filter</b> — only Saudi projects remain.
+      <span class="exp">Try Tier = A and a Min score too; the board should narrow accordingly.</span></span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span> Test: Project detail &amp; “why this score” <span style="font-size:13px;color:var(--muted)">(/project/…)</span></h2>
+    <p>Click the <b>Lusail Marina Twin Towers</b> card.</p>
+    <div class="check"><input type="checkbox" data-t><span class="body">A <b>score breakdown</b> table shows each factor (funding_status, spec_influence, door_relevance, fire_rating, reachability, country) with normalized value and points.
+      <span class="exp">This is the “why” behind the tier — points should sum to the total score.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body"><b>Source references</b> lists both <code>meed</code> and <code>protenders</code> entries.
+      <span class="exp">Confirms the merged record kept full traceability to both platforms.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">Change <b>Pipeline status</b> to <code>pursuing</code>, set <b>Assigned to</b> = your name, add a note, click <b>Save</b>.
+      <span class="exp">You return to the detail page; go back to the board and the card has moved to the “pursuing” column.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">On a project, change <b>Project status</b> (e.g. to <code>awarded</code>) and Save — the <b>score re-calculates</b>.
+      <span class="exp">Proves scoring is live: changing stage updates score/tier immediately.</span></span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span> Test: Add a lead manually <span style="font-size:13px;color:var(--muted)">(/add)</span></h2>
+    <p>Click <b>+ Add lead</b>. This is for word-of-mouth / network leads. Try this high-value test case:</p>
+    <table>
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Project name</td><td>Test Tower UAT</td></tr>
+      <tr><td>Country</td><td>Qatar</td></tr>
+      <tr><td>Project type</td><td>residential tower</td></tr>
+      <tr><td>Status</td><td>pre-tender</td></tr>
+      <tr><td>Unit count</td><td>500</td></tr>
+      <tr><td>Developer</td><td>UAT Developer</td></tr>
+      <tr><td>Contact email</td><td>test@example.com</td></tr>
+    </table>
+    <div class="check"><input type="checkbox" data-t><span class="body">After <b>Create &amp; score</b>, you land on the new project's page already scored as <span class="badge tA">A</span>.
+      <span class="exp">Pre-tender + Qatar + fire-rated type + reachable contact + ~3,000 doors → high score.</span></span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body">Project count KPI is now <b>12</b>.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span> Test: Import an export file <span style="font-size:13px;color:var(--muted)">(/upload)</span></h2>
+    <p>Click <b>Import file</b>. Choose profile <code>meed</code> and upload
+      <code>data/samples/sample_meed.csv</code> again.</p>
+    <div class="check"><input type="checkbox" data-t><span class="body">Upload succeeds and redirects to the board; project count does <b>not</b> jump by 5.
+      <span class="exp">Re-importing the same rows re-matches existing projects instead of duplicating them — that's the dedupe doing its job.</span></span></div>
+    <div class="note">To test a brand-new source, copy <code>config/mappings/generic.yaml</code>, point its
+      left-side keys at your file's column headers, and pick it on the upload page.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">8</span> Test: Map view <span style="font-size:13px;color:var(--muted)">(/map)</span></h2>
+    <div class="check"><input type="checkbox" data-t><span class="body">Click <b>Map</b> — a GCC map shows coloured dots (green/amber/grey by tier).
+      <span class="exp">Clicking a dot shows the project name (a link), country, type, tier and score.</span></span></div>
+    <div class="note">The map tiles load from OpenStreetMap, so this one step needs internet. Everything else works fully offline.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">9</span> Test: JSON API <span style="font-size:13px;color:var(--muted)">(/api)</span></h2>
+    <p>Open these in the browser (or curl them):</p>
+    <div class="check"><input type="checkbox" data-t><span class="body"><a href="http://localhost:8000/api/projects?tier=A">/api/projects?tier=A</a> returns JSON of Tier-A projects with their <code>sources</code>.</span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body"><a href="http://localhost:8000/api/kpis">/api/kpis</a> returns the KPI numbers.</span></div>
+    <div class="check"><input type="checkbox" data-t><span class="body"><a href="http://localhost:8000/api/docs">/api/docs</a> shows the interactive API documentation.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">10</span> Test: Alerts &amp; digest</h2>
+    <p>Alerts fire automatically on ingestion (you saw them in step 2). To trigger a digest on demand,
+      run this in a second terminal (with the venv active):</p>
+<pre>python -m scripts.run_ingest --digest</pre>
+    <div class="check"><input type="checkbox" data-t><span class="body">A <code>[ALERT] GCC Door Intel — daily digest</code> block prints, listing Tier A + B projects.
+      <span class="exp">Console is the UAT channel. Email/webhook are switched on later via config.yaml + .env.</span></span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">11</span> Optional: tune the scorecard &amp; re-test</h2>
+    <p>Everything that drives scoring lives in <code>config/config.yaml</code> — no code changes needed.
+      Try raising the Tier A threshold to see fewer A's:</p>
+<pre><span class="c"># config/config.yaml</span>
+scoring:
+  tiers:
+    A: 85   <span class="c"># was 70</span>
+    B: 45</pre>
+    <div class="check"><input type="checkbox" data-t><span class="body">Re-seed (<code>python -m scripts.seed</code>) and refresh — fewer projects are Tier A now.
+      <span class="exp">Confirms all thresholds/weights are config-driven, not hardcoded.</span></span></div>
+  </section>
+
+  <section>
+    <h2><span class="n">✓</span> Reset between test runs</h2>
+    <p>The seed script wipes and rebuilds the database each time, so to get back to a clean slate just run:</p>
+<pre>python -m scripts.seed</pre>
+    <p>To start completely fresh you can also delete <code>data/gcc_door_intel.db</code>.</p>
+    <div class="ok"><b>UAT sign-off:</b> when every box above is ticked, the Phase-1 system has passed
+      acceptance — ingestion, dedupe, enrichment, scoring, disqualification, alerts, the dashboard,
+      manual entry, file import, map and API all verified on sample data.</div>
+  </section>
+
+  <footer>
+    GCC Door Project Intelligence &amp; Qualification System · Phase 1 · Internal UAT guide.<br>
+    Tick state is saved in your browser only. Branch: <code>claude/gcc-door-project-system-s714yh</code>
+  </footer>
+</main>
+
+<script>
+  const boxes=[...document.querySelectorAll('input[data-t]')];
+  const KEY='gcc_uat_checks_v1';
+  document.getElementById('tot').textContent=boxes.length;
+  function refresh(){
+    const done=boxes.filter(b=>b.checked).length;
+    document.getElementById('cnt').textContent=done;
+    const pct=Math.round(100*done/boxes.length);
+    document.getElementById('pct').textContent=pct+'%';
+    document.getElementById('fill').style.width=pct+'%';
+    boxes.forEach(b=>b.closest('.check').classList.toggle('done',b.checked));
+  }
+  function save(){localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked)));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');
+    s.forEach((v,i)=>{if(boxes[i])boxes[i].checked=v;});}catch(e){}}
+  function resetAll(){boxes.forEach(b=>b.checked=false);save();refresh();}
+  boxes.forEach(b=>b.addEventListener('change',()=>{save();refresh();}));
+  load();refresh();
+</script>
+</body>
+</html>
