@@ -1,0 +1,2148 @@
+SLIDES: 75
+
+===== SLIDE 1 =====
+STATE OF QATAR
+National Planning Council  —  National Statistics Office
+National Framework for
+Classifying Enterprises &
+Economic Entities in Qatar
+Aligning National Statistics with SNA 2025, IMF GFS 2014, OECD BD4, ISIC Rev.4, and the modern statistical-standards stack (LEI, SDMX, GSIM, GSBPM)
+Methodological Framework  •  Institutional Architecture  •  National Operating Model
+Prepared for Senior Leadership of the National Statistics Office under the National Planning Council
+CONFIDENTIAL — OFFICIAL USE
+Version 1.0  |  2026
+
+===== SLIDE 2 =====
+READER'S MAP
+How to Read This Strategic Framework
+This document is organised in nine integrated parts. Each part builds on the previous and culminates in a national, implementable framework for the State of Qatar.
+I
+Strategic Context
+Vision, imperatives, cost of misclassification
+II
+International Standards
+SNA 2025, IMF GFS, OECD, ISIC Rev.4
+III
+Core Methodology
+18 classification tests in sequence
+IV
+The Qatar Landscape
+Sovereign, public, QFC, free-zone, family
+V
+Case Studies
+12 advanced classification cases
+VI
+International Benchmarks
+Norway, Singapore, UK, UAE, KSA, OECD
+VII
+National Framework
+Governance, register, data, AI
+VIII
+Implementation
+Operating model, capabilities, governance
+IX
+Decision Memorandum
+Recommendations for leadership
+Reading priority for senior leadership: Parts I, VII, VIII, IX. Reading priority for technical staff: all parts in sequence.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Front Matter  •  2 / 75
+
+===== SLIDE 3 =====
+EXECUTIVE SUMMARY
+The Framework at a Glance
+THE CORE PROPOSITION
+Classification of every enterprise operating in Qatar must reflect economic reality and effective institutional control — not commercial-registration labels or self-description. The NSO adopts a single, internationally aligned framework anchored in SNA 2025, IMF GFS 2014, OECD BD4, and ISIC Rev.4 — applied through an 18-test methodology and governed by a Technical Classification Committee.
+01
+METHODOLOGY
+18 sequenced tests covering unit, residence, activity, sector, control, market test, size, group, FDI, special entities
+02
+GOVERNANCE
+Technical Classification Committee with documented workflow, audit trail, version control, and escalation rules
+03
+DATA INTEGRATION
+Central Statistical Business Register integrating MoCI, GTA, QCB, QFC, QFZA, QSE, MoL records
+04
+QUALITY & AI
+Validation rules, beneficial-ownership tracing, AI-assisted entity resolution, periodic reclassification cycles
+18
+Sequenced classification tests
+12
+Advanced case studies analysed
+6
+International benchmarks
+9
+Source authorities integrated
+Fully defensible against IMF Article IV, World Bank, OECD, and Eurostat methodological review.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Front Matter  •  3 / 75
+
+===== SLIDE 4 =====
+STRATEGIC IMPERATIVES
+Why Modernise the Classification Framework Now?
+01
+Qatar National Vision 2030
+Statistical credibility underpins evidence-based policy and economic diversification.
+02
+IMF Article IV & GFS Reporting
+Public-sector boundary, market/non-market test, controlled corporations must be defensible.
+03
+Foreign Direct Investment
+FDI classification and ultimate investing country require rigorous ownership tracing.
+04
+QFC, Free Zones & SPVs
+Proliferation of special-purpose vehicles and cross-border structures demands clarity.
+05
+Sovereign Wealth Footprint
+QIA and its subsidiaries span resident non-financial corporations, financial corporations, and overseas holdings.
+06
+AI & Digital Government
+Modern register architecture and AI-assisted classification are now standard at peer NSOs.
+Without a unified classification framework, official statistics, fiscal accounts, monetary statistics, and FDI reporting may diverge — eroding the credibility of Qatar's national statistical system.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part I — Strategic Context  •  4 / 75
+
+===== SLIDE 5 =====
+PART I
+Strategic Context
+Vision 2030 alignment, the cost of misclassification, and the guiding principles of the national framework
+National Statistical System  •  State of Qatar
+
+===== SLIDE 6 =====
+VISION ALIGNMENT
+Qatar National Vision 2030 — Statistical Foundations
+Four Pillars of QNV 2030
+Human Development
+Education, health, labour-market statistics require accurate establishment-level data
+Social Development
+NPISH classification and household-enterprise treatment underpin social statistics
+Economic Development
+Diversification needs ISIC-aligned activity statistics across non-oil sectors
+Environmental Development
+Sustainability accounts require enterprise-level economic-activity attribution
+How Classification Serves the Vision
+Defensible measurement of non-oil GDP and economic diversification
+Accurate public-sector boundary for fiscal-policy decisions
+Reliable FDI statistics for investment-promotion strategy
+Comparable productivity statistics by activity (ISIC)
+Credible labour-market analytics by enterprise size and ownership
+Sovereign wealth footprint visible without breaching confidentiality
+Statistics fit for IMF, OECD, World Bank, and rating-agency review
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part I — Strategic Context  •  6 / 75
+
+===== SLIDE 7 =====
+RISK QUANTIFICATION
+The Cost of Misclassification — Why Accuracy Matters
+Misclassification is not a clerical issue. It propagates through every downstream statistical product, fiscal aggregate, and international report — and is difficult to detect or reverse once embedded.
+COMMON MISCLASSIFICATION SYMPTOMS
+Government-controlled corporations treated as private
+→ Public sector understated
+Public corporations recorded inside general government
+→ Government expenditure overstated
+Non-market producers treated as market producers
+→ Output misvalued; subsidies hidden
+Foreign-controlled firms classified as domestic
+→ FDI statistics distorted
+Holding companies treated as operating entities
+→ Activity (ISIC) misallocated
+Family conglomerates not consolidated as a group
+→ Concentration metrics unreliable
+QFC/free-zone units treated as non-resident
+→ GDP coverage incomplete
+DOWNSTREAM CONSEQUENCES
+GDP composition
+Sectoral shares distort diversification narrative
+Fiscal aggregates
+GFS reporting mis-states government footprint
+Monetary statistics
+Financial-corporations sector incorrectly bounded
+Balance of payments
+FDI inward/outward and ultimate-investing-country compromised
+Productivity & labour
+Wages, employment by sector misattributed
+Policy credibility
+IMF, World Bank, rating-agency confidence eroded
+Compliance risk
+Eurostat, OECD methodological reviews flag deficiencies
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part I — Strategic Context  •  7 / 75
+
+===== SLIDE 8 =====
+FOUNDATIONAL PRINCIPLES
+Eight Guiding Principles of the National Framework
+01
+Economic Reality over Legal Form
+Classification reflects how an entity actually behaves and is controlled, not how it is labelled.
+02
+International Alignment
+Anchored in SNA 2025, IMF GFS 2014, OECD BD4, ISIC Rev.4, LEI, SDMX, GSIM & GSBPM — explicitly and traceably.
+03
+Ownership Traceability
+Every entity traced to its ultimate controlling unit and, where relevant, ultimate beneficial owner.
+04
+Single Statistical Truth
+One classification per entity, governed centrally, used by all statistical and fiscal users.
+05
+Decision Auditability
+Every classification decision is documented, versioned, justified, and reproducible.
+06
+Source Hierarchy
+Conflicts between sources resolved through a defined hierarchy and statistical-override rules.
+07
+Periodic Re-examination
+Classification is not static; entities reviewed on a defined cycle and on triggers.
+08
+Confidentiality with Transparency
+Methodology is public; entity-level decisions are confidential and protected by law.
+Cross-cutting principle: A classification is defensible if and only if the underlying evidence trail can be reproduced by any other competent statistician.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part I — Strategic Context  •  8 / 75
+
+===== SLIDE 9 =====
+PART II
+International Standards Foundation
+SNA 2025 (with SNA 2008 transition), IMF GFS 2014, OECD BD4, ISIC Rev.4 — and the modern statistical-standards stack (LEI / ISO 17442, SDMX, GSIM, GSBPM, DAMA DMBOK) — the foundations on which Qatar's classification framework rests
+National Statistical System  •  State of Qatar
+
+===== SLIDE 10 =====
+STANDARDS LANDSCAPE
+Four Pillars of International Statistical Classification
+The Qatar framework rests on four converging international standards. Each addresses a distinct dimension; together they form a complete classification ontology.
+SNA
+2025
+System of National Accounts
+Institutional sector classification, residence, market vs non-market production, ownership and control, enterprise group treatment
+ISSUED BY
+UN • IMF • OECD • WB • Eurostat
+GFS
+2014
+Government Finance Statistics
+Public sector boundary, general government vs public corporations, fiscal coverage, controlled corporations, PPPs and SPVs
+ISSUED BY
+International Monetary Fund
+OECD
+BD4
+Ownership & Control Guidelines
+Ultimate controlling institutional unit, beneficial ownership, FDI directional principle, foreign-controlled corporations
+ISSUED BY
+OECD Benchmark Definition of FDI, 4th ed.
+ISIC
+Rev.4
+Economic Activity Classification
+Principal, secondary, ancillary activity; establishment-level coding; cross-walks with NACE, NAICS, GCC Standard
+ISSUED BY
+United Nations Statistics Division
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  10 / 75
+
+===== SLIDE 11 =====
+PILLAR I
+System of National Accounts 2025 — Sectors
+What SNA 2025 defines (SNA 2008 transition)
+Institutional unit: legal identity, separate accounts, autonomy of decision
+Residence: based on centre of predominant economic interest
+Five resident sectors and Rest of the World
+Public/private distinction and government control
+Market vs non-market production (economically significant prices)
+Enterprise groups, KAUs, branches, SPEs; demographic events (births, deaths, mergers, splits)
+THE FIVE RESIDENT SECTORS (S.1)
+S.11
+Non-financial corporations
+Market producers of goods & non-financial services
+S.12
+Financial corporations
+S.121–S.129: central bank, deposit-takers, funds, auxiliaries, captives, insurers, pensions
+S.13
+General government
+S.1311–S.1314: central, state, local government and social security funds
+S.14
+Households
+Individuals and household unincorporated enterprises
+S.15
+NPISH
+Non-profit institutions serving households
+S.2  Rest of the World — non-resident counterparties
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  11 / 75
+
+===== SLIDE 12 =====
+PILLAR II
+IMF GFS 2014 — The Public Sector Boundary
+GFS extends SNA by defining the public sector boundary with operational precision. The crucial distinction is between general government and public corporations.
+PUBLIC SECTOR (S.13 + Public Corporations)
+S.13  General Government
+Public Corporations (Govt-controlled)
+Central
+Government
+Local
+Government
+Social Security
+Funds
+Public Non-Financial
+Corporations
+Public Financial
+Corporations
+Monetary
+(QCB + DC)
+Other Public
+Financial Corps
+Key implication: an entity that is controlled by government is part of the public sector — but it is NOT part of general government unless it is a non-market producer. The market/non-market test (Test 7) determines which side of the line it falls on.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  12 / 75
+
+===== SLIDE 13 =====
+PILLAR III
+OECD Ownership & Control Framework
+OECD framework defines:
+Direct ownership
+Equity directly held by an investor in an enterprise
+Indirect ownership
+Equity held via one or more intermediate entities
+Effective control
+Power to determine general corporate policy
+Ultimate Controlling Inst. Unit (UCIU)
+Top of the ownership chain that is not itself controlled by another
+Ultimate Beneficial Owner (UBO)
+Natural person(s) ultimately owning or controlling the entity
+Foreign control
+Control exercised from outside the resident economy
+FDI DIRECTIONAL PRINCIPLE (BD4)
+Foreign Direct Investment requires ≥10% voting power threshold
+Asset-Liability Principle
+Records inward and outward FDI gross
+Directional Principle
+Records FDI by direction of influence; netting of reverse investment
+Ultimate Investing Country
+Country of the ultimate controlling parent, not the immediate
+Ultimate Controlling Inst. Unit
+Used in inward FDI to identify the actual investor
+10% Voting Threshold
+Distinguishes FDI from portfolio investment
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  13 / 75
+
+===== SLIDE 14 =====
+PILLAR IV
+ISIC Rev.4 — Classification of Economic Activities
+What ISIC Rev.4 provides
+Hierarchical activity coding: section → division → group → class
+21 top-level sections (A through U)
+Principal activity = where most value-added is generated
+Secondary activity = significant but smaller
+Ancillary activity = supports the main activity (do not code separately)
+Establishment-level coding for multi-activity enterprises
+Cross-walks to NACE (EU), NAICS (US), GCC Standard, CPC products
+WORKED EXAMPLE — INTEGRATED ENERGY GROUP
+How activities cascade through ISIC Rev.4 levels:
+Section B
+Mining and Quarrying
+Division 06
+Extraction of crude petroleum and natural gas
+Group 061
+Extraction of crude petroleum
+Class 0610
+Extraction of crude petroleum
+CLASSIFICATION RULE
+A holding company that earns its income from dividends and capital appreciation of subsidiaries is classified under Section K (Financial activities), not under the activities of its subsidiaries.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  14 / 75
+
+===== SLIDE 15 =====
+STANDARDS CONVERGENCE
+How the Four Pillars Combine into a Single Classification
+Every entity in Qatar receives four orthogonal classifications. Combined, they uniquely position the entity in the statistical universe.
+DIMENSION
+STANDARD
+QUESTION ANSWERED
+EXAMPLE OUTPUT
+What it does
+ISIC Rev.4
+What economic activity does it conduct?
+Class 6419 — Other monetary intermediation
+Where it belongs
+SNA 2025
+Which institutional sector?
+S.122 — Deposit-taking corporations
+Who controls it
+OECD
+Who is the ultimate controlling unit?
+Government of the State of Qatar
+Public or private
+GFS 2014
+Is it inside the public sector boundary?
+Public financial corporation
+Market behaviour
+SNA 2025
+Does it sell at economically significant prices?
+Market producer
+Residence
+SNA / BPM6
+Where is its centre of economic interest?
+Resident of Qatar
+Group structure
+SNA / OECD
+Is it part of an enterprise group?
+Subsidiary of QIA Holding
+The convergence of the four pillars is what produces a single, defensible classification. Any one of them, taken alone, is insufficient.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part II — International Standards  •  15 / 75
+
+===== SLIDE 16 =====
+PART III
+Core Methodology
+Eighteen sequenced classification tests — from statistical unit identification through final classification and quality assurance
+National Statistical System  •  State of Qatar
+
+===== SLIDE 17 =====
+METHODOLOGY OVERVIEW
+The Eighteen Tests at a Glance
+Each entity passes through 18 sequenced tests. The output of every test feeds the next. A complete classification is the cumulative record of all 18 decisions.
+A. UNIT & RESIDENCE
+1
+Statistical Unit Test
+2
+Institutional Unit Test
+3
+Residence Test
+B. ACTIVITY & SECTOR
+4
+Economic Activity (ISIC) Classification
+5
+Institutional Sector Classification
+6
+Public Sector Boundary Test
+7
+Market vs Non-Market Producer
+C. CONTROL & SCOPE
+8
+Ownership & Effective Control
+9
+Listed Company Classification
+10
+Enterprise Size Classification
+11
+Enterprise Group & Consolidation
+12
+Foreign Ownership & FDI
+13
+Special Entity Treatment
+D. EVIDENCE & GOVERNANCE
+14
+Data Source Hierarchy
+15
+Conflict Resolution
+16
+Classification Governance
+17
+Quality Assurance
+18
+Final Classification Principle
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  17 / 75
+
+===== SLIDE 18 =====
+TEST 1 OF 18
+Statistical Unit Test — Ten Unit Types
+01
+STATISTICAL
+UNIT TEST
+Determine which type of statistical unit best represents the entity for measurement.
+OUTPUT
+Unit type assignment
+Ten Types of Statistical Unit
+Institutional unit
+Capable of owning assets, incurring liabilities, entering contracts
+Legal unit
+Formally registered entity with legal personality
+Enterprise
+Smallest combination of legal units that is a stat. unit (auto. of decision)
+Enterprise group
+Set of enterprises under common control (parent + subsidiaries)
+Establishment
+Single physical location engaged in one principal activity
+Local unit
+Enterprise activity at a geographical location
+Branch
+Non-resident enterprise activity treated as resident (BPM6)
+Subsidiary
+Legal unit controlled by another (parent) legal unit
+Holding company
+Legal unit whose principal activity is owning equity in others
+SPE / SPV
+Special-purpose entity with little/no production, often for financing
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  18 / 75
+
+===== SLIDE 19 =====
+TEST 2 OF 18
+Institutional Unit Test — Seven Criteria
+02
+INSTITUTIONAL
+UNIT TEST
+Determine whether the entity has the legal and economic substance to be an institutional unit in its own right.
+OUTPUT
+Pass / fail institutional substance
+Seven Criteria for Institutional Unit Status
+✓
+Legal identity
+Recognised in law (commercial register, ministerial decree, statute)
+✓
+Separate accounts
+Maintains its own balance sheet and income statement
+✓
+Autonomy of decision
+Can decide on its own production, finance, investment
+✓
+Ability to own assets
+Holds property and rights in its own name
+✓
+Ability to incur liabilities
+Can borrow and accept obligations in its own name
+✓
+Ability to enter contracts
+Counterparty in its own name to third parties
+✓
+Independent management
+Has its own governing body and management authority
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  19 / 75
+
+===== SLIDE 20 =====
+TEST 3 OF 18
+Residence Test — Is the Entity Resident in Qatar?
+Residence is determined by the centre of predominant economic interest — not by nationality of ownership, not by place of incorporation alone.
+INDICATORS OF QATAR RESIDENCE
+Production for one year or longer in Qatar
+Significant physical presence in Qatar
+Owns or leases land/buildings used in Qatar
+Engages local labour for production in Qatar
+Subject to Qatar tax (Income Tax / GTA registration)
+Has accounts with Qatari banks for operating purposes
+Decision-making centre located in Qatar
+EDGE CASES — REQUIRE JUDGMENT
+Branches of non-resident parents
+Construction projects > 1 year
+Mobile equipment (vessels, aircraft, rigs)
+Offshore platforms in Qatari waters
+SPVs incorporated in Qatar with no operations
+QFC entities (resident — see slide 39)
+Free-zone entities (resident — see slide 39)
+Multi-territory enterprises (apportion)
+OUTPUT
+Three Possible States
+RESIDENT
+Centre of economic interest in Qatar for ≥ 1 year
+NON-RESIDENT
+Counterparty in Rest-of-World (S.2)
+MULTI-TERRITORY
+Activity apportioned across jurisdictions
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  20 / 75
+
+===== SLIDE 21 =====
+TEST 4 OF 18
+Economic Activity Classification — ISIC Rev.4
+1. Identify all activities
+2. Measure value-added share
+3. Designate principal
+4. List secondary
+5. Exclude ancillary
+6. Assign ISIC class
+A
+Principal activity
+The activity that generates the largest share of value added — NOT the largest share of revenue or employment alone. If value added cannot be measured directly, use gross output as a proxy.
+B
+Secondary activity
+Other significant activities undertaken for sale or barter to third parties. Coded separately at establishment level where data permit; otherwise listed but not used for primary classification.
+C
+Ancillary activity
+Supports the principal/secondary activity (e.g., own-account IT, transport, accounting). NOT separately classified. Output is not normally for sale outside the enterprise.
+Qatar-specific classification rules
+Holding companies
+ISIC 6420 (financial sector) — never the activity of subsidiaries
+SPVs / SPEs
+ISIC 6420 or 6630 depending on function — flag separately
+Integrated energy firms
+Code by principal activity (extraction vs refining vs distribution)
+Construction joint ventures
+Code by principal activity at JV level, not at sponsor level
+Government-owned operating arms
+Code by the operating activity, not by government function
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  21 / 75
+
+===== SLIDE 22 =====
+TEST 5 OF 18
+Institutional Sector Classification
+Every institutional unit is assigned to exactly one of five resident sectors or to the Rest of the World. SNA defines mutually exclusive criteria.
+SECTOR
+CODE
+PRIMARY CRITERION
+QATAR EXAMPLES
+Non-financial corporations
+S.11
+Market producer of goods or non-financial services
+QatarEnergy, QAFAC, Industries Qatar (IQ)
+Financial corporations
+S.12
+Financial intermediation / auxiliaries — sub-sectors S.121–S.129
+QNB, QIB, Doha Bank, Masraf Al Rayan, Q-Re
+General government
+S.13
+Non-market producer financed by levies — sub-sectors S.1311–S.1314
+Ministries, municipalities, social-security funds
+Households
+S.14
+Natural persons and unincorporated household enterprises
+Sole proprietors, self-employed individuals
+NPISH
+S.15
+Non-market non-profit institution serving households
+Sports clubs, charities, religious associations
+Rest of the World
+S.2
+Non-resident counterparties (Test 3)
+Foreign parent companies, overseas branches
+Institutional sector is independent of ownership (public/private). A government-owned bank is still in S.12 — Test 6 then assigns it to the public sub-sector.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  22 / 75
+
+===== SLIDE 23 =====
+TEST 6 OF 18
+Public Sector Boundary Test
+Once sector is set (Test 5), determine whether the entity sits inside the public sector. Two conditions interact: control (Test 8) and market test (Test 7).
+MARKET PRODUCER (Yes)
+NON-MARKET PRODUCER (No)
+GOVERNMENT
+CONTROLLED
+PRIVATELY
+CONTROLLED
+PUBLIC CORPORATION
+Inside public sector
+Outside general government
+Sector code: S.11/S.12 — Public sub-sector
+GENERAL GOVERNMENT
+Inside public sector
+Inside general government
+Sector code: S.13 (Central / Local / SSF)
+PRIVATE CORPORATION
+Outside public sector
+Foreign-controlled is a sub-flag
+Sector code: S.11/S.12 — Private sub-sector
+NPISH
+Non-market, non-profit
+Serving households
+Sector code: S.15
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  23 / 75
+
+===== SLIDE 24 =====
+TEST 7 OF 18
+Market vs Non-Market Producer Test — The 50 % Rule
+A producer is classified as 'market' if its sales cover more than 50 % of its production costs over a sustained period — the 'economically significant prices' test.
+THE 50% RULE
+Sales
+>  50 %
+Production Costs
+→  MARKET PRODUCER
+Public corporation if government-controlled; private otherwise
+Otherwise  →  NON-MARKET PRODUCER
+General government (S.13) if controlled by government; NPISH (S.15) otherwise
+Operational Definitions
+Sales
+Receipts from third parties at prices that materially influence demand and supply
+Production costs
+Intermediate consumption + compensation of employees + consumption of fixed capital + other taxes on production
+Exclude from sales
+Sales to government at prices set to cover costs without competition (not economically significant)
+Sustained period
+Test must hold for three or more consecutive years; one-off swings are disregarded
+Qatar adjustments
+Exclude in-kind transfers, intra-government sales, regulated tariffs that do not respond to demand
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  24 / 75
+
+===== SLIDE 25 =====
+TEST 8 OF 18 — PART A
+Ownership & Effective Control — Core Concepts
+Control is not a synonym for ownership. An entity may be controlled with less than majority ownership — or, conversely, may be majority-owned without being controlled. Statistical classification follows substance, not paper.
+OWNERSHIP
+Legal title to equity. Necessary input but not sufficient evidence of control.
+Measure: % of shares held
+CONTROL
+The ability to determine the general policy of an entity (financing, investment, dividends, senior appointments).
+Measure: voting rights, board, contractual rights, financing dependency
+INFLUENCE
+Significant power short of control — typically associated holdings of 20-50 % or strategic agreements.
+Treatment: separate flag; not consolidated
+THE CENTRAL PROPOSITION OF THIS FRAMEWORK
+A company may legally appear private but be statistically classified as government-controlled if effective control exists through direct or indirect government influence, board appointment rights, contractual arrangements, or financing dependency.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  25 / 75
+
+===== SLIDE 26 =====
+TEST 8 OF 18 — PART B
+Indicators of Effective Control
+Effective control is established when one or more of the following indicators is present. Indicators may operate jointly; weighting depends on context.
+1
+MAJORITY VOTING RIGHTS
+Direct or indirect holding of more than 50% of voting rights in the entity.
+2
+BOARD APPOINTMENT RIGHTS
+Power to appoint, remove, or veto the majority of the board or senior management.
+3
+GOLDEN SHARES & VETO RIGHTS
+Special shares granting veto over strategic decisions regardless of equity stake held.
+4
+CONTRACTUAL CONTROL
+Management contracts, concession agreements, or shareholder agreements conferring decisive control.
+5
+FINANCING DEPENDENCY
+Sole or dominant lender/guarantor with conditions enabling effective control over policy.
+6
+DOMINANT CUSTOMER OR SUPPLIER
+Government as exclusive purchaser or supplier creating structural dependence.
+7
+REGULATORY CONTROL
+Sector-specific rules conferring authority beyond ordinary supervision (price, output, entry).
+8
+BENEFICIAL OWNERSHIP CHAIN
+Control exercised through layered or beneficial ownership structures, including SPVs.
+A ninth indicator — power to appoint, remove, or set the remuneration of key personnel (CEO/CFO) — is assessed alongside these eight. Decision rule: any single indicator may suffice when sufficiently strong; the totality must be assessed.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  26 / 75
+
+===== SLIDE 27 =====
+TEST 9 OF 18
+Listed Company Treatment — QSE-Listed Entities
+Listing on the Qatar Stock Exchange does not, of itself, alter sector classification. Treatment depends on residual government ownership and the presence of any control indicators after IPO.
+SCENARIO A
+Government retains majority
+Government direct + indirect holdings remain above 50% after listing.
+CLASSIFICATION VERDICT
+Public Non-Financial / Financial Corporation
+SCENARIO B
+Minority stake with control indicators
+Government holds 20–50% but exercises control through board, golden share, or strategic agreement.
+CLASSIFICATION VERDICT
+Public Corporation (controlled but not majority-owned)
+SCENARIO C
+True minority with no control
+Government holds <20% as portfolio investment; no other control indicator is present.
+CLASSIFICATION VERDICT
+Private Corporation (with government participation flag)
+Qatari practice: a partial IPO does not by itself reclassify the entity. Statistical sector classification is reassessed after listing using the full control test.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  27 / 75
+
+===== SLIDE 28 =====
+TEST 10 OF 18
+Enterprise Size — Recommended Qatar Thresholds
+Size classification is statistical (for stratification and sampling) and policy-relevant (for SME programs). Recommended thresholds combine employment and turnover, with the larger result governing.
+CATEGORY
+EMPLOYEES (FTE)
+ANNUAL TURNOVER
+TOTAL ASSETS
+MICRO
+1 – 9
+Up to QAR 3 million
+Up to QAR 2 million
+SMALL
+10 – 49
+QAR 3 – 30 million
+QAR 2 – 20 million
+MEDIUM
+50 – 249
+QAR 30 – 200 million
+QAR 20 – 150 million
+LARGE
+250 +
+Above QAR 200 million
+Above QAR 150 million
+RULE OF CONVERGENCE — the higher of the three criteria governs. Benchmarked against EU SME Recommendation 2003/361/EC, adapted to Qatari price levels.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  28 / 75
+
+===== SLIDE 29 =====
+TEST 11 OF 18
+Enterprise Group Boundary & Consolidation Rules
+Every entity is classified as an institutional unit on a standalone basis; in parallel, it is associated with an enterprise group. Both perspectives are needed for national accounts and policy analysis.
+DEFINING THE ENTERPRISE GROUP
+An association of legal units bound together by control links.
+Global ultimate parent
+Topmost entity in the chain — may be resident or non-resident.
+Domestic group head
+Highest resident entity in Qatar — relevant for national accounts.
+Subsidiaries
+Entities directly or indirectly controlled by the group head.
+Associates
+Holdings of 20–50% recorded separately; not consolidated.
+Special purpose entities
+SPVs and conduits — included only if substantive activity exists.
+CONSOLIDATION RULES FOR STATISTICS
+Statistical consolidation is NOT identical to financial consolidation.
+Each institutional unit reports independently to the national accounts.
+Intra-group transactions are preserved (not eliminated) for production accounts.
+The enterprise-group view enables analysis of concentration and ownership exposure.
+For financial corporations, prudential consolidation (QCB / IFRS) is recorded in parallel.
+For public corporations, the group view aligns with the public-sector boundary (GFS 2014).
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  29 / 75
+
+===== SLIDE 30 =====
+TEST 12 OF 18
+Foreign Ownership & the FDI 10% Threshold
+The OECD Benchmark Definition (4th edition) treats a 10% voting-rights threshold as the operational boundary between direct and portfolio investment. Qatar adopts this threshold while assessing control on substance.
+< 10 %
+Portfolio Investment
+Recorded under portfolio flows / balance of payments. No FDI relationship.
+10 – 50 %
+Direct Investment — Associate
+FDI relationship established. Treated as influence; not consolidated.
+> 50 %
+Direct Investment — Subsidiary
+Majority control. Consolidated in group view; classified by control test.
+QATAR-SPECIFIC CONSIDERATIONS
+QFC entities —
+Foreign-incorporated parent but resident in Qatar — FDI flag applied; included in resident enterprise universe.
+Free-zone entities —
+100% foreign ownership permitted; treated as resident producers; sector and FDI flags both apply.
+Joint ventures —
+Qatar Foreign Investment Law allows up to 100% in most sectors — substance over form determines control.
+SWF reverse flows —
+QIA outward holdings are Qatari outward FDI. Fellow enterprises and non-equity FDI (intercompany debt) are captured per OECD BD4.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  30 / 75
+
+===== SLIDE 31 =====
+TEST 13 OF 18
+Special Purpose Entities & Holding Companies
+Special purpose entities are increasingly common in Qatar — used for financing, securitization, project finance, and group structuring. They require careful treatment to avoid both under-coverage and double-counting.
+FINANCING VEHICLES
+Issue debt on behalf of parent; little or no autonomous operation.
+STATISTICAL TREATMENT
+Generally consolidated with controlling parent
+HOLDING COMPANIES
+Hold equity in subsidiaries; may or may not provide management services.
+STATISTICAL TREATMENT
+Resident holding company is a separate institutional unit
+CAPTIVE INSURANCE
+Insure only own group; do not pool risk with third parties.
+STATISTICAL TREATMENT
+Captive financial institution — sub-sector S.127
+PROJECT SPVs
+Single-project vehicles in PPPs and infrastructure deals.
+STATISTICAL TREATMENT
+Classified by control test; usually public corporation
+THE EMPTY-SHELL RULE
+Empty shell (no employees, premises, or autonomous decisions): consolidated with its controlling parent unless non-resident. Branches of foreign enterprises are resident units (BPM6 Ch.4); a government-controlled NPISH is reclassified to general government (SNA 2025 §4.84+); multi-territory units are apportioned.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  31 / 75
+
+===== SLIDE 32 =====
+TESTS 14 – 16 OF 18
+Data Source Hierarchy, Conflict Resolution & Governance
+The remaining tests govern how the framework is operated rather than how an entity is classified — they ensure the framework is reproducible, defensible, and updated.
+TEST 14
+DATA SOURCE HIERARCHY
+When attributes are available from multiple sources, the framework defines a fixed precedence order — most authoritative first.
+Tier 1 — Primary registry
+MoCI Commercial Register; QFC Authority; QFZA registry
+Tier 2 — Tax & financial
+General Tax Authority; Qatar Central Bank prudential filings
+Tier 3 — Survey & profiling
+NSO economic surveys, large-case profiling, beneficial-ownership filings
+Tier 4 — Public information
+Audited accounts, QSE disclosures, ministerial decisions
+TEST 15
+CONFLICT RESOLUTION
+Where sources disagree, the statistical override is exercised by the Technical Classification Committee — never silently in the database.
+Principle 1
+Documented evidence wins over inferred status
+Principle 2
+More recent attestation wins, all else equal
+Principle 3
+Substance wins over legal form in control determinations
+Principle 4
+Override decisions are minuted and reviewable
+TEST 16
+GOVERNANCE
+A standing committee owns the methodology. Individual classification decisions are technical, not political, and are protected by statistical confidentiality.
+Chair
+NSO Director-General or delegate
+Members
+MoCI, QCB, GTA, QFC, QFZA, MoF representatives
+Cadence
+Quarterly review; emergency convening on triggers
+Output
+Public methodology; confidential entity register
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  32 / 75
+
+===== SLIDE 33 =====
+TESTS 17 – 18 OF 18
+Quality Assurance & the Final Classification Decision
+The framework's two closing tests bind methodology to operations: every classification must pass quality controls, and every classification must be expressed in a complete, multi-dimensional record.
+TEST 17
+Quality Assurance
+Three layers of control before any classification is committed to the register.
+LAYER 1 — Analyst
+Self-check against the 18-test framework; evidence file complete.
+LAYER 2 — Peer review
+Second analyst replicates the decision independently from the evidence.
+LAYER 3 — Committee
+Edge cases referred to Technical Classification Committee for ruling.
+AUDIT TRAIL
+Every override and exception is logged with rationale and signatory.
+TEST 18
+Final Classification Record
+Every entity carries a full classification key: the fields below plus persistent ID, LEI, demographic-event history, source provenance, quality flag, and methodology version.
+01
+ISIC 4-DIGIT ACTIVITY
+Principal activity by value added (ISIC Rev.4) + KAU link
+02
+INSTITUTIONAL SECTOR
+S.11–S.15 with public / private split
+03
+OWNERSHIP STATUS
+Public / private / mixed / foreign / SWF-chain
+04
+CONTROL FLAG
+Indicator(s) of effective control, if any
+05
+SIZE CATEGORY
+Micro / small / medium / large
+06
+GROUP MEMBERSHIP
+Ultimate parent, domestic group head, truncated (resident) group
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  33 / 75
+
+===== SLIDE 34 =====
+SYNTHESIS
+Master Decision Tree — The 18 Tests at One Glance
+The full classification logic of the framework, expressed as a decision flow. Each diamond invokes one or more of the 18 tests.
+1. IDENTIFY UNIT
+T1–T2
+Statistical & institutional unit
+2. RESIDENCE
+T3
+Centre of predominant interest
+3. ACTIVITY
+T4
+ISIC Rev.4 four-digit code
+4. SECTOR
+T5
+Institutional sector S.11–S.15
+5. PUBLIC/PRIVATE
+T6
+Public sector boundary test
+6. MARKET TEST
+T7
+50% rule on production
+7. CONTROL
+T8
+9 indicators — substance
+8. SIZE & GROUP
+T10–T11
+Size class, group membership
+9. FOREIGN
+T12
+FDI threshold and direction
+10. SPECIAL ENTITY
+T13
+SPV / holding / captive
+11. SOURCE & QA
+T14–T17
+Hierarchy, conflicts, QA
+12. FINAL RECORD
+T18
+Full classification key
+OUTPUT — Entity registered with sector, control flag, size, group, residence, and ISIC code; entered in Central Statistical Business Register.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part III — Core Methodology  •  34 / 75
+
+===== SLIDE 35 =====
+PART IV
+The Qatari Economic Landscape
+From the Qatar Investment Authority to family conglomerates and free-zone enterprises — applying the framework to the structures that define Qatar's economy
+National Statistical System  •  State of Qatar
+
+===== SLIDE 36 =====
+LANDSCAPE OVERVIEW
+The Architecture of the Qatari Economy
+Qatar's economy is shaped by a small number of large structures: a sovereign wealth fund at the apex, vertically integrated public corporations, a regulated international finance centre, special economic zones, and a concentrated tier of family-owned conglomerates. Each demands tailored classification treatment.
+I
+Sovereign Wealth
+Qatar Investment Authority and its subsidiary investment vehicles
+KEY ENTITIES
+•  QIA (apex)
+•  Qatar Holding
+•  Qatari Diar
+•  Ownership in major corporates
+II
+Public Corporations
+Vertically integrated state-controlled groups
+KEY ENTITIES
+•  QatarEnergy
+•  Qatar Airways
+•  Industries Qatar (IQ)
+•  Ooredoo Group
+III
+QFC & Financial Centre
+Onshore international finance jurisdiction with own commercial law
+KEY ENTITIES
+•  QFC Authority
+•  QFC Regulatory Authority
+•  Resident foreign banks
+•  Asset managers
+IV
+Free Zones
+Industrial and logistics zones administered by QFZA
+KEY ENTITIES
+•  Ras Bufontas
+•  Umm Alhoul
+•  Manufacturing
+•  Logistics & technology
+V
+Private & Family
+Conglomerates, listed corporates, and SMEs across the economy
+KEY ENTITIES
+•  Family conglomerates
+•  QSE listed corporates
+•  SMEs (90%+ of count)
+•  Foreign-owned subs
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  36 / 75
+
+===== SLIDE 37 =====
+PILLAR I — SOVEREIGN WEALTH
+Qatar Investment Authority and Its Investment Vehicles
+The Qatar Investment Authority sits at the apex of state economic ownership. For classification purposes, QIA is the controlling parent of a chain of resident and non-resident vehicles whose holdings cascade into many corporates.
+STYLISED OWNERSHIP CHAIN
+State of Qatar
+Ultimate owner
+Qatar Investment Authority
+Sovereign wealth fund
+Qatar Holding LLC
+Direct investment arm
+Qatari Diar / QIA subsidiaries
+Sector-specific arms
+Investee corporations
+Domestic + foreign
+CLASSIFICATION IMPLICATIONS
+Sector at apex
+QIA classified within general government (extra-budgetary) or as a captive financial institution depending on operating model.
+Cascade of control
+Every investee where QIA holds majority — directly or indirectly — is a public corporation in Qatar's national accounts.
+Indirect majorities
+Two minority QIA stakes in the same company may aggregate to majority — substance must be tested case by case.
+Non-resident vehicles
+Foreign incorporated QIA vehicles are non-resident; their resident investees still classify as Qatari public corporations.
+Disclosure tension
+Confidentiality of QIA holdings is necessary; statistical classification proceeds under protected protocols.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  37 / 75
+
+===== SLIDE 38 =====
+PILLAR II — PUBLIC CORPORATIONS
+Vertically Integrated State-Controlled Groups
+Qatar's public corporations include some of the largest integrated groups in the region. They span hydrocarbons, utilities, aviation, telecoms, banking, and infrastructure. Each is itself an enterprise group requiring multi-layer classification.
+HYDROCARBONS
+ISIC 06 / 19 / 20
+QatarEnergy and Subsidiaries
+Vertically integrated NOC: upstream, LNG, refining, petrochemicals, downstream. Numerous subsidiaries and JV partners.
+UTILITIES
+ISIC 35 / 36
+Kahramaa, QEWC
+Electricity & water — state utility plus listed mixed-ownership generator.
+AVIATION
+ISIC 51 / 52
+Qatar Airways Group
+Carrier, ground handling, catering, cargo, and Hamad International Airport operations.
+TELECOMS
+ISIC 61
+Ooredoo & Vodafone Qatar
+Mixed-ownership operators with significant state stakes; classified as public corporations.
+BANKING
+ISIC 64 / 65
+QNB, QIB, Doha Bank
+Government-controlled and mixed-ownership banks dominating financial intermediation; private banks also operate in the same space.
+INFRASTRUCTURE
+ISIC 42 / 52 / 49
+Mwani, Ashghal, Qatar Rail
+Ports, public works, and rail — public corporations or general-government depending on test 7.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  38 / 75
+
+===== SLIDE 39 =====
+PILLAR III & IV — SPECIAL JURISDICTIONS
+QFC and Free Zones — Resident but Distinct
+QFC and free-zone entities are statistical residents of Qatar but operate under bespoke legal regimes. Their integration into the national framework requires explicit jurisdictional flagging.
+QATAR FINANCIAL CENTRE
+Onshore international financial centre
+Legal regime
+QFC Law no. 7 of 2005 — separate civil & commercial framework.
+Regulator
+QFCRA — independent of QCB; conduct & prudential authority.
+Entity types
+LLCs, branches of foreign firms, special funds, captives.
+Statistical status
+RESIDENT for national accounts; flagged as QFC-jurisdiction.
+Classification
+Sector by activity; FDI flag where foreign-owned; size by standard test.
+Risk
+Risk of double-counting with QCB-regulated banking — register reconciliation essential.
+FREE ZONES (QFZA)
+Industrial & logistics zones
+Anchor zones
+Ras Bufontas (technology, logistics) and Umm Alhoul (manufacturing, maritime).
+Authority
+Qatar Free Zones Authority (QFZA) — licensing & operations.
+Ownership
+Up to 100% foreign ownership permitted; major attraction for FDI.
+Statistical status
+RESIDENT producers of Qatar's GDP; flagged as free-zone jurisdiction.
+Classification
+Activity-based ISIC; sector typically S.11; FDI flag essentially universal.
+Risk
+Risk of double-attribution between zone authority records and tax / MoCI registers.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  39 / 75
+
+===== SLIDE 40 =====
+PILLAR V — PRIVATE & FAMILY
+Family Conglomerates — Concentration in Private Wealth
+A small number of Qatari family business groups account for a significant share of private-sector activity. They are diversified, often opaque, and present some of the framework's most demanding classification problems.
+STRUCTURAL CHARACTERISTICS
+Diversification
+Single ownership across construction, real estate, trading, services, hospitality, automotive.
+Group structure
+Holding company with many subsidiaries; activities span 5+ ISIC sections.
+Family governance
+Founder-family control; cross-board membership; informal governance arrangements.
+Foreign partners
+Joint ventures with international firms across many subsidiaries.
+Public-sector linkages
+Service contracts, concessions, and PPP relationships with government bodies.
+Disclosure
+Limited public disclosure; reliance on registry and survey data.
+CLASSIFICATION CHALLENGES
+Activity assignment
+Group spans multiple ISIC divisions — each subsidiary must be classified on its own value-added principal activity.
+Group consolidation
+Identifying the ultimate beneficial parent across complex holding structures.
+Government influence
+Where a family member holds public office, the indicator of effective control must be tested.
+Foreign JVs
+Each JV is a separate institutional unit; control may rest with either partner.
+Size classification
+Consolidated vs. unconsolidated: the group is large but many subs are SMEs.
+Quality assurance
+Necessitates large-case profiling, dedicated unit, periodic refresh, and confidential dialogue with the group.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  40 / 75
+
+===== SLIDE 41 =====
+PILLAR V — QSE LISTED
+Qatar Stock Exchange — The Mixed-Ownership Tier
+QSE-listed companies span the entire ownership spectrum, from government-controlled corporates with minority free floats to genuinely private listed firms. Each is treated individually under the framework's test 9.
+STYLISED COMPOSITION OF QSE-LISTED ENTITIES
+Test 9 — Scenario A
+GOVERNMENT-CONTROLLED LISTED
+Government direct + indirect holdings exceed 50% after IPO. Listed for capital-raising and market discipline; classification unchanged.
+ILLUSTRATIVE EXAMPLES
+•  Industries Qatar
+•  Qatar Electricity & Water
+•  Qatar Gas Transport
+•  Ooredoo
+PUBLIC CORPORATION
+Test 9 — Scenario B
+MIXED-OWNERSHIP LISTED
+Government holds 20–50% with one or more indicators of effective control: board appointment rights, sectoral regulation, or golden share.
+ILLUSTRATIVE EXAMPLES
+•  Major banks
+•  Mixed-ownership utilities
+•  Strategic-sector listings
+PUBLIC CORPORATION (CONTROLLED)
+Test 9 — Scenario C
+PRIVATE LISTED
+Government holds less than 20% as portfolio investment with no other control indicator; or genuinely no state ownership.
+ILLUSTRATIVE EXAMPLES
+•  Private listed industrials
+•  Family-floated entities
+•  Foreign-anchored listings
+PRIVATE CORPORATION
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IV — Qatari Landscape  •  41 / 75
+
+===== SLIDE 42 =====
+PART V
+Applied Case Studies
+Twelve worked examples from the Qatari context — anonymised structures that demonstrate how the 18 tests resolve typical and difficult classification questions
+National Statistical System  •  State of Qatar
+
+===== SLIDE 43 =====
+CASE STUDIES OVERVIEW
+Twelve Stylised Cases — What Each Demonstrates
+Each of the following cases is a stylised composite, not a real entity. Together, they cover the full range of classification challenges in the Qatari environment.
+01
+Government-Controlled Listed Corporate
+Tests 8, 9 — Scenario A treatment
+02
+Indirect Government Ownership via Holding Chain
+Tests 8, 11 — chain consolidation
+03
+Sovereign Wealth Cascade — QIA-Style Structure
+Tests 6, 8, 11 — cascade through SWF
+04
+Semi-Government Energy Entity
+Tests 6, 7, 8 — public-sector boundary
+05
+Public-Private Partnership (PPP) Vehicle
+Tests 7, 8, 13 — project SPV treatment
+06
+State + Foreign Joint Venture
+Tests 8, 12 — control with foreign JV
+07
+Family Conglomerate with Government Stake
+Tests 8, 11 — control assessment
+08
+Mixed-Ownership Bank
+Tests 5, 8, 9 — financial corporation
+09
+QFC Entity with Foreign Parent
+Tests 3, 12 — resident & FDI
+10
+Free-Zone Manufacturer Operating Domestically
+Tests 3, 4, 7 — resident producer
+11
+Pure Holding Company / SPV Empty Shell
+Test 13 — substance test
+12
+Dispersed Ownership with Board Control
+Test 8 — board appointment rights
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  43 / 75
+
+===== SLIDE 44 =====
+CASE STUDY 01
+Government-Controlled Listed Corporate
+SCENARIO
+A QSE-listed industrial corporation in which the State and state-controlled vehicles together hold 62% of voting shares. The remaining 38% is held by Qatari and foreign portfolio investors. Board is appointed by majority vote.
+OWNERSHIP STRUCTURE
+State of Qatar + state vehicles
+62% combined
+Portfolio investors (QSE)
+38% free float
+The listed company (entity X)
+Resident producer
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Control
+Majority voting rights (Indicator 1)
+Listing
+QSE-listed; Test 9 Scenario A
+Size
+Large (employment & turnover)
+Group
+State-controlled group
+METHODOLOGICAL TAKEAWAY
+Listing on the exchange is informationally important but classification-neutral when state majority is preserved.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  44 / 75
+
+===== SLIDE 45 =====
+CASE STUDY 02
+Indirect Government Ownership via Holding Chain
+SCENARIO
+A trading company in which a state-owned holding company holds 45% directly. A second state-controlled vehicle holds an additional 15%. The combined indirect government interest is 60%, but no single state shareholder is the majority owner.
+OWNERSHIP STRUCTURE
+State holding company A
+45% direct
+State vehicle B
+15% direct
+Trading company (entity Y)
+Aggregate 60%
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Control
+Joint majority — aggregated indirect holdings (Indicators 1 + 8)
+Test
+Test 11 — group consolidation rule
+Risk
+Easily missed without group view
+Audit
+Annual aggregation check required
+METHODOLOGICAL TAKEAWAY
+Aggregation of state holdings across multiple vehicles is one of the most common classification errors. The group-view test is decisive.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  45 / 75
+
+===== SLIDE 46 =====
+CASE STUDY 03
+Sovereign Wealth Cascade — QIA-Style Structure
+SCENARIO
+A property-development corporation in which a non-resident QIA subsidiary holds 70%. The QIA subsidiary itself is wholly owned by QIA. The development corporation operates in Qatar.
+OWNERSHIP STRUCTURE
+Qatar Investment Authority
+100% of subsidiary
+Non-resident QIA subsidiary
+70% of entity
+Resident property developer Z
+Qatari resident
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Residence
+Resident producer
+Ownership
+Public corporation (state via SWF chain)
+Control
+Indirect via non-resident vehicle (Indicator 8)
+FDI flag
+Round-tripping: apparent inward FDI, ultimately Qatari-controlled — flagged
+Note
+Substance over non-resident form
+METHODOLOGICAL TAKEAWAY
+A non-resident layer in the chain does not break public-corporation status of the resident operating entity.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  46 / 75
+
+===== SLIDE 47 =====
+CASE STUDY 04
+Semi-Government Energy Entity
+SCENARIO
+An energy corporation 100% owned by the State, charging fully cost-recovering tariffs to industrial customers and selling output at market prices. Operates with corporate governance, audited accounts, and independent management.
+OWNERSHIP STRUCTURE
+State of Qatar
+100% ownership
+Energy corporation (W)
+Market producer
+Industrial customers
+Arms-length
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Market test
+Passes 50% rule
+Control
+100% state ownership
+Boundary
+INSIDE public corporation perimeter
+Test
+Tests 6 + 7 + 8 jointly satisfied
+METHODOLOGICAL TAKEAWAY
+Full state ownership does not by itself imply government sector; the market-test of Test 7 places the entity in public corporations.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  47 / 75
+
+===== SLIDE 48 =====
+CASE STUDY 05
+Public-Private Partnership (PPP) Vehicle
+SCENARIO
+An infrastructure SPV — 49% government, 51% foreign concessionaire. Government has golden share and veto over major decisions. SPV operates and maintains a public-sector asset under a 25-year concession.
+OWNERSHIP STRUCTURE
+Government of Qatar
+49% + golden share
+Foreign concessionaire
+51% equity
+Infrastructure SPV (P)
+Project vehicle
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Control
+Golden share (Indicator 3)
+Tests
+Tests 7, 8, 13 — substantive
+FDI flag
+Significant foreign minority — flagged
+Duration
+Reviewed at concession milestones
+METHODOLOGICAL TAKEAWAY
+Minority equity with a golden share is decisive in classification — substance beats arithmetic in the control test.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  48 / 75
+
+===== SLIDE 49 =====
+CASE STUDY 06
+State + Foreign Joint Venture
+SCENARIO
+A petrochemicals joint venture: 65% Qatari state-controlled corporation, 35% foreign multinational. Board composition mirrors equity; no special control rights. Long-term offtake agreement with state buyer.
+OWNERSHIP STRUCTURE
+Qatari state-controlled corp
+65% equity
+Foreign multinational
+35% equity
+Petrochemicals JV (Q)
+Resident
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Control
+Majority Qatari (Indicator 1)
+FDI flag
+Inward direct investment 35%
+Group
+Member of state petrochemicals group
+Note
+Offtake link reinforces, not creates, control
+METHODOLOGICAL TAKEAWAY
+Majority Qatari equity is sufficient. The offtake contract is corroborating evidence but not the primary determinant.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  49 / 75
+
+===== SLIDE 50 =====
+CASE STUDY 07
+Family Conglomerate with Government Stake
+SCENARIO
+A diversified Qatari family group operating across construction, real estate, and trading. A state vehicle holds 15% of the holding company. Founding family retains 75% and full management control through the board.
+OWNERSHIP STRUCTURE
+Founding family (combined)
+75% equity
+State vehicle
+15% portfolio
+Other family / partners
+10% equity
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Private corporation
+Control
+Family-controlled — no state control
+State flag
+State 15% — recorded as participation
+Group
+Family enterprise group
+Test
+Test 8 confirms no effective state control
+METHODOLOGICAL TAKEAWAY
+A meaningful but non-controlling state stake does not reclassify a family-controlled enterprise. Substance is decisive.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  50 / 75
+
+===== SLIDE 51 =====
+CASE STUDY 08
+Mixed-Ownership Bank
+SCENARIO
+A commercial bank in which the State holds 51% directly, a state-controlled pension fund holds 8%, and the remaining 41% is dispersed among Qatari and foreign portfolio investors via QSE listing. Regulated by QCB.
+OWNERSHIP STRUCTURE
+State of Qatar
+51% direct
+State pension fund
+8%
+Portfolio (QSE listed)
+41% free float
+CLASSIFICATION VERDICT
+Sector
+S.122 — Deposit-taking corporations
+Ownership
+Public financial corporation
+Control
+Majority state (Indicator 1) reinforced
+Regulation
+QCB-supervised
+FDI flag
+Portion of free float foreign-held
+Group
+State-controlled banking group
+METHODOLOGICAL TAKEAWAY
+Financial corporations apply the same control logic. The public-corporation perimeter extends through S.121–S.129 wherever government control is established.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  51 / 75
+
+===== SLIDE 52 =====
+CASE STUDY 09
+QFC Entity with Foreign Parent
+SCENARIO
+An asset-management entity licensed and resident in the QFC, wholly owned by a major foreign financial institution. Provides advisory and fund services from Doha to regional and global clients. Reports under QFC framework.
+OWNERSHIP STRUCTURE
+Foreign financial parent (non-resident)
+100% ownership
+QFC-licensed asset manager (resident)
+Resident producer
+Regional and global clients
+Service exports
+CLASSIFICATION VERDICT
+Sector
+S.126 — Financial auxiliaries
+Residence
+Resident in Qatar (QFC jurisdiction)
+Ownership
+Foreign-controlled private corporation
+Control
+100% foreign (Indicator 1)
+FDI flag
+Inward FDI — full
+Activity
+ISIC 6630 — fund management
+METHODOLOGICAL TAKEAWAY
+QFC residence is unambiguous despite foreign ownership. Statistical residence and ownership are independent dimensions and both must be recorded.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  52 / 75
+
+===== SLIDE 53 =====
+CASE STUDY 10
+Free-Zone Manufacturer Operating Domestically
+SCENARIO
+A 100% foreign-owned manufacturer operating in Umm Alhoul Free Zone, producing chemical inputs. 70% of output is exported; 30% is sold to Qatari customers under MoCI customs procedures. Foreign workforce on Qatari labor cards.
+OWNERSHIP STRUCTURE
+Foreign industrial parent
+100% equity
+Free-zone manufacturer (resident)
+Resident producer
+Export markets (70%) + Qatar (30%)
+Mixed sales
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Residence
+Resident in Qatar (QFZA jurisdiction)
+Ownership
+Foreign-controlled private corporation
+Control
+100% foreign parent
+FDI flag
+Inward FDI — full
+Activity
+ISIC 20 — chemicals
+METHODOLOGICAL TAKEAWAY
+Free-zone status does not affect residence: the entity contributes to Qatari GDP. Domestic sales and re-exports must be separately recorded in trade statistics.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  53 / 75
+
+===== SLIDE 54 =====
+CASE STUDY 11
+Pure Holding Company / SPV Empty Shell
+SCENARIO
+A holding entity registered in Qatar with no employees, no premises, and no operating revenue. Holds 100% of three operating subsidiaries on behalf of an ultimate controlling family. Provides no management services.
+OWNERSHIP STRUCTURE
+Ultimate family controlling unit
+100%
+Pure holding company (empty shell)
+Substance check
+Three operating subsidiaries
+Operating units
+CLASSIFICATION VERDICT
+Substance
+FAILS test 13 substance criteria
+Treatment
+Consolidated with controlling unit
+Sector
+Inherits sector of controlling group
+Register
+Listed but flagged as non-substantive
+Surveys
+Excluded from operational surveys
+Audit
+Re-tested annually for substance change
+METHODOLOGICAL TAKEAWAY
+Empty-shell holding companies must not appear in operational statistics as if they were producers. Test 13's substance criteria are the guard against this.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  54 / 75
+
+===== SLIDE 55 =====
+CASE STUDY 12
+Dispersed Ownership with Board Control
+SCENARIO
+A listed corporation with no shareholder above 10% — but a state institution holds rights to appoint the chair and three of seven board members under the company's articles. No equity threshold is met, yet board control is decisive.
+OWNERSHIP STRUCTURE
+Dispersed public shareholders
+All below 10%
+State institution
+0% equity
+Listed corporation (D)
+Resident producer
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial corporation
+Ownership
+Public corporation
+Control
+Board appointment rights (Indicator 2)
+Test
+Test 8 decisive without ownership
+Equity
+No state equity held
+Note
+Article-level rights bind classification
+METHODOLOGICAL TAKEAWAY
+Control via charter or shareholder-agreement rights is the textbook case of substance over form. Indicator 2 alone can reclassify an entity.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part V — Applied Cases  •  55 / 75
+
+===== SLIDE 56 =====
+PART VI
+International Benchmarks
+How leading statistical systems classify enterprises — and what Qatar can adopt, adapt, or improve upon
+National Statistical System  •  State of Qatar
+
+===== SLIDE 57 =====
+BENCHMARK OVERVIEW
+Six Reference Systems — What Each Demonstrates
+Qatar's framework is informed by the leading statistical practices globally and in the region. Each reference system contributes a different element of best practice.
+NO
+Norway
+Statistics Norway (SSB)
+Public-sector boundary
+Mature treatment of SWF (GPFG) and state-owned enterprises; rigorous public-corporation perimeter.
+SG
+Singapore
+DOS / SingStat
+Holding & SPV treatment
+Sophisticated handling of holding companies and special-purpose entities common in hub economies.
+GB
+United Kingdom
+ONS
+Group profiling
+Inter-Departmental Business Register; mature large-case unit; transparent reclassification process.
+AE
+UAE
+FCSC
+Free-zone integration
+Practical integration of multiple free-zone authorities into national business register.
+SA
+Saudi Arabia
+GASTAT
+Regional comparability
+GCC SME definitions and recent statistical-business-register reforms; methodological convergence.
+OECD
+OECD WPNA / WGIIS
+Methodological standard
+Benchmark Definition of FDI; Public Sector Statistical Guide; system-wide convergence references.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VI — International Benchmarks  •  57 / 75
+
+===== SLIDE 58 =====
+BENCHMARKS — CLUSTER A
+Norway, Singapore, United Kingdom — Reference Systems
+NORWAY
+Statistics Norway (SSB)
+Public-sector perimeter
+Government Pension Fund Global treated within the general government boundary; explicit doctrine.
+SOE classification
+Statoil/Equinor reclassified after partial privatisation through evidence-based control test.
+Transparency
+Methodology and reclassification decisions published — supports defensibility.
+LESSON FOR QATAR
+Adopt a publicly documented, evidence-based reclassification doctrine for state-owned and partially privatised entities.
+SINGAPORE
+Department of Statistics (DOS / SingStat)
+Substance test
+Sophisticated treatment of SPEs given Singapore's role as financial hub.
+Holding company analytics
+Group profiling embedded in business register; ultimate control mapped.
+FDI granularity
+Inward / outward direct investment by partner and ultimate investor.
+LESSON FOR QATAR
+Build SPE substance criteria and holding-company analytics into the central business register from day one.
+UNITED KINGDOM
+Office for National Statistics (ONS)
+IDBR
+Inter-Departmental Business Register integrates HMRC, Companies House, and survey data.
+Large-case unit
+Dedicated profilers for largest enterprise groups; relationship-based intelligence.
+Public reclassifications
+Major reclassifications (e.g., RBS, Network Rail) published with full rationale.
+LESSON FOR QATAR
+Concentrate scarce statistical expertise on the largest enterprise groups through a dedicated profiling team.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VI — International Benchmarks  •  58 / 75
+
+===== SLIDE 59 =====
+BENCHMARKS — CLUSTER B
+UAE, Saudi Arabia, OECD — Regional & Methodological
+UAE
+Federal Competitiveness & Statistics Centre (FCSC)
+Multi-jurisdiction
+Federal level integrates emirate registers, free zones, and DIFC / ADGM financial centres.
+Free-zone harmonisation
+Statistical coverage of free zones standardised across emirates.
+Foreign ownership data
+FDI inflow / stock by free-zone and emirate captured systematically.
+LESSON FOR QATAR
+Multi-authority integration is feasible. Qatar should harmonise MoCI + QFC + QFZA registers into one statistical view.
+SAUDI ARABIA
+General Authority for Statistics (GASTAT)
+Vision 2030 alignment
+Statistical reforms paced with national transformation; comparable GCC methodology.
+SME definition
+GCC-comparable SME definition with employment and turnover criteria.
+Business register reform
+Recent overhaul of statistical business register and large-enterprise profiling.
+LESSON FOR QATAR
+Adopt GCC-comparable size thresholds and a transformation-paced statistical reform programme aligned with QNV2030.
+OECD
+Working Party on National Accounts and WGIIS
+BD4 standard
+Benchmark Definition of FDI, 4th edition — the global gold standard for FDI statistics.
+Public-sector guide
+OECD Public Sector Statistics Guide — operationalises GFS at country level.
+Peer review
+Ongoing peer-review mechanism supports continuous improvement and credibility.
+LESSON FOR QATAR
+Embed BD4 explicitly in the methodology; benchmark Qatar against OECD peers for periodic external validation.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VI — International Benchmarks  •  59 / 75
+
+===== SLIDE 60 =====
+BENCHMARK SYNTHESIS
+Six Distilled Lessons for the Qatar Framework
+From six benchmarked systems, six concrete design choices for the Qatar framework — each of which feeds directly into Part VII.
+01
+PUBLISHED METHODOLOGY
+Methodology and reclassification rationale must be public — entity records remain confidential.
+Source: Norway, UK
+02
+DEDICATED LARGE-CASE UNIT
+Concentrate top-tier statistical expertise on the largest 50–100 groups via a dedicated profiling team.
+Source: UK
+03
+INTEGRATED BUSINESS REGISTER
+Single statistical view across MoCI, GTA, QFC, QFZA, QCB, QSE, MoL with persistent identifiers.
+Source: UK, UAE
+04
+SPE SUBSTANCE TEST
+Operational substance criteria for SPVs and holding companies; reviewed annually.
+Source: Singapore
+05
+BD4-ALIGNED FDI
+OECD Benchmark Definition (4th edition) for inward and outward direct-investment recording.
+Source: OECD
+06
+TRANSFORMATION CADENCE
+Reform paced with QNV2030 milestones and GCC harmonisation.
+Source: Saudi Arabia
+BRIDGE TO PART VII
+These six lessons translate into the four design pillars of the Qatar National Framework: a documented methodology, an integrated business register, a dedicated profiling capability, and a published reclassification doctrine.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VI — International Benchmarks  •  60 / 75
+
+===== SLIDE 61 =====
+PART VII
+The Qatar National Framework
+A coherent, four-pillar institutional design for classifying enterprises and economic entities — owned by the National Statistics Office, supported by the entire statistical system
+National Statistical System  •  State of Qatar
+
+===== SLIDE 62 =====
+BLUEPRINT
+The Four Pillars of the Qatar National Framework
+The framework rests on four pillars. Each pillar is a discrete operational system. Together they constitute a single, defensible, internationally credible classification capability for Qatar.
+01
+PILLAR 1
+METHODOLOGY
+The 18-Test Framework
+Codified manual, decision trees, classification record schema, training curriculum, and published documentation.
+02
+PILLAR 2
+GOVERNANCE
+Classification Authority
+Standing Technical Classification Committee chaired by NSO, with MoCI, GTA, QCB, QFC, QFZA, MoF representation.
+03
+PILLAR 3
+DATA INTEGRATION
+Statistical Business Register
+Central register integrating all administrative sources under a persistent statistical identifier; updated continuously.
+04
+PILLAR 4
+QUALITY & AI
+Assurance and Innovation
+Three-layer QA, large-case profiling unit, AI-assisted entity resolution and ownership mapping, periodic external review.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  62 / 75
+
+===== SLIDE 63 =====
+PILLAR 2 — GOVERNANCE
+Technical Classification Committee
+Classification is a technical, evidence-based act. A standing committee at the NSO — supported by sub-committees for financial corporations, the public-sector boundary, and data-ethics/AI governance, under a Statistical Authority Council — ensures methodology is uniformly applied, conflicts resolved, and decisions documented.
+COMPOSITION
+CHAIR
+NSO Director-General
+Convenes; final ruling authority
+DEPUTY CHAIR
+NSO Director, National Accounts
+Methodology custodian
+MoCI
+Director, Commercial Registry
+Primary registry data
+GTA
+Director, Tax Operations
+Tax-record corroboration
+QCB
+Director, Statistics
+Financial-sector boundary
+QFC
+Senior Authority Representative
+QFC jurisdiction view
+QFZA
+Senior Authority Representative
+Free-zone jurisdiction view
+MoF
+Director, Public Finance
+Public-sector boundary view
+OBSERVER
+Planning & Statistics Adviser, NPC
+Strategic alignment
+POWERS AND CADENCE
+AUTHORITY
+Final ruling on entity classification for all national accounts and statistical outputs. Decisions binding on members.
+CADENCE
+Quarterly plenary sessions. Emergency sessions on triggered events (IPO, restructuring, M&A, new authority licence).
+WORKING GROUPS
+(i) Large-case profiling; (ii) Financial corporations; (iii) Public-sector boundary; (iv) FDI & residence; (v) Data ethics & AI governance.
+DOCUMENTATION
+All decisions minuted; rationale, evidence references, dissents recorded. Annual public methodology bulletin.
+CONFIDENTIALITY
+Member-level decisions on entities protected under the Statistics Law; methodology fully public.
+ESCALATION
+If no consensus, Chair's ruling stands, recorded with dissents. Entities may appeal via a defined due-process route; all rulings are subject to annual external review.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  63 / 75
+
+===== SLIDE 64 =====
+PILLAR 3 — DATA INTEGRATION
+The Central Statistical Business Register (CSBR)
+All classification flows from a single, integrated, persistent register. The CSBR is the spine of the statistical system — a national strategic asset hosted by the NSO under the Statistics Law.
+CSBR — REFERENCE ARCHITECTURE
+MoCI Commercial Register
+All resident entities
+General Tax Authority
+Tax-active universe
+Qatar Central Bank
+Banking & finance
+Qatar Financial Centre
+QFC-licensed
+Qatar Free Zones Authority
+Free-zone entities
+Qatar Stock Exchange
+Listed company filings
+Ministry of Labor
+Employer + employment
+Surveys & profiling
+NSO direct collection
+ENTITY RESOLUTION  •  MASTER DATA MANAGEMENT  •  SOURCE-OF-TRUTH BY ATTRIBUTE
+CENTRAL STATISTICAL BUSINESS REGISTER
+Persistent statistical identifier + LEI  •  Full classification record  •  Group & truncated-group layer  •  Demographic-events log  •  Evidence register  •  Versioned history (GSIM-aligned metadata)
+Hosted by NSO  •  governed by Technical Classification Committee  •  confidentiality under the Statistics Law
+National Accounts
+GDP by sector
+Public-sector Statistics
+GFS-aligned
+FDI Statistics
+BD4 aligned
+SME & Enterprise
+Stratified surveys
+Economic Census
+Sampling frame
+Sectoral Statistics
+ISIC-aligned
+Inter-agency Use
+Policy analytics
+International Reporting
+IMF, OECD, GCC — via SDMX
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  64 / 75
+
+===== SLIDE 65 =====
+DATA SOURCE HIERARCHY
+Authoritative Order for Resolving Attribute Conflicts
+When two sources disagree, the framework follows a fixed precedence order. Below it, the principle of evidence dominates — but the order avoids unstructured analyst discretion.
+TIER 1
+PRIMARY REGISTRY
+MoCI Commercial Register; QFC Authority Register; QFZA Register; QSE listings
+Highest authority for legal-entity identity, name, status, ownership at incorporation.
+TIER 2
+TAX & FINANCIAL
+General Tax Authority records; Qatar Central Bank prudential filings
+Highest authority for activity, turnover, employment, financial activity status.
+TIER 3
+DIRECT STATISTICAL
+NSO economic surveys; large-case profiling; beneficial-ownership filings
+Highest authority for control structure, ultimate parent, group consolidation.
+TIER 4
+PUBLIC INFORMATION
+Audited annual reports; QSE continuous disclosures; ministerial decisions
+Corroborating evidence; decisive only where other sources are silent.
+STATISTICAL OVERRIDE — the Technical Classification Committee may override the hierarchy where documented evidence is decisive; the override is logged with rationale.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  65 / 75
+
+===== SLIDE 66 =====
+QUALITY ASSURANCE
+Validation Checks & Reclassification Triggers
+The CSBR runs automated and manual quality checks continuously. Reclassification triggers ensure no major corporate event escapes the framework.
+AUTOMATED VALIDATION CHECKS
+Ownership chain consistency — sum of holdings across vehicles
+Sudden classification changes — review-flagged for committee
+Hidden government ownership — cross-check against state vehicle list
+ISIC mismatch — declared activity vs. revenue/cost pattern
+Duplicate entities — name, identifier, and address matching
+Dormant entities — no employment, no tax filing, no transactions
+Missing ultimate parent — incomplete group structure
+Conflicting public/private status — registry vs. survey responses
+Inconsistent employment vs. turnover — outlier flagging
+Free-zone / QFC double-listing — jurisdictional reconciliation
+RECLASSIFICATION TRIGGERS
+Demographic event / IPO
+Birth, death, merger, split, reactivation, or 50% threshold crossing
+M&A / corporate restructuring
+Group structure materially changes
+New regulator / licence
+Entity enters QFC or QFZA
+Material change in activity
+Principal value-added activity shifts
+Sovereign vehicle reorganisation
+Subsidiary moved between SWF arms
+Joint venture formation/exit
+New JV or material partner change
+Major contract / concession
+Long-term offtake or service concession
+Periodic full review
+Mandatory three-year deep review per entity
+Each trigger generates a workflow item for the Committee. Quality KPIs: classification error rate ≤ 2%; median time-to-classify ≤ 10 working days; LEI coverage of financial-sector entities 100%; override rate ≤ 5%.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  66 / 75
+
+===== SLIDE 67 =====
+AI & DIGITAL OWNERSHIP
+Targeted Automation in the Classification Workflow
+AI is not a substitute for judgement, but it can dramatically reduce the manual cost of three demanding tasks: entity resolution, ownership-chain reconstruction, and document-evidence extraction.
+ENTITY RESOLUTION
+Matching the same entity across MoCI, GTA, QCB, QFC, QFZA, QSE, MoL records when names, identifiers, and addresses differ.
+METHOD
+Fuzzy matching + graph-based clustering with human confirmation thresholds.
+OWNERSHIP-CHAIN RECONSTRUCTION
+Building the directed graph from each entity up to its ultimate controlling unit through layered holdings.
+METHOD
+Graph database + cycle detection + percentage propagation with audit trail.
+EVIDENCE EXTRACTION
+Pulling key facts from annual reports, shareholder agreements, and disclosure filings into structured records.
+METHOD
+LLM-assisted extraction with structured templates and analyst review of every output.
+ANOMALY DETECTION
+Flagging entities whose attributes drift from expected patterns over time or relative to peers.
+METHOD
+Statistical outlier detection on the CSBR snapshot; case review by analyst.
+HUMAN-IN-THE-LOOP — every AI suggestion is reviewed; no classification is committed by an algorithm alone.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  67 / 75
+
+===== SLIDE 68 =====
+INSTITUTIONAL ROLES
+Responsibility Map — Who Does What in the Framework
+A simplified responsibility map across the institutions involved. NSO leads classification; sister agencies provide authoritative data; the National Planning Council provides oversight and strategic alignment.
+INSTITUTION
+METHODOLOGY
+DATA SOURCE
+CLASSIFICATION
+OVERSIGHT
+NSO (National Statistics Office)
+OWNS
+INTEGRATES
+DECIDES
+REPORTS
+National Planning Council
+ENDORSES
+—
+—
+OVERSEES
+MoCI
+INPUTS
+PROVIDES
+ADVISES
+—
+General Tax Authority
+INPUTS
+PROVIDES
+ADVISES
+—
+Qatar Central Bank
+INPUTS
+PROVIDES
+ADVISES
+—
+QFC Authority
+INPUTS
+PROVIDES
+ADVISES
+—
+QFZA
+INPUTS
+PROVIDES
+ADVISES
+—
+Ministry of Finance
+INPUTS
+PROVIDES
+ADVISES
+—
+Ministry of Labor
+INPUTS
+PROVIDES
+—
+—
+QSE
+—
+PROVIDES
+—
+—
+OWNS / DECIDES — NSO has primary authority   •   PROVIDES — authoritative source data   •   ADVISES — non-binding subject-matter input   •   OVERSEES — strategic oversight
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VII — National Framework  •  68 / 75
+
+===== SLIDE 69 =====
+PART VIII
+Implementation
+The institutional architecture, operating model, and standing capabilities through which the framework operates as a permanent national capability
+National Statistical System  •  State of Qatar
+
+===== SLIDE 70 =====
+CAPABILITY ARCHITECTURE
+Three Capability Layers of the National Framework
+The framework operates as three reinforcing capability layers. Each is a permanent function of the national statistical system; together they constitute the complete classification capability.
+LAYER 1
+ESTABLISH
+FOUNDATIONS
+•  Endorsement by National Planning Council
+•  Methodology manual published (the 18 tests codified)
+•  Technical Classification Committee constituted
+•  Inter-agency data-sharing instruments in force
+•  Large-case profiling unit established
+•  Reclassification of the largest 100 entities
+DELIVERABLE
+Authoritative perimeter for the largest 100 entities; methodology operational.
+LAYER 2
+INTEGRATE
+INTEGRATION
+•  Central Statistical Business Register live (CSBR v1)
+•  Source-system feeds: MoCI, GTA, QCB, QFC, QFZA, MoL
+•  Coverage extended to all medium and large entities
+•  Automated validation checks operational
+•  Public methodology bulletin
+•  Beneficial-ownership chain map for top 500 groups
+DELIVERABLE
+Single integrated register covering all material entities; substantive coverage of group structure.
+LAYER 3
+OPERATE
+OPTIMISATION
+•  AI-assisted classification tools in production
+•  Full coverage extended to micro and small entities
+•  External peer review (OECD-style) conducted
+•  Real-time trigger processing operational
+•  Integration with national accounts and FDI publication
+•  Periodic methodology review and version control
+DELIVERABLE
+Internationally peer-validated capability; continuous operation; mature analytics.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VIII — Implementation  •  70 / 75
+
+===== SLIDE 71 =====
+OPERATING MODEL
+Target Capability Footprint at the National Statistics Office
+The framework requires a defined, staffed operating model within NSO — a target organisation, calibrated headcount, and clear interfaces with sister agencies.
+TARGET ORGANISATIONAL UNITS WITHIN NSO
+Classification & Profiling
+20-25 FTE
+Owns methodology, large-case profiling, register quality, committee secretariat.
+Business Register Operations
+10-15 FTE
+CSBR development and run; source ingestion; ID management; data quality.
+Public Sector Statistics
+8-10 FTE
+Government-finance alignment; public-corporation perimeter; GFS reporting.
+External Sector & FDI
+6-8 FTE
+BD4-aligned FDI; balance of payments boundary; non-resident relationships.
+ENABLING INVESTMENTS
+TECHNOLOGY
+CSBR platform, graph database, secure analytics environment, MFA, audit logging.
+DATA ACCESS
+Legal instruments + secure pipes to MoCI, GTA, QCB, QFC, QFZA, MoL, QSE.
+PEOPLE
+Mixed cadre of statisticians, accountants, lawyers, data engineers; international training partnership.
+STANDARDS
+Published methodology manual; bulletins; ongoing alignment with SNA, GFS, BD4, ISIC updates.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VIII — Implementation  •  71 / 75
+
+===== SLIDE 72 =====
+RISK & SUCCESS
+Critical Success Factors and Principal Risks
+Five conditions must hold for implementation to succeed. Where they are weak, the framework's principal risks crystallise. Mitigation is built into the operating model.
+CRITICAL SUCCESS FACTOR
+PRINCIPAL RISK IF ABSENT
+POLITICAL ENDORSEMENT
+National Planning Council endorsement of the framework as the authoritative classification regime.
+Authority gap
+Without explicit endorsement, sister agencies may decline to share data or defer to their own classifications.
+DATA ACCESS
+Legal and operational data-sharing instruments between NSO and source agencies.
+Source fragmentation
+Partial data feeds force reliance on inferior public sources; classification quality degrades.
+CONFIDENTIALITY ANCHOR
+Statistics-Law-level protection for entity-specific classifications.
+Disclosure pressure
+Pressure to publish entity-level decisions undermines candid evidence-based classification.
+SPECIALIST CAPABILITY
+Trained mixed-discipline staff: statisticians, accountants, lawyers, data engineers.
+Talent thinness
+Without trained profilers, large-case classification reverts to label-based shortcuts.
+SUSTAINED INVESTMENT
+Sustained funding for the CSBR platform and the operating model as a permanent capability.
+Capital-light start
+Underfunded launch produces a thin register that cannot bear analytical weight.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part VIII — Implementation  •  72 / 75
+
+===== SLIDE 73 =====
+PART IX
+Closing & Decision Memorandum
+A summary of what the framework requires from leadership, expressed as a concise endorsement memorandum
+National Statistical System  •  State of Qatar
+
+===== SLIDE 74 =====
+FOR LEADERSHIP ENDORSEMENT
+Decision Memorandum — Four Pillars for Approval
+The following four endorsements together constitute the policy authority required to operationalise the framework. They are submitted for the decision of the National Planning Council on the recommendation of the NSO.
+01
+DECISION
+ENDORSE THE METHODOLOGY
+Adopt the 18-test classification framework as the authoritative methodology for classifying enterprises and economic entities in the State of Qatar — aligned with SNA 2025, IMF GFS 2014, OECD BD4, and ISIC Rev.4.
+02
+DECISION
+ESTABLISH GOVERNANCE
+Constitute the Technical Classification Committee at the National Statistics Office with the composition, powers, and cadence set out in this study, vested with binding authority over classification decisions.
+03
+DECISION
+AUTHORISE DATA INTEGRATION
+Mandate the establishment of the Central Statistical Business Register at NSO, with secured data-sharing instruments to MoCI, GTA, QCB, QFC, QFZA, QSE, and MoL under the Statistics Law.
+04
+DECISION
+ESTABLISH THE STANDING CAPABILITY
+Approve the operating model and corresponding investment in people, technology, and external review required to operate the framework as a permanent national capability, in line with QNV2030.
+National Framework for Classifying Enterprises  |  NSO — State of Qatar
+Part IX — Closing  •  74 / 75
+
+===== SLIDE 75 =====
+STATE OF QATAR
+National Planning Council  —  National Statistics Office
+A defensible, internationally credible,
+Qatari classification of economic reality.
+The framework presented in this document is a single, coherent national capability — built on international standards, anchored at the National Statistics Office, sustained by the integrated participation of every authoritative data-holder in the Qatari state.
+Its endorsement is, in essence, an endorsement of a single proposition: that the classification of every enterprise in Qatar should be the product of evidence, applied to international standards, by an authorised statistical authority.
+National Framework for Classifying Enterprises and Economic Entities  •  State of Qatar  •  Confidential
+75 / 75

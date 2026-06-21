@@ -1,0 +1,604 @@
+SLIDES: 22
+
+===== SLIDE 1 =====
+STATE OF QATAR
+National Planning Council  —  National Statistics Office
+How We Classify Every
+Economic Entity in Qatar
+The classifications we assign, the tests we run, and how the answer is reached
+An executive briefing on the national classification methodology — illustrated with advanced cases across every type of enterprise.
+Prepared for Senior Leadership
+CONFIDENTIAL — OFFICIAL USE
+Companion to the National Framework  |  2026
+
+===== SLIDE 2 =====
+WHERE THE STORY BEGINS
+One Entity. Many National Numbers.
+Before any statistic can be produced, one question must be answered: what exactly is this entity?
+Every enterprise in Qatar feeds multiple official statistics at once. If it is placed in the wrong box, every number that depends on it inherits the error.
+GDP & sector accounts
+Output and value added land in the wrong industry or sector
+Public finances
+An entity wrongly inside — or outside — government distorts the fiscal picture
+Foreign investment
+Misreading control misstates inward and outward FDI
+Debt & credibility
+Public-sector debt and ratings rest on the boundary being right
+The cost of getting it wrong is not one number — it is a chain of them.  That is why classification is treated as a discipline, not a label.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Why It Matters  •  2 / 22
+
+===== SLIDE 3 =====
+THE ONE RULE
+We Classify by Reality, Not by Label
+So we never take an entity at its word. We look at what it is, not what it is called.
+An entity is classified by how it behaves and who truly controls it — not by its registration label, its name, or its own description.
+What we ignore
+Commercial-registration label · legal name · self-description · public perception
+What we examine
+Ownership chains · effective control · market behaviour · governance · beneficial owners
+A company can look private on paper and be government-controlled in substance — and the reverse. Substance decides.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Principle  •  3 / 22
+
+===== SLIDE 4 =====
+THE FULL PICTURE
+Every Entity Receives Fifteen Classifications
+One label is never enough. Each entity is positioned along fifteen dimensions at once.
+Institutional sector
+S.11–S.15 / S.2
+Public vs private
+Govt · public corp · private
+Legal form
+LLC · JSC · branch · waqf…
+Economic activity
+ISIC Rev.4 class
+Residence
+Resident · non-resident
+Market vs non-market
+Sells at significant prices?
+Effective control
+Who really controls it
+Ownership
+Direct & indirect holdings
+Ultimate beneficial owner
+End of the chain
+Domestic vs foreign
+Control nationality
+Financial vs non-financial
+Intermediary or not
+Listing status
+Listed · unlisted
+Enterprise size
+Micro · small · med · large
+Enterprise group
+Parent · subsidiaries
+Government influence
+Stake · board · golden share
+These fifteen answers, taken together, are the entity's complete statistical identity.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+What We Classify  •  4 / 22
+
+===== SLIDE 5 =====
+THE RULEBOOK
+We Don't Invent the Rules — We Apply the World's
+Every decision traces to an international standard, so the result holds up anywhere.
+SNA
+2025
+System of National Accounts
+Sector, residence, market vs non-market, control
+GFS
+2014
+Govt. Finance Statistics
+The public-sector boundary
+BD4
+OECD
+Benchmark Definition of FDI
+Domestic vs foreign control, ultimate investor
+ISIC
+Rev.4
+Activity Classification
+What the entity actually does
+Reinforced by the modern data stack:  LEI (identity) · SDMX (exchange) · GSIM (metadata) · GSBPM (process) · DAMA DMBOK (governance).
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Rulebook  •  5 / 22
+
+===== SLIDE 6 =====
+THE METHOD
+How We Get There: Eighteen Tests, Four Stages
+We reach every classification by running the same eighteen tests, in four stages.
+A
+DEFINE & PLACE
+Tests 1–5
+Identify the unit, where it lives, what it does, and which sector it belongs to.
+→
+B
+PUBLIC OR PRIVATE?
+Tests 6–9
+The decisive stage: control, market behaviour, the public boundary, and listing.
+→
+C
+SHAPE & REACH
+Tests 10–13
+Size, enterprise group, foreign investment, and special-entity rules.
+→
+D
+ASSURE & COMMIT
+Tests 14–18
+Sources, conflicts, governance, quality — then the final, auditable record.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Method  •  6 / 22
+
+===== SLIDE 7 =====
+STAGE A — DEFINE & PLACE THE UNIT
+Tests 1–5: What Is It, and Where Does It Sit?
+1
+Statistical Unit
+Is it an enterprise, group, establishment, branch, or SPV?
+→ The unit we will classify
+2
+Institutional Unit
+Does it keep its own accounts and decide autonomously?
+→ Qualifies as a unit — or not
+3
+Residence
+Is its centre of economic interest in Qatar?
+→ Resident · non-resident · multi-territory
+4
+Economic Activity
+What does it actually produce, by value added?
+→ ISIC Rev.4 class (principal + secondary)
+5
+Institutional Sector
+Which of the national-accounts sectors?
+→ S.11–S.15 / S.2
+WHERE THE STORY STANDS
+We now know the entity exists, lives in Qatar, what it does, and its broad sector. The hardest question is still ahead: public or private?
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Stage A  •  7 / 22
+
+===== SLIDE 8 =====
+STAGE B — PUBLIC OR PRIVATE?
+Tests 6–9: The Decisive Stage
+6
+Public-Sector Boundary
+Is it inside government, a public corporation, private, or foreign?
+→ Govt · public corp · private · foreign
+7
+Market vs Non-Market
+Do sales cover >50% of costs at significant prices?
+→ Market or non-market producer
+8
+Ownership & Effective Control
+Who really controls it? (nine indicators)
+→ Controller + the basis of control
+9
+Listed Company
+Does listing change who controls it?
+→ Public or private — listing is not decisive
+The turning point:  control and market behaviour — not the share register alone — decide which side of the public boundary an entity falls.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Stage B  •  8 / 22
+
+===== SLIDE 9 =====
+STAGE C — SHAPE, SCALE & REACH
+Tests 10–13: Size, Group, Foreign Investment, Special Cases
+10
+Enterprise Size
+Employees, turnover, assets — adapted to Qatar
+→ Micro · small · medium · large
+11
+Enterprise Group
+Who is the ultimate parent? What is the group perimeter?
+→ Group structure + resident sub-group
+12
+Foreign Ownership & FDI
+Domestic or foreign control? Who is the ultimate investor?
+→ Domestic · foreign · the investing country
+13
+Special Entity Treatment
+Is it a holding co, SPV, captive, or branch?
+→ The rule that applies to its type
+Now the entity has a scale, a family, and a nationality of control.  Special vehicles — holding companies, SPVs, captives, branches — get their own dedicated rules so they are never double-counted.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Stage C  •  9 / 22
+
+===== SLIDE 10 =====
+STAGE D — ASSURE & COMMIT
+Tests 14–18: Make It Right, Then Make It Official
+14
+Data Source Hierarchy
+When sources differ, which one is authoritative?
+→ The trusted source per attribute
+15
+Conflict Resolution
+How are remaining disagreements settled?
+→ A single resolved classification
+16
+Classification Governance
+Who has the authority to rule?
+→ A committee decision, on the record
+17
+Quality Assurance
+What checks run, and what triggers a review?
+→ Validated — with reclassification triggers
+18
+Final Classification Record
+What is committed to the register?
+→ One complete, auditable record
+THE STORY'S RESOLUTION
+Every classification is checked against the best evidence, ruled on by one authority, and committed with its reasoning attached.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Stage D  •  10 / 22
+
+===== SLIDE 11 =====
+HOW WE DETERMINE IT
+The Tests Chain Into One Decision
+Read top to bottom, the tests answer a single question: where does this entity belong?
+1
+Is it a unit with its own accounts and autonomy?
+Yes → continue   ·   No → consolidate with its parent
+▼
+2
+Is its centre of economic interest in Qatar?
+Yes → resident   ·   No → Rest of the World (S.2)
+▼
+3
+What does it do, and is it a financial intermediary?
+ISIC class → financial (S.12) or non-financial (S.11)
+▼
+4
+Who effectively controls it — and is that the State?
+Government control → public   ·   else → private / foreign
+▼
+5
+Does it sell at economically significant prices?
+Yes → corporation   ·   No → government / NPISH
+▼
+6
+Commit sector, public/private, control, size, group, FDI
+→ One auditable classification record
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+How We Decide  •  11 / 22
+
+===== SLIDE 12 =====
+THE DECISIVE QUESTION
+Who Really Controls It? Nine Tests for Control
+Control rarely shows on the share register alone. We look nine ways — any one can be decisive.
+1
+Majority voting rights
+2
+Power to appoint or remove the board
+3
+Golden share / veto rights
+4
+Decisive contractual control
+5
+Financing dependency
+6
+Dominant customer or supplier
+7
+Sector-specific regulatory control
+8
+Beneficial-ownership chain
+9
+Power over key personnel (CEO/CFO)
+This is why a “private” company can be public.  A minority stake — even no equity — combined with board appointment or a golden share can place an entity firmly inside the public sector.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Control  •  12 / 22
+
+===== SLIDE 13 =====
+THE OUTCOME
+What the Final Answer Looks Like
+Every entity ends as one complete record — and lands in exactly one sector.
+THE CLASSIFICATION RECORD
+Identity:  Persistent ID + LEI, name, legal form
+Activity:  ISIC Rev.4 class
+Sector:  S.11–S.15 / S.2 + sub-sector
+Public / private:  Govt · public corp · private · foreign
+Control:  Which indicator establishes it
+Size & group:  Class · ultimate parent · group
+Foreign:  Domestic / foreign · investing country
+Provenance:  Evidence · quality flag · version · history
+…AND LANDS IN ONE SECTOR
+S.11
+Non-financial corporations
+S.12
+Financial corporations (S.121–S.129)
+S.13
+General government (S.1311–S.1314)
+S.14
+Households
+S.15
+NPISH
+S.2
+Rest of the World
+Then flagged public/private and resident/foreign — the full identity in one line.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Outcome  •  13 / 22
+
+===== SLIDE 14 =====
+NOW, IN THE REAL WORLD
+The Cases We Solve — Across Every Kind of Entity
+The same method classifies a ministry, a sovereign fund, a bank, a family group, and a shell.
+PUBLIC & GOVERNMENT
+Sovereign wealth fund & cascade
+Semi-government energy company
+State-owned enterprise
+Public-private partnership
+Government-controlled NPISH
+PRIVATE & GROUPS
+Family conglomerate
+Holding company & subsidiaries
+Listed company (state minority)
+Dispersed ownership, state board
+Dormant / shell company
+FOREIGN & FINANCIAL
+Mixed-ownership bank
+QFC entity, foreign parent
+Free-zone foreign manufacturer
+Joint venture (state + foreign)
+Special purpose vehicle (SPV)
+The next slides walk through the most instructive of these in detail; the final slide is the answer key to all of them.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  14 / 22
+
+===== SLIDE 15 =====
+CASE 01 — SOVEREIGN WEALTH
+Sovereign Wealth Fund & Its Cascade
+The hardest chains run several layers deep — yet each layer must be classified on its own.
+OWNERSHIP & CONTROL
+State of Qatar
+Ultimate owner
+▼
+Sovereign wealth fund — 100%
+Captive financial institution (S.127) or within government
+▼
+Holding subsidiary — 100%
+Resident holding company (S.11 / S.127 by activity)
+▼
+Operating company / listed stake
+Classified on its own control & activity
+CLASSIFICATION VERDICT
+Fund
+Captive financial (S.127)
+Activity
+ISIC 6420 / 6430 (holding/fund)
+Each subsidiary
+Own sector + own ISIC
+Public / private
+Public throughout the chain
+Control
+100% state, cascaded
+TAKEAWAY   Ownership cascades. Each entity in the chain is classified on its own facts — but state control flows all the way down.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  15 / 22
+
+===== SLIDE 16 =====
+CASE 02 — CONTROL WITHOUT MAJORITY
+Public-Private Partnership with a Golden Share
+Sometimes the State owns little — yet controls completely. Equity is not the whole story.
+OWNERSHIP & CONTROL
+Private / foreign sponsors — 70%
+Provide the capital and operate the asset
+▼
+State entity — 30% + golden share
+Veto over strategic decisions; concession terms set by the State
+▼
+Project company (the PPP)
+Builds and runs the public infrastructure
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial
+Activity
+ISIC 3510 — power (ex.)
+Public / private
+Public corporation
+Control
+Golden share / veto — not equity
+TAKEAWAY   A 30% stake with veto rights controls the entity. The golden share — not the equity split — decides the classification.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  16 / 22
+
+===== SLIDE 17 =====
+CASE 03 — HIDDEN MAJORITY
+Government Ownership Through Many Vehicles
+No single shareholder holds a majority — but add the State's stakes together, and the picture changes.
+OWNERSHIP & CONTROL
+State holding company A — 45%
+Direct stake in the operating company
+▼
+State vehicle B — 15%
+A second, separate state-linked stake
+▼
+Operating company
+Aggregate state interest = 60% → controlled
+▼
+Free float — 40%
+Dispersed private investors
+CLASSIFICATION VERDICT
+Sector
+S.11 — Non-financial
+Activity
+ISIC 2011 — industry (ex.)
+Public / private
+Public corporation
+Control
+Aggregated state holdings
+Test
+Group-view consolidation
+TAKEAWAY   State stakes spread across vehicles must be added together. The group view reveals a public corporation hiding in plain sight.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  17 / 22
+
+===== SLIDE 18 =====
+CASE 04 — FINANCIAL SECTOR
+Mixed-Ownership Bank
+The public boundary runs through the banks too — and the same control logic applies.
+OWNERSHIP & CONTROL
+State — 51% direct
+Direct controlling stake
+▼
+State pension fund — 8%
+Reinforces the public interest
+▼
+Free float — 41%
+Listed on the QSE; supervised by the Central Bank
+CLASSIFICATION VERDICT
+Sector
+S.122 — Deposit-taking
+Activity
+ISIC 6419 — banking
+Public / private
+Public financial corp.
+Control
+Majority state
+Regulation
+Central-Bank supervised
+TAKEAWAY   Financial corporations follow the same rule. A state-controlled bank is a public financial corporation — sub-sector S.122.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  18 / 22
+
+===== SLIDE 19 =====
+CASE 05 — FOREIGN-CONTROLLED
+QFC & Free-Zone Entities with Foreign Parents
+A foreign owner does not put an entity outside Qatar — if it produces here, it is one of ours.
+OWNERSHIP & CONTROL
+Foreign parent — 100%
+Incorporated abroad; ultimate investing country recorded
+▼
+QFC / free-zone entity
+Licensed in Qatar; resident producer (one-year rule)
+▼
+Branch vs subsidiary
+Branch = notional resident unit (BPM6); subsidiary = separate unit
+CLASSIFICATION VERDICT
+Sector
+S.11 (or S.12 if financial)
+Activity
+ISIC 2011 (mfg) / 6630 (finance)
+Residence
+Resident in Qatar
+Public / private
+Foreign-controlled
+FDI
+Inward — full foreign control
+TAKEAWAY   Residence follows where production happens, not where the parent sits. Foreign-controlled, resident, and flagged as inward FDI.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  19 / 22
+
+===== SLIDE 20 =====
+CASE 06 — PRIVATE & SPECIAL ENTITIES
+Six More, at a Glance
+Not every case needs a full page — but every type has a clear, consistent answer.
+Entity type
+Sector
+Activity (ISIC)
+Public / private
+What decides it
+Family conglomerate (state 15%)
+S.11
+6420
+Private corporation
+Family holds control; state stake is a participation
+Holding company & subsidiaries
+S.11 / S.127
+6420
+Per group activity
+Classified by the group it heads; never the subsidiaries' work
+Dispersed ownership, state board
+S.11
+per activity
+Public corporation
+No majority owner — but the State appoints the board
+Government-controlled NPISH
+S.13
+8530 (ex.)
+General government
+Non-market + government-controlled → inside government
+Special purpose vehicle (SPV)
+Per parent
+per parent
+Follows its parent
+Empty shell → consolidated with the controlling parent
+Dormant / shell company
+Flagged
+n.a.
+Held, not active
+No activity, no staff → flagged dormant, reviewed
+Same eighteen tests. Same logic. A defensible answer for every structure an economy can produce.   (ISIC marked “ex.” are illustrative.)
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+The Cases  •  20 / 22
+
+===== SLIDE 21 =====
+THE ANSWER KEY
+Every Case, One View
+Read across: ownership in, classification out — the method applied end to end.
+Case
+Who controls
+Sector
+ISIC
+Classification
+Sovereign wealth fund
+State 100%, cascaded
+S.127
+6420/6430
+Public, every layer
+PPP with golden share
+State 30% + veto
+S.11
+3510 (ex.)
+Public corporation
+Indirect via vehicles
+State 60% aggregated
+S.11
+2011 (ex.)
+Public corporation
+Mixed-ownership bank
+State 51%
+S.122
+6419
+Public financial corp.
+QFC / free-zone, foreign
+Foreign 100%
+S.11 / S.12
+2011/6630
+Foreign-controlled, resident
+Family conglomerate
+Family majority
+S.11
+6420
+Private corporation
+Dispersed + state board
+State via board
+S.11
+per activity
+Public corporation
+Government-controlled NPISH
+Government
+S.13
+8530 (ex.)
+General government
+One method. Every entity. A classification — sector and activity — that any international reviewer can follow and verify.
+How Qatar Classifies Economic Entities — Executive Briefing  |  NSO
+Answer Key  •  21 / 22
+
+===== SLIDE 22 =====
+IN ONE BREATH
+The Whole Story
+1
+We classify reality, not labels
+How an entity behaves and who controls it — never what it calls itself.
+2
+Fifteen classifications, one identity
+Sector, control, ownership, activity, residence, size, group and more — together.
+3
+Eighteen tests, four stages
+Define & place · public or private · shape & reach · assure & commit.
+4
+Control is the decisive question
+Nine ways to test it — a minority stake, or none, can still mean public control.
+5
+One answer, defensible anywhere
+Built on SNA 2025, GFS 2014, BD4 and ISIC — verifiable by any reviewer.
+Full detail in the 75-slide National Framework and the implementation workbook.
