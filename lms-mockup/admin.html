@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Console — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Admin console</small></span></a>
+    <a class="navitem active" href="admin.html"><span class="ic">📊</span> Overview</a>
+    <a class="navitem" href="#"><span class="ic">👥</span> Users &amp; roles</a>
+    <a class="navitem" href="#"><span class="ic">🏢</span> Entities</a>
+    <a class="navitem" href="catalog.html"><span class="ic">📚</span> Courses</a>
+    <a class="navitem" href="#"><span class="ic">🧭</span> Workflows &amp; approvals</a>
+    <div class="nav-group">Insights</div>
+    <a class="navitem" href="#"><span class="ic">📈</span> Reports</a>
+    <a class="navitem" href="#"><span class="ic">💰</span> Finance</a>
+    <a class="navitem" href="#"><span class="ic">🪪</span> Audit logs</a>
+    <div class="nav-group">System</div>
+    <a class="navitem" href="#"><span class="ic">🎨</span> Branding</a>
+    <a class="navitem" href="#"><span class="ic">🔗</span> Integrations</a>
+    <a class="navitem" href="#"><span class="ic">🎫</span> Helpdesk</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Search users, entities, courses…"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">FA</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb24">
+        <div><h1 class="page-title">Platform overview</h1><p class="muted" style="margin:4px 0 0">Fatima Al-Kuwari · Super Admin</p></div>
+        <div class="row gap8"><button class="btn light">⬇ Export report</button><button class="btn">＋ Create course</button></div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid g4 mb24">
+        <div class="card kpi"><div class="ic" style="background:#f7e7ec;color:var(--maroon-600)">👥</div><div class="n">12,418</div><div class="l">Active learners</div><div class="delta up">▲ 6.2% MoM</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e8f0fe;color:var(--blue)">📚</div><div class="n">324</div><div class="l">Published courses</div><div class="delta up">▲ 18 new</div></div>
+        <div class="card kpi"><div class="ic" style="background:#e6f6ef;color:var(--green)">✅</div><div class="n">81%</div><div class="l">Avg. completion rate</div><div class="delta up">▲ 3.1%</div></div>
+        <div class="card kpi"><div class="ic" style="background:#fdf3da;color:#9a6f04">⏳</div><div class="n">7</div><div class="l">Pending approvals</div><div class="delta down">needs review</div></div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr;margin-bottom:18px">
+        <!-- enrollment chart -->
+        <div class="card pad">
+          <div class="row between aic mb16"><h3 style="margin:0">Enrollments &amp; completions</h3><span class="badge">Last 7 months</span></div>
+          <div class="chart">
+            <div class="col"><i style="height:45%"></i><span>Dec</span></div>
+            <div class="col"><i style="height:58%"></i><span>Jan</span></div>
+            <div class="col"><i style="height:52%"></i><span>Feb</span></div>
+            <div class="col"><i style="height:70%"></i><span>Mar</span></div>
+            <div class="col"><i style="height:64%"></i><span>Apr</span></div>
+            <div class="col"><i style="height:82%"></i><span>May</span></div>
+            <div class="col"><i style="height:95%"></i><span>Jun</span></div>
+          </div>
+        </div>
+        <!-- at-risk (AI) -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">At-risk learners</h3><span class="badge violet">🤖 Predictive</span></div>
+          <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">⚠️</span><div class="grow"><strong style="font-size:14px">142 learners</strong><div class="muted" style="font-size:12px">High non-completion risk</div></div></div>
+          <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📉</span><div class="grow"><strong style="font-size:14px">8 courses</strong><div class="muted" style="font-size:12px">High drop-off after module 2</div></div></div>
+          <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">📨</span><div class="grow"><strong style="font-size:14px">Auto-nudges</strong><div class="muted" style="font-size:12px">96 reminders queued</div></div></div>
+          <button class="btn light block sm mt8">View intervention plan</button>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.4fr 1fr;margin-bottom:18px">
+        <!-- users table -->
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Recent users</h3><a class="muted" style="font-size:13px;font-weight:600" href="#">Manage all →</a></div>
+          <table>
+            <thead><tr><th>Name</th><th>Role</th><th>Entity / Dept</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="row aic gap8"><span class="avatar">AM</span>Ahmed Al-Mansoori</div></td><td><span class="badge maroon">Learner</span></td><td>Statistics Dept</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">SA</span>Dr. Sara Al-Ali</div></td><td><span class="badge blue">Instructor</span></td><td>Training Center</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">MQ</span>Mona Al-Qahtani</div></td><td><span class="badge gold">Entity Admin</span></td><td>Ministry of Finance</td><td><span class="badge amber"><span class="dot"></span>Pending</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">KH</span>Khalid Hassan</div></td><td><span class="badge maroon">Learner</span></td><td>Hamad Medical Corp</td><td><span class="badge green"><span class="dot"></span>Active</span></td></tr>
+              <tr><td><div class="row aic gap8"><span class="avatar">YA</span>Y. Ahmed</div></td><td><span class="badge blue">Instructor</span></td><td>Training Center</td><td><span class="badge">Inactive</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- approvals -->
+        <div class="card pad">
+          <h3 style="margin:0 0 12px">Approval queue</h3>
+          <div class="li"><span class="ic" style="background:#f7e7ec;color:var(--maroon-600)">📘</span><div class="grow"><strong style="font-size:14px">Publish: “GIS &amp; Geospatial Stats”</strong><div class="muted" style="font-size:12px">By N. Mansour · course publishing</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 8px 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+          <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">💰</span><div class="grow"><strong style="font-size:14px">Budget: Leadership cohort</strong><div class="muted" style="font-size:12px">QAR 84,000 · finance approval</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 8px 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+          <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">🏢</span><div class="grow"><strong style="font-size:14px">Onboard entity: MoF</strong><div class="muted" style="font-size:12px">Mona Al-Qahtani · admin access</div></div></div>
+          <div class="row gap8" style="margin:-4px 0 0 50px"><button class="btn sm">Approve</button><button class="btn light sm">Reject</button></div>
+        </div>
+      </div>
+
+      <!-- entities + finance -->
+      <div class="grid g2">
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">External entities</h3><span class="badge">48 active</span></div>
+          <table>
+            <thead><tr><th>Entity</th><th>Learners</th><th>Completion</th></tr></thead>
+            <tbody>
+              <tr><td>Ministry of Finance</td><td>820</td><td><div class="bar" style="width:120px"><i style="width:88%"></i></div></td></tr>
+              <tr><td>Hamad Medical Corp</td><td>1,540</td><td><div class="bar" style="width:120px"><i style="width:74%"></i></div></td></tr>
+              <tr><td>Qatar University</td><td>610</td><td><div class="bar" style="width:120px"><i style="width:91%"></i></div></td></tr>
+              <tr><td>Ministry of Education</td><td>1,120</td><td><div class="bar" style="width:120px"><i style="width:69%"></i></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card pad">
+          <div class="row between aic mb12"><h3 style="margin:0">Finance snapshot</h3><span class="badge gold">FY 2026</span></div>
+          <div class="grid g2 mb16">
+            <div><div class="muted" style="font-size:13px">Budget allocated</div><div style="font-size:24px;font-weight:800">QAR 4.2M</div></div>
+            <div><div class="muted" style="font-size:13px">Actual spend</div><div style="font-size:24px;font-weight:800">QAR 2.9M</div></div>
+          </div>
+          <div class="row between" style="font-size:13px"><span>Budget utilization</span><strong>69%</strong></div>
+          <div class="bar mt8 mb16"><i style="width:69%"></i></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">Venue &amp; logistics</span><strong>QAR 980K</strong></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">External providers</span><strong>QAR 1.1M</strong></div>
+          <div class="li" style="padding:8px 0"><span class="grow muted" style="font-size:13px">Instructor fees</span><strong>QAR 820K</strong></div>
+          <button class="btn light block sm mt8">Export to ERP →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Assistant — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>AI learning</small></span></a>
+    <a class="navitem" href="dashboard.html"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="catalog.html"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="course.html"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem active" href="ai.html"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">AI tools</div>
+    <a class="navitem" href="#"><span class="ic">🧭</span> Adaptive path</a>
+    <a class="navitem" href="#"><span class="ic">🧬</span> Learning DNA</a>
+    <a class="navitem" href="#"><span class="ic">🎯</span> Skill gaps</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="grow"><strong>AI Learning Assistant</strong> <span class="badge violet">Conversational support agent</span></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="grid" style="grid-template-columns:1.4fr 1fr">
+        <!-- CHAT -->
+        <div class="card chat">
+          <div class="row aic gap12" style="padding:14px 18px;border-bottom:1px solid var(--line)">
+            <span class="ic" style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#6f4ad2,#a78bfa);color:#fff;display:grid;place-items:center;font-size:18px">🤖</span>
+            <div><strong>NPC Learning Companion</strong><div class="muted" style="font-size:12px"><span class="dot" style="color:var(--green)"></span> Online · understands Arabic &amp; English</div></div>
+          </div>
+          <div class="stream">
+            <div class="bubble ai">👋 Hi Ahmed! I’m your learning companion. I can recommend courses, summarize lessons, track deadlines and answer questions in natural language. What would you like to do?</div>
+            <div class="bubble me">What are my deadlines this week?</div>
+            <div class="bubble ai">You have <b>2 deadlines</b> this week: “Statistical Analysis II” quiz (Tue) and the “Data Ethics” assignment (Thu). Want me to add reminders?</div>
+            <div class="bubble me">Recommend a course to close my ML skill gap</div>
+            <div class="bubble ai">Based on your role (Statistician) and recent activity, I recommend <b>“Intro to Machine Learning for Analysts”</b> (4 wks, 96% match). It builds directly on your regression progress. Shall I enroll you?</div>
+          </div>
+          <form class="compose" onsubmit="return sendChat(this)">
+            <input placeholder="Ask anything… e.g. “summarize module 3” or “أنشئ خطة تعلم”" autofocus>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+
+        <!-- SUGGESTIONS + AI features -->
+        <div class="grid" style="gap:18px">
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Try asking</h3>
+            <div class="grid" style="gap:8px">
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">💡 “Recommend courses for my role”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📅 “What’s due this week?”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📖 “Summarize module 3”</div>
+              <div class="badge" style="justify-content:flex-start;padding:10px 12px">📊 “How is my progress?”</div>
+            </div>
+          </div>
+
+          <!-- learning DNA -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Your Learning DNA</h3><span class="badge violet">🧬</span></div>
+            <div class="row aic gap16">
+              <div class="ring" style="--p:72"><b>L4</b></div>
+              <div class="muted" style="font-size:13px">Style: <strong style="color:var(--ink)">Visual + hands-on</strong><br>Pace: <strong style="color:var(--ink)">Above average</strong><br>Strength: <strong style="color:var(--ink)">Statistics</strong><br>Focus area: <strong style="color:var(--ink)">Machine Learning</strong></div>
+            </div>
+          </div>
+
+          <!-- adaptive next steps -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">Adaptive next steps</h3><span class="badge violet">🧭</span></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">1</span><div class="grow"><strong style="font-size:14px">Review: Multicollinearity</strong><div class="muted" style="font-size:12px">Quiz showed a gap here</div></div></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">2</span><div class="grow"><strong style="font-size:14px">Continue: Module 4</strong><div class="muted" style="font-size:12px">Logistic regression</div></div></div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">3</span><div class="grow"><strong style="font-size:14px">Next path: ML for Analysts</strong><div class="muted" style="font-size:12px">Unlocks after certificate</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI capabilities -->
+      <h3 class="mt32 mb16">AI capabilities across the platform</h3>
+      <div class="grid g4">
+        <div class="card pad feature"><div class="ic">🎯</div><div><h4>Smart recommendations</h4><p>Role, skills &amp; peer-aware course suggestions and adaptive pathways.</p></div></div>
+        <div class="card pad feature"><div class="ic">📝</div><div><h4>Auto quiz generation</h4><p>Generate quizzes from course content &amp; uploaded documents.</p></div></div>
+        <div class="card pad feature"><div class="ic">✍️</div><div><h4>Auto grading &amp; feedback</h4><p>Instant, personalized grading for quizzes, assignments &amp; essays.</p></div></div>
+        <div class="card pad feature"><div class="ic">🔍</div><div><h4>Semantic search</h4><p>Natural-language search with auto-tagging of all materials.</p></div></div>
+        <div class="card pad feature"><div class="ic">🧑‍🏫</div><div><h4>AI avatar lectures</h4><p>Avatars deliver and simplify course content on behalf of instructors.</p></div></div>
+        <div class="card pad feature"><div class="ic">📖</div><div><h4>Storytelling reports</h4><p>End-of-course narrative of skills gained &amp; achievements.</p></div></div>
+        <div class="card pad feature"><div class="ic">🚀</div><div><h4>Guided onboarding</h4><p>AI-assisted first-time journey with goals &amp; preferences.</p></div></div>
+        <div class="card pad feature"><div class="ic">🔗</div><div><h4>Opportunity mapping</h4><p>Maps achievements to next certifications &amp; role alignment.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

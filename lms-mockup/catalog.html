@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Catalog — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem" href="dashboard.html"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem active" href="catalog.html"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem" href="course.html"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="ai.html"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">📅</span> Calendar &amp; events</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="search">🔎 <input placeholder="Try “analytics”, “survey”, or a skill… (semantic search)"></div>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <div class="row between aic wrap gap12 mb16">
+        <div><h1 class="page-title">Course catalog</h1><p class="muted" style="margin:4px 0 0">320 courses · internal &amp; aggregated external providers</p></div>
+        <span class="badge violet">🤖 AI semantic search enabled</span>
+      </div>
+
+      <!-- filters -->
+      <div class="card pad mb24">
+        <div class="row gap8 wrap aic">
+          <span class="muted" style="font-size:13px;font-weight:600;margin-right:4px">Filter:</span>
+          <button class="btn sm">All</button>
+          <button class="btn light sm">Statistics</button>
+          <button class="btn light sm">Data &amp; BI</button>
+          <button class="btn light sm">Governance</button>
+          <button class="btn light sm">Leadership</button>
+          <button class="btn light sm">Online</button>
+          <button class="btn light sm">Hybrid</button>
+          <button class="btn light sm">In-person</button>
+          <div class="grow"></div>
+          <button class="btn light sm">Sort: Recommended ▾</button>
+        </div>
+      </div>
+
+      <div class="grid g4" id="grid"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+const C=[
+  {t:"Official Statistics & SDG Reporting",cat:"Statistics",tag:"Certified",cls:"t1",em:"📊",h:"6 wks",lvl:"Intermediate",r:"4.9",a:"SA",on:"Dr. Sara Al-Ali",ext:false},
+  {t:"Power BI for Data Analysts",cat:"Data & BI",tag:"Online",cls:"t2",em:"📈",h:"4 wks",lvl:"Beginner",r:"4.7",a:"MK",on:"M. Khalifa",ext:false},
+  {t:"Advanced Survey Sampling",cat:"Methodology",tag:"Hybrid",cls:"t3",em:"🧮",h:"5 wks",lvl:"Advanced",r:"4.8",a:"HN",on:"Huda Nasser",ext:false},
+  {t:"Data Ethics & Privacy Law",cat:"Governance",tag:"New",cls:"t4",em:"⚖️",h:"3 wks",lvl:"All levels",r:"5.0",a:"YA",on:"Y. Ahmed",ext:false},
+  {t:"Python for Data Analysis",cat:"Data & BI",tag:"External",cls:"t6",em:"🐍",h:"8 wks",lvl:"Beginner",r:"4.6",a:"CO",on:"Coursera (aggregated)",ext:true},
+  {t:"Public Sector Leadership",cat:"Leadership",tag:"In-person",cls:"t5",em:"🏛️",h:"2 days",lvl:"Manager",r:"4.8",a:"FT",on:"F. Tamimi",ext:false},
+  {t:"Storytelling with Data",cat:"Data & BI",tag:"Online",cls:"t2",em:"📖",h:"3 wks",lvl:"Intermediate",r:"4.9",a:"LR",on:"L. Rahman",ext:false},
+  {t:"Intro to Machine Learning",cat:"Data & BI",tag:"Online",cls:"t4",em:"🤖",h:"4 wks",lvl:"Intermediate",r:"4.7",a:"AK",on:"A. Karim",ext:false},
+  {t:"Census Data Management",cat:"Statistics",tag:"Hybrid",cls:"t1",em:"🗂️",h:"5 wks",lvl:"Advanced",r:"4.8",a:"NM",on:"N. Mansour",ext:false},
+  {t:"Effective Report Writing",cat:"Skills",tag:"Online",cls:"t3",em:"✍️",h:"2 wks",lvl:"All levels",r:"4.5",a:"RB",on:"R. Bilal",ext:false},
+  {t:"GIS & Geospatial Stats",cat:"Methodology",tag:"New",cls:"t6",em:"🗺️",h:"6 wks",lvl:"Advanced",r:"4.9",a:"SA",on:"S. Aziz",ext:false},
+  {t:"Agile Project Management",cat:"Leadership",tag:"External",cls:"t5",em:"🚀",h:"5 wks",lvl:"Intermediate",r:"4.6",a:"ED",on:"edX (aggregated)",ext:true},
+];
+document.getElementById('grid').innerHTML = C.map(c=>`
+  <a class="card course" href="course.html">
+    <div class="thumb ${c.cls}"><span class="badge ${c.ext?'blue':'gold'} tag">${c.tag}</span><span class="em">${c.em}</span></div>
+    <div class="body">
+      <span class="badge">${c.cat}</span>
+      <h4>${c.t}</h4>
+      <div class="meta"><span>⏱ ${c.h}</span><span>📶 ${c.lvl}</span><span class="stars">★ ${c.r}</span></div>
+      <div class="foot"><div class="row aic gap8"><span class="avatar">${c.a}</span><span class="muted" style="font-size:12px">${c.on}</span></div><span class="badge maroon">Enroll</span></div>
+    </div>
+  </a>`).join('');
+</script>
+</body>
+</html>

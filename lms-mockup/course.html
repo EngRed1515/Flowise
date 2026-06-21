@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regression Modelling — NPC Qatar LMS</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="mark">N</span><span>NPC&nbsp;LMS <small>Learner</small></span></a>
+    <a class="navitem" href="dashboard.html"><span class="ic">🏠</span> Dashboard</a>
+    <a class="navitem" href="catalog.html"><span class="ic">📚</span> Course catalog</a>
+    <a class="navitem active" href="course.html"><span class="ic">▶️</span> My courses</a>
+    <a class="navitem" href="ai.html"><span class="ic">🤖</span> AI assistant</a>
+    <div class="nav-group">Learning</div>
+    <a class="navitem" href="#"><span class="ic">🗺️</span> Learning path</a>
+    <a class="navitem" href="#"><span class="ic">🏅</span> Certificates</a>
+    <div style="margin-top:24px"><a class="navitem" href="login.html"><span class="ic">↩️</span> Sign out</a></div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <a class="muted" href="catalog.html" style="font-weight:600">← Catalog</a>
+      <div class="grow"></div>
+      <div class="lang"><button data-lang="en" class="active">EN</button><button data-lang="ar">ع</button></div>
+      <button class="iconbtn">🔔<span class="ping"></span></button>
+      <span class="avatar" style="width:38px;height:38px">AM</span>
+    </div>
+
+    <div class="content">
+      <!-- header -->
+      <div class="card" style="overflow:hidden;margin-bottom:18px">
+        <div class="t1" style="height:150px;position:relative">
+          <div style="position:absolute;left:22px;bottom:16px;color:#fff">
+            <span class="badge gold">Certified · Hybrid</span>
+            <h1 style="margin:8px 0 4px;font-size:28px">Regression Modelling</h1>
+            <div style="opacity:.9">Statistics track · Module 3 of the Data Analyst path</div>
+          </div>
+        </div>
+        <div class="pad row between aic wrap gap16">
+          <div class="row aic gap16 wrap">
+            <div class="row aic gap8"><span class="avatar">SA</span><div><strong style="font-size:14px">Dr. Sara Al-Ali</strong><div class="muted" style="font-size:12px">Lead Instructor</div></div></div>
+            <span class="badge"><span class="stars">★ 4.8</span> · 1,240 learners</span>
+            <span class="badge">⏱ 5 weeks</span>
+            <span class="badge">🎬 18 lessons</span>
+            <span class="badge green">SCORM · xAPI</span>
+          </div>
+          <div class="row gap8 aic">
+            <div class="muted" style="font-size:13px;text-align:right">Progress<br><strong style="color:var(--ink)">40%</strong></div>
+            <a class="btn" href="#player">▶ Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:2fr 1fr">
+        <!-- left: player + content -->
+        <div class="grid" style="gap:18px">
+          <div class="card" id="player">
+            <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#2a0c16,#7a1430);display:grid;place-items:center;color:#fff;border-radius:14px 14px 0 0">
+              <div class="center"><div style="font-size:54px">▶</div><div style="opacity:.85;margin-top:8px">Lesson 7 · Multiple Linear Regression</div></div>
+            </div>
+            <div class="pad row between aic wrap gap12">
+              <div><strong>Lesson 7 · Multiple Linear Regression</strong><div class="muted" style="font-size:13px">12:30 · Video + interactive notebook</div></div>
+              <div class="row gap8"><button class="btn light sm">⬇ Download (offline)</button><button class="btn sm">Mark complete ✓</button></div>
+            </div>
+          </div>
+
+          <!-- AI summary -->
+          <div class="card pad">
+            <div class="row between aic mb12"><h3 style="margin:0">AI lesson summary</h3><span class="badge violet">🤖 Auto-generated</span></div>
+            <p class="muted" style="margin:0">This lesson extends simple regression to multiple predictors. Key ideas: interpreting coefficients while holding other variables constant, checking multicollinearity (VIF), and evaluating fit with adjusted R². The interactive notebook lets you fit a model on Qatar census sample data and read off significance.</p>
+          </div>
+
+          <!-- curriculum -->
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Course content</h3>
+            <div id="modules"></div>
+          </div>
+        </div>
+
+        <!-- right -->
+        <div class="grid" style="gap:18px">
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Your progress</h3>
+            <div class="row aic gap16"><div class="ring" style="--p:40"><b>40%</b></div><div class="muted" style="font-size:13px">7 of 18 lessons<br>1 of 3 quizzes passed<br>Est. 3h 20m left</div></div>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Assessments</h3>
+            <div class="li"><span class="ic" style="background:#e6f6ef;color:var(--green)">✓</span><div class="grow"><strong style="font-size:14px">Quiz 1 · Basics</strong><div class="muted" style="font-size:12px">Passed · 88%</div></div></div>
+            <div class="li"><span class="ic" style="background:#fce8e8;color:var(--red)">📝</span><div class="grow"><strong style="font-size:14px">Quiz 2 · Multiple Regression</strong><div class="muted" style="font-size:12px">Due Tue · 2 attempts left</div></div><button class="btn sm">Start</button></div>
+            <div class="li"><span class="ic" style="background:#eef0f6;color:var(--muted)">🔒</span><div class="grow"><strong style="font-size:14px">Final assignment</strong><div class="muted" style="font-size:12px">Plagiarism check · proctored</div></div></div>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 12px">Resources</h3>
+            <div class="li"><span class="ic" style="background:#e8f0fe;color:var(--blue)">📄</span><div class="grow"><strong style="font-size:14px">Lecture slides.pdf</strong></div>⬇</div>
+            <div class="li"><span class="ic" style="background:#fdf3da;color:#9a6f04">📊</span><div class="grow"><strong style="font-size:14px">Dataset.csv</strong></div>⬇</div>
+            <div class="li"><span class="ic" style="background:#efe9fb;color:var(--violet)">📓</span><div class="grow"><strong style="font-size:14px">Notebook.ipynb</strong></div>⬇</div>
+          </div>
+          <div class="card pad" style="background:#faf2f4;border-style:dashed">
+            <div class="row aic gap8 mb8"><span class="badge violet">🤖 AI tutor</span></div>
+            <p class="muted" style="margin:0 0 12px;font-size:14px">Stuck on a concept? Ask the AI tutor for a hint or a simpler explanation.</p>
+            <a class="btn gold block sm" href="ai.html">Ask about this lesson</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+const M=[
+  {t:"Module 1 · Foundations", done:true, lessons:["Why regression?","Correlation vs causation","Simple linear regression"]},
+  {t:"Module 2 · Building models", done:true, lessons:["Least squares","Residuals & assumptions","Quiz 1 · Basics"]},
+  {t:"Module 3 · Multiple regression", active:true, lessons:["Adding predictors","Multicollinearity (VIF)","Multiple Linear Regression ▶","Quiz 2"]},
+  {t:"Module 4 · Advanced topics", lessons:["Interaction terms","Logistic regression","Final assignment"]},
+];
+document.getElementById('modules').innerHTML = M.map(m=>`
+  <div style="border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden">
+    <div class="row between aic" style="padding:12px 14px;background:${m.active?'#faf2f4':'#fafbfd'}">
+      <strong>${m.t}</strong>
+      <span class="badge ${m.done?'green':m.active?'maroon':''}">${m.done?'Completed':m.active?'In progress':'Upcoming'}</span>
+    </div>
+    <div style="padding:6px 14px 10px">${m.lessons.map(l=>`
+      <div class="li" style="padding:9px 0"><span style="width:18px">${l.includes('▶')?'▶️':m.done?'✅':'•'}</span><span class="grow" style="font-size:14px">${l.replace('▶','')}</span><span class="muted" style="font-size:12px">12:30</span></div>`).join('')}
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>
