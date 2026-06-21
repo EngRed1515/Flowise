@@ -35,7 +35,10 @@ router = """
 function go(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   var el=document.getElementById('view-'+name);
-  if(el){el.classList.add('active');}
+  if(el){el.classList.add('active'); if(window.activateScope){window.activateScope(el);} }
+  // close any open mobile sidebar
+  document.querySelectorAll('.sidebar.open').forEach(function(s){s.classList.remove('open');});
+  var sc=document.querySelector('.scrim'); if(sc){sc.style.display='none';}
   window.scrollTo(0,0);
   if(location.hash!=='#'+name){history.replaceState(null,'','#'+name);}
 }

@@ -157,14 +157,14 @@
 <script src="assets/app.js"></script>
 <script>
 const FEATURED = [
-  {t:"Official Statistics & SDG Reporting", cat:"Statistics", tag:"Certified", cls:"t1", h:"6 wks", lvl:"Intermediate", r:"4.9", a:"SA", on:"Dr. Sara Al-Ali"},
-  {t:"Power BI for Data Analysts", cat:"Data & BI", tag:"Online", cls:"t2", h:"4 wks", lvl:"Beginner", r:"4.7", a:"MK", on:"M. Khalifa"},
-  {t:"Advanced Survey Sampling", cat:"Methodology", tag:"Hybrid", cls:"t3", h:"5 wks", lvl:"Advanced", r:"4.8", a:"HN", on:"Huda Nasser"},
-  {t:"Data Ethics & Privacy Law", cat:"Governance", tag:"New", cls:"t4", h:"3 wks", lvl:"All levels", r:"5.0", a:"YA", on:"Y. Ahmed"},
+  {t:"Official Statistics & SDG Reporting", cat:"Statistics", tag:"Certified", cls:"t1", em:"📊", h:"6 wks", lvl:"Intermediate", r:"4.9", a:"SA", on:"Dr. Sara Al-Ali"},
+  {t:"Power BI for Data Analysts", cat:"Data & BI", tag:"Online", cls:"t2", em:"📈", h:"4 wks", lvl:"Beginner", r:"4.7", a:"MK", on:"M. Khalifa"},
+  {t:"Advanced Survey Sampling", cat:"Methodology", tag:"Hybrid", cls:"t3", em:"🧮", h:"5 wks", lvl:"Advanced", r:"4.8", a:"HN", on:"Huda Nasser"},
+  {t:"Data Ethics & Privacy Law", cat:"Governance", tag:"New", cls:"t4", em:"⚖️", h:"3 wks", lvl:"All levels", r:"5.0", a:"YA", on:"Y. Ahmed"},
 ];
 document.getElementById('featured').innerHTML = FEATURED.map(c=>`
   <a class="card course" href="course.html">
-    <div class="thumb ${c.cls}"><span class="badge gold tag">${c.tag}</span></div>
+    <div class="thumb ${c.cls}"><span class="badge gold tag">${c.tag}</span><span class="em">${c.em}</span></div>
     <div class="body">
       <span class="badge">${c.cat}</span>
       <h4>${c.t}</h4>

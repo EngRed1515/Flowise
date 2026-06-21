@@ -61,22 +61,22 @@
 <script src="assets/app.js"></script>
 <script>
 const C=[
-  {t:"Official Statistics & SDG Reporting",cat:"Statistics",tag:"Certified",cls:"t1",h:"6 wks",lvl:"Intermediate",r:"4.9",a:"SA",on:"Dr. Sara Al-Ali",ext:false},
-  {t:"Power BI for Data Analysts",cat:"Data & BI",tag:"Online",cls:"t2",h:"4 wks",lvl:"Beginner",r:"4.7",a:"MK",on:"M. Khalifa",ext:false},
-  {t:"Advanced Survey Sampling",cat:"Methodology",tag:"Hybrid",cls:"t3",h:"5 wks",lvl:"Advanced",r:"4.8",a:"HN",on:"Huda Nasser",ext:false},
-  {t:"Data Ethics & Privacy Law",cat:"Governance",tag:"New",cls:"t4",h:"3 wks",lvl:"All levels",r:"5.0",a:"YA",on:"Y. Ahmed",ext:false},
-  {t:"Python for Data Analysis",cat:"Data & BI",tag:"External",cls:"t6",h:"8 wks",lvl:"Beginner",r:"4.6",a:"CO",on:"Coursera (aggregated)",ext:true},
-  {t:"Public Sector Leadership",cat:"Leadership",tag:"In-person",cls:"t5",h:"2 days",lvl:"Manager",r:"4.8",a:"FT",on:"F. Tamimi",ext:false},
-  {t:"Storytelling with Data",cat:"Data & BI",tag:"Online",cls:"t2",h:"3 wks",lvl:"Intermediate",r:"4.9",a:"LR",on:"L. Rahman",ext:false},
-  {t:"Intro to Machine Learning",cat:"Data & BI",tag:"Online",cls:"t4",h:"4 wks",lvl:"Intermediate",r:"4.7",a:"AK",on:"A. Karim",ext:false},
-  {t:"Census Data Management",cat:"Statistics",tag:"Hybrid",cls:"t1",h:"5 wks",lvl:"Advanced",r:"4.8",a:"NM",on:"N. Mansour",ext:false},
-  {t:"Effective Report Writing",cat:"Skills",tag:"Online",cls:"t3",h:"2 wks",lvl:"All levels",r:"4.5",a:"RB",on:"R. Bilal",ext:false},
-  {t:"GIS & Geospatial Stats",cat:"Methodology",tag:"New",cls:"t6",h:"6 wks",lvl:"Advanced",r:"4.9",a:"SA",on:"S. Aziz",ext:false},
-  {t:"Agile Project Management",cat:"Leadership",tag:"External",cls:"t5",h:"5 wks",lvl:"Intermediate",r:"4.6",a:"ED",on:"edX (aggregated)",ext:true},
+  {t:"Official Statistics & SDG Reporting",cat:"Statistics",tag:"Certified",cls:"t1",em:"📊",h:"6 wks",lvl:"Intermediate",r:"4.9",a:"SA",on:"Dr. Sara Al-Ali",ext:false},
+  {t:"Power BI for Data Analysts",cat:"Data & BI",tag:"Online",cls:"t2",em:"📈",h:"4 wks",lvl:"Beginner",r:"4.7",a:"MK",on:"M. Khalifa",ext:false},
+  {t:"Advanced Survey Sampling",cat:"Methodology",tag:"Hybrid",cls:"t3",em:"🧮",h:"5 wks",lvl:"Advanced",r:"4.8",a:"HN",on:"Huda Nasser",ext:false},
+  {t:"Data Ethics & Privacy Law",cat:"Governance",tag:"New",cls:"t4",em:"⚖️",h:"3 wks",lvl:"All levels",r:"5.0",a:"YA",on:"Y. Ahmed",ext:false},
+  {t:"Python for Data Analysis",cat:"Data & BI",tag:"External",cls:"t6",em:"🐍",h:"8 wks",lvl:"Beginner",r:"4.6",a:"CO",on:"Coursera (aggregated)",ext:true},
+  {t:"Public Sector Leadership",cat:"Leadership",tag:"In-person",cls:"t5",em:"🏛️",h:"2 days",lvl:"Manager",r:"4.8",a:"FT",on:"F. Tamimi",ext:false},
+  {t:"Storytelling with Data",cat:"Data & BI",tag:"Online",cls:"t2",em:"📖",h:"3 wks",lvl:"Intermediate",r:"4.9",a:"LR",on:"L. Rahman",ext:false},
+  {t:"Intro to Machine Learning",cat:"Data & BI",tag:"Online",cls:"t4",em:"🤖",h:"4 wks",lvl:"Intermediate",r:"4.7",a:"AK",on:"A. Karim",ext:false},
+  {t:"Census Data Management",cat:"Statistics",tag:"Hybrid",cls:"t1",em:"🗂️",h:"5 wks",lvl:"Advanced",r:"4.8",a:"NM",on:"N. Mansour",ext:false},
+  {t:"Effective Report Writing",cat:"Skills",tag:"Online",cls:"t3",em:"✍️",h:"2 wks",lvl:"All levels",r:"4.5",a:"RB",on:"R. Bilal",ext:false},
+  {t:"GIS & Geospatial Stats",cat:"Methodology",tag:"New",cls:"t6",em:"🗺️",h:"6 wks",lvl:"Advanced",r:"4.9",a:"SA",on:"S. Aziz",ext:false},
+  {t:"Agile Project Management",cat:"Leadership",tag:"External",cls:"t5",em:"🚀",h:"5 wks",lvl:"Intermediate",r:"4.6",a:"ED",on:"edX (aggregated)",ext:true},
 ];
 document.getElementById('grid').innerHTML = C.map(c=>`
   <a class="card course" href="course.html">
-    <div class="thumb ${c.cls}"><span class="badge ${c.ext?'blue':'gold'} tag">${c.tag}</span></div>
+    <div class="thumb ${c.cls}"><span class="badge ${c.ext?'blue':'gold'} tag">${c.tag}</span><span class="em">${c.em}</span></div>
     <div class="body">
       <span class="badge">${c.cat}</span>
       <h4>${c.t}</h4>
